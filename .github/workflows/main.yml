@@ -1,0 +1,35 @@
+name: Node.js CI
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    build:
+        runs-on: self-hosted
+        steps:
+            - name: 🔄 Checkout
+              uses: actions/checkout@v4
+
+            - name: 🛠️ Using Node.js 22.8.x
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22.8.x
+                  cache: "npm"
+
+            - name: ⚙️ Install dependencies
+              run: npm ci
+
+            - name: 🧹 Linting
+              run: npm run lint
+
+            - name: 💁 Formatting
+              run: npm run prettier
+
+            - name: ✅ Testing
+              run: npm test
+
+            - name: 🏗️ Building
+              run: npm run build
