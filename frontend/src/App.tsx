@@ -1,4 +1,3 @@
-import "./App.css";
 import { Button } from "./shadcn/components/ui/button";
 
 function App() {
