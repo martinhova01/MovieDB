@@ -4,7 +4,7 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-  } from "../shadcn/components/ui/accordion";
+} from "../shadcn/components/ui/accordion";
 import {
     Sheet,
     SheetClose,
@@ -23,15 +23,26 @@ const FilterPanel = () => {
     const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
 
     const genres = ["Action", "Fantasy", "Mystery", "Comedy", "Drama"];
-    const decades = ["2020", "2010", "2000", "1990", "1980", "1970", "1960", "1950", "1940", "1930"];
-    const ratings = ["5", "4", "3", "2", "1"]
+    const decades = [
+        "2020",
+        "2010",
+        "2000",
+        "1990",
+        "1980",
+        "1970",
+        "1960",
+        "1950",
+        "1940",
+        "1930",
+    ];
+    const ratings = ["5", "4", "3", "2", "1"];
 
     useEffect(() => {
         const storedFilters = sessionStorage.getItem("filters");
         if (storedFilters) {
             setFilters(JSON.parse(storedFilters));
         }
-    }, [])
+    }, []);
 
     const updateFilters = (category: string, filter: string) => {
         let newFilters: string[] = [...(filters[category] || [])];
@@ -55,19 +66,35 @@ const FilterPanel = () => {
                     </span>
                 </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[400px] sm:w-[540px]">
+            <SheetContent side="left" className="w-full overflow-y-auto">
                 <SheetHeader className="mb-5">
                     <SheetTitle>Filters</SheetTitle>
                     <SheetDescription>Apply desiered fitlers</SheetDescription>
                 </SheetHeader>
                 <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="item-1">
-                        <AccordionTrigger>Genre {filters["genre"]?.length ? `(${filters["genre"].length})` : ""}</AccordionTrigger>
+                        <AccordionTrigger>
+                            Genre{" "}
+                            {filters["genre"]?.length
+                                ? `(${filters["genre"].length})`
+                                : ""}
+                        </AccordionTrigger>
                         <AccordionContent>
                             <ul>
                                 {genres.map((genre) => (
-                                    <li key={genre} className="flex items-center space-x-2 mb-2">
-                                        <Checkbox id={genre} checked={filters["genre"]?.includes(genre)} onCheckedChange={() => updateFilters("genre", genre)}/>
+                                    <li
+                                        key={genre}
+                                        className="flex items-center space-x-2 mb-2"
+                                    >
+                                        <Checkbox
+                                            id={genre}
+                                            checked={filters["genre"]?.includes(
+                                                genre
+                                            )}
+                                            onCheckedChange={() =>
+                                                updateFilters("genre", genre)
+                                            }
+                                        />
                                         <label
                                             htmlFor={genre}
                                             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -80,12 +107,28 @@ const FilterPanel = () => {
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
-                        <AccordionTrigger>Decade {filters["decade"]?.length ? `(${filters["decade"].length})` : ""}</AccordionTrigger>
+                        <AccordionTrigger>
+                            Decade{" "}
+                            {filters["decade"]?.length
+                                ? `(${filters["decade"].length})`
+                                : ""}
+                        </AccordionTrigger>
                         <AccordionContent>
                             <ul>
                                 {decades.map((decade) => (
-                                    <li key={decade} className="flex items-center space-x-2 mb-2">
-                                        <Checkbox id={decade} checked={filters["decade"]?.includes(decade)} onCheckedChange={() => updateFilters("decade", decade)}/>
+                                    <li
+                                        key={decade}
+                                        className="flex items-center space-x-2 mb-2"
+                                    >
+                                        <Checkbox
+                                            id={decade}
+                                            checked={filters[
+                                                "decade"
+                                            ]?.includes(decade)}
+                                            onCheckedChange={() =>
+                                                updateFilters("decade", decade)
+                                            }
+                                        />
                                         <label
                                             htmlFor={decade}
                                             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -98,12 +141,28 @@ const FilterPanel = () => {
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
-                        <AccordionTrigger>Rating {filters["rating"]?.length ? `(${filters["rating"].length})` : ""}</AccordionTrigger>
+                        <AccordionTrigger>
+                            Rating{" "}
+                            {filters["rating"]?.length
+                                ? `(${filters["rating"].length})`
+                                : ""}
+                        </AccordionTrigger>
                         <AccordionContent>
                             <ul>
                                 {ratings.map((rating) => (
-                                    <li key={rating} className="flex items-center space-x-2 mb-2">
-                                        <Checkbox id={rating} checked={filters["rating"]?.includes(rating)} onCheckedChange={() => updateFilters("rating", rating)} />
+                                    <li
+                                        key={rating}
+                                        className="flex items-center space-x-2 mb-2"
+                                    >
+                                        <Checkbox
+                                            id={rating}
+                                            checked={filters[
+                                                "rating"
+                                            ]?.includes(rating)}
+                                            onCheckedChange={() =>
+                                                updateFilters("rating", rating)
+                                            }
+                                        />
                                         <label
                                             htmlFor={rating}
                                             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -118,7 +177,7 @@ const FilterPanel = () => {
                 </Accordion>
                 <SheetFooter className="mt-5">
                     <SheetClose asChild>
-                        <Button type="submit">Save changes</Button>
+                        <Button type="submit">Apply</Button>
                     </SheetClose>
                 </SheetFooter>
             </SheetContent>
