@@ -1,13 +1,18 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+
+// We disable the eslint rule above because we want to use empty interfaces to
+// differentiate between different types even though they have the same structure
+
 interface IdName {
     id: number;
     name: string;
 }
 
-type Genre = IdName;
-type Keyword = IdName;
-type Language = IdName;
-type ProductionCompany = IdName;
-type ProductionCountry = IdName;
+interface Genre extends IdName {}
+interface Keyword extends IdName {}
+interface Language extends IdName {}
+interface ProductionCompany extends IdName {}
+interface ProductionCountry extends IdName {}
 
 enum Status {
     Released = "Released",
@@ -31,8 +36,8 @@ interface Movie {
     backdrop_path: string | undefined;
     budget: number;
     homepage: string | undefined;
-    imdb_id: number | undefined;
-    original_language: Language;
+    imdb_id: string | undefined;
+    original_language: string;
     original_title: string;
     overview: string;
     popularity: number;
