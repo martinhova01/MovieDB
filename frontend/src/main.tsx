@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./pages/App.tsx";
+import App from "./App.tsx";
 import MoviePage from "./pages/MoviePage.tsx";
 import MoviesPage from "./pages/MoviesPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
