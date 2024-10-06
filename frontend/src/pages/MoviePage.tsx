@@ -1,11 +1,18 @@
+import MovieCardDetailed from "@/components/MovieCardDetailed";
 import { useParams } from "react-router-dom";
 
 function MoviePage() {
-    const params = useParams<{ movieId: string }>();
+    const { movieId } = useParams<{ movieId: string }>();
+
+    const numericMovieId = movieId ? parseInt(movieId, 10) : undefined;
+
+    if (numericMovieId === undefined) {
+        return <div>Invalid movie ID</div>;
+    }
+
     return (
         <div>
-            <h1>Movie Page</h1>
-            <h2>{params.movieId}</h2>
+            <MovieCardDetailed movieId={numericMovieId} />
         </div>
     );
 }
