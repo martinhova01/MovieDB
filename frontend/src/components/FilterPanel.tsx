@@ -18,12 +18,13 @@ import {
 import { SlidersHorizontal } from "lucide-react";
 import { Checkbox } from "@/shadcn/components/ui/checkbox";
 import { useEffect, useState } from "react";
+import { all_genres, all_languages } from "@/mock/util";
+import { Status } from "@/types/movieTypes";
 
 const FilterPanel = () => {
     const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
 
-    const genres = ["Action", "Fantasy", "Mystery", "Comedy", "Drama"];
-    const decades = [
+    const decades: string[] = [
         "2020",
         "2010",
         "2000",
@@ -34,8 +35,16 @@ const FilterPanel = () => {
         "1950",
         "1940",
         "1930",
+        "1920",
+        "1910",
+        "1900",
     ];
-    const ratings = ["5", "4", "3", "2", "1"];
+    const ratings: string[] = ["5", "4", "3", "2", "1"];
+    const runtimes: string[] = [
+        "Less than 1 hour",
+        "1 - 2 hours",
+        "More than 2 hours",
+    ]
 
     useEffect(() => {
         const storedFilters = sessionStorage.getItem("filters");
@@ -74,32 +83,35 @@ const FilterPanel = () => {
                 <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="item-1">
                         <AccordionTrigger>
-                            Genre{" "}
+                            Genre
                             {filters["genre"]?.length
-                                ? `(${filters["genre"].length})`
+                                ? ` (${filters["genre"].length})`
                                 : ""}
                         </AccordionTrigger>
                         <AccordionContent>
                             <ul>
-                                {genres.map((genre) => (
+                                {all_genres.map((genre) => (
                                     <li
-                                        key={genre}
+                                        key={genre.name}
                                         className="flex items-center space-x-2 mb-2"
                                     >
                                         <Checkbox
-                                            id={genre}
+                                            id={genre.name}
                                             checked={filters["genre"]?.includes(
-                                                genre
+                                                genre.name
                                             )}
                                             onCheckedChange={() =>
-                                                updateFilters("genre", genre)
+                                                updateFilters(
+                                                    "genre",
+                                                    genre.name
+                                                )
                                             }
                                         />
                                         <label
-                                            htmlFor={genre}
+                                            htmlFor={genre.name}
                                             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                         >
-                                            {genre}
+                                            {genre.name}
                                         </label>
                                     </li>
                                 ))}
@@ -108,9 +120,43 @@ const FilterPanel = () => {
                     </AccordionItem>
                     <AccordionItem value="item-2">
                         <AccordionTrigger>
-                            Decade{" "}
+                            Rating
+                            {filters["rating"]?.length
+                                ? ` (${filters["rating"].length})`
+                                : ""}
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <ul>
+                                {ratings.map((rating) => (
+                                    <li
+                                        key={rating}
+                                        className="flex items-center space-x-2 mb-2"
+                                    >
+                                        <Checkbox
+                                            id={rating}
+                                            checked={filters[
+                                                "rating"
+                                            ]?.includes(rating)}
+                                            onCheckedChange={() =>
+                                                updateFilters("rating", rating)
+                                            }
+                                        />
+                                        <label
+                                            htmlFor={rating}
+                                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                        >
+                                            {rating}
+                                        </label>
+                                    </li>
+                                ))}
+                            </ul>
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-3">
+                        <AccordionTrigger>
+                            Decade
                             {filters["decade"]?.length
-                                ? `(${filters["decade"].length})`
+                                ? ` (${filters["decade"].length})`
                                 : ""}
                         </AccordionTrigger>
                         <AccordionContent>
@@ -140,34 +186,108 @@ const FilterPanel = () => {
                             </ul>
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-3">
+                    <AccordionItem value="item-4">
                         <AccordionTrigger>
-                            Rating{" "}
-                            {filters["rating"]?.length
-                                ? `(${filters["rating"].length})`
+                            Language
+                            {filters["language"]?.length
+                                ? ` (${filters["language"].length})`
                                 : ""}
                         </AccordionTrigger>
                         <AccordionContent>
                             <ul>
-                                {ratings.map((rating) => (
+                                {all_languages.map((language) => (
                                     <li
-                                        key={rating}
+                                        key={language.name}
                                         className="flex items-center space-x-2 mb-2"
                                     >
                                         <Checkbox
-                                            id={rating}
+                                            id={language.name}
                                             checked={filters[
-                                                "rating"
-                                            ]?.includes(rating)}
+                                                "language"
+                                            ]?.includes(language.name)}
                                             onCheckedChange={() =>
-                                                updateFilters("rating", rating)
+                                                updateFilters(
+                                                    "language",
+                                                    language.name
+                                                )
                                             }
                                         />
                                         <label
-                                            htmlFor={rating}
+                                            htmlFor={language.name}
                                             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                         >
-                                            {rating}
+                                            {language.name}
+                                        </label>
+                                    </li>
+                                ))}
+                            </ul>
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-5">
+                        <AccordionTrigger>
+                            Status
+                            {filters["status"]?.length
+                                ? ` (${filters["status"].length})`
+                                : ""}
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <ul>
+                                {Object.values(Status).map((status) => (
+                                    <li
+                                        key={status}
+                                        className="flex items-center space-x-2 mb-2"
+                                    >
+                                        <Checkbox
+                                            id={status}
+                                            checked={filters[
+                                                "status"
+                                            ]?.includes(status)}
+                                            onCheckedChange={() =>
+                                                updateFilters("status", status)
+                                            }
+                                        />
+                                        <label
+                                            htmlFor={status}
+                                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                        >
+                                            {status}
+                                        </label>
+                                    </li>
+                                ))}
+                            </ul>
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-6">
+                        <AccordionTrigger>
+                            Runtime
+                            {filters["runtime"]?.length
+                                ? ` (${filters["runtime"].length})`
+                                : ""}
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <ul>
+                                {runtimes.map((runtime) => (
+                                    <li
+                                        key={runtime}
+                                        className="flex items-center space-x-2 mb-2"
+                                    >
+                                        <Checkbox
+                                            id={runtime}
+                                            checked={filters[
+                                                "runtime"
+                                            ]?.includes(runtime)}
+                                            onCheckedChange={() =>
+                                                updateFilters(
+                                                    "runtime",
+                                                    runtime
+                                                )
+                                            }
+                                        />
+                                        <label
+                                            htmlFor={runtime}
+                                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                        >
+                                            {runtime}
                                         </label>
                                     </li>
                                 ))}
