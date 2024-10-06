@@ -25,26 +25,29 @@ const FilterPanel = () => {
     const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
 
     const decades: string[] = [
-        "2020",
-        "2010",
-        "2000",
-        "1990",
-        "1980",
-        "1970",
-        "1960",
-        "1950",
-        "1940",
-        "1930",
-        "1920",
-        "1910",
-        "1900",
+        "2020s",
+        "2010s",
+        "2000s",
+        "1990s",
+        "1980s",
+        "1970s",
+        "1960s",
+        "1950s",
+        "1940s",
+        "1930s",
+        "1920s",
+        "1910s",
+        "1900s",
+        "1890s",
+        "1880s",
+        "1870s",
     ];
     const ratings: string[] = ["5", "4", "3", "2", "1"];
     const runtimes: string[] = [
         "Less than 1 hour",
         "1 - 2 hours",
         "More than 2 hours",
-    ]
+    ];
 
     useEffect(() => {
         const storedFilters = sessionStorage.getItem("filters");
@@ -78,7 +81,6 @@ const FilterPanel = () => {
             <SheetContent side="left" className="w-full overflow-y-auto">
                 <SheetHeader className="mb-5">
                     <SheetTitle>Filters</SheetTitle>
-                    <SheetDescription>Apply desiered fitlers</SheetDescription>
                 </SheetHeader>
                 <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="item-1">
@@ -154,7 +156,7 @@ const FilterPanel = () => {
                     </AccordionItem>
                     <AccordionItem value="item-3">
                         <AccordionTrigger>
-                            Decade
+                            Release year
                             {filters["decade"]?.length
                                 ? ` (${filters["decade"].length})`
                                 : ""}
