@@ -38,9 +38,11 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
 
     const handleSubmitReview = (e: React.FormEvent) => {
         e.preventDefault();
+
+        const username = localStorage.getItem("username") || "Guest";
         const newReview: Review = {
             id: Date.now(), //Temporary id
-            username: "Username", //Temporary username
+            username: username,
             rating,
             comment: comment.trim() || undefined,
             date: new Date(),
