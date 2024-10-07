@@ -55,11 +55,17 @@ const UserDropdown = () => {
                     className="flex items-center space-x-2"
                 >
                     <User className="h-4 w-4" />
-                    <span className="max-w-48 truncate">{username}</span>
+                    <span className="hidden sm:max-w-32 sm:flex truncate">
+                        {username}
+                    </span>
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuLabel className="truncate">
+                    {username}
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                     <DialogTrigger asChild>
