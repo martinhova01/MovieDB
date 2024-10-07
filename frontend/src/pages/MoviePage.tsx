@@ -1,4 +1,5 @@
 import MovieCardDetailed from "@/components/MovieCardDetailed";
+import MovieReviews from "@/components/MovieReviews";
 import { useParams } from "react-router-dom";
 
 function MoviePage() {
@@ -13,6 +14,7 @@ function MoviePage() {
     return (
         <div>
             <MovieCardDetailed movieId={numericMovieId} />
+            <MovieReviews movieId={numericMovieId} />
         </div>
     );
 }
