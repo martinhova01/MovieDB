@@ -8,7 +8,6 @@ import {
     CardTitle,
 } from "../shadcn/components/ui/card";
 import { Button } from "../shadcn/components/ui/button";
-import MovieReviews from "./MovieReviews";
 
 interface MovieCardDetailedProps {
     movieId: number;
@@ -27,6 +26,8 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
             if (foundMovie) {
                 const movieWithEnumStatusAndDate: Movie = {
                     ...foundMovie,
+                    poster_path: foundMovie.poster_path || undefined,
+                    backdrop_path: foundMovie.backdrop_path || undefined,
                     status: foundMovie.status as Status,
                     release_date: new Date(foundMovie.release_date),
                     homepage: foundMovie.homepage || undefined,
@@ -46,47 +47,48 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
     const runtimeMinutes = movie.runtime % 60;
 
     return (
-        <div>
-            <Card
-                className="m-4 shadow-lg bg-cover bg-center relative overflow-hidden"
-                style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
-                }}
-            >
+        <Card
+            className="m-4 shadow-lg bg-cover bg-center relative overflow-hidden"
+            style={{
+                backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
+            }}
+        >
+            {movie.backdrop_path && (
                 <div className="absolute inset-0 bg-black opacity-85" />
-                <div className="relative z-10 flex flex-col md:flex-row">
-                    <div className="flex-shrink-0 md:w-96">
-                        <img
-                            src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                            className="w-full h-auto md:h-full object-cover"
-                            alt={movie.title}
-                        />
-                    </div>
-                    <CardContent className="text-white p-6 flex-grow">
-                        <CardHeader className="p-0 mb-4">
-                            <CardTitle className="text-5xl font-bold">
-                                {movie.title}
-                            </CardTitle>
-                            <p className="text-sm">
-                                {releaseYear} • {runtimeHours}h {runtimeMinutes}
-                                m •{" "}
-                                {movie.genres
-                                    .map((genre) => genre.name)
-                                    .join(", ")}
+            )}
+            <CardContent className="text-white p-6 h-full relative">
+                <CardHeader className="mb-4 p-0">
+                    <CardTitle className="text-5xl font-bold">
+                        {movie.title}
+                    </CardTitle>
+                    <p className="text-sm">
+                        {releaseYear} • {runtimeHours}h {runtimeMinutes}m •{" "}
+                        {movie.genres.map((genre) => genre.name).join(", ")}
+                    </p>
+                    <p className="text-xl">
+                        <strong>{movie.vote_average.toFixed(1)}/10</strong>{" "}
+                        {" ("}
+                        {movie.vote_count}
+                        {")"}
+                    </p>
+                </CardHeader>
+
+                <section className="flex flex-col md:flex-row h-full">
+                    {movie.poster_path && (
+                        <figure className="flex-shrink-0 w-72 mb-6 md:mb-0 md:mr-6">
+                            <img
+                                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                                className="w-full h-full object-contain rounded-lg"
+                                alt={`Poster of ${movie.title}`}
+                            />
+                        </figure>
+                    )}
+                    <section className="flex-grow">
+                        {movie.tagline && (
+                            <p className="text-gray-300 text-xl italic mb-2">
+                                {movie.tagline}
                             </p>
-                            <p className="text-xl">
-                                <strong>
-                                    {movie.vote_average.toFixed(1)}
-                                    {"/10"}
-                                </strong>
-                                {" ("}
-                                {movie.vote_count}
-                                {")"}
-                            </p>
-                        </CardHeader>
-                        <h2 className="text-gray-300 text-xl italic mb-2">
-                            {movie.tagline}
-                        </h2>
+                        )}
                         <p className="mb-4 text-lg">{movie.overview}</p>
                         <p>
                             <strong>Revenue:</strong> $
@@ -94,7 +96,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
                         </p>
                         <p className="mb-2">
                             <strong>Budget:</strong> $
-                            {movie.budget.toLocaleString()}
+                            {movie.budget?.toLocaleString() ?? "N/A"}
                         </p>
                         <p className="mb-2">
                             <strong>Production Companies:</strong>{" "}
@@ -108,15 +110,11 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
                                 .map((country) => country.name)
                                 .join(", ")}
                         </p>
-                        <p className="mb-2">
+                        <p className="mb-8">
                             <strong>Spoken Languages:</strong>{" "}
                             {movie.spoken_languages
                                 .map((language) => language.name)
                                 .join(", ")}
-                        </p>
-                        <p className="mb-4">
-                            <strong>Original Language:</strong>{" "}
-                            {movie.original_language}
                         </p>
                         {movie.homepage && (
                             <Button asChild>
@@ -129,11 +127,10 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
                                 </a>
                             </Button>
                         )}
-                    </CardContent>
-                </div>
-            </Card>
-            <MovieReviews movieId={movieId}></MovieReviews>
-        </div>
+                    </section>
+                </section>
+            </CardContent>
+        </Card>
     );
 };
 
