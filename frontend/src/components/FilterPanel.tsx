@@ -9,6 +9,7 @@ import {
     Sheet,
     SheetClose,
     SheetContent,
+    SheetDescription,
     SheetFooter,
     SheetHeader,
     SheetTitle,
@@ -70,7 +71,7 @@ const FilterPanel = () => {
 
     return (
         <Sheet>
-            <SheetTrigger>
+            <SheetTrigger asChild>
                 <Button variant="outline" size="sm" className="h-7 gap-1">
                     <SlidersHorizontal className="h-3.5 w-3.5" />
                     <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
@@ -81,11 +82,17 @@ const FilterPanel = () => {
             <SheetContent side="left" className="w-full overflow-y-auto">
                 <SheetHeader className="mb-5">
                     <SheetTitle>Filters</SheetTitle>
+                    <SheetDescription>
+                        Apply filters to refine your search
+                    </SheetDescription>
                 </SheetHeader>
                 <Accordion type="single" collapsible className="w-full">
                     {Object.entries(all_filters).map(
                         ([category, filter_list]) => (
-                            <AccordionItem key={category} value={`${category} item`}>
+                            <AccordionItem
+                                key={category}
+                                value={`${category} item`}
+                            >
                                 <AccordionTrigger>
                                     {category}
                                     {filters[category]?.length
