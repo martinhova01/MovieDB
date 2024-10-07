@@ -13,7 +13,15 @@ const MovieList = ({ movies }: { movies: Movie[] }) => {
                 ))}
             </ul>
             <div className="flex justify-center">
-                <Button size="lg" className="m-10" onClick={() => setMaxLength(Math.min(maxLength + 10, movies.length - 1))}>
+                <Button
+                    size="lg"
+                    className="m-10"
+                    onClick={() =>
+                        setMaxLength(
+                            Math.min(maxLength + 10, movies.length - 1)
+                        )
+                    }
+                >
                     Load More
                 </Button>
             </div>
