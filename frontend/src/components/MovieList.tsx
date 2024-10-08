@@ -4,7 +4,7 @@ import { Button } from "@/shadcn/components/ui/button";
 import { useState } from "react";
 
 const MovieList = ({ movies }: { movies: Movie[] }) => {
-    const [maxLength, setMaxLength] = useState(10);
+    const [maxLength, setMaxLength] = useState(20);
     return (
         <>
             <ul className="flex flex-wrap justify-center">
