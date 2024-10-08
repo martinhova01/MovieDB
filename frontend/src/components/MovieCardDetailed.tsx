@@ -58,6 +58,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
                     </p>
                     <Ratings
                         value={movie.vote_average / 2}
+                        size={24}
                         variant="yellow"
                         totalstars={5}
                     />
