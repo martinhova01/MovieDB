@@ -1,12 +1,15 @@
-import { Button } from "./shadcn/components/ui/button";
+import FilterPanel from "./components/FilterPanel";
+import MovieList from "./components/MovieList";
+import { all_movies } from "./mock/util";
 import { Outlet } from "react-router-dom";
 
 function App() {
     return (
-        <div>
-            <Button>shadcn button</Button>
+        <>
+            <FilterPanel />
+            <MovieList movies={all_movies} />
             <Outlet />
-        </div>
+        </>
     );
 }
 
