@@ -20,7 +20,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
 
     useEffect(() => {
         const foundMovie = all_movies.find(
-            (movie: any) => movie.id === movieId
+            (movie: Movie) => movie.id === movieId
         );
 
         if (foundMovie) {
