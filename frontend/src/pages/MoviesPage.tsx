@@ -1,5 +1,14 @@
+import FilterPanel from "../components/FilterPanel";
+import MovieList from "../components/MovieList";
+import { all_movies } from "../mock/util";
+
 function MoviesPage() {
-    return <h1>Movies Page</h1>;
+    return (
+        <div>
+            <FilterPanel />
+            <MovieList movies={all_movies} />{" "}
+        </div>
+    );
 }
 
 export default MoviesPage;
