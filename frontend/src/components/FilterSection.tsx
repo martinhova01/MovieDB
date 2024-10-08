@@ -19,7 +19,7 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
     updateFilters,
 }) => {
     return (
-        <AccordionItem key={category} value={`${category} item`}>
+        <AccordionItem value={`${category} item`}>
             <AccordionTrigger>
                 {category}
                 {applied_filters.length ? ` (${applied_filters.length})` : ""}

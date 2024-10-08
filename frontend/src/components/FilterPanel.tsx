@@ -85,6 +85,7 @@ const FilterPanel = () => {
                     {Object.entries(all_filters).map(
                         ([category, filter_list]) => (
                             <FilterSection
+                                key={category}
                                 category={category}
                                 all_filters={filter_list}
                                 applied_filters={filters[category] ?? []}
