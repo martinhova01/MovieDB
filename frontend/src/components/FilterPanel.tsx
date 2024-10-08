@@ -1,10 +1,5 @@
-import { Button } from "@/shadcn/components/ui/button";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "../shadcn/components/ui/accordion";
+import { Button } from "../shadcn/components/ui/button";
+import { Accordion } from "../shadcn/components/ui/accordion";
 import {
     Sheet,
     SheetClose,
@@ -16,10 +11,10 @@ import {
     SheetTrigger,
 } from "../shadcn/components/ui/sheet";
 import { SlidersHorizontal } from "lucide-react";
-import { Checkbox } from "@/shadcn/components/ui/checkbox";
 import { useEffect, useState } from "react";
-import { all_genres, all_languages } from "@/mock/util";
-import { Status } from "@/types/movieTypes";
+import { all_genres, all_languages } from "../mock/util";
+import { Status } from "../types/movieTypes";
+import FilterSection from "./FilterSection";
 
 const FilterPanel = () => {
     const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
@@ -89,46 +84,12 @@ const FilterPanel = () => {
                 <Accordion type="single" collapsible className="w-full">
                     {Object.entries(all_filters).map(
                         ([category, filter_list]) => (
-                            <AccordionItem
-                                key={category}
-                                value={`${category} item`}
-                            >
-                                <AccordionTrigger>
-                                    {category}
-                                    {filters[category]?.length
-                                        ? ` (${filters[category].length})`
-                                        : ""}
-                                </AccordionTrigger>
-                                <AccordionContent>
-                                    <ul>
-                                        {filter_list.map((filter) => (
-                                            <li
-                                                key={filter}
-                                                className="flex items-center space-x-2 mb-2"
-                                            >
-                                                <Checkbox
-                                                    id={filter}
-                                                    checked={filters[
-                                                        category
-                                                    ]?.includes(filter)}
-                                                    onCheckedChange={() =>
-                                                        updateFilters(
-                                                            category,
-                                                            filter
-                                                        )
-                                                    }
-                                                />
-                                                <label
-                                                    htmlFor={filter}
-                                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                                >
-                                                    {filter}
-                                                </label>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </AccordionContent>
-                            </AccordionItem>
+                            <FilterSection
+                                category={category}
+                                all_filters={filter_list}
+                                applied_filters={filters[category] ?? []}
+                                updateFilters={updateFilters}
+                            />
                         )
                     )}
                 </Accordion>
