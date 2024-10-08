@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import mockMovies from "../mock/mock_movies.json";
-import { Movie, Status } from "../types/movieTypes";
+import { all_movies } from "../mock/util";
+import { Movie } from "../types/movieTypes";
 import {
     Card,
     CardContent,
@@ -8,6 +8,7 @@ import {
     CardTitle,
 } from "../shadcn/components/ui/card";
 import { Button } from "../shadcn/components/ui/button";
+import Ratings from "../shadcn/components/ui/rating";
 
 interface MovieCardDetailedProps {
     movieId: number;
@@ -18,24 +19,14 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        if (movieId) {
-            const foundMovie = mockMovies.find(
-                (movie: any) => movie.id === movieId
-            );
+        const foundMovie = all_movies.find(
+            (movie: any) => movie.id === movieId
+        );
 
-            if (foundMovie) {
-                const movieWithEnumStatusAndDate: Movie = {
-                    ...foundMovie,
-                    poster_path: foundMovie.poster_path || undefined,
-                    backdrop_path: foundMovie.backdrop_path || undefined,
-                    status: foundMovie.status as Status,
-                    release_date: new Date(foundMovie.release_date),
-                    homepage: foundMovie.homepage || undefined,
-                };
-                setMovie(movieWithEnumStatusAndDate);
-            } else {
-                setError("Movie not found");
-            }
+        if (foundMovie) {
+            setMovie(foundMovie);
+        } else {
+            setError("Movie not found");
         }
     }, [movieId]);
 
@@ -65,12 +56,11 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
                         {releaseYear} • {runtimeHours}h {runtimeMinutes}m •{" "}
                         {movie.genres.map((genre) => genre.name).join(", ")}
                     </p>
-                    <p className="text-xl">
-                        <strong>{movie.vote_average.toFixed(1)}/10</strong>{" "}
-                        {" ("}
-                        {movie.vote_count}
-                        {")"}
-                    </p>
+                    <Ratings
+                        value={movie.vote_average / 2}
+                        variant="yellow"
+                        totalstars={5}
+                    />
                 </CardHeader>
 
                 <section className="flex flex-col md:flex-row h-full">

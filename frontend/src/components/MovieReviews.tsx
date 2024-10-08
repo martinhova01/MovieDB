@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "../shadcn/components/ui/button";
 import { Textarea } from "../shadcn/components/ui/textarea";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "../shadcn/components/ui/select";
-import { Card, CardContent } from "@/shadcn/components/ui/card";
+import { Card, CardContent } from "../shadcn/components/ui/card";
+import Ratings from "../shadcn/components/ui/rating";
 
 interface Review {
     id: number;
@@ -73,26 +67,17 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
 
     return (
         <Card className="m-4">
-            <div className="m-4 mb-6">
+            <section className="m-4 mb-6">
                 <h3 className="text-2xl font-bold mb-4">Submit review</h3>
                 <form onSubmit={handleSubmitReview} className="space-y-4">
-                    <Select
-                        onValueChange={(value: any) => setRating(Number(value))}
-                    >
-                        <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Select rating" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            {[0, 1, 2, 3, 4, 5].map((value) => (
-                                <SelectItem
-                                    key={value}
-                                    value={value.toString()}
-                                >
-                                    {value} / 5
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
+                    <Ratings
+                        value={rating}
+                        onValueChange={setRating}
+                        variant="yellow"
+                        totalstars={5}
+                        size={24}
+                        asInput={true}
+                    />
                     <Textarea
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
@@ -102,23 +87,23 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
                         Submit Review
                     </Button>
                 </form>
-            </div>
-            <div className="m-4 space-y-4">
+            </section>
+            <section className="m-4 space-y-4">
                 {reviews.length > 0 ? (
                     <h3 className="text-2xl font-bold mb-4">Reviews</h3>
                 ) : null}
                 {reviews.map((review) => (
                     <Card key={review.id}>
                         <CardContent className="mt-4">
-                            <div className="flex justify-between items-start mb-2">
-                                <div>
+                            <section className="flex justify-between items-start mb-2">
+                                <section>
                                     <p className="text-xl font-bold">
                                         Username
                                     </p>
                                     <p className="text-sm text-gray-500">
                                         {formatDate(review.date)}
                                     </p>
-                                </div>
+                                </section>
                                 <Button
                                     onClick={() =>
                                         handleDeleteReview(review.id)
@@ -126,15 +111,19 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
                                 >
                                     Delete
                                 </Button>
-                            </div>
-                            <p className="font-bold">{review.rating} / 5</p>
+                            </section>
+                            <Ratings
+                                value={review.rating}
+                                variant="yellow"
+                                totalstars={5}
+                            />
                             {review.comment && (
                                 <p className="mt-2">{review.comment}</p>
                             )}
                         </CardContent>
                     </Card>
                 ))}
-            </div>
+            </section>
         </Card>
     );
 };
