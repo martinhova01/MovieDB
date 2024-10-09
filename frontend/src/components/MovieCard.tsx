@@ -16,7 +16,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
 
     return (
         <Card
-            className="w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%] shadow-lg hover:shadow-slate-600 hover:cursor-pointer m-2"
+            className="shadow-lg hover:shadow-slate-600 hover:cursor-pointer m-0"
             onClick={handleClick}
         >
             <CardHeader className="p-2">
