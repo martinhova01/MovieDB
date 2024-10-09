@@ -10,10 +10,10 @@ const MovieList = ({ movies }: { movies: Movie[] }) => {
             <ul className="flex flex-wrap justify-center">
                 {movies.slice(0, maxLength).map((movie: Movie) => (
                     <li
-                        key={movie.title}
+                        key={movie.id}
                         className="w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%] m-2"
                     >
-                        <MovieCard key={movie.id} movie={movie} />
+                        <MovieCard movie={movie} />
                     </li>
                 ))}
             </ul>
