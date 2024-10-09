@@ -10,10 +10,14 @@ const Navbar = () => {
     ];
 
     return (
-        <header className="sticky top-0 left-0 z-50 bg-muted shadow-sm w-dvw flex items-center p-4">
+        <header className="sticky top-0 left-0 z-50 bg-muted shadow-sm w-full flex items-center p-4">
             <nav className="flex-1 flex justify-center items-center gap-10">
-                <a href="/" className="text-2xl font-bold text-primary">
-                    Logo
+                <a
+                    href="/"
+                    className="text-2xl font-bold text-primary flex flex-row gap-3"
+                >
+                    <img src="/logo.png" alt="logo" className="h-8 w-8" />
+                    MovieDB
                 </a>
                 <ul className="hidden sm:flex gap-4 text-lg">
                     {links.map((link) => (
