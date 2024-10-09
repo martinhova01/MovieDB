@@ -80,6 +80,8 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
                         asInput={true}
                     />
                     <Textarea
+                        id="review-comment"
+                        name="comment"
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         placeholder="Write your review (optional)"
