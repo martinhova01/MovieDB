@@ -15,9 +15,22 @@ import { useEffect, useState } from "react";
 import { all_genres, all_languages } from "../mock/util";
 import { Status } from "../types/movieTypes";
 import FilterSection from "./FilterSection";
+import SortSection from "./SortSection";
 
 const FilterPanel = () => {
     const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
+    const [sortOption, setSortOption] = useState<string>("Newest first");
+
+    const sort_options: string[] = [
+        "Newest first",
+        "Oldest first",
+        "Title A-Z",
+        "Title Z-A",
+        "Best rated",
+        "Worst rated",
+        "Longest runtime",
+        "Shortest runtime",
+    ];
 
     const all_filters: { [key: string]: string[] } = {
         Genre: all_genres.map((genre) => genre.name),
@@ -50,6 +63,11 @@ const FilterPanel = () => {
         if (storedFilters) {
             setFilters(JSON.parse(storedFilters));
         }
+
+        const storedSortOption = sessionStorage.getItem("sort_option");
+        if (storedSortOption) {
+            setSortOption(storedSortOption);
+        }
     }, []);
 
     const updateFilters = (category: string, filter: string) => {
@@ -64,24 +82,36 @@ const FilterPanel = () => {
         setFilters(updatedFilters);
     };
 
+    const updateSortOption = (option: string) => {
+        if (sort_options.includes(option)) {
+            sessionStorage.setItem("sort_option", option);
+            setSortOption(option);
+        }
+    };
+
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <Button variant="outline" size="sm" className="h-7 gap-1">
+                <Button variant="outline" size="sm" className="h-7 gap-1 m-3">
                     <SlidersHorizontal className="h-3.5 w-3.5" />
                     <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                        Filters
+                        Sort & Filter
                     </span>
                 </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-full overflow-y-auto">
                 <SheetHeader className="mb-5">
-                    <SheetTitle>Filters</SheetTitle>
+                    <SheetTitle>Sort & Filter</SheetTitle>
                     <SheetDescription>
-                        Apply filters to refine your search
+                        Use the tools below to refine your results
                     </SheetDescription>
                 </SheetHeader>
                 <Accordion type="single" collapsible className="w-full">
+                    <SortSection
+                        sortOption={sortOption}
+                        sortOptions={sort_options}
+                        updateSortOption={updateSortOption}
+                    />
                     {Object.entries(all_filters).map(
                         ([category, filter_list]) => (
                             <FilterSection
