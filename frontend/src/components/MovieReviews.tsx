@@ -3,14 +3,7 @@ import { Button } from "../shadcn/components/ui/button";
 import { Textarea } from "../shadcn/components/ui/textarea";
 import { Card, CardContent } from "../shadcn/components/ui/card";
 import Ratings from "../shadcn/components/ui/rating";
-
-interface Review {
-    id: number;
-    rating: number;
-    comment?: string;
-    date: string;
-}
-
+import { Review } from "../types/movieTypes";
 interface MovieReviewsProps {
     movieId: number;
 }
@@ -38,10 +31,11 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
     const handleSubmitReview = (e: React.FormEvent) => {
         e.preventDefault();
         const newReview: Review = {
-            id: Date.now(),
+            id: Date.now(), //Temporary id
+            username: "Username", //Temporary username
             rating,
             comment: comment.trim() || undefined,
-            date: new Date().toISOString(),
+            date: new Date(),
         };
         const updatedReviews = [...reviews, newReview];
         saveReviews(updatedReviews);
@@ -54,8 +48,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
         saveReviews(updatedReviews);
     };
 
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
+    const formatDate = (date: Date) => {
         return date.toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
@@ -89,20 +82,20 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
                 </form>
             </section>
             <section className="m-4 space-y-4">
-                {reviews.length > 0 ? (
+                {reviews.length > 0 && (
                     <h3 className="text-2xl font-bold mb-4">Reviews</h3>
-                ) : null}
+                )}
                 {reviews.map((review) => (
                     <Card key={review.id}>
                         <CardContent className="mt-4">
                             <section className="flex justify-between items-start mb-2">
                                 <section>
-                                    <p className="text-xl font-bold">
-                                        Username
-                                    </p>
-                                    <p className="text-sm text-gray-500">
+                                    <h4 className="text-xl font-bold">
+                                        {review.username}
+                                    </h4>
+                                    <time className="text-sm text-gray-500">
                                         {formatDate(review.date)}
-                                    </p>
+                                    </time>
                                 </section>
                                 <Button
                                     onClick={() =>
