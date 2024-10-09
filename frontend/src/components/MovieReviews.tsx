@@ -16,7 +16,15 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
     useEffect(() => {
         const storedReviews = localStorage.getItem(`movieReviews_${movieId}`);
         if (storedReviews) {
-            setReviews(JSON.parse(storedReviews));
+            const reviews = JSON.parse(storedReviews) as Array<
+                Omit<Review, "date"> & { date: string }
+            >;
+            setReviews(
+                reviews.map((review) => ({
+                    ...review,
+                    date: new Date(review.date),
+                }))
+            );
         }
     }, [movieId]);
 
