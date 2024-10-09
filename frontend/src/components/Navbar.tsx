@@ -5,8 +5,8 @@ export type NavbarProps = { name: string; href: string }[];
 
 const Navbar = () => {
     const links: NavbarProps = [
-        { name: "Movies", href: "/movies" },
-        { name: "Feed", href: "/feed" },
+        // TODO: Add links when pages are created
+        // { name: "Movies", href: "/movies" },
     ];
 
     return (
@@ -34,7 +34,7 @@ const Navbar = () => {
             </nav>
             <div className="absolute right-4 flex items-center gap-2">
                 <UserDropdown />
-                <NavbarOverlay links={links} />
+                {links.length > 0 && <NavbarOverlay links={links} />}
             </div>
         </header>
     );
