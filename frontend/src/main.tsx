@@ -2,8 +2,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.tsx";
-import MoviePage from "./pages/MoviePage.tsx";
-import MoviesPage from "./pages/MoviesPage.tsx";
+import MovieDetailPage from "./pages/MovieDetailPage.tsx";
+import HomePage from "./pages/HomePage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import "./index.css";
 
@@ -15,11 +15,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <MoviesPage />,
+                element: <HomePage />,
             },
             {
                 path: "movie/:movieId",
-                element: <MoviePage />,
+                element: <MovieDetailPage />,
             },
         ],
     },

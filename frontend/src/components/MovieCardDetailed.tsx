@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { all_movies } from "../mock/util";
+import React from "react";
 import { Movie } from "../types/movieTypes";
 import {
     Card,
@@ -11,28 +10,10 @@ import { Button } from "../shadcn/components/ui/button";
 import Ratings from "../shadcn/components/ui/rating";
 
 interface MovieCardDetailedProps {
-    movieId: number;
+    movie: Movie;
 }
 
-const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
-    const [movie, setMovie] = useState<Movie | null>(null);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const foundMovie = all_movies.find(
-            (movie: Movie) => movie.id === movieId
-        );
-
-        if (foundMovie) {
-            setMovie(foundMovie);
-        } else {
-            setError("Movie not found");
-        }
-    }, [movieId]);
-
-    if (error) return <div>{error}</div>;
-    if (!movie) return <div>Loading...</div>;
-
+const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
     const releaseYear = movie.release_date.getFullYear();
     const runtimeHours = Math.floor(movie.runtime / 60);
     const runtimeMinutes = movie.runtime % 60;
@@ -61,6 +42,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
                         size={24}
                         variant="yellow"
                         totalstars={5}
+                        title={String((movie.vote_average / 2).toFixed(2))}
                     />
                 </CardHeader>
 
@@ -68,7 +50,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
                     {movie.poster_path && (
                         <figure className="flex-shrink-0 w-72 mb-6 md:mb-0 md:mr-6">
                             <img
-                                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                                 className="w-full h-full object-contain rounded-lg"
                                 alt={`Poster of ${movie.title}`}
                             />
@@ -81,32 +63,34 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movieId }) => {
                             </p>
                         )}
                         <p className="mb-4 text-lg">{movie.overview}</p>
-                        <p>
-                            <strong>Revenue:</strong> $
-                            {movie.revenue.toLocaleString()}
-                        </p>
-                        <p className="mb-2">
-                            <strong>Budget:</strong> $
-                            {movie.budget?.toLocaleString() ?? "N/A"}
-                        </p>
-                        <p className="mb-2">
-                            <strong>Production Companies:</strong>{" "}
-                            {movie.production_companies
-                                .map((company) => company.name)
-                                .join(", ")}
-                        </p>
-                        <p className="mb-2">
-                            <strong>Production Countries:</strong>{" "}
-                            {movie.production_countries
-                                .map((country) => country.name)
-                                .join(", ")}
-                        </p>
-                        <p className="mb-8">
-                            <strong>Spoken Languages:</strong>{" "}
-                            {movie.spoken_languages
-                                .map((language) => language.name)
-                                .join(", ")}
-                        </p>
+                        <ul className="flex flex-col gap-2 mb-6">
+                            <li>
+                                <strong>Revenue:</strong> $
+                                {movie.revenue.toLocaleString()}
+                            </li>
+                            <li>
+                                <strong>Budget:</strong> $
+                                {movie.budget?.toLocaleString() ?? "N/A"}
+                            </li>
+                            <li>
+                                <strong>Production Companies:</strong>{" "}
+                                {movie.production_companies
+                                    .map((company) => company.name)
+                                    .join(", ")}
+                            </li>
+                            <li>
+                                <strong>Production Countries:</strong>{" "}
+                                {movie.production_countries
+                                    .map((country) => country.name)
+                                    .join(", ")}
+                            </li>
+                            <li>
+                                <strong>Spoken Languages:</strong>{" "}
+                                {movie.spoken_languages
+                                    .map((language) => language.name)
+                                    .join(", ")}
+                            </li>
+                        </ul>
                         {movie.homepage && (
                             <Button asChild>
                                 <a
