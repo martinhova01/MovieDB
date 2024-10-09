@@ -41,6 +41,7 @@ const Ratings = ({ ...props }: RatingsProps) => {
         asInput = false,
         onValueChange,
         value,
+        ...extraProps
     } = props;
 
     const ratings = value;
@@ -61,7 +62,7 @@ const Ratings = ({ ...props }: RatingsProps) => {
         ) : null;
 
     return (
-        <div className={cn("flex items-center gap-2")} {...props}>
+        <div className={cn("flex items-center gap-2")} {...extraProps}>
             {[...Array(fullStars)].map((_, i) =>
                 React.cloneElement(Icon, {
                     key: i,
@@ -71,7 +72,7 @@ const Ratings = ({ ...props }: RatingsProps) => {
                         ratingVariants[variant].star,
                         asInput ? "cursor-pointer" : ""
                     ),
-                    role: props.asInput && "input",
+                    role: asInput ? "input" : undefined,
                     onClick: () => onValueChange && onValueChange(i + 1),
                 })
             )}
@@ -85,7 +86,7 @@ const Ratings = ({ ...props }: RatingsProps) => {
                             ratingVariants[variant].emptyStar,
                             asInput ? "cursor-pointer" : ""
                         ),
-                        role: props.asInput && "input",
+                        role: asInput ? "input" : undefined,
                         onClick: () =>
                             onValueChange &&
                             onValueChange(
