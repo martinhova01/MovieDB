@@ -3,10 +3,10 @@ import * as React from "react";
 import { cn } from "@/shadcn/lib/utils";
 
 const Card = React.forwardRef<
-    HTMLLIElement,
-    React.HTMLAttributes<HTMLLIElement>
+    HTMLDivElement,
+    React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-    <li
+    <div
         ref={ref}
         className={cn(
             "rounded-lg border bg-card text-card-foreground shadow-sm",

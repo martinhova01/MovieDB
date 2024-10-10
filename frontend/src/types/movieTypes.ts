@@ -50,6 +50,14 @@ interface Movie {
     keywords: Keyword[];
 }
 
+interface Review {
+    id: number;
+    username: string;
+    rating: number;
+    comment?: string;
+    date: Date;
+}
+
 export { Status };
 export type {
     Genre,
@@ -58,4 +66,5 @@ export type {
     ProductionCompany,
     ProductionCountry,
     Movie,
+    Review,
 };
