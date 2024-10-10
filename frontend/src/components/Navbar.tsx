@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 import NavbarOverlay from "./NavbarOverlay";
 import UserDropdown from "./UserDropdown";
 
@@ -12,22 +14,22 @@ const Navbar = () => {
     return (
         <header className="sticky top-0 left-0 z-50 bg-muted shadow-sm w-full flex items-center p-4">
             <nav className="flex-1 flex justify-center items-center gap-10">
-                <a
-                    href="/"
+                <Link
+                    to="/"
                     className="text-2xl font-bold text-primary flex flex-row gap-3"
                 >
-                    <img src="/logo.png" alt="logo" className="h-8 w-8" />
+                    <img src={logo} alt="logo" className="h-8 w-8" />
                     MovieDB
-                </a>
+                </Link>
                 <ul className="hidden sm:flex gap-4 text-lg">
                     {links.map((link) => (
                         <li key={link.name}>
-                            <a
-                                href={link.href}
+                            <Link
+                                to={link.href}
                                 className="hover:text-primary text-foreground transistion-colors"
                             >
                                 {link.name}
-                            </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>

@@ -6,6 +6,7 @@ import {
     SheetTrigger,
 } from "@/shadcn/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 import { NavbarProps } from "./Navbar";
 
 const NavbarOverlay = ({ links }: { links: NavbarProps }) => {
@@ -23,12 +24,12 @@ const NavbarOverlay = ({ links }: { links: NavbarProps }) => {
                     <ul className="flex flex-col space-y-4">
                         {links.map((link) => (
                             <li key={link.name}>
-                                <a
-                                    href={link.href}
+                                <Link
+                                    to={link.href}
                                     className="hover:text-primary text-foreground transistion-colors"
                                 >
                                     {link.name}
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>
