@@ -16,7 +16,7 @@ import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
 import { all_filters, all_sort_options } from "../utils/sortAndFilter";
 
-interface FilterPanelInterface {
+interface SortAndFilterPanelInterface {
     handleFilterChange: (
         filters: { [key: string]: string[] },
         sortOption: string
@@ -24,7 +24,7 @@ interface FilterPanelInterface {
     handleSortChange: (sortOption: string) => void;
 }
 
-const FilterPanel: React.FC<FilterPanelInterface> = ({
+const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
     handleFilterChange,
     handleSortChange,
 }) => {
@@ -121,4 +121,4 @@ const FilterPanel: React.FC<FilterPanelInterface> = ({
     );
 };
 
-export default FilterPanel;
+export default SortAndFilterPanel;

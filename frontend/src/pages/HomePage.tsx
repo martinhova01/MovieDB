@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FilterPanel from "../components/FilterPanel";
+import SortAndFilterPanel from "../components/SortAndFilterPanel";
 import MovieList from "../components/MovieList";
 import { all_movies } from "../mock/util";
 import { filterMovies, sortMovies } from "../utils/sortAndFilter";
@@ -24,7 +24,7 @@ function HomePage() {
 
     return (
         <main>
-            <FilterPanel
+            <SortAndFilterPanel
                 handleFilterChange={handleFilterChange}
                 handleSortChange={handleSortChange}
             />
