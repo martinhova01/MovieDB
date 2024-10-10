@@ -12,62 +12,47 @@ import {
 } from "../shadcn/components/ui/sheet";
 import { SlidersHorizontal } from "lucide-react";
 import { useEffect, useState } from "react";
-import { all_genres, all_languages } from "../mock/util";
-import { Status } from "../types/movieTypes";
 import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
+import { all_filters, all_sort_options } from "../utils/sortAndFilter";
 
-const FilterPanel = () => {
+interface FilterPanelInterface {
+    handleFilterChange: (
+        filters: { [key: string]: string[] },
+        sortOption: string
+    ) => void;
+    handleSortChange: (sortOption: string) => void;
+}
+
+const FilterPanel: React.FC<FilterPanelInterface> = ({
+    handleFilterChange,
+    handleSortChange,
+}) => {
     const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
     const [sortOption, setSortOption] = useState<string>("Newest first");
 
-    const sort_options: string[] = [
-        "Newest first",
-        "Oldest first",
-        "Title A-Z",
-        "Title Z-A",
-        "Best rated",
-        "Worst rated",
-        "Longest runtime",
-        "Shortest runtime",
-    ];
-
-    const all_filters: { [key: string]: string[] } = {
-        Genre: all_genres.map((genre) => genre.name),
-        Rating: ["5", "4", "3", "2", "1"],
-        "Release Year": [
-            "2020s",
-            "2010s",
-            "2000s",
-            "1990s",
-            "1980s",
-            "1970s",
-            "1960s",
-            "1950s",
-            "1940s",
-            "1930s",
-            "1920s",
-            "1910s",
-            "1900s",
-            "1890s",
-            "1880s",
-            "1870s",
-        ],
-        Language: all_languages.map((language) => language.name),
-        Status: Object.values(Status) as string[],
-        Runtime: ["Less than 1 hour", "1 - 2 hours", "More than 2 hours"],
-    };
-
     useEffect(() => {
         const storedFilters = sessionStorage.getItem("filters");
+        const parsedFilters = storedFilters ? JSON.parse(storedFilters) : {};
+        const storedSortOption =
+            sessionStorage.getItem("sort_option") || "Newest first";
+
+        setFilters(parsedFilters);
+        setSortOption(storedSortOption);
+
         if (storedFilters) {
-            setFilters(JSON.parse(storedFilters));
+            handleFilterChange(JSON.parse(storedFilters), storedSortOption);
+        } else {
+            handleSortChange(storedSortOption);
         }
 
-        const storedSortOption = sessionStorage.getItem("sort_option");
-        if (storedSortOption) {
-            setSortOption(storedSortOption);
-        }
+        // Ignoring the ESLint warning here because we want this to run only when
+        // the component mounts to restore filters and sorting from sessionStorage.
+        // Including `handleFilterChange` and `handleSortChange` would make this useEffect re-run
+        // every time those functions change, which we don't want since this logic only is
+        // for initial setup.
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const updateFilters = (category: string, filter: string) => {
@@ -80,12 +65,14 @@ const FilterPanel = () => {
         const updatedFilters = { ...filters, [category]: newFilters };
         sessionStorage.setItem("filters", JSON.stringify(updatedFilters));
         setFilters(updatedFilters);
+        handleFilterChange(updatedFilters, sortOption);
     };
 
     const updateSortOption = (option: string) => {
-        if (sort_options.includes(option)) {
+        if (all_sort_options.includes(option)) {
             sessionStorage.setItem("sort_option", option);
             setSortOption(option);
+            handleSortChange(option);
         }
     };
 
@@ -109,7 +96,7 @@ const FilterPanel = () => {
                 <Accordion type="single" collapsible className="w-full">
                     <SortSection
                         sortOption={sortOption}
-                        sortOptions={sort_options}
+                        sortOptions={all_sort_options}
                         updateSortOption={updateSortOption}
                     />
                     {Object.entries(all_filters).map(
