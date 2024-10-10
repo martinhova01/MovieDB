@@ -67,4 +67,7 @@
     body {
         @apply dark flex items-center min-w-[320px] min-h-screen bg-background text-foreground;
     }
+    #root {
+        width: 100%;
+    }
 }
