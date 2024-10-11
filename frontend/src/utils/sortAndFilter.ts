@@ -118,15 +118,21 @@ export const filterMovies = (
 ) => {
     let filteredMovies = [...movies];
 
-    filteredMovies = filterByGenres(filteredMovies, filters.Genre || []);
-    filteredMovies = filterByRating(filteredMovies, filters.Rating || []);
-    filteredMovies = filterByReleaseYear(
-        filteredMovies,
-        filters["Release Year"] || []
-    );
-    filteredMovies = filterByLanguage(filteredMovies, filters.Language || []);
-    filteredMovies = filterByStatus(filteredMovies, filters.Status || []);
-    filteredMovies = filterByRuntime(filteredMovies, filters.Runtime || []);
+    const filterFunctions = {
+        Genre: filterByGenres,
+        Rating: filterByRating,
+        "Release Year": filterByReleaseYear,
+        Language: filterByLanguage,
+        Status: filterByStatus,
+        Runtime: filterByRuntime,
+    };
+
+    for (const [filterKey, filterFunction] of Object.entries(filterFunctions)) {
+        filteredMovies = filterFunction(
+            filteredMovies,
+            filters[filterKey] || []
+        );
+    }
 
     return filteredMovies;
 };

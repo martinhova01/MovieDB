@@ -31,7 +31,7 @@ function MovieDetailPage() {
 
     if (error) {
         return (
-            <main className="w-dvw text-center">
+            <main className="w-dvw text-center mt-2">
                 <h1 className="text-2xl">{error}</h1>
                 <Link to="/" className="text-primary hover:underline">
                     Return to home page

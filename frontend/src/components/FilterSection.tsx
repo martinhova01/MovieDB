@@ -40,7 +40,7 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
                             />
                             <label
                                 htmlFor={filter}
-                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                className="text-sm font-medium leading-none hover:cursor-pointer"
                             >
                                 {filter}
                             </label>

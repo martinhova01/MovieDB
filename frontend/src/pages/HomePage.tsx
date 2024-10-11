@@ -6,7 +6,7 @@ import { filterMovies, SortingType, sortMovies } from "../utils/sortAndFilter";
 import { Movie } from "../types/movieTypes";
 
 function HomePage() {
-    const [movies, setMovies] = useState<Movie[]>(all_movies);
+    const [movies, setMovies] = useState<Movie[]>([]);
 
     const handleFilterChange = (
         filters: { [key: string]: string[] },

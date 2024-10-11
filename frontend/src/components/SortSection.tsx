@@ -33,7 +33,12 @@ const SortSection: React.FC<SortSectionInterface> = ({
                                 className="flex items-center space-x-2"
                             >
                                 <RadioGroupItem value={option} id={option} />
-                                <Label htmlFor={option}>{option}</Label>
+                                <Label
+                                    htmlFor={option}
+                                    className="hover:cursor-pointer"
+                                >
+                                    {option}
+                                </Label>
                             </li>
                         ))}
                     </ul>

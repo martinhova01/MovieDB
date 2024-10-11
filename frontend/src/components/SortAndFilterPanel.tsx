@@ -74,6 +74,14 @@ const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
         handleFilterChange(updatedFilters, sortOption);
     };
 
+    const clearAll = () => {
+        sessionStorage.setItem("filters", JSON.stringify({}));
+        sessionStorage.setItem("sort_option", SortingType.NEWEST_FIRST);
+        setFilters({});
+        setSortOption(SortingType.NEWEST_FIRST);
+        handleFilterChange({}, SortingType.NEWEST_FIRST);
+    };
+
     const updateSortOption = (option: SortingType) => {
         sessionStorage.setItem("sort_option", option);
         setSortOption(option);
@@ -116,8 +124,13 @@ const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
                     )}
                 </Accordion>
                 <SheetFooter className="mt-5">
+                    <Button type="reset" onClick={clearAll}>
+                        Clear All
+                    </Button>
                     <SheetClose asChild>
-                        <Button type="submit">Apply</Button>
+                        <Button type="submit" className="mb-2">
+                            Apply
+                        </Button>
                     </SheetClose>
                 </SheetFooter>
             </SheetContent>

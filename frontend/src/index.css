@@ -68,6 +68,7 @@
         @apply dark flex items-center min-w-[320px] min-h-screen bg-background text-foreground;
     }
     #root {
+        height: 100dvh;
         width: 100%;
     }
 }
