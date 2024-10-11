@@ -24,7 +24,12 @@ export const all_filters: { [key: string]: string[] } = {
     ],
     Language: all_languages.map((language) => language.name),
     Status: Object.values(Status) as string[],
-    Runtime: ["Less than 1 hour", "1 - 2 hours", "More than 2 hours"],
+    Runtime: [
+        "Less than 1 hour",
+        "1 - 2 hours",
+        "2 - 3 hours",
+        "3 hours or more",
+    ],
 };
 
 const filterByGenres = (movies: Movie[], selectedGenres: string[]) => {
@@ -89,11 +94,18 @@ const filterByRuntime = (movies: Movie[], selectedRuntimes: string[]) => {
         return movies.filter((movie) => {
             const runtime = movie.runtime;
             return selectedRuntimes.some((runtimeFilter) => {
-                if (runtimeFilter === "Less than 1 hour") return runtime < 60;
-                if (runtimeFilter === "1 - 2 hours")
-                    return runtime >= 60 && runtime <= 120;
-                if (runtimeFilter === "More than 2 hours") return runtime > 120;
-                return false;
+                switch (runtimeFilter) {
+                    case "Less than 1 hour":
+                        return runtime < 60;
+                    case "1 - 2 hours":
+                        return runtime >= 60 && runtime < 120;
+                    case "2 - 3 hours":
+                        return runtime >= 120 && runtime < 180;
+                    case "3 hours or more":
+                        return runtime >= 180;
+                    default:
+                        return false;
+                }
             });
         });
     }
@@ -119,7 +131,6 @@ export const filterMovies = (
     return filteredMovies;
 };
 
-
 export enum SortingType {
     NEWEST_FIRST = "Newest first",
     OLDEST_FIRST = "Oldest first",
@@ -131,9 +142,18 @@ export enum SortingType {
     SHORTEST_RUNTIME = "Shortest runtime",
 }
 
-const sortingMap: Map<SortingType, (a: Movie, b: Movie) => number> = new Map<SortingType, (a: Movie, b: Movie) => number>([
-    [SortingType.NEWEST_FIRST, (a, b) => b.release_date.getTime() - a.release_date.getTime()],
-    [SortingType.OLDEST_FIRST, (a, b) => a.release_date.getTime() - b.release_date.getTime()],
+const sortingMap: Map<SortingType, (a: Movie, b: Movie) => number> = new Map<
+    SortingType,
+    (a: Movie, b: Movie) => number
+>([
+    [
+        SortingType.NEWEST_FIRST,
+        (a, b) => b.release_date.getTime() - a.release_date.getTime(),
+    ],
+    [
+        SortingType.OLDEST_FIRST,
+        (a, b) => a.release_date.getTime() - b.release_date.getTime(),
+    ],
     [SortingType.TITLE_ASC, (a, b) => a.title.localeCompare(b.title)],
     [SortingType.TITLE_DESC, (a, b) => b.title.localeCompare(a.title)],
     [SortingType.BEST_RATED, (a, b) => b.vote_average - a.vote_average],

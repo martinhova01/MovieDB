@@ -29,13 +29,19 @@ const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
     handleSortChange,
 }) => {
     const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
-    const [sortOption, setSortOption] = useState<SortingType>(SortingType.NEWEST_FIRST);
+    const [sortOption, setSortOption] = useState<SortingType>(
+        SortingType.NEWEST_FIRST
+    );
 
     useEffect(() => {
         const storedFilters = sessionStorage.getItem("filters");
-        const parsedFilters: { [key: string]: string[] } = storedFilters ? JSON.parse(storedFilters) : {};
-        const storedSortOption = sessionStorage.getItem("sort_option")
-        const parsedSortOption: SortingType = storedSortOption ? (storedSortOption as SortingType) : SortingType.NEWEST_FIRST;
+        const parsedFilters: { [key: string]: string[] } = storedFilters
+            ? JSON.parse(storedFilters)
+            : {};
+        const storedSortOption = sessionStorage.getItem("sort_option");
+        const parsedSortOption: SortingType = storedSortOption
+            ? (storedSortOption as SortingType)
+            : SortingType.NEWEST_FIRST;
 
         setFilters(parsedFilters);
         setSortOption(parsedSortOption);
