@@ -48,10 +48,10 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
 
                 <section className="flex flex-col md:flex-row h-full">
                     {movie.poster_path && (
-                        <figure className="flex-shrink-0 w-72 mb-6 md:mb-0 md:mr-6">
+                        <figure className="flex-shrink-0 w-full max-w-72 mb-6 md:mb-0 md:mr-6">
                             <img
                                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                className="w-full h-full object-contain rounded-lg"
+                                className="rounded-lg"
                                 alt={`Poster of ${movie.title}`}
                             />
                         </figure>
