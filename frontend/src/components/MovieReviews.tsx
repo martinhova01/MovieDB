@@ -54,11 +54,15 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
     };
 
     const handleDeleteReview = (review: Review) => {
+        if (review.username === "Guest") {
+            // Restrict deletion of guest reviews
+            // The delete button is also hidden for guest reviews
+            return;
+        }
+
         if (localStorage.getItem("username") === review.username) {
             const updatedReviews = reviews.filter((r) => r.id !== review.id);
             saveReviews(updatedReviews);
-        } else {
-            window.location.reload();
         }
     };
 
@@ -113,16 +117,17 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
                                         {formatDate(review.date)}
                                     </time>
                                 </section>
-                                {localStorage.getItem("username") ===
-                                    review.username && (
-                                    <Button
-                                        onClick={() =>
-                                            handleDeleteReview(review)
-                                        }
-                                    >
-                                        Delete
-                                    </Button>
-                                )}
+                                {review.username !== "Guest" &&
+                                    localStorage.getItem("username") ===
+                                        review.username && (
+                                        <Button
+                                            onClick={() =>
+                                                handleDeleteReview(review)
+                                            }
+                                        >
+                                            Delete
+                                        </Button>
+                                    )}
                             </section>
                             <Ratings
                                 value={review.rating}

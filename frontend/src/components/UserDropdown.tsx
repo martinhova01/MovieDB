@@ -39,12 +39,16 @@ const UserDropdown = () => {
             localStorage.setItem("username", newUsername.trim());
             setNewUsername("");
             setIsDialogOpen(false);
+            // Reloading the page is a temporary solution until we have global state management
+            window.location.reload();
         }
     };
 
     const handleSignOut = () => {
         localStorage.removeItem("username");
         setUsername("Guest");
+        // Reloading the page is a temporary solution until we have global state management
+        window.location.reload();
     };
 
     return (
