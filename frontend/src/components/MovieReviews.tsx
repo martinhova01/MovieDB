@@ -53,9 +53,13 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
         setComment("");
     };
 
-    const handleDeleteReview = (id: number) => {
-        const updatedReviews = reviews.filter((review) => review.id !== id);
-        saveReviews(updatedReviews);
+    const handleDeleteReview = (review: Review) => {
+        if (localStorage.getItem("username") === review.username) {
+            const updatedReviews = reviews.filter((r) => r.id !== review.id);
+            saveReviews(updatedReviews);
+        } else {
+            window.location.reload();
+        }
     };
 
     const formatDate = (date: Date) => {
@@ -109,13 +113,16 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
                                         {formatDate(review.date)}
                                     </time>
                                 </section>
-                                <Button
-                                    onClick={() =>
-                                        handleDeleteReview(review.id)
-                                    }
-                                >
-                                    Delete
-                                </Button>
+                                {localStorage.getItem("username") ===
+                                    review.username && (
+                                    <Button
+                                        onClick={() =>
+                                            handleDeleteReview(review)
+                                        }
+                                    >
+                                        Delete
+                                    </Button>
+                                )}
                             </section>
                             <Ratings
                                 value={review.rating}
