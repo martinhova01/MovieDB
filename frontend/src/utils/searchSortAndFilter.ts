@@ -116,7 +116,7 @@ export const filterMovies = (
     movies: Movie[],
     filters: { [key: string]: string[] }
 ) => {
-    let filteredMovies = [...movies];
+    let filteredMovies = movies;
 
     const filterFunctions = {
         Genre: filterByGenres,
@@ -169,11 +169,15 @@ const sortingMap: Map<SortingType, (a: Movie, b: Movie) => number> = new Map<
 ]);
 
 export const sortMovies = (sortOption: SortingType, movies: Movie[]) => {
-    const sortedMovies = [...movies];
-
     if (sortingMap.has(sortOption)) {
-        sortedMovies.sort(sortingMap.get(sortOption));
+        movies.sort(sortingMap.get(sortOption));
     }
 
-    return sortedMovies;
+    return movies;
+};
+
+export const searchMovies = (search: string, movies: Movie[]) => {
+    return movies.filter((movie) =>
+        movie.title.toLowerCase().includes(search.toLowerCase())
+    );
 };

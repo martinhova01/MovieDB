@@ -8,7 +8,7 @@ import {
     AccordionTrigger,
 } from "../shadcn/components/ui/accordion";
 import { Label } from "../shadcn/components/ui/label";
-import { SortingType } from "@/utils/sortAndFilter";
+import { SortingType } from "../utils/searchSortAndFilter";
 
 interface SortSectionInterface {
     sortOption: SortingType;

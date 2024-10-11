@@ -14,7 +14,7 @@ import { SlidersHorizontal } from "lucide-react";
 import { useEffect, useState } from "react";
 import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
-import { all_filters, SortingType } from "../utils/sortAndFilter";
+import { all_filters, SortingType } from "../utils/searchSortAndFilter";
 
 interface SortAndFilterPanelInterface {
     handleFilterChange: (
@@ -46,7 +46,9 @@ const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
         setFilters(parsedFilters);
         setSortOption(parsedSortOption);
 
-        if (storedFilters) {
+        const storedSearch = sessionStorage.getItem("search");
+
+        if (storedFilters || storedSearch) {
             handleFilterChange(parsedFilters, parsedSortOption);
         } else {
             handleSortChange(parsedSortOption);
@@ -91,7 +93,7 @@ const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <Button variant="outline" size="sm" className="h-7 gap-1 m-3">
+                <Button variant="outline" size="default">
                     <SlidersHorizontal className="h-3.5 w-3.5" />
                     <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                         Sort & Filter

@@ -12,7 +12,7 @@ const Navbar = () => {
     ];
 
     return (
-        <header className="sticky top-0 left-0 z-50 w-full flex items-center p-4 justify-between bg-gradient-to-r from-muted-foreground to-primary">
+        <header className="w-full flex items-center p-4 justify-between bg-gradient-to-r from-muted-foreground to-primary">
             <nav className="flex items-center gap-10 text-background">
                 <Link to="/" className="text-2xl font-bold flex flex-row gap-3">
                     <img src={logo} alt="logo" className="h-8 w-8" />
