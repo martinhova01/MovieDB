@@ -2,6 +2,7 @@ import { Button } from "@/shadcn/components/ui/button";
 import {
     Sheet,
     SheetContent,
+    SheetDescription,
     SheetTitle,
     SheetTrigger,
 } from "@/shadcn/components/ui/sheet";
@@ -19,17 +20,19 @@ const NavbarOverlay = ({ links }: { links: NavbarProps }) => {
                 </Button>
             </SheetTrigger>
             <SheetTitle />
+            <SheetDescription />
             <SheetContent side="right">
-                <nav className="p-4 bg-muted shadow-sm">
+                <nav className="p-4 shadow-sm">
                     <ul className="flex flex-col space-y-4">
                         {links.map((link) => (
                             <li key={link.name}>
                                 <Link
                                     to={link.href}
-                                    className="hover:text-primary text-foreground transistion-colors"
+                                    className="hover:text-primary text-foreground transition-colors"
                                 >
                                     {link.name}
                                 </Link>
+                                <hr />
                             </li>
                         ))}
                     </ul>
