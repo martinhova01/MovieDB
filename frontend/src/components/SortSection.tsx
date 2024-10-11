@@ -8,11 +8,12 @@ import {
     AccordionTrigger,
 } from "../shadcn/components/ui/accordion";
 import { Label } from "../shadcn/components/ui/label";
+import { SortingType } from "@/utils/sortAndFilter";
 
 interface SortSectionInterface {
-    sortOption: string;
-    sortOptions: string[];
-    updateSortOption: (option: string) => void;
+    sortOption: SortingType;
+    sortOptions: SortingType[];
+    updateSortOption: (option: SortingType) => void;
 }
 
 const SortSection: React.FC<SortSectionInterface> = ({

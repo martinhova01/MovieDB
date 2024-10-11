@@ -119,26 +119,34 @@ export const filterMovies = (
     return filteredMovies;
 };
 
-const sortingMap: { [key: string]: (a: Movie, b: Movie) => number } = {
-    "Newest first": (a, b) =>
-        b.release_date.getTime() - a.release_date.getTime(),
-    "Oldest first": (a, b) =>
-        a.release_date.getTime() - b.release_date.getTime(),
-    "Title A-Z": (a, b) => a.title.localeCompare(b.title),
-    "Title Z-A": (a, b) => b.title.localeCompare(a.title),
-    "Best rated": (a, b) => b.vote_average - a.vote_average,
-    "Worst rated": (a, b) => a.vote_average - b.vote_average,
-    "Longest runtime": (a, b) => b.runtime - a.runtime,
-    "Shortest runtime": (a, b) => a.runtime - b.runtime,
-};
 
-export const all_sort_options = Object.keys(sortingMap);
+export enum SortingType {
+    NEWEST_FIRST = "Newest first",
+    OLDEST_FIRST = "Oldest first",
+    TITLE_ASC = "Title A-Z",
+    TITLE_DESC = "Title Z-A",
+    BEST_RATED = "Best rated",
+    WORST_RATED = "Worst rated",
+    LONGEST_RUNTIME = "Longest runtime",
+    SHORTEST_RUNTIME = "Shortest runtime",
+}
 
-export const sortMovies = (sortOption: string, movies: Movie[]) => {
+const sortingMap: Map<SortingType, (a: Movie, b: Movie) => number> = new Map<SortingType, (a: Movie, b: Movie) => number>([
+    [SortingType.NEWEST_FIRST, (a, b) => b.release_date.getTime() - a.release_date.getTime()],
+    [SortingType.OLDEST_FIRST, (a, b) => a.release_date.getTime() - b.release_date.getTime()],
+    [SortingType.TITLE_ASC, (a, b) => a.title.localeCompare(b.title)],
+    [SortingType.TITLE_DESC, (a, b) => b.title.localeCompare(a.title)],
+    [SortingType.BEST_RATED, (a, b) => b.vote_average - a.vote_average],
+    [SortingType.WORST_RATED, (a, b) => a.vote_average - b.vote_average],
+    [SortingType.LONGEST_RUNTIME, (a, b) => b.runtime - a.runtime],
+    [SortingType.SHORTEST_RUNTIME, (a, b) => a.runtime - b.runtime],
+]);
+
+export const sortMovies = (sortOption: SortingType, movies: Movie[]) => {
     const sortedMovies = [...movies];
 
-    if (sortingMap[sortOption]) {
-        sortedMovies.sort(sortingMap[sortOption]);
+    if (sortingMap.has(sortOption)) {
+        sortedMovies.sort(sortingMap.get(sortOption));
     }
 
     return sortedMovies;

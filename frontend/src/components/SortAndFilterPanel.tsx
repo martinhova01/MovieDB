@@ -14,14 +14,14 @@ import { SlidersHorizontal } from "lucide-react";
 import { useEffect, useState } from "react";
 import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
-import { all_filters, all_sort_options } from "../utils/sortAndFilter";
+import { all_filters, SortingType } from "../utils/sortAndFilter";
 
 interface SortAndFilterPanelInterface {
     handleFilterChange: (
         filters: { [key: string]: string[] },
-        sortOption: string
+        sortOption: SortingType
     ) => void;
-    handleSortChange: (sortOption: string) => void;
+    handleSortChange: (sortOption: SortingType) => void;
 }
 
 const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
@@ -29,21 +29,21 @@ const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
     handleSortChange,
 }) => {
     const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
-    const [sortOption, setSortOption] = useState<string>("Newest first");
+    const [sortOption, setSortOption] = useState<SortingType>(SortingType.NEWEST_FIRST);
 
     useEffect(() => {
         const storedFilters = sessionStorage.getItem("filters");
-        const parsedFilters = storedFilters ? JSON.parse(storedFilters) : {};
-        const storedSortOption =
-            sessionStorage.getItem("sort_option") || "Newest first";
+        const parsedFilters: { [key: string]: string[] } = storedFilters ? JSON.parse(storedFilters) : {};
+        const storedSortOption = sessionStorage.getItem("sort_option")
+        const parsedSortOption: SortingType = storedSortOption ? (storedSortOption as SortingType) : SortingType.NEWEST_FIRST;
 
         setFilters(parsedFilters);
-        setSortOption(storedSortOption);
+        setSortOption(parsedSortOption);
 
         if (storedFilters) {
-            handleFilterChange(JSON.parse(storedFilters), storedSortOption);
+            handleFilterChange(parsedFilters, parsedSortOption);
         } else {
-            handleSortChange(storedSortOption);
+            handleSortChange(parsedSortOption);
         }
 
         // Ignoring the ESLint warning here because we want this to run only when
@@ -68,12 +68,10 @@ const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
         handleFilterChange(updatedFilters, sortOption);
     };
 
-    const updateSortOption = (option: string) => {
-        if (all_sort_options.includes(option)) {
-            sessionStorage.setItem("sort_option", option);
-            setSortOption(option);
-            handleSortChange(option);
-        }
+    const updateSortOption = (option: SortingType) => {
+        sessionStorage.setItem("sort_option", option);
+        setSortOption(option);
+        handleSortChange(option);
     };
 
     return (
@@ -96,7 +94,7 @@ const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
                 <Accordion type="single" collapsible className="w-full">
                     <SortSection
                         sortOption={sortOption}
-                        sortOptions={all_sort_options}
+                        sortOptions={Object.values(SortingType)}
                         updateSortOption={updateSortOption}
                     />
                     {Object.entries(all_filters).map(

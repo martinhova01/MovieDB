@@ -12,7 +12,7 @@ const MovieList = ({ movies }: { movies: Movie[] }) => {
 
     return (
         <>
-            <ul className="w-dvw flex flex-wrap justify-center">
+            <ul className="flex flex-wrap justify-center">
                 {movies.slice(0, maxLength).map((movie: Movie) => (
                     <li
                         key={movie.id}
