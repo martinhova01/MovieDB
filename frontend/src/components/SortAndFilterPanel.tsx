@@ -93,7 +93,7 @@ const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <Button variant="outline" size="default">
+                <Button variant="outline" size="default" className="space-x-2">
                     <SlidersHorizontal className="h-3.5 w-3.5" />
                     <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                         Sort & Filter
