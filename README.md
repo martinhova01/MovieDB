@@ -33,7 +33,7 @@ Naturally, this will expand as we continue our work on the project.
 
 ## Choices
 
-As this is not the final submission, our project is not yet finished. For now, we've used a mock dataset for our application, which will later be chaged out with our database. In order to minimize the amount of refactoring needed later, we have decided to limit the complexity of the logic implemented now. We still wanted to have some logic in order to get a good feel for the application, so we've tried to find a middleground. Making it impossible to filter to no results is for example something we'll handle later.
+As this is not the final submission, our project is not yet finished. For now, we've used a mock dataset for our application, which will later be changed out with our database. In order to minimize the amount of refactoring needed later, we have decided to limit the complexity of the logic implemented now. We still wanted to have some logic in order to get a good feel for the application, so we've tried to find a middleground. Making it impossible to filter to no results is for example something we'll handle later.
 
 Global state management is also something we've decided to postpone until the backend is set up, again to limit the refactoring work. Therefore, we've some places had to use sessionStorage and localStorage to communicate states. This will naturally be changed when we set up the global state management. However, sessionStorage is also used to remember filtering, sorting and search during a session. Currently, localStorage is used to store the username and reviews.
 
