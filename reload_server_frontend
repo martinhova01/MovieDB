@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# This script is used to reload the server with the latest build of the project
+# The project has to manually be built first before running this script (npm run build)
+# The project needs to be in the ~/T26-Project-2 folder (or modify the DIST_FOLDER variable)
+# See PR #18 for more details
+
+DIST_FOLDER=~/T26-Project-2/frontend/dist
+
+if [ -d "$DIST_FOLDER" ]; then
+    echo "Dist folder exists, proceeding with the reload."
+    sudo rm -r /var/www/html/project2
+    sudo mv "$DIST_FOLDER" /var/www/html/project2
+    echo "Project has been successfully updated."
+else
+    echo "Error: The dist folder does not exist at $DIST_FOLDER. Please build the project first."
+    exit 1
+fi

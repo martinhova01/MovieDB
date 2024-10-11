@@ -4,28 +4,31 @@ import MovieDetailPage from "./pages/MovieDetailPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import Navbar from "./components/Navbar.tsx";
 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: (
-            <>
-                <Navbar />
-                <Outlet />
-            </>
-        ),
-        errorElement: <NotFoundPage />,
-        children: [
-            {
-                path: "",
-                element: <HomePage />,
-            },
-            {
-                path: "movie/:movieId",
-                element: <MovieDetailPage />,
-            },
-        ],
-    },
-]);
+const router = createBrowserRouter(
+    [
+        {
+            path: "/",
+            element: (
+                <>
+                    <Navbar />
+                    <Outlet />
+                </>
+            ),
+            errorElement: <NotFoundPage />,
+            children: [
+                {
+                    path: "",
+                    element: <HomePage />,
+                },
+                {
+                    path: "movie/:movieId",
+                    element: <MovieDetailPage />,
+                },
+            ],
+        },
+    ],
+    { basename: "/project2" }
+);
 
 function App() {
     return <RouterProvider router={router} />;
