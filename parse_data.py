@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import itertools
 import json
 import os
 import sys
@@ -131,9 +132,34 @@ def fill_db(rows: int | None = None):
         return
 
     df = load_movie_data(rows)
+    df["release_date"] = pd.to_datetime(df["release_date"], errors="coerce")
+    df["revenue"] = df["revenue"].astype(float)
+
     all_movies = get_all_movies(df)
-    for movie in tqdm(all_movies, total=len(df.index)):
-        MOVIES_COL.insert_one(movie)
+
+    BATCH_SIZE = 1000
+    with tqdm(total=len(df.index)) as pbar:
+        for movies_batch in itertools.batched(all_movies, BATCH_SIZE):
+            MOVIES_COL.insert_many(movies_batch)
+            pbar.update(len(movies_batch))
+
+    # These indexes are created to speed up search/filtering/sorting
+    MOVIES_COL.create_index([("title", pymongo.TEXT)])
+    MOVIES_COL.create_index("release_date")
+    MOVIES_COL.create_index("runtime")
+    MOVIES_COL.create_index("vote_average")
+    MOVIES_COL.create_index("vote_count")
+    MOVIES_COL.create_index("status")
+
+    # These indexes are created to speed up filtering/sorting and to retrieve unique values
+    MOVIES_COL.create_index("genres")
+    MOVIES_COL.create_index("spoken_languages")
+
+    # These indexes are not created, since we do not need to know the unique values
+    # But they can be created easily later if needed
+    # MOVIES_COL.create_index("production_companies")
+    # MOVIES_COL.create_index("production_countries")
+    # MOVIES_COL.create_index("keywords")
 
 
 if __name__ == "__main__":
