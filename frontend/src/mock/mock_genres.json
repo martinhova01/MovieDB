@@ -1,58 +1,16 @@
 [
-    {
-        "id": 0,
-        "name": "Drama"
-    },
-    {
-        "id": 1,
-        "name": "Romance"
-    },
-    {
-        "id": 2,
-        "name": "Western"
-    },
-    {
-        "id": 3,
-        "name": "Animation"
-    },
-    {
-        "id": 4,
-        "name": "War"
-    },
-    {
-        "id": 5,
-        "name": "Science Fiction"
-    },
-    {
-        "id": 6,
-        "name": "Comedy"
-    },
-    {
-        "id": 7,
-        "name": "Fantasy"
-    },
-    {
-        "id": 8,
-        "name": "Adventure"
-    },
-    {
-        "id": 9,
-        "name": "Crime"
-    },
-    {
-        "id": 10,
-        "name": "Thriller"
-    },
-    {
-        "id": 11,
-        "name": "Family"
-    },
-    {
-        "id": 12,
-        "name": "Action"
-    },
-    {
-        "id": 13,
-        "name": "Mystery"
-    }
+    "Drama",
+    "Romance",
+    "Western",
+    "Animation",
+    "War",
+    "Science Fiction",
+    "Comedy",
+    "Fantasy",
+    "Adventure",
+    "Crime",
+    "Thriller",
+    "Family",
+    "Action",
+    "Mystery"
 ]

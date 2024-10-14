@@ -24,36 +24,29 @@ def extract_unique_values(df: pd.DataFrame, column: str) -> set[str]:
     return result
 
 
-def extract_unique_values_with_ids(df: pd.DataFrame, column: str) -> dict[int, str]:
-    r = extract_unique_values(df, column)
-    return {i: e for i, e in enumerate(r)}
+def get_unique_values(df: pd.DataFrame, cols: list[str]) -> dict[str, set[str]]:
+    result = {}
+    for col in cols:
+        result[col] = extract_unique_values(df, col)
+    return result
 
 
-def get_all_movies(df: pd.DataFrame, save_mock_filters: bool = False):
-    names_based_on_col_and_id = {
-        "genres": extract_unique_values_with_ids(df, "genres"),
-        "keywords": extract_unique_values_with_ids(df, "keywords"),
-        "spoken_languages": extract_unique_values_with_ids(df, "spoken_languages"),
-        "production_companies": extract_unique_values_with_ids(
-            df, "production_companies"
-        ),
-        "production_countries": extract_unique_values_with_ids(
-            df, "production_countries"
-        ),
-    }
+def save_mock_filters(df: pd.DataFrame):
+    filterCols = [
+        "genres",
+        "production_companies",
+        "production_countries",
+        "spoken_languages",
+        "keywords",
+    ]
 
-    if save_mock_filters:
-        for column, id_name in names_based_on_col_and_id.items():
-            with open(f"mock_{column}.json", "w", encoding="utf-8") as f:
-                data = [{"id": _id, "name": name} for _id, name in id_name.items()]
-                json.dump(data, f, indent=4)
-            print(f"Data written to mock_{column}.json")
+    for column, values in get_unique_values(df, filterCols).items():
+        with open(f"mock_{column}.json", "w", encoding="utf-8") as f:
+            json.dump(list(values), f, indent=4)
+        print(f"Data written to mock_{column}.json")
 
-    ids_based_on_col_and_name = {
-        k: {v: i for i, v in names_based_on_col_and_id[k].items()}
-        for k in names_based_on_col_and_id
-    }
 
+def get_all_movies(df: pd.DataFrame):
     for _, movie_row in df.iterrows():
         movie_data = {}
         for col in [
@@ -90,12 +83,7 @@ def get_all_movies(df: pd.DataFrame, save_mock_filters: bool = False):
                 movie_data[col] = []
                 continue
 
-            ids_based_on_name = ids_based_on_col_and_name[col]
-
-            movie_data[col] = [
-                {"id": ids_based_on_name[name], "name": name}
-                for name in movie_row[col].split(", ")
-            ]
+            movie_data[col] = movie_row[col].split(", ")
 
         yield movie_data
 
@@ -122,7 +110,8 @@ def load_movie_data(rows: int | None = None) -> pd.DataFrame:
 def create_mock_data(rows: int = 50):
     df = load_movie_data(rows)
 
-    all_movies = get_all_movies(df, save_mock_filters=True)
+    save_mock_filters(df)
+    all_movies = get_all_movies(df)
 
     with open("mock_movies.json", "w") as f:
         json.dump(list(all_movies), f, indent=4)
@@ -142,7 +131,7 @@ def fill_db(rows: int | None = None):
         return
 
     df = load_movie_data(rows)
-    all_movies = get_all_movies(df, save_mock_filters=False)
+    all_movies = get_all_movies(df)
     for movie in tqdm(all_movies, total=len(df.index)):
         MOVIES_COL.insert_one(movie)
 

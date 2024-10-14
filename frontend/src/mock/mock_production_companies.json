@@ -1,278 +1,71 @@
 [
-    {
-        "id": 0,
-        "name": "Lynda Obst Productions"
-    },
-    {
-        "id": 1,
-        "name": "Pascal Pictures"
-    },
-    {
-        "id": 2,
-        "name": "Fairview Entertainment"
-    },
-    {
-        "id": 3,
-        "name": "Silver Pictures"
-    },
-    {
-        "id": 4,
-        "name": "Walt Disney Pictures"
-    },
-    {
-        "id": 5,
-        "name": "Visiona Romantica"
-    },
-    {
-        "id": 6,
-        "name": "DC Films"
-    },
-    {
-        "id": 7,
-        "name": "Mandate International"
-    },
-    {
-        "id": 8,
-        "name": "Patalex IV Productions Limited"
-    },
-    {
-        "id": 9,
-        "name": "Amblin Entertainment"
-    },
-    {
-        "id": 10,
-        "name": "Heyday Films"
-    },
-    {
-        "id": 11,
-        "name": "Universal Pictures"
-    },
-    {
-        "id": 12,
-        "name": "Bron Studios"
-    },
-    {
-        "id": 13,
-        "name": "Juno Pix"
-    },
-    {
-        "id": 14,
-        "name": "Color Force"
-    },
-    {
-        "id": 15,
-        "name": "LStar Capital"
-    },
-    {
-        "id": 16,
-        "name": "Miramax"
-    },
-    {
-        "id": 17,
-        "name": "The Saul Zaentz Company"
-    },
-    {
-        "id": 18,
-        "name": "Sikelia Productions"
-    },
-    {
-        "id": 19,
-        "name": "Red Granite Pictures"
-    },
-    {
-        "id": 20,
-        "name": "The Weinstein Company"
-    },
-    {
-        "id": 21,
-        "name": "Knickerbocker Films"
-    },
-    {
-        "id": 22,
-        "name": "Columbia Pictures"
-    },
-    {
-        "id": 23,
-        "name": "Groucho II Film Partnership"
-    },
-    {
-        "id": 24,
-        "name": "Syncopy"
-    },
-    {
-        "id": 25,
-        "name": "P of A Productions Limited"
-    },
-    {
-        "id": 26,
-        "name": "Zehnte Babelsberg Film"
-    },
-    {
-        "id": 27,
-        "name": "The Linson Company"
-    },
-    {
-        "id": 28,
-        "name": "Pixar"
-    },
-    {
-        "id": 29,
-        "name": "Appian Way"
-    },
-    {
-        "id": 30,
-        "name": "The Steve Tisch Company"
-    },
-    {
-        "id": 31,
-        "name": "Genre Films"
-    },
-    {
-        "id": 32,
-        "name": "Paramount"
-    },
-    {
-        "id": 33,
-        "name": "Kennedy Miller Productions"
-    },
-    {
-        "id": 34,
-        "name": "Lucasfilm Ltd."
-    },
-    {
-        "id": 35,
-        "name": "New Line Cinema"
-    },
-    {
-        "id": 36,
-        "name": "Atman Entertainment"
-    },
-    {
-        "id": 37,
-        "name": "Cecchi Gori Pictures"
-    },
-    {
-        "id": 38,
-        "name": "Castle Rock Entertainment"
-    },
-    {
-        "id": 39,
-        "name": "Isobel Griffiths"
-    },
-    {
-        "id": 40,
-        "name": "Phoenix Pictures"
-    },
-    {
-        "id": 41,
-        "name": "DC Entertainment"
-    },
-    {
-        "id": 42,
-        "name": "Dune Entertainment"
-    },
-    {
-        "id": 43,
-        "name": "20th Century Fox"
-    },
-    {
-        "id": 44,
-        "name": "Marvel Studios"
-    },
-    {
-        "id": 45,
-        "name": "Lightstorm Entertainment"
-    },
-    {
-        "id": 46,
-        "name": "WingNut Films"
-    },
-    {
-        "id": 47,
-        "name": "Fox 2000 Pictures"
-    },
-    {
-        "id": 48,
-        "name": "RatPac Entertainment"
-    },
-    {
-        "id": 49,
-        "name": "Lionsgate"
-    },
-    {
-        "id": 50,
-        "name": "Warner Bros. Pictures"
-    },
-    {
-        "id": 51,
-        "name": "Patalex III Productions Limited"
-    },
-    {
-        "id": 52,
-        "name": "Jersey Films"
-    },
-    {
-        "id": 53,
-        "name": "Joint Effort"
-    },
-    {
-        "id": 54,
-        "name": "Village Roadshow Pictures"
-    },
-    {
-        "id": 55,
-        "name": "EMJAG Productions"
-    },
-    {
-        "id": 56,
-        "name": "The Donners' Company"
-    },
-    {
-        "id": 57,
-        "name": "1492 Pictures"
-    },
-    {
-        "id": 58,
-        "name": "A Band Apart"
-    },
-    {
-        "id": 59,
-        "name": "DC Comics"
-    },
-    {
-        "id": 60,
-        "name": "Atlas Entertainment"
-    },
-    {
-        "id": 61,
-        "name": "Ingenious Media"
-    },
-    {
-        "id": 62,
-        "name": "Legendary Pictures"
-    },
-    {
-        "id": 63,
-        "name": "Taurus Film"
-    },
-    {
-        "id": 64,
-        "name": "Wendy Finerman Productions"
-    },
-    {
-        "id": 65,
-        "name": "Peninsula Films"
-    },
-    {
-        "id": 66,
-        "name": "Lin Pictures"
-    },
-    {
-        "id": 67,
-        "name": "Regency Enterprises"
-    },
-    {
-        "id": 68,
-        "name": "Jerry Bruckheimer Films"
-    }
+    "Lynda Obst Productions",
+    "Pascal Pictures",
+    "Fairview Entertainment",
+    "Silver Pictures",
+    "Walt Disney Pictures",
+    "Visiona Romantica",
+    "DC Films",
+    "Mandate International",
+    "Patalex IV Productions Limited",
+    "Amblin Entertainment",
+    "Heyday Films",
+    "Universal Pictures",
+    "Bron Studios",
+    "Juno Pix",
+    "Color Force",
+    "LStar Capital",
+    "Miramax",
+    "The Saul Zaentz Company",
+    "Sikelia Productions",
+    "Red Granite Pictures",
+    "The Weinstein Company",
+    "Knickerbocker Films",
+    "Columbia Pictures",
+    "Groucho II Film Partnership",
+    "Syncopy",
+    "P of A Productions Limited",
+    "Zehnte Babelsberg Film",
+    "The Linson Company",
+    "Pixar",
+    "Appian Way",
+    "The Steve Tisch Company",
+    "Genre Films",
+    "Paramount",
+    "Kennedy Miller Productions",
+    "Lucasfilm Ltd.",
+    "New Line Cinema",
+    "Atman Entertainment",
+    "Cecchi Gori Pictures",
+    "Castle Rock Entertainment",
+    "Isobel Griffiths",
+    "Phoenix Pictures",
+    "DC Entertainment",
+    "Dune Entertainment",
+    "20th Century Fox",
+    "Marvel Studios",
+    "Lightstorm Entertainment",
+    "WingNut Films",
+    "Fox 2000 Pictures",
+    "RatPac Entertainment",
+    "Lionsgate",
+    "Warner Bros. Pictures",
+    "Patalex III Productions Limited",
+    "Jersey Films",
+    "Joint Effort",
+    "Village Roadshow Pictures",
+    "EMJAG Productions",
+    "The Donners' Company",
+    "1492 Pictures",
+    "A Band Apart",
+    "DC Comics",
+    "Atlas Entertainment",
+    "Ingenious Media",
+    "Legendary Pictures",
+    "Taurus Film",
+    "Wendy Finerman Productions",
+    "Peninsula Films",
+    "Lin Pictures",
+    "Regency Enterprises",
+    "Jerry Bruckheimer Films"
 ]

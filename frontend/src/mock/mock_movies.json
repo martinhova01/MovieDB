@@ -19,143 +19,35 @@
         "popularity": 83.952,
         "poster_path": "/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
         "tagline": "Your mind is the scene of the crime.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            }
-        ],
+        "genres": ["Action", "Science Fiction", "Adventure"],
         "production_companies": [
-            {
-                "id": 62,
-                "name": "Legendary Pictures"
-            },
-            {
-                "id": 24,
-                "name": "Syncopy"
-            },
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            }
+            "Legendary Pictures",
+            "Syncopy",
+            "Warner Bros. Pictures"
         ],
-        "production_countries": [
-            {
-                "id": 3,
-                "name": "United Kingdom"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 1,
-                "name": "French"
-            },
-            {
-                "id": 5,
-                "name": "Japanese"
-            },
-            {
-                "id": 0,
-                "name": "Swahili"
-            }
-        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English", "French", "Japanese", "Swahili"],
         "keywords": [
-            {
-                "id": 12,
-                "name": "rescue"
-            },
-            {
-                "id": 373,
-                "name": "mission"
-            },
-            {
-                "id": 224,
-                "name": "dream"
-            },
-            {
-                "id": 60,
-                "name": "airplane"
-            },
-            {
-                "id": 100,
-                "name": "paris"
-            },
-            {
-                "id": 403,
-                "name": "france"
-            },
-            {
-                "id": 254,
-                "name": "virtual reality"
-            },
-            {
-                "id": 222,
-                "name": "kidnapping"
-            },
-            {
-                "id": 480,
-                "name": "philosophy"
-            },
-            {
-                "id": 177,
-                "name": "spy"
-            },
-            {
-                "id": 157,
-                "name": "allegory"
-            },
-            {
-                "id": 300,
-                "name": "manipulation"
-            },
-            {
-                "id": 134,
-                "name": "car crash"
-            },
-            {
-                "id": 290,
-                "name": "heist"
-            },
-            {
-                "id": 412,
-                "name": "memory"
-            },
-            {
-                "id": 84,
-                "name": "architecture"
-            },
-            {
-                "id": 27,
-                "name": "los angeles"
-            },
-            {
-                "id": 320,
-                "name": "california"
-            },
-            {
-                "id": 309,
-                "name": "dream world"
-            },
-            {
-                "id": 512,
-                "name": "subconscious"
-            }
+            "rescue",
+            "mission",
+            "dream",
+            "airplane",
+            "paris",
+            "france",
+            "virtual reality",
+            "kidnapping",
+            "philosophy",
+            "spy",
+            "allegory",
+            "manipulation",
+            "car crash",
+            "heist",
+            "memory",
+            "architecture",
+            "los angeles",
+            "california",
+            "dream world",
+            "subconscious"
         ]
     },
     {
@@ -178,179 +70,47 @@
         "popularity": 140.241,
         "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
         "tagline": "Mankind was born on Earth. It was never meant to die here.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
+        "genres": ["Adventure", "Drama", "Science Fiction"],
         "production_companies": [
-            {
-                "id": 62,
-                "name": "Legendary Pictures"
-            },
-            {
-                "id": 24,
-                "name": "Syncopy"
-            },
-            {
-                "id": 0,
-                "name": "Lynda Obst Productions"
-            }
+            "Legendary Pictures",
+            "Syncopy",
+            "Lynda Obst Productions"
         ],
-        "production_countries": [
-            {
-                "id": 3,
-                "name": "United Kingdom"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 12,
-                "name": "rescue"
-            },
-            {
-                "id": 405,
-                "name": "future"
-            },
-            {
-                "id": 314,
-                "name": "spacecraft"
-            },
-            {
-                "id": 115,
-                "name": "race against time"
-            },
-            {
-                "id": 175,
-                "name": "artificial intelligence (a.i.)"
-            },
-            {
-                "id": 513,
-                "name": "nasa"
-            },
-            {
-                "id": 383,
-                "name": "time warp"
-            },
-            {
-                "id": 44,
-                "name": "dystopia"
-            },
-            {
-                "id": 225,
-                "name": "expedition"
-            },
-            {
-                "id": 436,
-                "name": "space travel"
-            },
-            {
-                "id": 146,
-                "name": "wormhole"
-            },
-            {
-                "id": 38,
-                "name": "famine"
-            },
-            {
-                "id": 375,
-                "name": "black hole"
-            },
-            {
-                "id": 97,
-                "name": "quantum mechanics"
-            },
-            {
-                "id": 144,
-                "name": "family relationships"
-            },
-            {
-                "id": 169,
-                "name": "space"
-            },
-            {
-                "id": 287,
-                "name": "robot"
-            },
-            {
-                "id": 387,
-                "name": "astronaut"
-            },
-            {
-                "id": 193,
-                "name": "scientist"
-            },
-            {
-                "id": 275,
-                "name": "single father"
-            },
-            {
-                "id": 75,
-                "name": "farmer"
-            },
-            {
-                "id": 270,
-                "name": "space station"
-            },
-            {
-                "id": 43,
-                "name": "curious"
-            },
-            {
-                "id": 448,
-                "name": "space adventure"
-            },
-            {
-                "id": 231,
-                "name": "time paradox"
-            },
-            {
-                "id": 259,
-                "name": "thoughtful"
-            },
-            {
-                "id": 519,
-                "name": "time-manipulation"
-            },
-            {
-                "id": 227,
-                "name": "father daughter relationship"
-            },
-            {
-                "id": 472,
-                "name": "2060s"
-            },
-            {
-                "id": 140,
-                "name": "cornfield"
-            },
-            {
-                "id": 33,
-                "name": "time manipulation"
-            },
-            {
-                "id": 398,
-                "name": "complicated"
-            }
+            "rescue",
+            "future",
+            "spacecraft",
+            "race against time",
+            "artificial intelligence (a.i.)",
+            "nasa",
+            "time warp",
+            "dystopia",
+            "expedition",
+            "space travel",
+            "wormhole",
+            "famine",
+            "black hole",
+            "quantum mechanics",
+            "family relationships",
+            "space",
+            "robot",
+            "astronaut",
+            "scientist",
+            "single father",
+            "farmer",
+            "space station",
+            "curious",
+            "space adventure",
+            "time paradox",
+            "thoughtful",
+            "time-manipulation",
+            "father daughter relationship",
+            "2060s",
+            "cornfield",
+            "time manipulation",
+            "complicated"
         ]
     },
     {
@@ -373,139 +133,35 @@
         "popularity": 130.643,
         "poster_path": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
         "tagline": "Welcome to a world without rules.",
-        "genres": [
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 9,
-                "name": "Crime"
-            },
-            {
-                "id": 10,
-                "name": "Thriller"
-            }
-        ],
+        "genres": ["Drama", "Action", "Crime", "Thriller"],
         "production_companies": [
-            {
-                "id": 59,
-                "name": "DC Comics"
-            },
-            {
-                "id": 62,
-                "name": "Legendary Pictures"
-            },
-            {
-                "id": 24,
-                "name": "Syncopy"
-            },
-            {
-                "id": 39,
-                "name": "Isobel Griffiths"
-            },
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            }
+            "DC Comics",
+            "Legendary Pictures",
+            "Syncopy",
+            "Isobel Griffiths",
+            "Warner Bros. Pictures"
         ],
-        "production_countries": [
-            {
-                "id": 3,
-                "name": "United Kingdom"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 10,
-                "name": "Mandarin"
-            }
-        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English", "Mandarin"],
         "keywords": [
-            {
-                "id": 439,
-                "name": "joker"
-            },
-            {
-                "id": 66,
-                "name": "sadism"
-            },
-            {
-                "id": 367,
-                "name": "chaos"
-            },
-            {
-                "id": 476,
-                "name": "secret identity"
-            },
-            {
-                "id": 160,
-                "name": "crime fighter"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 327,
-                "name": "anti hero"
-            },
-            {
-                "id": 240,
-                "name": "scarecrow"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 297,
-                "name": "vigilante"
-            },
-            {
-                "id": 502,
-                "name": "organized crime"
-            },
-            {
-                "id": 475,
-                "name": "tragic hero"
-            },
-            {
-                "id": 280,
-                "name": "anti villain"
-            },
-            {
-                "id": 400,
-                "name": "criminal mastermind"
-            },
-            {
-                "id": 452,
-                "name": "district attorney"
-            },
-            {
-                "id": 86,
-                "name": "super power"
-            },
-            {
-                "id": 236,
-                "name": "super villain"
-            },
-            {
-                "id": 420,
-                "name": "neo-noir"
-            }
+            "joker",
+            "sadism",
+            "chaos",
+            "secret identity",
+            "crime fighter",
+            "superhero",
+            "anti hero",
+            "scarecrow",
+            "based on comic",
+            "vigilante",
+            "organized crime",
+            "tragic hero",
+            "anti villain",
+            "criminal mastermind",
+            "district attorney",
+            "super power",
+            "super villain",
+            "neo-noir"
         ]
     },
     {
@@ -528,143 +184,36 @@
         "popularity": 79.932,
         "poster_path": "/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
         "tagline": "Enter the world of Pandora.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Fantasy", "Science Fiction"],
         "production_companies": [
-            {
-                "id": 42,
-                "name": "Dune Entertainment"
-            },
-            {
-                "id": 45,
-                "name": "Lightstorm Entertainment"
-            },
-            {
-                "id": 43,
-                "name": "20th Century Fox"
-            },
-            {
-                "id": 61,
-                "name": "Ingenious Media"
-            }
+            "Dune Entertainment",
+            "Lightstorm Entertainment",
+            "20th Century Fox",
+            "Ingenious Media"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            },
-            {
-                "id": 3,
-                "name": "United Kingdom"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 11,
-                "name": "Spanish"
-            }
-        ],
+        "production_countries": ["United States of America", "United Kingdom"],
+        "spoken_languages": ["English", "Spanish"],
         "keywords": [
-            {
-                "id": 405,
-                "name": "future"
-            },
-            {
-                "id": 495,
-                "name": "society"
-            },
-            {
-                "id": 339,
-                "name": "culture clash"
-            },
-            {
-                "id": 436,
-                "name": "space travel"
-            },
-            {
-                "id": 346,
-                "name": "space war"
-            },
-            {
-                "id": 324,
-                "name": "space colony"
-            },
-            {
-                "id": 465,
-                "name": "tribe"
-            },
-            {
-                "id": 31,
-                "name": "romance"
-            },
-            {
-                "id": 429,
-                "name": "alien"
-            },
-            {
-                "id": 17,
-                "name": "futuristic"
-            },
-            {
-                "id": 169,
-                "name": "space"
-            },
-            {
-                "id": 85,
-                "name": "alien planet"
-            },
-            {
-                "id": 277,
-                "name": "marine"
-            },
-            {
-                "id": 106,
-                "name": "soldier"
-            },
-            {
-                "id": 179,
-                "name": "battle"
-            },
-            {
-                "id": 503,
-                "name": "love affair"
-            },
-            {
-                "id": 120,
-                "name": "nature"
-            },
-            {
-                "id": 126,
-                "name": "anti war"
-            },
-            {
-                "id": 52,
-                "name": "power relations"
-            },
-            {
-                "id": 381,
-                "name": "joyful"
-            }
+            "future",
+            "society",
+            "culture clash",
+            "space travel",
+            "space war",
+            "space colony",
+            "tribe",
+            "romance",
+            "alien",
+            "futuristic",
+            "space",
+            "alien planet",
+            "marine",
+            "soldier",
+            "battle",
+            "love affair",
+            "nature",
+            "anti war",
+            "power relations",
+            "joyful"
         ]
     },
     {
@@ -687,83 +236,20 @@
         "popularity": 98.082,
         "poster_path": "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
         "tagline": "Some assembly required.",
-        "genres": [
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 7,
-                "name": "Hindi"
-            },
-            {
-                "id": 12,
-                "name": "Russian"
-            }
-        ],
+        "genres": ["Science Fiction", "Action", "Adventure"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Hindi", "Russian"],
         "keywords": [
-            {
-                "id": 248,
-                "name": "new york city"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 121,
-                "name": "shield"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 516,
-                "name": "alien invasion"
-            },
-            {
-                "id": 363,
-                "name": "superhero team"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 342,
-                "name": "duringcreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            }
+            "new york city",
+            "superhero",
+            "shield",
+            "based on comic",
+            "alien invasion",
+            "superhero team",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "marvel cinematic universe (mcu)"
         ]
     },
     {
@@ -786,71 +272,21 @@
         "popularity": 72.735,
         "poster_path": "/zq8Cl3PNIDGU3iWNRoc5nEZ6pCe.jpg",
         "tagline": "Witness the beginning of a happy ending.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 6,
-                "name": "Comedy"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Comedy"],
         "production_companies": [
-            {
-                "id": 43,
-                "name": "20th Century Fox"
-            },
-            {
-                "id": 56,
-                "name": "The Donners' Company"
-            },
-            {
-                "id": 31,
-                "name": "Genre Films"
-            }
+            "20th Century Fox",
+            "The Donners' Company",
+            "Genre Films"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 327,
-                "name": "anti hero"
-            },
-            {
-                "id": 153,
-                "name": "mercenary"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 342,
-                "name": "duringcreditsstinger"
-            }
+            "superhero",
+            "anti hero",
+            "mercenary",
+            "based on comic",
+            "aftercreditsstinger",
+            "duringcreditsstinger"
         ]
     },
     {
@@ -873,91 +309,23 @@
         "popularity": 154.34,
         "poster_path": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
         "tagline": "An entire universe. Once and for all.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 13,
-                "name": "Xhosa"
-            }
-        ],
+        "genres": ["Adventure", "Action", "Science Fiction"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Xhosa"],
         "keywords": [
-            {
-                "id": 421,
-                "name": "sacrifice"
-            },
-            {
-                "id": 298,
-                "name": "magic"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 169,
-                "name": "space"
-            },
-            {
-                "id": 36,
-                "name": "battlefield"
-            },
-            {
-                "id": 265,
-                "name": "genocide"
-            },
-            {
-                "id": 46,
-                "name": "magical object"
-            },
-            {
-                "id": 86,
-                "name": "super power"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            },
-            {
-                "id": 137,
-                "name": "cosmic"
-            }
+            "sacrifice",
+            "magic",
+            "superhero",
+            "based on comic",
+            "space",
+            "battlefield",
+            "genocide",
+            "magical object",
+            "super power",
+            "aftercreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "cosmic"
         ]
     },
     {
@@ -980,111 +348,33 @@
         "popularity": 69.498,
         "poster_path": "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
         "tagline": "Mischief. Mayhem. Soap.",
-        "genres": [
-            {
-                "id": 0,
-                "name": "Drama"
-            }
-        ],
+        "genres": ["Drama"],
         "production_companies": [
-            {
-                "id": 67,
-                "name": "Regency Enterprises"
-            },
-            {
-                "id": 47,
-                "name": "Fox 2000 Pictures"
-            },
-            {
-                "id": 63,
-                "name": "Taurus Film"
-            },
-            {
-                "id": 36,
-                "name": "Atman Entertainment"
-            },
-            {
-                "id": 21,
-                "name": "Knickerbocker Films"
-            },
-            {
-                "id": 27,
-                "name": "The Linson Company"
-            },
-            {
-                "id": 43,
-                "name": "20th Century Fox"
-            }
+            "Regency Enterprises",
+            "Fox 2000 Pictures",
+            "Taurus Film",
+            "Atman Entertainment",
+            "Knickerbocker Films",
+            "The Linson Company",
+            "20th Century Fox"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 354,
-                "name": "dual identity"
-            },
-            {
-                "id": 154,
-                "name": "rage and hate"
-            },
-            {
-                "id": 489,
-                "name": "based on novel or book"
-            },
-            {
-                "id": 521,
-                "name": "nihilism"
-            },
-            {
-                "id": 349,
-                "name": "fight"
-            },
-            {
-                "id": 464,
-                "name": "support group"
-            },
-            {
-                "id": 44,
-                "name": "dystopia"
-            },
-            {
-                "id": 202,
-                "name": "insomnia"
-            },
-            {
-                "id": 212,
-                "name": "alter ego"
-            },
-            {
-                "id": 156,
-                "name": "breaking the fourth wall"
-            },
-            {
-                "id": 148,
-                "name": "split personality"
-            },
-            {
-                "id": 206,
-                "name": "quitting a job"
-            },
-            {
-                "id": 443,
-                "name": "dissociative identity disorder"
-            },
-            {
-                "id": 372,
-                "name": "self destructiveness"
-            }
+            "dual identity",
+            "rage and hate",
+            "based on novel or book",
+            "nihilism",
+            "fight",
+            "support group",
+            "dystopia",
+            "insomnia",
+            "alter ego",
+            "breaking the fourth wall",
+            "split personality",
+            "quitting a job",
+            "dissociative identity disorder",
+            "self destructiveness"
         ]
     },
     {
@@ -1107,71 +397,19 @@
         "popularity": 33.255,
         "poster_path": "/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg",
         "tagline": "All heroes start somewhere.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Action", "Science Fiction", "Adventure"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 314,
-                "name": "spacecraft"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 169,
-                "name": "space"
-            },
-            {
-                "id": 296,
-                "name": "orphan"
-            },
-            {
-                "id": 463,
-                "name": "adventurer"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 342,
-                "name": "duringcreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            }
+            "spacecraft",
+            "based on comic",
+            "space",
+            "orphan",
+            "adventurer",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "marvel cinematic universe (mcu)"
         ]
     },
     {
@@ -1194,115 +432,27 @@
         "popularity": 74.862,
         "poster_path": "/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
         "tagline": "Just because you are a character doesn't mean you have character.",
-        "genres": [
-            {
-                "id": 10,
-                "name": "Thriller"
-            },
-            {
-                "id": 9,
-                "name": "Crime"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 16,
-                "name": "Miramax"
-            },
-            {
-                "id": 58,
-                "name": "A Band Apart"
-            },
-            {
-                "id": 52,
-                "name": "Jersey Films"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 11,
-                "name": "Spanish"
-            },
-            {
-                "id": 1,
-                "name": "French"
-            }
-        ],
+        "genres": ["Thriller", "Crime"],
+        "production_companies": ["Miramax", "A Band Apart", "Jersey Films"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Spanish", "French"],
         "keywords": [
-            {
-                "id": 174,
-                "name": "drug dealer"
-            },
-            {
-                "id": 514,
-                "name": "boxer"
-            },
-            {
-                "id": 337,
-                "name": "massage"
-            },
-            {
-                "id": 266,
-                "name": "stolen money"
-            },
-            {
-                "id": 395,
-                "name": "briefcase"
-            },
-            {
-                "id": 211,
-                "name": "crime boss"
-            },
-            {
-                "id": 522,
-                "name": "redemption"
-            },
-            {
-                "id": 168,
-                "name": "heirloom"
-            },
-            {
-                "id": 69,
-                "name": "dance competition"
-            },
-            {
-                "id": 27,
-                "name": "los angeles"
-            },
-            {
-                "id": 320,
-                "name": "california"
-            },
-            {
-                "id": 81,
-                "name": "theft"
-            },
-            {
-                "id": 49,
-                "name": "nonlinear timeline"
-            },
-            {
-                "id": 389,
-                "name": "multiple storylines"
-            },
-            {
-                "id": 420,
-                "name": "neo-noir"
-            },
-            {
-                "id": 176,
-                "name": "hilarious"
-            }
+            "drug dealer",
+            "boxer",
+            "massage",
+            "stolen money",
+            "briefcase",
+            "crime boss",
+            "redemption",
+            "heirloom",
+            "dance competition",
+            "los angeles",
+            "california",
+            "theft",
+            "nonlinear timeline",
+            "multiple storylines",
+            "neo-noir",
+            "hilarious"
         ]
     },
     {
@@ -1325,167 +475,45 @@
         "popularity": 92.693,
         "poster_path": "/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
         "tagline": "The world will never be the same once you've seen it through the eyes of Forrest Gump.",
-        "genres": [
-            {
-                "id": 6,
-                "name": "Comedy"
-            },
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 1,
-                "name": "Romance"
-            }
-        ],
+        "genres": ["Comedy", "Drama", "Romance"],
         "production_companies": [
-            {
-                "id": 32,
-                "name": "Paramount"
-            },
-            {
-                "id": 30,
-                "name": "The Steve Tisch Company"
-            },
-            {
-                "id": 64,
-                "name": "Wendy Finerman Productions"
-            }
+            "Paramount",
+            "The Steve Tisch Company",
+            "Wendy Finerman Productions"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 501,
-                "name": "vietnam war"
-            },
-            {
-                "id": 392,
-                "name": "vietnam veteran"
-            },
-            {
-                "id": 360,
-                "name": "mentally disabled"
-            },
-            {
-                "id": 499,
-                "name": "friendship"
-            },
-            {
-                "id": 139,
-                "name": "usa president"
-            },
-            {
-                "id": 441,
-                "name": "washington dc"
-            },
-            {
-                "id": 257,
-                "name": "usa"
-            },
-            {
-                "id": 129,
-                "name": "post-traumatic stress disorder (ptsd)"
-            },
-            {
-                "id": 366,
-                "name": "waitress"
-            },
-            {
-                "id": 272,
-                "name": "china"
-            },
-            {
-                "id": 489,
-                "name": "based on novel or book"
-            },
-            {
-                "id": 246,
-                "name": "hippie"
-            },
-            {
-                "id": 117,
-                "name": "single parent"
-            },
-            {
-                "id": 82,
-                "name": "parent child relationship"
-            },
-            {
-                "id": 105,
-                "name": "optimism"
-            },
-            {
-                "id": 65,
-                "name": "1970s"
-            },
-            {
-                "id": 3,
-                "name": "drug addiction"
-            },
-            {
-                "id": 102,
-                "name": "autism"
-            },
-            {
-                "id": 453,
-                "name": "alabama"
-            },
-            {
-                "id": 247,
-                "name": "black panther party"
-            },
-            {
-                "id": 466,
-                "name": "bus stop"
-            },
-            {
-                "id": 144,
-                "name": "family relationships"
-            },
-            {
-                "id": 161,
-                "name": "single mother"
-            },
-            {
-                "id": 243,
-                "name": "military"
-            },
-            {
-                "id": 505,
-                "name": "anti war protest"
-            },
-            {
-                "id": 356,
-                "name": "1960s"
-            },
-            {
-                "id": 477,
-                "name": "college american football"
-            },
-            {
-                "id": 110,
-                "name": "mother son relationship"
-            },
-            {
-                "id": 353,
-                "name": "loving"
-            },
-            {
-                "id": 350,
-                "name": "feel-good"
-            }
+            "vietnam war",
+            "vietnam veteran",
+            "mentally disabled",
+            "friendship",
+            "usa president",
+            "washington dc",
+            "usa",
+            "post-traumatic stress disorder (ptsd)",
+            "waitress",
+            "china",
+            "based on novel or book",
+            "hippie",
+            "single parent",
+            "parent child relationship",
+            "optimism",
+            "1970s",
+            "drug addiction",
+            "autism",
+            "alabama",
+            "black panther party",
+            "bus stop",
+            "family relationships",
+            "single mother",
+            "military",
+            "anti war protest",
+            "1960s",
+            "college american football",
+            "mother son relationship",
+            "loving",
+            "feel-good"
         ]
     },
     {
@@ -1508,123 +536,34 @@
         "popularity": 185.482,
         "poster_path": "/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg",
         "tagline": "Let the magic begin.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            }
-        ],
+        "genres": ["Adventure", "Fantasy"],
         "production_companies": [
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            },
-            {
-                "id": 10,
-                "name": "Heyday Films"
-            },
-            {
-                "id": 57,
-                "name": "1492 Pictures"
-            }
+            "Warner Bros. Pictures",
+            "Heyday Films",
+            "1492 Pictures"
         ],
-        "production_countries": [
-            {
-                "id": 3,
-                "name": "United Kingdom"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 218,
-                "name": "witch"
-            },
-            {
-                "id": 485,
-                "name": "school friend"
-            },
-            {
-                "id": 499,
-                "name": "friendship"
-            },
-            {
-                "id": 172,
-                "name": "london"
-            },
-            {
-                "id": 431,
-                "name": "england"
-            },
-            {
-                "id": 489,
-                "name": "based on novel or book"
-            },
-            {
-                "id": 298,
-                "name": "magic"
-            },
-            {
-                "id": 460,
-                "name": "boarding school"
-            },
-            {
-                "id": 133,
-                "name": "child hero"
-            },
-            {
-                "id": 333,
-                "name": "school of witchcraft"
-            },
-            {
-                "id": 198,
-                "name": "chosen one"
-            },
-            {
-                "id": 96,
-                "name": "school"
-            },
-            {
-                "id": 474,
-                "name": "shopping"
-            },
-            {
-                "id": 57,
-                "name": "fantasy world"
-            },
-            {
-                "id": 401,
-                "name": "wizard"
-            },
-            {
-                "id": 504,
-                "name": "christmas"
-            },
-            {
-                "id": 116,
-                "name": "based on young adult novel"
-            },
-            {
-                "id": 497,
-                "name": "owl"
-            },
-            {
-                "id": 180,
-                "name": "wizarding world"
-            }
+            "witch",
+            "school friend",
+            "friendship",
+            "london",
+            "england",
+            "based on novel or book",
+            "magic",
+            "boarding school",
+            "child hero",
+            "school of witchcraft",
+            "chosen one",
+            "school",
+            "shopping",
+            "fantasy world",
+            "wizard",
+            "christmas",
+            "based on young adult novel",
+            "owl",
+            "wizarding world"
         ]
     },
     {
@@ -1647,83 +586,19 @@
         "popularity": 72.897,
         "poster_path": "/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
         "tagline": "Heroes aren't born. They're built.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 3,
-                "name": "Persian"
-            },
-            {
-                "id": 8,
-                "name": "Urdu"
-            },
-            {
-                "id": 17,
-                "name": "Arabic"
-            }
-        ],
+        "genres": ["Action", "Science Fiction", "Adventure"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Persian", "Urdu", "Arabic"],
         "keywords": [
-            {
-                "id": 214,
-                "name": "middle east"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 335,
-                "name": "arms dealer"
-            },
-            {
-                "id": 242,
-                "name": "malibu"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            },
-            {
-                "id": 24,
-                "name": "counterterrorism"
-            }
+            "middle east",
+            "superhero",
+            "arms dealer",
+            "malibu",
+            "based on comic",
+            "aftercreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "counterterrorism"
         ]
     },
     {
@@ -1746,151 +621,37 @@
         "popularity": 54.224,
         "poster_path": "/7oWY8VDWW7thTzWh3OKYRkWUlD5.jpg",
         "tagline": "Life, liberty and the pursuit of vengeance.",
-        "genres": [
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 2,
-                "name": "Western"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 20,
-                "name": "The Weinstein Company"
-            },
-            {
-                "id": 22,
-                "name": "Columbia Pictures"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 1,
-                "name": "French"
-            },
-            {
-                "id": 2,
-                "name": "German"
-            }
-        ],
+        "genres": ["Drama", "Western"],
+        "production_companies": ["The Weinstein Company", "Columbia Pictures"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "French", "German"],
         "keywords": [
-            {
-                "id": 12,
-                "name": "rescue"
-            },
-            {
-                "id": 499,
-                "name": "friendship"
-            },
-            {
-                "id": 316,
-                "name": "bounty hunter"
-            },
-            {
-                "id": 183,
-                "name": "texas"
-            },
-            {
-                "id": 394,
-                "name": "slavery"
-            },
-            {
-                "id": 413,
-                "name": "plantation"
-            },
-            {
-                "id": 369,
-                "name": "rivalry"
-            },
-            {
-                "id": 313,
-                "name": "revenge"
-            },
-            {
-                "id": 301,
-                "name": "shootout"
-            },
-            {
-                "id": 331,
-                "name": "racism"
-            },
-            {
-                "id": 189,
-                "name": "kindness"
-            },
-            {
-                "id": 88,
-                "name": "dentist"
-            },
-            {
-                "id": 334,
-                "name": "django"
-            },
-            {
-                "id": 138,
-                "name": "slave trade"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 325,
-                "name": "black slave"
-            },
-            {
-                "id": 326,
-                "name": "agreement"
-            },
-            {
-                "id": 111,
-                "name": "19th century"
-            },
-            {
-                "id": 462,
-                "name": "chattanooga"
-            },
-            {
-                "id": 321,
-                "name": "german"
-            },
-            {
-                "id": 244,
-                "name": "cotton plantation"
-            },
-            {
-                "id": 430,
-                "name": "plantation owner"
-            },
-            {
-                "id": 162,
-                "name": "old west"
-            },
-            {
-                "id": 163,
-                "name": "western"
-            },
-            {
-                "id": 113,
-                "name": "1850s"
-            },
-            {
-                "id": 166,
-                "name": "mississippi"
-            }
+            "rescue",
+            "friendship",
+            "bounty hunter",
+            "texas",
+            "slavery",
+            "plantation",
+            "rivalry",
+            "revenge",
+            "shootout",
+            "racism",
+            "kindness",
+            "dentist",
+            "django",
+            "slave trade",
+            "aftercreditsstinger",
+            "black slave",
+            "agreement",
+            "19th century",
+            "chattanooga",
+            "german",
+            "cotton plantation",
+            "plantation owner",
+            "old west",
+            "western",
+            "1850s",
+            "mississippi"
         ]
     },
     {
@@ -1913,99 +674,27 @@
         "popularity": 122.61,
         "poster_path": "/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg",
         "tagline": "Fear can hold you prisoner. Hope can set you free.",
-        "genres": [
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 9,
-                "name": "Crime"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 38,
-                "name": "Castle Rock Entertainment"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Drama", "Crime"],
+        "production_companies": ["Castle Rock Entertainment"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 101,
-                "name": "prison"
-            },
-            {
-                "id": 499,
-                "name": "friendship"
-            },
-            {
-                "id": 142,
-                "name": "police brutality"
-            },
-            {
-                "id": 104,
-                "name": "corruption"
-            },
-            {
-                "id": 489,
-                "name": "based on novel or book"
-            },
-            {
-                "id": 6,
-                "name": "hope"
-            },
-            {
-                "id": 312,
-                "name": "prison cell"
-            },
-            {
-                "id": 13,
-                "name": "delinquent"
-            },
-            {
-                "id": 522,
-                "name": "redemption"
-            },
-            {
-                "id": 251,
-                "name": "parole board"
-            },
-            {
-                "id": 438,
-                "name": "prison escape"
-            },
-            {
-                "id": 226,
-                "name": "wrongful imprisonment"
-            },
-            {
-                "id": 457,
-                "name": "interracial friendship"
-            },
-            {
-                "id": 47,
-                "name": "framed for murder"
-            },
-            {
-                "id": 124,
-                "name": "1940s"
-            },
-            {
-                "id": 506,
-                "name": "voiceover"
-            }
+            "prison",
+            "friendship",
+            "police brutality",
+            "corruption",
+            "based on novel or book",
+            "hope",
+            "prison cell",
+            "delinquent",
+            "redemption",
+            "parole board",
+            "prison escape",
+            "wrongful imprisonment",
+            "interracial friendship",
+            "framed for murder",
+            "1940s",
+            "voiceover"
         ]
     },
     {
@@ -2028,95 +717,23 @@
         "popularity": 91.756,
         "poster_path": "/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
         "tagline": "Avenge the fallen.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 5,
-                "name": "Japanese"
-            },
-            {
-                "id": 13,
-                "name": "Xhosa"
-            }
-        ],
+        "genres": ["Adventure", "Science Fiction", "Action"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Japanese", "Xhosa"],
         "keywords": [
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 261,
-                "name": "time travel"
-            },
-            {
-                "id": 436,
-                "name": "space travel"
-            },
-            {
-                "id": 135,
-                "name": "time machine"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 397,
-                "name": "sequel"
-            },
-            {
-                "id": 516,
-                "name": "alien invasion"
-            },
-            {
-                "id": 363,
-                "name": "superhero team"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            },
-            {
-                "id": 95,
-                "name": "alternate timeline"
-            },
-            {
-                "id": 227,
-                "name": "father daughter relationship"
-            },
-            {
-                "id": 424,
-                "name": "sister sister relationship"
-            }
+            "superhero",
+            "time travel",
+            "space travel",
+            "time machine",
+            "based on comic",
+            "sequel",
+            "alien invasion",
+            "superhero team",
+            "marvel cinematic universe (mcu)",
+            "alternate timeline",
+            "father daughter relationship",
+            "sister sister relationship"
         ]
     },
     {
@@ -2139,135 +756,38 @@
         "popularity": 78.564,
         "poster_path": "/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
         "tagline": "Welcome to the Real World.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
+        "genres": ["Action", "Science Fiction"],
         "production_companies": [
-            {
-                "id": 54,
-                "name": "Village Roadshow Pictures"
-            },
-            {
-                "id": 23,
-                "name": "Groucho II Film Partnership"
-            },
-            {
-                "id": 3,
-                "name": "Silver Pictures"
-            },
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            }
+            "Village Roadshow Pictures",
+            "Groucho II Film Partnership",
+            "Silver Pictures",
+            "Warner Bros. Pictures"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 517,
-                "name": "man vs machine"
-            },
-            {
-                "id": 5,
-                "name": "martial arts"
-            },
-            {
-                "id": 224,
-                "name": "dream"
-            },
-            {
-                "id": 175,
-                "name": "artificial intelligence (a.i.)"
-            },
-            {
-                "id": 42,
-                "name": "saving the world"
-            },
-            {
-                "id": 63,
-                "name": "hacker"
-            },
-            {
-                "id": 91,
-                "name": "self sacrifice"
-            },
-            {
-                "id": 254,
-                "name": "virtual reality"
-            },
-            {
-                "id": 349,
-                "name": "fight"
-            },
-            {
-                "id": 205,
-                "name": "prophecy"
-            },
-            {
-                "id": 165,
-                "name": "truth"
-            },
-            {
-                "id": 480,
-                "name": "philosophy"
-            },
-            {
-                "id": 44,
-                "name": "dystopia"
-            },
-            {
-                "id": 11,
-                "name": "insurgence"
-            },
-            {
-                "id": 149,
-                "name": "simulated reality "
-            },
-            {
-                "id": 107,
-                "name": "cyberpunk"
-            },
-            {
-                "id": 309,
-                "name": "dream world"
-            },
-            {
-                "id": 150,
-                "name": "woman director"
-            },
-            {
-                "id": 510,
-                "name": "messiah"
-            },
-            {
-                "id": 377,
-                "name": "action hero"
-            },
-            {
-                "id": 239,
-                "name": "gnosticism"
-            },
-            {
-                "id": 245,
-                "name": "complex"
-            }
+            "man vs machine",
+            "martial arts",
+            "dream",
+            "artificial intelligence (a.i.)",
+            "saving the world",
+            "hacker",
+            "self sacrifice",
+            "virtual reality",
+            "fight",
+            "prophecy",
+            "truth",
+            "philosophy",
+            "dystopia",
+            "insurgence",
+            "simulated reality ",
+            "cyberpunk",
+            "dream world",
+            "woman director",
+            "messiah",
+            "action hero",
+            "gnosticism",
+            "complex"
         ]
     },
     {
@@ -2290,191 +810,54 @@
         "popularity": 102.348,
         "poster_path": "/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
         "tagline": "Nothing on Earth could come between them.",
-        "genres": [
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 1,
-                "name": "Romance"
-            }
-        ],
+        "genres": ["Drama", "Romance"],
         "production_companies": [
-            {
-                "id": 32,
-                "name": "Paramount"
-            },
-            {
-                "id": 43,
-                "name": "20th Century Fox"
-            },
-            {
-                "id": 45,
-                "name": "Lightstorm Entertainment"
-            }
+            "Paramount",
+            "20th Century Fox",
+            "Lightstorm Entertainment"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
+        "production_countries": ["United States of America"],
         "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 1,
-                "name": "French"
-            },
-            {
-                "id": 2,
-                "name": "German"
-            },
-            {
-                "id": 16,
-                "name": "Swedish"
-            },
-            {
-                "id": 4,
-                "name": "Italian"
-            },
-            {
-                "id": 12,
-                "name": "Russian"
-            }
+            "English",
+            "French",
+            "German",
+            "Swedish",
+            "Italian",
+            "Russian"
         ],
         "keywords": [
-            {
-                "id": 164,
-                "name": "epic"
-            },
-            {
-                "id": 51,
-                "name": "ship"
-            },
-            {
-                "id": 255,
-                "name": "drowning"
-            },
-            {
-                "id": 249,
-                "name": "panic"
-            },
-            {
-                "id": 469,
-                "name": "shipwreck"
-            },
-            {
-                "id": 311,
-                "name": "evacuation"
-            },
-            {
-                "id": 358,
-                "name": "iceberg"
-            },
-            {
-                "id": 108,
-                "name": "titanic"
-            },
-            {
-                "id": 299,
-                "name": "forbidden love"
-            },
-            {
-                "id": 103,
-                "name": "ocean liner"
-            },
-            {
-                "id": 341,
-                "name": "based on true story"
-            },
-            {
-                "id": 141,
-                "name": "rich woman poor man"
-            },
-            {
-                "id": 18,
-                "name": "love"
-            },
-            {
-                "id": 345,
-                "name": "tragedy"
-            },
-            {
-                "id": 19,
-                "name": "tragic love"
-            },
-            {
-                "id": 454,
-                "name": "disaster"
-            },
-            {
-                "id": 73,
-                "name": "historical fiction"
-            },
-            {
-                "id": 444,
-                "name": "class differences"
-            },
-            {
-                "id": 503,
-                "name": "love affair"
-            },
-            {
-                "id": 308,
-                "name": "historical event"
-            },
-            {
-                "id": 68,
-                "name": "lifeboat"
-            },
-            {
-                "id": 80,
-                "name": "star crossed lovers"
-            },
-            {
-                "id": 186,
-                "name": "sinking ship"
-            },
-            {
-                "id": 263,
-                "name": "steerage"
-            },
-            {
-                "id": 428,
-                "name": "rich snob"
-            },
-            {
-                "id": 59,
-                "name": "disaster movie"
-            },
-            {
-                "id": 459,
-                "name": "1910s"
-            },
-            {
-                "id": 61,
-                "name": "sunken ship"
-            },
-            {
-                "id": 268,
-                "name": "absurd"
-            },
-            {
-                "id": 32,
-                "name": "sinister"
-            },
-            {
-                "id": 195,
-                "name": "romantic"
-            },
-            {
-                "id": 93,
-                "name": "tragic"
-            }
+            "epic",
+            "ship",
+            "drowning",
+            "panic",
+            "shipwreck",
+            "evacuation",
+            "iceberg",
+            "titanic",
+            "forbidden love",
+            "ocean liner",
+            "based on true story",
+            "rich woman poor man",
+            "love",
+            "tragedy",
+            "tragic love",
+            "disaster",
+            "historical fiction",
+            "class differences",
+            "love affair",
+            "historical event",
+            "lifeboat",
+            "star crossed lovers",
+            "sinking ship",
+            "steerage",
+            "rich snob",
+            "disaster movie",
+            "1910s",
+            "sunken ship",
+            "absurd",
+            "sinister",
+            "romantic",
+            "tragic"
         ]
     },
     {
@@ -2497,151 +880,40 @@
         "popularity": 54.522,
         "poster_path": "/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
         "tagline": "Put on a happy face.",
-        "genres": [
-            {
-                "id": 9,
-                "name": "Crime"
-            },
-            {
-                "id": 10,
-                "name": "Thriller"
-            },
-            {
-                "id": 0,
-                "name": "Drama"
-            }
-        ],
+        "genres": ["Crime", "Thriller", "Drama"],
         "production_companies": [
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            },
-            {
-                "id": 53,
-                "name": "Joint Effort"
-            },
-            {
-                "id": 54,
-                "name": "Village Roadshow Pictures"
-            },
-            {
-                "id": 12,
-                "name": "Bron Studios"
-            },
-            {
-                "id": 6,
-                "name": "DC Films"
-            }
+            "Warner Bros. Pictures",
+            "Joint Effort",
+            "Village Roadshow Pictures",
+            "Bron Studios",
+            "DC Films"
         ],
-        "production_countries": [
-            {
-                "id": 1,
-                "name": "Canada"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["Canada", "United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 224,
-                "name": "dream"
-            },
-            {
-                "id": 388,
-                "name": "street gang"
-            },
-            {
-                "id": 495,
-                "name": "society"
-            },
-            {
-                "id": 67,
-                "name": "psychopath"
-            },
-            {
-                "id": 267,
-                "name": "clown"
-            },
-            {
-                "id": 155,
-                "name": "villain"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 25,
-                "name": "murder"
-            },
-            {
-                "id": 407,
-                "name": "psychological thriller"
-            },
-            {
-                "id": 400,
-                "name": "criminal mastermind"
-            },
-            {
-                "id": 223,
-                "name": "mental illness"
-            },
-            {
-                "id": 271,
-                "name": "anarchy"
-            },
-            {
-                "id": 282,
-                "name": "character study"
-            },
-            {
-                "id": 423,
-                "name": "clown makeup"
-            },
-            {
-                "id": 4,
-                "name": "subway train"
-            },
-            {
-                "id": 433,
-                "name": "social realism"
-            },
-            {
-                "id": 481,
-                "name": "supervillain"
-            },
-            {
-                "id": 493,
-                "name": "tv host"
-            },
-            {
-                "id": 347,
-                "name": "1980s"
-            },
-            {
-                "id": 110,
-                "name": "mother son relationship"
-            },
-            {
-                "id": 306,
-                "name": "origin story"
-            },
-            {
-                "id": 70,
-                "name": "falling into madness"
-            },
-            {
-                "id": 151,
-                "name": "depressing"
-            }
+            "dream",
+            "street gang",
+            "society",
+            "psychopath",
+            "clown",
+            "villain",
+            "based on comic",
+            "murder",
+            "psychological thriller",
+            "criminal mastermind",
+            "mental illness",
+            "anarchy",
+            "character study",
+            "clown makeup",
+            "subway train",
+            "social realism",
+            "supervillain",
+            "tv host",
+            "1980s",
+            "mother son relationship",
+            "origin story",
+            "falling into madness",
+            "depressing"
         ]
     },
     {
@@ -2664,159 +936,42 @@
         "popularity": 87.037,
         "poster_path": "/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
         "tagline": "One ring to rule them all",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            }
-        ],
+        "genres": ["Adventure", "Fantasy", "Action"],
         "production_companies": [
-            {
-                "id": 35,
-                "name": "New Line Cinema"
-            },
-            {
-                "id": 46,
-                "name": "WingNut Films"
-            },
-            {
-                "id": 17,
-                "name": "The Saul Zaentz Company"
-            }
+            "New Line Cinema",
+            "WingNut Films",
+            "The Saul Zaentz Company"
         ],
-        "production_countries": [
-            {
-                "id": 0,
-                "name": "New Zealand"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["New Zealand", "United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 489,
-                "name": "based on novel or book"
-            },
-            {
-                "id": 446,
-                "name": "orcs"
-            },
-            {
-                "id": 284,
-                "name": "elves"
-            },
-            {
-                "id": 488,
-                "name": "dwarf"
-            },
-            {
-                "id": 298,
-                "name": "magic"
-            },
-            {
-                "id": 340,
-                "name": "loss of loved one"
-            },
-            {
-                "id": 351,
-                "name": "river"
-            },
-            {
-                "id": 167,
-                "name": "fireworks"
-            },
-            {
-                "id": 252,
-                "name": "mine"
-            },
-            {
-                "id": 76,
-                "name": "maze"
-            },
-            {
-                "id": 507,
-                "name": "mountain"
-            },
-            {
-                "id": 328,
-                "name": "new zealand"
-            },
-            {
-                "id": 125,
-                "name": "castle"
-            },
-            {
-                "id": 374,
-                "name": "volcano"
-            },
-            {
-                "id": 269,
-                "name": "birthday party"
-            },
-            {
-                "id": 399,
-                "name": "addiction"
-            },
-            {
-                "id": 232,
-                "name": "uncle"
-            },
-            {
-                "id": 209,
-                "name": "fugitive"
-            },
-            {
-                "id": 179,
-                "name": "battle"
-            },
-            {
-                "id": 355,
-                "name": "death"
-            },
-            {
-                "id": 343,
-                "name": "blizzard"
-            },
-            {
-                "id": 401,
-                "name": "wizard"
-            },
-            {
-                "id": 276,
-                "name": "journey"
-            },
-            {
-                "id": 384,
-                "name": "ring"
-            },
-            {
-                "id": 286,
-                "name": "live action and animation"
-            },
-            {
-                "id": 404,
-                "name": "sword and sorcery"
-            },
-            {
-                "id": 419,
-                "name": "nz"
-            }
+            "based on novel or book",
+            "orcs",
+            "elves",
+            "dwarf",
+            "magic",
+            "loss of loved one",
+            "river",
+            "fireworks",
+            "mine",
+            "maze",
+            "mountain",
+            "new zealand",
+            "castle",
+            "volcano",
+            "birthday party",
+            "addiction",
+            "uncle",
+            "fugitive",
+            "battle",
+            "death",
+            "blizzard",
+            "wizard",
+            "journey",
+            "ring",
+            "live action and animation",
+            "sword and sorcery",
+            "nz"
         ]
     },
     {
@@ -2839,119 +994,32 @@
         "popularity": 99.276,
         "poster_path": "/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
         "tagline": "The eye of the enemy is moving.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            }
-        ],
+        "genres": ["Adventure", "Fantasy", "Action"],
         "production_companies": [
-            {
-                "id": 35,
-                "name": "New Line Cinema"
-            },
-            {
-                "id": 46,
-                "name": "WingNut Films"
-            },
-            {
-                "id": 17,
-                "name": "The Saul Zaentz Company"
-            }
+            "New Line Cinema",
+            "WingNut Films",
+            "The Saul Zaentz Company"
         ],
-        "production_countries": [
-            {
-                "id": 0,
-                "name": "New Zealand"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["New Zealand", "United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 489,
-                "name": "based on novel or book"
-            },
-            {
-                "id": 446,
-                "name": "orcs"
-            },
-            {
-                "id": 284,
-                "name": "elves"
-            },
-            {
-                "id": 488,
-                "name": "dwarf"
-            },
-            {
-                "id": 39,
-                "name": "bravery"
-            },
-            {
-                "id": 2,
-                "name": "suspicion"
-            },
-            {
-                "id": 374,
-                "name": "volcano"
-            },
-            {
-                "id": 399,
-                "name": "addiction"
-            },
-            {
-                "id": 99,
-                "name": "honor"
-            },
-            {
-                "id": 58,
-                "name": "royalty"
-            },
-            {
-                "id": 184,
-                "name": "troll"
-            },
-            {
-                "id": 437,
-                "name": "brutality"
-            },
-            {
-                "id": 181,
-                "name": "ghost"
-            },
-            {
-                "id": 401,
-                "name": "wizard"
-            },
-            {
-                "id": 414,
-                "name": "quest"
-            },
-            {
-                "id": 286,
-                "name": "live action and animation"
-            },
-            {
-                "id": 404,
-                "name": "sword and sorcery"
-            }
+            "based on novel or book",
+            "orcs",
+            "elves",
+            "dwarf",
+            "bravery",
+            "suspicion",
+            "volcano",
+            "addiction",
+            "honor",
+            "royalty",
+            "troll",
+            "brutality",
+            "ghost",
+            "wizard",
+            "quest",
+            "live action and animation",
+            "sword and sorcery"
         ]
     },
     {
@@ -2974,103 +1042,28 @@
         "popularity": 56.595,
         "poster_path": "/4GDy0PHYX3VRXUtwK5ysFbg3kEx.jpg",
         "tagline": "Some places never let you go.",
-        "genres": [
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 10,
-                "name": "Thriller"
-            },
-            {
-                "id": 13,
-                "name": "Mystery"
-            }
-        ],
+        "genres": ["Drama", "Thriller", "Mystery"],
         "production_companies": [
-            {
-                "id": 40,
-                "name": "Phoenix Pictures"
-            },
-            {
-                "id": 32,
-                "name": "Paramount"
-            },
-            {
-                "id": 29,
-                "name": "Appian Way"
-            },
-            {
-                "id": 18,
-                "name": "Sikelia Productions"
-            },
-            {
-                "id": 7,
-                "name": "Mandate International"
-            }
+            "Phoenix Pictures",
+            "Paramount",
+            "Appian Way",
+            "Sikelia Productions",
+            "Mandate International"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 2,
-                "name": "German"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "German"],
         "keywords": [
-            {
-                "id": 483,
-                "name": "island"
-            },
-            {
-                "id": 489,
-                "name": "based on novel or book"
-            },
-            {
-                "id": 378,
-                "name": "hurricane"
-            },
-            {
-                "id": 237,
-                "name": "investigation"
-            },
-            {
-                "id": 132,
-                "name": "u.s. marshal"
-            },
-            {
-                "id": 20,
-                "name": "conspiracy theory"
-            },
-            {
-                "id": 440,
-                "name": "psychiatric hospital"
-            },
-            {
-                "id": 407,
-                "name": "psychological thriller"
-            },
-            {
-                "id": 147,
-                "name": "whodunit"
-            },
-            {
-                "id": 420,
-                "name": "neo-noir"
-            },
-            {
-                "id": 362,
-                "name": "1950s"
-            }
+            "island",
+            "based on novel or book",
+            "hurricane",
+            "investigation",
+            "u.s. marshal",
+            "conspiracy theory",
+            "psychiatric hospital",
+            "psychological thriller",
+            "whodunit",
+            "neo-noir",
+            "1950s"
         ]
     },
     {
@@ -3093,143 +1086,38 @@
         "popularity": 97.444,
         "poster_path": "/34m2tygAYBGqA9MXKhRDtzYd4MR.jpg",
         "tagline": "Earn. Spend. Party.",
-        "genres": [
-            {
-                "id": 9,
-                "name": "Crime"
-            },
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 6,
-                "name": "Comedy"
-            }
-        ],
+        "genres": ["Crime", "Drama", "Comedy"],
         "production_companies": [
-            {
-                "id": 55,
-                "name": "EMJAG Productions"
-            },
-            {
-                "id": 19,
-                "name": "Red Granite Pictures"
-            },
-            {
-                "id": 29,
-                "name": "Appian Way"
-            },
-            {
-                "id": 18,
-                "name": "Sikelia Productions"
-            }
+            "EMJAG Productions",
+            "Red Granite Pictures",
+            "Appian Way",
+            "Sikelia Productions"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 1,
-                "name": "French"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "French"],
         "keywords": [
-            {
-                "id": 104,
-                "name": "corruption"
-            },
-            {
-                "id": 3,
-                "name": "drug addiction"
-            },
-            {
-                "id": 327,
-                "name": "anti hero"
-            },
-            {
-                "id": 410,
-                "name": "con man"
-            },
-            {
-                "id": 330,
-                "name": "fraud"
-            },
-            {
-                "id": 315,
-                "name": "wall street"
-            },
-            {
-                "id": 341,
-                "name": "based on true story"
-            },
-            {
-                "id": 511,
-                "name": "rise and fall"
-            },
-            {
-                "id": 293,
-                "name": "con artist"
-            },
-            {
-                "id": 361,
-                "name": "money"
-            },
-            {
-                "id": 158,
-                "name": "stockbroker"
-            },
-            {
-                "id": 427,
-                "name": "wealthy"
-            },
-            {
-                "id": 332,
-                "name": "drugs"
-            },
-            {
-                "id": 364,
-                "name": "stripping"
-            },
-            {
-                "id": 352,
-                "name": "hedonism"
-            },
-            {
-                "id": 196,
-                "name": "decadence"
-            },
-            {
-                "id": 520,
-                "name": "corrupt"
-            },
-            {
-                "id": 347,
-                "name": "1980s"
-            },
-            {
-                "id": 508,
-                "name": "sharemarket fraud"
-            },
-            {
-                "id": 415,
-                "name": "financial market"
-            },
-            {
-                "id": 371,
-                "name": "black monday"
-            },
-            {
-                "id": 381,
-                "name": "joyful"
-            }
+            "corruption",
+            "drug addiction",
+            "anti hero",
+            "con man",
+            "fraud",
+            "wall street",
+            "based on true story",
+            "rise and fall",
+            "con artist",
+            "money",
+            "stockbroker",
+            "wealthy",
+            "drugs",
+            "stripping",
+            "hedonism",
+            "decadence",
+            "corrupt",
+            "1980s",
+            "sharemarket fraud",
+            "financial market",
+            "black monday",
+            "joyful"
         ]
     },
     {
@@ -3252,75 +1140,20 @@
         "popularity": 96.565,
         "poster_path": "/4ssDuvEDkSArWEdyBl2X5EHvYKU.jpg",
         "tagline": "A new age has come.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 175,
-                "name": "artificial intelligence (a.i.)"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 397,
-                "name": "sequel"
-            },
-            {
-                "id": 363,
-                "name": "superhero team"
-            },
-            {
-                "id": 342,
-                "name": "duringcreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            },
-            {
-                "id": 338,
-                "name": "fictitious country"
-            },
-            {
-                "id": 329,
-                "name": "evil robot"
-            }
+            "artificial intelligence (a.i.)",
+            "superhero",
+            "based on comic",
+            "sequel",
+            "superhero team",
+            "duringcreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "fictitious country",
+            "evil robot"
         ]
     },
     {
@@ -3343,83 +1176,19 @@
         "popularity": 70.741,
         "poster_path": "/rAGiXaUfPzY7CDEyNKUofk3Kw2e.jpg",
         "tagline": "United we stand. Divided we fall.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 14,
-                "name": "Romanian"
-            },
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 2,
-                "name": "German"
-            },
-            {
-                "id": 12,
-                "name": "Russian"
-            }
-        ],
+        "genres": ["Adventure", "Action", "Science Fiction"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["Romanian", "English", "German", "Russian"],
         "keywords": [
-            {
-                "id": 123,
-                "name": "civil war"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 397,
-                "name": "sequel"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 342,
-                "name": "duringcreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            },
-            {
-                "id": 274,
-                "name": "excited"
-            }
+            "civil war",
+            "superhero",
+            "based on comic",
+            "sequel",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "excited"
         ]
     },
     {
@@ -3442,131 +1211,35 @@
         "popularity": 76.914,
         "poster_path": "/hr0L2aueqlP2BYUblTTjmtn0hw4.jpg",
         "tagline": "The Legend Ends",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 9,
-                "name": "Crime"
-            },
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 10,
-                "name": "Thriller"
-            }
-        ],
+        "genres": ["Action", "Crime", "Drama", "Thriller"],
         "production_companies": [
-            {
-                "id": 24,
-                "name": "Syncopy"
-            },
-            {
-                "id": 62,
-                "name": "Legendary Pictures"
-            },
-            {
-                "id": 41,
-                "name": "DC Entertainment"
-            },
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            }
+            "Syncopy",
+            "Legendary Pictures",
+            "DC Entertainment",
+            "Warner Bros. Pictures"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 349,
-                "name": "fight"
-            },
-            {
-                "id": 478,
-                "name": "burglar"
-            },
-            {
-                "id": 418,
-                "name": "hostage"
-            },
-            {
-                "id": 476,
-                "name": "secret identity"
-            },
-            {
-                "id": 160,
-                "name": "crime fighter"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 445,
-                "name": "villainess"
-            },
-            {
-                "id": 170,
-                "name": "time bomb"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 294,
-                "name": "cover-up"
-            },
-            {
-                "id": 297,
-                "name": "vigilante"
-            },
-            {
-                "id": 475,
-                "name": "tragic hero"
-            },
-            {
-                "id": 130,
-                "name": "mobile"
-            },
-            {
-                "id": 461,
-                "name": "terrorism"
-            },
-            {
-                "id": 173,
-                "name": "destruction"
-            },
-            {
-                "id": 219,
-                "name": "fighting"
-            },
-            {
-                "id": 279,
-                "name": "criminal underworld"
-            },
-            {
-                "id": 79,
-                "name": "cat burglar"
-            },
-            {
-                "id": 185,
-                "name": "flood"
-            }
+            "fight",
+            "burglar",
+            "hostage",
+            "secret identity",
+            "crime fighter",
+            "superhero",
+            "villainess",
+            "time bomb",
+            "based on comic",
+            "cover-up",
+            "vigilante",
+            "tragic hero",
+            "mobile",
+            "terrorism",
+            "destruction",
+            "fighting",
+            "criminal underworld",
+            "cat burglar",
+            "flood"
         ]
     },
     {
@@ -3589,83 +1262,22 @@
         "popularity": 61.06,
         "poster_path": "/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg",
         "tagline": "Unleash the power behind the armor.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 320,
-                "name": "california"
-            },
-            {
-                "id": 201,
-                "name": "war on terror"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 242,
-                "name": "malibu"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 370,
-                "name": "tennessee"
-            },
-            {
-                "id": 487,
-                "name": "billionaire"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            },
-            {
-                "id": 504,
-                "name": "christmas"
-            },
-            {
-                "id": 357,
-                "name": "america"
-            }
+            "california",
+            "war on terror",
+            "superhero",
+            "malibu",
+            "based on comic",
+            "tennessee",
+            "billionaire",
+            "aftercreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "christmas",
+            "america"
         ]
     },
     {
@@ -3688,75 +1300,17 @@
         "popularity": 43.665,
         "poster_path": "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
         "tagline": "Long live the king.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 6,
-                "name": "Korean"
-            },
-            {
-                "id": 0,
-                "name": "Swahili"
-            },
-            {
-                "id": 13,
-                "name": "Xhosa"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Korean", "Swahili", "Xhosa"],
         "keywords": [
-            {
-                "id": 498,
-                "name": "africa"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 342,
-                "name": "duringcreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            }
+            "africa",
+            "superhero",
+            "based on comic",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "marvel cinematic universe (mcu)"
         ]
     },
     {
@@ -3779,87 +1333,23 @@
         "popularity": 70.535,
         "poster_path": "/uGBVj3bEbCoZbDjjl9wTxcygko1.jpg",
         "tagline": "The impossibilities are endless.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Fantasy"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 298,
-                "name": "magic"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 199,
-                "name": "training"
-            },
-            {
-                "id": 253,
-                "name": "time"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 278,
-                "name": "sorcerer"
-            },
-            {
-                "id": 89,
-                "name": "doctor"
-            },
-            {
-                "id": 295,
-                "name": "neurosurgeon"
-            },
-            {
-                "id": 401,
-                "name": "wizard"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 342,
-                "name": "duringcreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            }
+            "magic",
+            "superhero",
+            "training",
+            "time",
+            "based on comic",
+            "sorcerer",
+            "doctor",
+            "neurosurgeon",
+            "wizard",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "marvel cinematic universe (mcu)"
         ]
     },
     {
@@ -3882,107 +1372,32 @@
         "popularity": 78.319,
         "poster_path": "/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg",
         "tagline": "What a Lovely Day.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Science Fiction"],
         "production_companies": [
-            {
-                "id": 33,
-                "name": "Kennedy Miller Productions"
-            },
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            },
-            {
-                "id": 48,
-                "name": "RatPac Entertainment"
-            },
-            {
-                "id": 54,
-                "name": "Village Roadshow Pictures"
-            }
+            "Kennedy Miller Productions",
+            "Warner Bros. Pictures",
+            "RatPac Entertainment",
+            "Village Roadshow Pictures"
         ],
         "production_countries": [
-            {
-                "id": 5,
-                "name": "Australia"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            },
-            {
-                "id": 2,
-                "name": "South Africa"
-            }
+            "Australia",
+            "United States of America",
+            "South Africa"
         ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 12,
-                "name": "rescue"
-            },
-            {
-                "id": 405,
-                "name": "future"
-            },
-            {
-                "id": 41,
-                "name": "australia"
-            },
-            {
-                "id": 458,
-                "name": "chase"
-            },
-            {
-                "id": 44,
-                "name": "dystopia"
-            },
-            {
-                "id": 228,
-                "name": "post-apocalyptic future"
-            },
-            {
-                "id": 256,
-                "name": "survival"
-            },
-            {
-                "id": 289,
-                "name": "on the run"
-            },
-            {
-                "id": 83,
-                "name": "on the road"
-            },
-            {
-                "id": 197,
-                "name": "convoy"
-            },
-            {
-                "id": 213,
-                "name": "peak oil"
-            },
-            {
-                "id": 288,
-                "name": "dark future"
-            }
+            "rescue",
+            "future",
+            "australia",
+            "chase",
+            "dystopia",
+            "post-apocalyptic future",
+            "survival",
+            "on the run",
+            "on the road",
+            "convoy",
+            "peak oil",
+            "dark future"
         ]
     },
     {
@@ -4005,147 +1420,39 @@
         "popularity": 59.162,
         "poster_path": "/7sfbEnaARXDDhKm0CZ7D7uc2sbo.jpg",
         "tagline": "Once upon a time in Nazi occupied France...",
-        "genres": [
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 10,
-                "name": "Thriller"
-            },
-            {
-                "id": 4,
-                "name": "War"
-            }
-        ],
+        "genres": ["Drama", "Thriller", "War"],
         "production_companies": [
-            {
-                "id": 20,
-                "name": "The Weinstein Company"
-            },
-            {
-                "id": 11,
-                "name": "Universal Pictures"
-            },
-            {
-                "id": 58,
-                "name": "A Band Apart"
-            },
-            {
-                "id": 26,
-                "name": "Zehnte Babelsberg Film"
-            },
-            {
-                "id": 5,
-                "name": "Visiona Romantica"
-            },
-            {
-                "id": 65,
-                "name": "Peninsula Films"
-            }
+            "The Weinstein Company",
+            "Universal Pictures",
+            "A Band Apart",
+            "Zehnte Babelsberg Film",
+            "Visiona Romantica",
+            "Peninsula Films"
         ],
         "production_countries": [
-            {
-                "id": 6,
-                "name": "France"
-            },
-            {
-                "id": 4,
-                "name": "Germany"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
+            "France",
+            "Germany",
+            "United States of America"
         ],
-        "spoken_languages": [
-            {
-                "id": 2,
-                "name": "German"
-            },
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 1,
-                "name": "French"
-            },
-            {
-                "id": 4,
-                "name": "Italian"
-            }
-        ],
+        "spoken_languages": ["German", "English", "French", "Italian"],
         "keywords": [
-            {
-                "id": 442,
-                "name": "guerrilla warfare"
-            },
-            {
-                "id": 56,
-                "name": "swastika"
-            },
-            {
-                "id": 100,
-                "name": "paris"
-            },
-            {
-                "id": 403,
-                "name": "france"
-            },
-            {
-                "id": 486,
-                "name": "nazi"
-            },
-            {
-                "id": 91,
-                "name": "self sacrifice"
-            },
-            {
-                "id": 66,
-                "name": "sadism"
-            },
-            {
-                "id": 22,
-                "name": "dynamite"
-            },
-            {
-                "id": 365,
-                "name": "mexican standoff"
-            },
-            {
-                "id": 54,
-                "name": "world war ii"
-            },
-            {
-                "id": 432,
-                "name": "jew persecution"
-            },
-            {
-                "id": 72,
-                "name": "masochism"
-            },
-            {
-                "id": 409,
-                "name": "anti-semitism"
-            },
-            {
-                "id": 307,
-                "name": "german occupation of france"
-            },
-            {
-                "id": 8,
-                "name": "british politics"
-            },
-            {
-                "id": 220,
-                "name": "revisionist history"
-            },
-            {
-                "id": 215,
-                "name": "adolf hitler"
-            }
+            "guerrilla warfare",
+            "swastika",
+            "paris",
+            "france",
+            "nazi",
+            "self sacrifice",
+            "sadism",
+            "dynamite",
+            "mexican standoff",
+            "world war ii",
+            "jew persecution",
+            "masochism",
+            "anti-semitism",
+            "german occupation of france",
+            "british politics",
+            "revisionist history",
+            "adolf hitler"
         ]
     },
     {
@@ -4168,83 +1475,21 @@
         "popularity": 29.577,
         "poster_path": "/yXCbOiVDCxO71zI7cuwBRXdftq8.jpg",
         "tagline": "May The Odds Be Ever In Your Favor.",
-        "genres": [
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 49,
-                "name": "Lionsgate"
-            },
-            {
-                "id": 14,
-                "name": "Color Force"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Science Fiction", "Adventure", "Fantasy"],
+        "production_companies": ["Lionsgate", "Color Force"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 489,
-                "name": "based on novel or book"
-            },
-            {
-                "id": 379,
-                "name": "revolution"
-            },
-            {
-                "id": 44,
-                "name": "dystopia"
-            },
-            {
-                "id": 447,
-                "name": "female protagonist"
-            },
-            {
-                "id": 344,
-                "name": "bow and arrow"
-            },
-            {
-                "id": 229,
-                "name": "game"
-            },
-            {
-                "id": 234,
-                "name": "archery"
-            },
-            {
-                "id": 0,
-                "name": "death match"
-            },
-            {
-                "id": 471,
-                "name": "forced to kill"
-            },
-            {
-                "id": 116,
-                "name": "based on young adult novel"
-            }
+            "based on novel or book",
+            "revolution",
+            "dystopia",
+            "female protagonist",
+            "bow and arrow",
+            "game",
+            "archery",
+            "death match",
+            "forced to kill",
+            "based on young adult novel"
         ]
     },
     {
@@ -4267,91 +1512,25 @@
         "popularity": 65.88,
         "poster_path": "/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
         "tagline": "Homework can wait. The city can't.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            },
-            {
-                "id": 0,
-                "name": "Drama"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Science Fiction", "Drama"],
         "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            },
-            {
-                "id": 1,
-                "name": "Pascal Pictures"
-            },
-            {
-                "id": 15,
-                "name": "LStar Capital"
-            },
-            {
-                "id": 22,
-                "name": "Columbia Pictures"
-            }
+            "Marvel Studios",
+            "Pascal Pictures",
+            "LStar Capital",
+            "Columbia Pictures"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 187,
-                "name": "high school"
-            },
-            {
-                "id": 248,
-                "name": "new york city"
-            },
-            {
-                "id": 441,
-                "name": "washington dc"
-            },
-            {
-                "id": 257,
-                "name": "usa"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 28,
-                "name": "reboot"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            }
+            "high school",
+            "new york city",
+            "washington dc",
+            "usa",
+            "superhero",
+            "based on comic",
+            "reboot",
+            "aftercreditsstinger",
+            "marvel cinematic universe (mcu)"
         ]
     },
     {
@@ -4374,115 +1553,32 @@
         "popularity": 121.699,
         "poster_path": "/sdEOH0992YZ0QSxgXNIGLq1ToUi.jpg",
         "tagline": "Hogwarts is back in session.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            }
-        ],
+        "genres": ["Adventure", "Fantasy"],
         "production_companies": [
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            },
-            {
-                "id": 10,
-                "name": "Heyday Films"
-            },
-            {
-                "id": 57,
-                "name": "1492 Pictures"
-            }
+            "Warner Bros. Pictures",
+            "Heyday Films",
+            "1492 Pictures"
         ],
-        "production_countries": [
-            {
-                "id": 3,
-                "name": "United Kingdom"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 218,
-                "name": "witch"
-            },
-            {
-                "id": 136,
-                "name": "flying car"
-            },
-            {
-                "id": 284,
-                "name": "elves"
-            },
-            {
-                "id": 298,
-                "name": "magic"
-            },
-            {
-                "id": 78,
-                "name": "sword"
-            },
-            {
-                "id": 200,
-                "name": "diary"
-            },
-            {
-                "id": 133,
-                "name": "child hero"
-            },
-            {
-                "id": 333,
-                "name": "school of witchcraft"
-            },
-            {
-                "id": 204,
-                "name": "giant spider"
-            },
-            {
-                "id": 114,
-                "name": "black magic"
-            },
-            {
-                "id": 94,
-                "name": "giant snake"
-            },
-            {
-                "id": 145,
-                "name": "child driving car"
-            },
-            {
-                "id": 401,
-                "name": "wizard"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 504,
-                "name": "christmas"
-            },
-            {
-                "id": 116,
-                "name": "based on young adult novel"
-            },
-            {
-                "id": 180,
-                "name": "wizarding world"
-            }
+            "witch",
+            "flying car",
+            "elves",
+            "magic",
+            "sword",
+            "diary",
+            "child hero",
+            "school of witchcraft",
+            "giant spider",
+            "black magic",
+            "giant snake",
+            "child driving car",
+            "wizard",
+            "aftercreditsstinger",
+            "christmas",
+            "based on young adult novel",
+            "wizarding world"
         ]
     },
     {
@@ -4505,71 +1601,19 @@
         "popularity": 67.553,
         "poster_path": "/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg",
         "tagline": "Obviously.",
-        "genres": [
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Science Fiction", "Adventure", "Action"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 397,
-                "name": "sequel"
-            },
-            {
-                "id": 380,
-                "name": "misfit"
-            },
-            {
-                "id": 169,
-                "name": "space"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 342,
-                "name": "duringcreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            }
+            "superhero",
+            "based on comic",
+            "sequel",
+            "misfit",
+            "space",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "marvel cinematic universe (mcu)"
         ]
     },
     {
@@ -4592,135 +1636,36 @@
         "popularity": 78.73,
         "poster_path": "/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg",
         "tagline": "A New Power Is Rising.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            }
-        ],
+        "genres": ["Adventure", "Fantasy", "Action"],
         "production_companies": [
-            {
-                "id": 35,
-                "name": "New Line Cinema"
-            },
-            {
-                "id": 46,
-                "name": "WingNut Films"
-            },
-            {
-                "id": 17,
-                "name": "The Saul Zaentz Company"
-            }
+            "New Line Cinema",
+            "WingNut Films",
+            "The Saul Zaentz Company"
         ],
-        "production_countries": [
-            {
-                "id": 0,
-                "name": "New Zealand"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["New Zealand", "United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 373,
-                "name": "mission"
-            },
-            {
-                "id": 515,
-                "name": "army"
-            },
-            {
-                "id": 489,
-                "name": "based on novel or book"
-            },
-            {
-                "id": 207,
-                "name": "funeral"
-            },
-            {
-                "id": 446,
-                "name": "orcs"
-            },
-            {
-                "id": 284,
-                "name": "elves"
-            },
-            {
-                "id": 488,
-                "name": "dwarf"
-            },
-            {
-                "id": 45,
-                "name": "explosive"
-            },
-            {
-                "id": 479,
-                "name": "fort"
-            },
-            {
-                "id": 182,
-                "name": "cave"
-            },
-            {
-                "id": 281,
-                "name": "siege"
-            },
-            {
-                "id": 399,
-                "name": "addiction"
-            },
-            {
-                "id": 304,
-                "name": "attack"
-            },
-            {
-                "id": 118,
-                "name": "dragon"
-            },
-            {
-                "id": 376,
-                "name": "guide"
-            },
-            {
-                "id": 355,
-                "name": "death"
-            },
-            {
-                "id": 148,
-                "name": "split personality"
-            },
-            {
-                "id": 401,
-                "name": "wizard"
-            },
-            {
-                "id": 384,
-                "name": "ring"
-            },
-            {
-                "id": 286,
-                "name": "live action and animation"
-            },
-            {
-                "id": 404,
-                "name": "sword and sorcery"
-            }
+            "mission",
+            "army",
+            "based on novel or book",
+            "funeral",
+            "orcs",
+            "elves",
+            "dwarf",
+            "explosive",
+            "fort",
+            "cave",
+            "siege",
+            "addiction",
+            "attack",
+            "dragon",
+            "guide",
+            "death",
+            "split personality",
+            "wizard",
+            "ring",
+            "live action and animation",
+            "sword and sorcery"
         ]
     },
     {
@@ -4743,111 +1688,27 @@
         "popularity": 43.665,
         "poster_path": "/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg",
         "tagline": "When patriots become heroes",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 1,
-                "name": "French"
-            },
-            {
-                "id": 15,
-                "name": "Norwegian"
-            },
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["French", "Norwegian", "English"],
         "keywords": [
-            {
-                "id": 248,
-                "name": "new york city"
-            },
-            {
-                "id": 486,
-                "name": "nazi"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 54,
-                "name": "world war ii"
-            },
-            {
-                "id": 87,
-                "name": "heroism"
-            },
-            {
-                "id": 121,
-                "name": "shield"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 109,
-                "name": "super soldier"
-            },
-            {
-                "id": 178,
-                "name": "period drama"
-            },
-            {
-                "id": 310,
-                "name": "brooklyn"
-            },
-            {
-                "id": 248,
-                "name": "new york city"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            },
-            {
-                "id": 306,
-                "name": "origin story"
-            },
-            {
-                "id": 55,
-                "name": "soldiers"
-            },
-            {
-                "id": 40,
-                "name": "war"
-            }
+            "new york city",
+            "nazi",
+            "superhero",
+            "world war ii",
+            "heroism",
+            "shield",
+            "based on comic",
+            "super soldier",
+            "period drama",
+            "brooklyn",
+            "new york city",
+            "aftercreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "origin story",
+            "soldiers",
+            "war"
         ]
     },
     {
@@ -4870,95 +1731,25 @@
         "popularity": 35.356,
         "poster_path": "/xFw9RXKZDvevAGocgBK0zteto4U.jpg",
         "tagline": "Worst. Heroes. Ever.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Fantasy"],
         "production_companies": [
-            {
-                "id": 41,
-                "name": "DC Entertainment"
-            },
-            {
-                "id": 42,
-                "name": "Dune Entertainment"
-            },
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            },
-            {
-                "id": 60,
-                "name": "Atlas Entertainment"
-            },
-            {
-                "id": 59,
-                "name": "DC Comics"
-            },
-            {
-                "id": 6,
-                "name": "DC Films"
-            },
-            {
-                "id": 66,
-                "name": "Lin Pictures"
-            }
+            "DC Entertainment",
+            "Dune Entertainment",
+            "Warner Bros. Pictures",
+            "Atlas Entertainment",
+            "DC Comics",
+            "DC Films",
+            "Lin Pictures"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 5,
-                "name": "Japanese"
-            },
-            {
-                "id": 11,
-                "name": "Spanish"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Japanese", "Spanish"],
         "keywords": [
-            {
-                "id": 92,
-                "name": "secret mission"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 327,
-                "name": "anti hero"
-            },
-            {
-                "id": 155,
-                "name": "villain"
-            },
-            {
-                "id": 481,
-                "name": "supervillain"
-            },
-            {
-                "id": 264,
-                "name": "dc extended universe (dceu)"
-            }
+            "secret mission",
+            "superhero",
+            "anti hero",
+            "villain",
+            "supervillain",
+            "dc extended universe (dceu)"
         ]
     },
     {
@@ -4981,151 +1772,41 @@
         "popularity": 124.386,
         "poster_path": "/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg",
         "tagline": "Something wicked this way comes.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            }
-        ],
+        "genres": ["Adventure", "Fantasy"],
         "production_companies": [
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            },
-            {
-                "id": 57,
-                "name": "1492 Pictures"
-            },
-            {
-                "id": 10,
-                "name": "Heyday Films"
-            },
-            {
-                "id": 25,
-                "name": "P of A Productions Limited"
-            }
+            "Warner Bros. Pictures",
+            "1492 Pictures",
+            "Heyday Films",
+            "P of A Productions Limited"
         ],
-        "production_countries": [
-            {
-                "id": 3,
-                "name": "United Kingdom"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 218,
-                "name": "witch"
-            },
-            {
-                "id": 485,
-                "name": "school friend"
-            },
-            {
-                "id": 499,
-                "name": "friendship"
-            },
-            {
-                "id": 190,
-                "name": "flying"
-            },
-            {
-                "id": 298,
-                "name": "magic"
-            },
-            {
-                "id": 450,
-                "name": "bus"
-            },
-            {
-                "id": 71,
-                "name": "traitor"
-            },
-            {
-                "id": 133,
-                "name": "child hero"
-            },
-            {
-                "id": 333,
-                "name": "school of witchcraft"
-            },
-            {
-                "id": 114,
-                "name": "black magic"
-            },
-            {
-                "id": 261,
-                "name": "time travel"
-            },
-            {
-                "id": 96,
-                "name": "school"
-            },
-            {
-                "id": 30,
-                "name": "best friend"
-            },
-            {
-                "id": 467,
-                "name": "werewolf"
-            },
-            {
-                "id": 241,
-                "name": "muggle"
-            },
-            {
-                "id": 401,
-                "name": "wizard"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 191,
-                "name": "magical creature"
-            },
-            {
-                "id": 62,
-                "name": "night bus"
-            },
-            {
-                "id": 411,
-                "name": "teenage life"
-            },
-            {
-                "id": 504,
-                "name": "christmas"
-            },
-            {
-                "id": 518,
-                "name": "school class"
-            },
-            {
-                "id": 116,
-                "name": "based on young adult novel"
-            },
-            {
-                "id": 292,
-                "name": "magic spell"
-            },
-            {
-                "id": 180,
-                "name": "wizarding world"
-            }
+            "witch",
+            "school friend",
+            "friendship",
+            "flying",
+            "magic",
+            "bus",
+            "traitor",
+            "child hero",
+            "school of witchcraft",
+            "black magic",
+            "time travel",
+            "school",
+            "best friend",
+            "werewolf",
+            "muggle",
+            "wizard",
+            "aftercreditsstinger",
+            "magical creature",
+            "night bus",
+            "teenage life",
+            "christmas",
+            "school class",
+            "based on young adult novel",
+            "magic spell",
+            "wizarding world"
         ]
     },
     {
@@ -5148,87 +1829,23 @@
         "popularity": 51.277,
         "poster_path": "/prSfAi1xGrhLQNxVSUFh61xQ4Qy.jpg",
         "tagline": "Two worlds. One hero.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Adventure", "Fantasy", "Action"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 208,
-                "name": "new mexico"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 522,
-                "name": "redemption"
-            },
-            {
-                "id": 194,
-                "name": "banishment"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 494,
-                "name": "brother against brother"
-            },
-            {
-                "id": 435,
-                "name": "norse mythology"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            },
-            {
-                "id": 127,
-                "name": "worlds collide"
-            },
-            {
-                "id": 509,
-                "name": "god of thunder"
-            },
-            {
-                "id": 491,
-                "name": "fantasy"
-            }
+            "new mexico",
+            "superhero",
+            "redemption",
+            "banishment",
+            "based on comic",
+            "brother against brother",
+            "norse mythology",
+            "aftercreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "worlds collide",
+            "god of thunder",
+            "fantasy"
         ]
     },
     {
@@ -5251,83 +1868,19 @@
         "popularity": 84.445,
         "poster_path": "/6WBeq4fCfn7AN0o21W9qNcRF2l9.jpg",
         "tagline": "It's not the armor that makes the hero, but the man inside.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            },
-            {
-                "id": 2,
-                "name": "Fairview Entertainment"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 12,
-                "name": "Russian"
-            },
-            {
-                "id": 1,
-                "name": "French"
-            }
-        ],
+        "genres": ["Adventure", "Action", "Science Fiction"],
+        "production_companies": ["Marvel Studios", "Fairview Entertainment"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Russian", "French"],
         "keywords": [
-            {
-                "id": 50,
-                "name": "technology"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 242,
-                "name": "malibu"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 313,
-                "name": "revenge"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            },
-            {
-                "id": 451,
-                "name": "break out"
-            }
+            "technology",
+            "superhero",
+            "malibu",
+            "based on comic",
+            "revenge",
+            "aftercreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "break out"
         ]
     },
     {
@@ -5350,131 +1903,33 @@
         "popularity": 66.286,
         "poster_path": "/4MpN4kIEqUjW8OPtOQJXlTdHiJV.jpg",
         "tagline": "Evil fears the knight.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 9,
-                "name": "Crime"
-            },
-            {
-                "id": 0,
-                "name": "Drama"
-            }
-        ],
+        "genres": ["Action", "Crime", "Drama"],
         "production_companies": [
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            },
-            {
-                "id": 59,
-                "name": "DC Comics"
-            },
-            {
-                "id": 24,
-                "name": "Syncopy"
-            },
-            {
-                "id": 62,
-                "name": "Legendary Pictures"
-            },
-            {
-                "id": 51,
-                "name": "Patalex III Productions Limited"
-            }
+            "Warner Bros. Pictures",
+            "DC Comics",
+            "Syncopy",
+            "Legendary Pictures",
+            "Patalex III Productions Limited"
         ],
-        "production_countries": [
-            {
-                "id": 3,
-                "name": "United Kingdom"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 8,
-                "name": "Urdu"
-            },
-            {
-                "id": 10,
-                "name": "Mandarin"
-            }
-        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English", "Urdu", "Mandarin"],
         "keywords": [
-            {
-                "id": 5,
-                "name": "martial arts"
-            },
-            {
-                "id": 159,
-                "name": "undercover"
-            },
-            {
-                "id": 340,
-                "name": "loss of loved one"
-            },
-            {
-                "id": 476,
-                "name": "secret identity"
-            },
-            {
-                "id": 160,
-                "name": "crime fighter"
-            },
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 369,
-                "name": "rivalry"
-            },
-            {
-                "id": 302,
-                "name": "ninja"
-            },
-            {
-                "id": 297,
-                "name": "vigilante"
-            },
-            {
-                "id": 475,
-                "name": "tragic hero"
-            },
-            {
-                "id": 86,
-                "name": "super power"
-            },
-            {
-                "id": 112,
-                "name": "haunted by the past"
-            },
-            {
-                "id": 250,
-                "name": "evil doctor"
-            },
-            {
-                "id": 171,
-                "name": "master villain"
-            },
-            {
-                "id": 9,
-                "name": "unfulfilled love"
-            }
+            "martial arts",
+            "undercover",
+            "loss of loved one",
+            "secret identity",
+            "crime fighter",
+            "superhero",
+            "based on comic",
+            "rivalry",
+            "ninja",
+            "vigilante",
+            "tragic hero",
+            "super power",
+            "haunted by the past",
+            "evil doctor",
+            "master villain",
+            "unfulfilled love"
         ]
     },
     {
@@ -5497,83 +1952,22 @@
         "popularity": 45.2,
         "poster_path": "/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
         "tagline": "No hammer. No problem.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 44,
-                "name": "Marvel Studios"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "production_companies": ["Marvel Studios"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 291,
-                "name": "superhero"
-            },
-            {
-                "id": 455,
-                "name": "based on comic"
-            },
-            {
-                "id": 397,
-                "name": "sequel"
-            },
-            {
-                "id": 85,
-                "name": "alien planet"
-            },
-            {
-                "id": 235,
-                "name": "female villain"
-            },
-            {
-                "id": 435,
-                "name": "norse mythology"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 342,
-                "name": "duringcreditsstinger"
-            },
-            {
-                "id": 1,
-                "name": "marvel cinematic universe (mcu)"
-            },
-            {
-                "id": 26,
-                "name": "norse god"
-            },
-            {
-                "id": 192,
-                "name": "loki"
-            }
+            "superhero",
+            "based on comic",
+            "sequel",
+            "alien planet",
+            "female villain",
+            "norse mythology",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "norse god",
+            "loki"
         ]
     },
     {
@@ -5596,115 +1990,27 @@
         "popularity": 107.292,
         "poster_path": "/2H1TmgdfNtsKlU9jKdeNyYL5y8T.jpg",
         "tagline": "Meet the little voices inside your head.",
-        "genres": [
-            {
-                "id": 3,
-                "name": "Animation"
-            },
-            {
-                "id": 11,
-                "name": "Family"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 0,
-                "name": "Drama"
-            },
-            {
-                "id": 6,
-                "name": "Comedy"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 28,
-                "name": "Pixar"
-            },
-            {
-                "id": 4,
-                "name": "Walt Disney Pictures"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Animation", "Family", "Adventure", "Drama", "Comedy"],
+        "production_companies": ["Pixar", "Walt Disney Pictures"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 224,
-                "name": "dream"
-            },
-            {
-                "id": 422,
-                "name": "san francisco"
-            },
-            {
-                "id": 320,
-                "name": "california"
-            },
-            {
-                "id": 468,
-                "name": "minnesota"
-            },
-            {
-                "id": 322,
-                "name": "sadness"
-            },
-            {
-                "id": 122,
-                "name": "cartoon"
-            },
-            {
-                "id": 216,
-                "name": "ice hockey"
-            },
-            {
-                "id": 417,
-                "name": "imaginary friend"
-            },
-            {
-                "id": 393,
-                "name": "elementary school"
-            },
-            {
-                "id": 144,
-                "name": "family relationships"
-            },
-            {
-                "id": 412,
-                "name": "memory"
-            },
-            {
-                "id": 456,
-                "name": "family"
-            },
-            {
-                "id": 37,
-                "name": "unicorn"
-            },
-            {
-                "id": 416,
-                "name": "running away"
-            },
-            {
-                "id": 342,
-                "name": "duringcreditsstinger"
-            },
-            {
-                "id": 317,
-                "name": "emotions"
-            }
+            "dream",
+            "san francisco",
+            "california",
+            "minnesota",
+            "sadness",
+            "cartoon",
+            "ice hockey",
+            "imaginary friend",
+            "elementary school",
+            "family relationships",
+            "memory",
+            "family",
+            "unicorn",
+            "running away",
+            "duringcreditsstinger",
+            "emotions"
         ]
     },
     {
@@ -5727,115 +2033,28 @@
         "popularity": 54.089,
         "poster_path": "/A0LZHXUzo5C60Oahvt7VxvwuzHw.jpg",
         "tagline": "The park is open.",
-        "genres": [
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            },
-            {
-                "id": 10,
-                "name": "Thriller"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 9,
-                "name": "Amblin Entertainment"
-            },
-            {
-                "id": 11,
-                "name": "Universal Pictures"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Action", "Adventure", "Science Fiction", "Thriller"],
+        "production_companies": ["Amblin Entertainment", "Universal Pictures"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 483,
-                "name": "island"
-            },
-            {
-                "id": 426,
-                "name": "primal fear"
-            },
-            {
-                "id": 470,
-                "name": "escape"
-            },
-            {
-                "id": 230,
-                "name": "velociraptor"
-            },
-            {
-                "id": 210,
-                "name": "dna"
-            },
-            {
-                "id": 305,
-                "name": "tyrannosaurus rex"
-            },
-            {
-                "id": 434,
-                "name": "animal attack"
-            },
-            {
-                "id": 397,
-                "name": "sequel"
-            },
-            {
-                "id": 34,
-                "name": "dinosaur"
-            },
-            {
-                "id": 382,
-                "name": "creature"
-            },
-            {
-                "id": 283,
-                "name": "park"
-            },
-            {
-                "id": 238,
-                "name": "amusement park"
-            },
-            {
-                "id": 188,
-                "name": "theme park"
-            },
-            {
-                "id": 143,
-                "name": "genetic engineering"
-            },
-            {
-                "id": 391,
-                "name": "raptor"
-            },
-            {
-                "id": 273,
-                "name": "animal horror"
-            },
-            {
-                "id": 303,
-                "name": "mosasaurus"
-            }
+            "island",
+            "primal fear",
+            "escape",
+            "velociraptor",
+            "dna",
+            "tyrannosaurus rex",
+            "animal attack",
+            "sequel",
+            "dinosaur",
+            "creature",
+            "park",
+            "amusement park",
+            "theme park",
+            "genetic engineering",
+            "raptor",
+            "animal horror",
+            "mosasaurus"
         ]
     },
     {
@@ -5858,131 +2077,36 @@
         "popularity": 53.521,
         "poster_path": "/6yoghtyTpznpBik8EngEmJskVUO.jpg",
         "tagline": "Seven deadly sins. Seven ways to die.",
-        "genres": [
-            {
-                "id": 9,
-                "name": "Crime"
-            },
-            {
-                "id": 13,
-                "name": "Mystery"
-            },
-            {
-                "id": 10,
-                "name": "Thriller"
-            }
-        ],
+        "genres": ["Crime", "Mystery", "Thriller"],
         "production_companies": [
-            {
-                "id": 35,
-                "name": "New Line Cinema"
-            },
-            {
-                "id": 13,
-                "name": "Juno Pix"
-            },
-            {
-                "id": 37,
-                "name": "Cecchi Gori Pictures"
-            }
+            "New Line Cinema",
+            "Juno Pix",
+            "Cecchi Gori Pictures"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 174,
-                "name": "drug dealer"
-            },
-            {
-                "id": 154,
-                "name": "rage and hate"
-            },
-            {
-                "id": 128,
-                "name": "police"
-            },
-            {
-                "id": 90,
-                "name": "s.w.a.t."
-            },
-            {
-                "id": 66,
-                "name": "sadism"
-            },
-            {
-                "id": 14,
-                "name": "self-fulfilling prophecy"
-            },
-            {
-                "id": 67,
-                "name": "psychopath"
-            },
-            {
-                "id": 119,
-                "name": "detective"
-            },
-            {
-                "id": 29,
-                "name": "rain"
-            },
-            {
-                "id": 237,
-                "name": "investigation"
-            },
-            {
-                "id": 482,
-                "name": "pension"
-            },
-            {
-                "id": 53,
-                "name": "evisceration"
-            },
-            {
-                "id": 21,
-                "name": "pride and vanity"
-            },
-            {
-                "id": 74,
-                "name": "immoderateness"
-            },
-            {
-                "id": 202,
-                "name": "insomnia"
-            },
-            {
-                "id": 25,
-                "name": "murder"
-            },
-            {
-                "id": 15,
-                "name": "serial killer"
-            },
-            {
-                "id": 386,
-                "name": "religion"
-            },
-            {
-                "id": 473,
-                "name": "seven deadly sins"
-            },
-            {
-                "id": 323,
-                "name": "depravity"
-            },
-            {
-                "id": 420,
-                "name": "neo-noir"
-            }
+            "drug dealer",
+            "rage and hate",
+            "police",
+            "s.w.a.t.",
+            "sadism",
+            "self-fulfilling prophecy",
+            "psychopath",
+            "detective",
+            "rain",
+            "investigation",
+            "pension",
+            "evisceration",
+            "pride and vanity",
+            "immoderateness",
+            "insomnia",
+            "murder",
+            "serial killer",
+            "religion",
+            "seven deadly sins",
+            "depravity",
+            "neo-noir"
         ]
     },
     {
@@ -6005,131 +2129,35 @@
         "popularity": 134.276,
         "poster_path": "/fECBtHlr0RB3foNHDiCBXeg9Bv9.jpg",
         "tagline": "Dark And Difficult Times Lie Ahead.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            }
-        ],
+        "genres": ["Adventure", "Fantasy"],
         "production_companies": [
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            },
-            {
-                "id": 10,
-                "name": "Heyday Films"
-            },
-            {
-                "id": 8,
-                "name": "Patalex IV Productions Limited"
-            }
+            "Warner Bros. Pictures",
+            "Heyday Films",
+            "Patalex IV Productions Limited"
         ],
-        "production_countries": [
-            {
-                "id": 3,
-                "name": "United Kingdom"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            },
-            {
-                "id": 1,
-                "name": "French"
-            }
-        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English", "French"],
         "keywords": [
-            {
-                "id": 218,
-                "name": "witch"
-            },
-            {
-                "id": 408,
-                "name": "dying and death"
-            },
-            {
-                "id": 489,
-                "name": "based on novel or book"
-            },
-            {
-                "id": 298,
-                "name": "magic"
-            },
-            {
-                "id": 460,
-                "name": "boarding school"
-            },
-            {
-                "id": 98,
-                "name": "world cup"
-            },
-            {
-                "id": 76,
-                "name": "maze"
-            },
-            {
-                "id": 152,
-                "name": "mermaid"
-            },
-            {
-                "id": 333,
-                "name": "school of witchcraft"
-            },
-            {
-                "id": 114,
-                "name": "black magic"
-            },
-            {
-                "id": 198,
-                "name": "chosen one"
-            },
-            {
-                "id": 406,
-                "name": "vision"
-            },
-            {
-                "id": 96,
-                "name": "school"
-            },
-            {
-                "id": 319,
-                "name": "tournament"
-            },
-            {
-                "id": 118,
-                "name": "dragon"
-            },
-            {
-                "id": 401,
-                "name": "wizard"
-            },
-            {
-                "id": 221,
-                "name": "teenage hero"
-            },
-            {
-                "id": 504,
-                "name": "christmas"
-            },
-            {
-                "id": 116,
-                "name": "based on young adult novel"
-            },
-            {
-                "id": 180,
-                "name": "wizarding world"
-            }
+            "witch",
+            "dying and death",
+            "based on novel or book",
+            "magic",
+            "boarding school",
+            "world cup",
+            "maze",
+            "mermaid",
+            "school of witchcraft",
+            "black magic",
+            "chosen one",
+            "vision",
+            "school",
+            "tournament",
+            "dragon",
+            "wizard",
+            "teenage hero",
+            "christmas",
+            "based on young adult novel",
+            "wizarding world"
         ]
     },
     {
@@ -6152,111 +2180,31 @@
         "popularity": 80.509,
         "poster_path": "/z8onk7LV9Mmw6zKz4hT6pzzvmvl.jpg",
         "tagline": "Prepare to be blown out of the water.",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 7,
-                "name": "Fantasy"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            }
-        ],
+        "genres": ["Adventure", "Fantasy", "Action"],
         "production_companies": [
-            {
-                "id": 4,
-                "name": "Walt Disney Pictures"
-            },
-            {
-                "id": 68,
-                "name": "Jerry Bruckheimer Films"
-            }
+            "Walt Disney Pictures",
+            "Jerry Bruckheimer Films"
         ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 492,
-                "name": "blacksmith"
-            },
-            {
-                "id": 484,
-                "name": "east india company"
-            },
-            {
-                "id": 449,
-                "name": "gold"
-            },
-            {
-                "id": 318,
-                "name": "exotic island"
-            },
-            {
-                "id": 203,
-                "name": "governor"
-            },
-            {
-                "id": 16,
-                "name": "skeleton"
-            },
-            {
-                "id": 396,
-                "name": "jamaica"
-            },
-            {
-                "id": 402,
-                "name": "british empire"
-            },
-            {
-                "id": 390,
-                "name": "pirate"
-            },
-            {
-                "id": 385,
-                "name": "swashbuckler"
-            },
-            {
-                "id": 285,
-                "name": "18th century"
-            },
-            {
-                "id": 500,
-                "name": "caribbean sea"
-            },
-            {
-                "id": 336,
-                "name": "aftercreditsstinger"
-            },
-            {
-                "id": 359,
-                "name": "pirate ship"
-            },
-            {
-                "id": 262,
-                "name": "british navy"
-            },
-            {
-                "id": 258,
-                "name": "tortuga"
-            },
-            {
-                "id": 48,
-                "name": "based on theme park ride"
-            }
+            "blacksmith",
+            "east india company",
+            "gold",
+            "exotic island",
+            "governor",
+            "skeleton",
+            "jamaica",
+            "british empire",
+            "pirate",
+            "swashbuckler",
+            "18th century",
+            "caribbean sea",
+            "aftercreditsstinger",
+            "pirate ship",
+            "british navy",
+            "tortuga",
+            "based on theme park ride"
         ]
     },
     {
@@ -6279,103 +2227,26 @@
         "popularity": 110.974,
         "poster_path": "/c54HpQmuwXjHq2C9wmoACjxoom3.jpg",
         "tagline": "It all ends here.",
-        "genres": [
-            {
-                "id": 7,
-                "name": "Fantasy"
-            },
-            {
-                "id": 8,
-                "name": "Adventure"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 50,
-                "name": "Warner Bros. Pictures"
-            },
-            {
-                "id": 10,
-                "name": "Heyday Films"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 3,
-                "name": "United Kingdom"
-            },
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Fantasy", "Adventure"],
+        "production_companies": ["Warner Bros. Pictures", "Heyday Films"],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 218,
-                "name": "witch"
-            },
-            {
-                "id": 408,
-                "name": "dying and death"
-            },
-            {
-                "id": 42,
-                "name": "saving the world"
-            },
-            {
-                "id": 91,
-                "name": "self sacrifice"
-            },
-            {
-                "id": 298,
-                "name": "magic"
-            },
-            {
-                "id": 333,
-                "name": "school of witchcraft"
-            },
-            {
-                "id": 278,
-                "name": "sorcerer"
-            },
-            {
-                "id": 96,
-                "name": "school"
-            },
-            {
-                "id": 179,
-                "name": "battle"
-            },
-            {
-                "id": 401,
-                "name": "wizard"
-            },
-            {
-                "id": 221,
-                "name": "teenage hero"
-            },
-            {
-                "id": 504,
-                "name": "christmas"
-            },
-            {
-                "id": 116,
-                "name": "based on young adult novel"
-            },
-            {
-                "id": 23,
-                "name": "good versus evil"
-            },
-            {
-                "id": 180,
-                "name": "wizarding world"
-            }
+            "witch",
+            "dying and death",
+            "saving the world",
+            "self sacrifice",
+            "magic",
+            "school of witchcraft",
+            "sorcerer",
+            "school",
+            "battle",
+            "wizard",
+            "teenage hero",
+            "christmas",
+            "based on young adult novel",
+            "good versus evil",
+            "wizarding world"
         ]
     },
     {
@@ -6398,111 +2269,28 @@
         "popularity": 88.559,
         "poster_path": "/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
         "tagline": "A long time ago in a galaxy far, far away...",
-        "genres": [
-            {
-                "id": 8,
-                "name": "Adventure"
-            },
-            {
-                "id": 12,
-                "name": "Action"
-            },
-            {
-                "id": 5,
-                "name": "Science Fiction"
-            }
-        ],
-        "production_companies": [
-            {
-                "id": 34,
-                "name": "Lucasfilm Ltd."
-            },
-            {
-                "id": 43,
-                "name": "20th Century Fox"
-            }
-        ],
-        "production_countries": [
-            {
-                "id": 7,
-                "name": "United States of America"
-            }
-        ],
-        "spoken_languages": [
-            {
-                "id": 9,
-                "name": "English"
-            }
-        ],
+        "genres": ["Adventure", "Action", "Science Fiction"],
+        "production_companies": ["Lucasfilm Ltd.", "20th Century Fox"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
         "keywords": [
-            {
-                "id": 131,
-                "name": "empire"
-            },
-            {
-                "id": 425,
-                "name": "galaxy"
-            },
-            {
-                "id": 368,
-                "name": "rebellion"
-            },
-            {
-                "id": 260,
-                "name": "android"
-            },
-            {
-                "id": 64,
-                "name": "hermit"
-            },
-            {
-                "id": 490,
-                "name": "smuggling (contraband)"
-            },
-            {
-                "id": 10,
-                "name": "freedom"
-            },
-            {
-                "id": 233,
-                "name": "rebel"
-            },
-            {
-                "id": 7,
-                "name": "rescue mission"
-            },
-            {
-                "id": 169,
-                "name": "space"
-            },
-            {
-                "id": 217,
-                "name": "planet"
-            },
-            {
-                "id": 496,
-                "name": "desert"
-            },
-            {
-                "id": 86,
-                "name": "super power"
-            },
-            {
-                "id": 77,
-                "name": "oppression"
-            },
-            {
-                "id": 35,
-                "name": "space opera"
-            },
-            {
-                "id": 401,
-                "name": "wizard"
-            },
-            {
-                "id": 348,
-                "name": "totalitarianism"
-            }
+            "empire",
+            "galaxy",
+            "rebellion",
+            "android",
+            "hermit",
+            "smuggling (contraband)",
+            "freedom",
+            "rebel",
+            "rescue mission",
+            "space",
+            "planet",
+            "desert",
+            "super power",
+            "oppression",
+            "space opera",
+            "wizard",
+            "totalitarianism"
         ]
     }
 ]

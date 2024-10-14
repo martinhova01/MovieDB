@@ -35,7 +35,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                     </CardTitle>
                     <p className="text-sm">
                         {releaseYear} • {runtimeHours}h {runtimeMinutes}m •{" "}
-                        {movie.genres.map((genre) => genre.name).join(", ")}
+                        {movie.genres.join(", ")}
                     </p>
                     <Ratings
                         value={movie.vote_average / 2}
@@ -74,21 +74,15 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                             </li>
                             <li>
                                 <strong>Production Companies:</strong>{" "}
-                                {movie.production_companies
-                                    .map((company) => company.name)
-                                    .join(", ")}
+                                {movie.production_companies.join(", ")}
                             </li>
                             <li>
                                 <strong>Production Countries:</strong>{" "}
-                                {movie.production_countries
-                                    .map((country) => country.name)
-                                    .join(", ")}
+                                {movie.production_countries.join(", ")}
                             </li>
                             <li>
                                 <strong>Spoken Languages:</strong>{" "}
-                                {movie.spoken_languages
-                                    .map((language) => language.name)
-                                    .join(", ")}
+                                {movie.spoken_languages.join(", ")}
                             </li>
                         </ul>
                         {movie.homepage && (

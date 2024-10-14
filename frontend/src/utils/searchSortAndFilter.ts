@@ -2,7 +2,7 @@ import { all_genres, all_languages } from "../mock/util";
 import { Movie, Status } from "../types/movieTypes";
 
 export const all_filters: { [key: string]: string[] } = {
-    Genre: all_genres.map((genre) => genre.name),
+    Genre: all_genres,
     Rating: ["5", "4", "3", "2", "1"],
     "Release Year": [
         "2020s",
@@ -22,7 +22,7 @@ export const all_filters: { [key: string]: string[] } = {
         "1880s",
         "1870s",
     ],
-    Language: all_languages.map((language) => language.name),
+    Language: all_languages,
     Status: Object.values(Status) as string[],
     Runtime: [
         "Less than 1 hour",
@@ -36,7 +36,7 @@ const filterByGenres = (movies: Movie[], selectedGenres: string[]) => {
     if (selectedGenres.length) {
         return movies.filter((movie) =>
             selectedGenres.every((selectedGenre) =>
-                movie.genres.some((genre) => genre.name === selectedGenre)
+                movie.genres.some((genre) => genre === selectedGenre)
             )
         );
     }
@@ -72,7 +72,7 @@ const filterByLanguage = (movies: Movie[], selectedLanguages: string[]) => {
         return movies.filter((movie) =>
             selectedLanguages.every((selectedLanguage) =>
                 movie.spoken_languages.some(
-                    (language) => language.name === selectedLanguage
+                    (language) => language === selectedLanguage
                 )
             )
         );

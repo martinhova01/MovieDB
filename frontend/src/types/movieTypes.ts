@@ -1,19 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-
-// We disable the eslint rule above because we want to use empty interfaces to
-// differentiate between different types even though they have the same structure
-
-interface IdName {
-    id: number;
-    name: string;
-}
-
-interface Genre extends IdName {}
-interface Keyword extends IdName {}
-interface Language extends IdName {}
-interface ProductionCompany extends IdName {}
-interface ProductionCountry extends IdName {}
-
 enum Status {
     Released = "Released",
     InProduction = "In Production",
@@ -33,21 +17,21 @@ interface Movie {
     revenue: number;
     runtime: number;
     adult: boolean;
-    backdrop_path: string | undefined;
+    backdrop_path?: string;
     budget: number;
-    homepage: string | undefined;
-    imdb_id: string | undefined;
+    homepage?: string;
+    imdb_id?: string;
     original_language: string;
     original_title: string;
     overview: string;
     popularity: number;
-    poster_path: string | undefined;
-    tagline: string | undefined;
-    genres: Genre[];
-    production_companies: ProductionCompany[];
-    production_countries: ProductionCountry[];
-    spoken_languages: Language[];
-    keywords: Keyword[];
+    poster_path?: string;
+    tagline?: string;
+    genres: string[];
+    production_companies: string[];
+    production_countries: string[];
+    spoken_languages: string[];
+    keywords: string[];
 }
 
 interface Review {
@@ -59,12 +43,4 @@ interface Review {
 }
 
 export { Status };
-export type {
-    Genre,
-    Keyword,
-    Language,
-    ProductionCompany,
-    ProductionCountry,
-    Movie,
-    Review,
-};
+export type { Movie, Review };
