@@ -24,7 +24,7 @@ enum Status {
 }
 
 interface Movie {
-    id: number; // Unique identifier
+    _id: number; // Unique identifier
     title: string; // Unique in combination with release_date
     vote_average: number;
     vote_count: number;

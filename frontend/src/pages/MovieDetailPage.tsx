@@ -19,7 +19,7 @@ function MovieDetailPage() {
         }
 
         const foundMovie = all_movies.find(
-            (movie: Movie) => movie.id === numericMovieId
+            (movie: Movie) => movie._id === numericMovieId
         );
 
         if (foundMovie) {
@@ -45,7 +45,7 @@ function MovieDetailPage() {
     return (
         <main>
             <MovieCardDetailed movie={movie} />
-            <MovieReviews movieId={movie.id} />
+            <MovieReviews movieId={movie._id} />
         </main>
     );
 }
