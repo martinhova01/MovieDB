@@ -1,1 +1,18 @@
-console.log("Hello, world!");
+import { ApolloServer } from "@apollo/server";
+import { startStandaloneServer } from "@apollo/server/standalone";
+import connectToDatabase from "./db/database.js";
+import resolvers from "./resolvers/resolvers.js";
+import { typeDefs } from "./schemas/schema.js";
+
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+});
+
+await connectToDatabase();
+
+const { url } = await startStandaloneServer(server, {
+    listen: { port: 3001 },
+});
+
+console.log(`🚀 Server ready at: ${url}`);
