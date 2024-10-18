@@ -21,5 +21,9 @@ export default defineConfig({
         globals: true,
         environment: "jsdom",
         setupFiles: "src/test/setup.ts",
+        coverage: {
+            //We do not test third party components, test-files, config-files or dist-folder.
+            exclude: ["src/shadcn", "src/test", "*.config*", "dist"],
+        },
     },
 });
