@@ -5,10 +5,18 @@ import routerConfig from "@/utils/routerConfig";
 import userEvent from "@testing-library/user-event";
 
 describe("Router", () => {
-    it("successfully renders Home Page", async () => {
+    it("successfully renders Navbar", async () => {
         const router = createMemoryRouter(routerConfig);
         render(<RouterProvider router={router} />);
         expect(await screen.findByText("MovieDB")).toBeInTheDocument();
+    });
+
+    it("successfully renders Home Page", async () => {
+        const router = createMemoryRouter(routerConfig);
+        render(<RouterProvider router={router} />);
+
+        //We will need to mock the movies here when backend is used.
+        expect(await screen.findByAltText("Joker")).toBeInTheDocument();
     });
 
     it("successfully renders MovieDetailPage", async () => {
