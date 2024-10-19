@@ -13,3 +13,7 @@ export const filtersVar = makeVar<{ [key: string]: string[] }>(
 export const searchVar = makeVar<string>(
     sessionStorage.getItem("search") ?? ""
 );
+
+export const usernameVar = makeVar<string>(
+    localStorage.getItem("username") ?? "Guest"
+);

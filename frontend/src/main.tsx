@@ -14,24 +14,6 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-// Example query using Apollo Client (backend server must be running)
-// Read more https://www.apollographql.com/docs/react/get-started
-/*
-client
-    .query({
-        query: gql`
-            query GetMovies {
-                movies(skip: 10, limit: 3) {
-                    title
-                    tagline
-                    release_date
-                }
-            }
-        `,
-    })
-    .then((result) => console.log(result));
-*/
-
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         <ApolloProvider client={client}>

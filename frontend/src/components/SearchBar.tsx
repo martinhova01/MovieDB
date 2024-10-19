@@ -2,14 +2,10 @@ import { searchVar } from "@/cache";
 import { Button } from "@/shadcn/components/ui/button";
 import { Input } from "@/shadcn/components/ui/input";
 import { Search } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const SearchBar: React.FC = () => {
-    const [search, setSearch] = useState<string>("");
-
-    useEffect(() => {
-        setSearch(searchVar());
-    }, []);
+    const [search, setSearch] = useState<string>(searchVar());
 
     const handleSearch = (searchString: string) => {
         sessionStorage.setItem("search", searchString);

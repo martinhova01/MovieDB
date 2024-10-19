@@ -4,6 +4,8 @@ import { Textarea } from "../shadcn/components/ui/textarea";
 import { Card, CardContent } from "../shadcn/components/ui/card";
 import Ratings from "../shadcn/components/ui/rating";
 import { Review } from "../types/movieTypes";
+import { usernameVar } from "@/cache";
+import { useReactiveVar } from "@apollo/client";
 interface MovieReviewsProps {
     movieId: number;
 }
@@ -12,6 +14,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
     const [reviews, setReviews] = useState<Review[]>([]);
     const [rating, setRating] = useState<number>(0);
     const [comment, setComment] = useState<string>("");
+    const username = useReactiveVar(usernameVar);
 
     useEffect(() => {
         const storedReviews = localStorage.getItem(`movieReviews_${movieId}`);
@@ -38,8 +41,6 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
 
     const handleSubmitReview = (e: React.FormEvent) => {
         e.preventDefault();
-
-        const username = localStorage.getItem("username") || "Guest";
         const newReview: Review = {
             id: Date.now(), //Temporary id
             username: username,
@@ -54,16 +55,8 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
     };
 
     const handleDeleteReview = (review: Review) => {
-        if (review.username === "Guest") {
-            // Restrict deletion of guest reviews
-            // The delete button is also hidden for guest reviews
-            return;
-        }
-
-        if (localStorage.getItem("username") === review.username) {
-            const updatedReviews = reviews.filter((r) => r.id !== review.id);
-            saveReviews(updatedReviews);
-        }
+        const updatedReviews = reviews.filter((r) => r.id !== review.id);
+        saveReviews(updatedReviews);
     };
 
     const formatDate = (date: Date) => {
@@ -118,8 +111,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
                                     </time>
                                 </section>
                                 {review.username !== "Guest" &&
-                                    localStorage.getItem("username") ===
-                                        review.username && (
+                                    username === review.username && (
                                         <Button
                                             onClick={() =>
                                                 handleDeleteReview(review)
