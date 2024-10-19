@@ -1,5 +1,5 @@
 import { makeVar } from "@apollo/client";
-import { SortingType } from "./utils/searchSortAndFilter";
+import { SortingType } from "./searchSortAndFilter";
 
 export const sortOptionVar = makeVar<SortingType>(
     (sessionStorage.getItem("sort_option") as SortingType) ??

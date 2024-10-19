@@ -1,4 +1,4 @@
-import { usernameVar } from "@/cache";
+import { usernameVar } from "@/utils/cache";
 import { Button } from "@/shadcn/components/ui/button";
 import {
     Dialog,
@@ -43,7 +43,7 @@ const UserDropdown = () => {
     };
 
     const handleDialogOpenChange = (open: boolean) => {
-        setIsDialogOpen(open); 
+        setIsDialogOpen(open);
         setNewUsername("");
     };
 
@@ -67,7 +67,10 @@ const UserDropdown = () => {
                     {username}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <Dialog open={isDialogOpen} onOpenChange={(open) => handleDialogOpenChange(open)}>
+                <Dialog
+                    open={isDialogOpen}
+                    onOpenChange={(open) => handleDialogOpenChange(open)}
+                >
                     <DialogTrigger asChild>
                         <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                             <Edit className="mr-2 h-4 w-4" />

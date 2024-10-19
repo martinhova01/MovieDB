@@ -14,7 +14,7 @@ import { SlidersHorizontal } from "lucide-react";
 import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
 import { all_filters, SortingType } from "../utils/searchSortAndFilter";
-import { filtersVar, sortOptionVar } from "@/cache";
+import { filtersVar, sortOptionVar } from "@/utils/cache";
 import { useReactiveVar } from "@apollo/client";
 
 const SortAndFilterPanel: React.FC = () => {

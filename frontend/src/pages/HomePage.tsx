@@ -10,7 +10,7 @@ import {
 import { Movie } from "../types/movieTypes";
 import SearchBar from "../components/SearchBar";
 import { useReactiveVar } from "@apollo/client";
-import { filtersVar, searchVar, sortOptionVar } from "@/cache";
+import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
 
 function HomePage() {
     const [movies, setMovies] = useState<Movie[]>(all_movies);

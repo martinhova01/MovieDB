@@ -4,7 +4,7 @@ import { Textarea } from "../shadcn/components/ui/textarea";
 import { Card, CardContent } from "../shadcn/components/ui/card";
 import Ratings from "../shadcn/components/ui/rating";
 import { Review } from "../types/movieTypes";
-import { usernameVar } from "@/cache";
+import { usernameVar } from "@/utils/cache";
 import { useReactiveVar } from "@apollo/client";
 interface MovieReviewsProps {
     movieId: number;

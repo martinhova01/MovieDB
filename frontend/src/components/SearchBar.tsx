@@ -1,4 +1,4 @@
-import { searchVar } from "@/cache";
+import { searchVar } from "@/utils/cache";
 import { Button } from "@/shadcn/components/ui/button";
 import { Input } from "@/shadcn/components/ui/input";
 import { Search } from "lucide-react";

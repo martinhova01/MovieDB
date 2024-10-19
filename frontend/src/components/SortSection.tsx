@@ -9,7 +9,7 @@ import {
 } from "../shadcn/components/ui/accordion";
 import { Label } from "../shadcn/components/ui/label";
 import { SortingType } from "../utils/searchSortAndFilter";
-import { sortOptionVar } from "@/cache";
+import { sortOptionVar } from "@/utils/cache";
 import { useReactiveVar } from "@apollo/client";
 
 const SortSection: React.FC = () => {
