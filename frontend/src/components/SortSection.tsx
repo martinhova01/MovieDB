@@ -9,25 +9,24 @@ import {
 } from "../shadcn/components/ui/accordion";
 import { Label } from "../shadcn/components/ui/label";
 import { SortingType } from "../utils/searchSortAndFilter";
+import { sortOptionVar } from "@/cache";
+import { useReactiveVar } from "@apollo/client";
 
-interface SortSectionInterface {
-    sortOption: SortingType;
-    sortOptions: SortingType[];
-    updateSortOption: (option: SortingType) => void;
-}
+const SortSection: React.FC = () => {
+    const sortOption = useReactiveVar(sortOptionVar);
 
-const SortSection: React.FC<SortSectionInterface> = ({
-    sortOption,
-    sortOptions,
-    updateSortOption,
-}) => {
+    const updateSortOption = (option: SortingType) => {
+        sessionStorage.setItem("sort_option", option);
+        sortOptionVar(option);
+    };
+
     return (
         <AccordionItem value={`Sort item`}>
             <AccordionTrigger>Sort by ({sortOption})</AccordionTrigger>
             <AccordionContent>
                 <RadioGroup value={sortOption} onValueChange={updateSortOption}>
                     <ul className="grid gap-2">
-                        {sortOptions.map((option) => (
+                        {Object.values(SortingType).map((option) => (
                             <li
                                 key={option}
                                 className="flex items-center space-x-2"
