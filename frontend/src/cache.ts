@@ -9,3 +9,7 @@ export const sortOptionVar = makeVar<SortingType>(
 export const filtersVar = makeVar<{ [key: string]: string[] }>(
     JSON.parse(sessionStorage.getItem("filters") ?? "{}")
 );
+
+export const searchVar = makeVar<string>(
+    sessionStorage.getItem("search") ?? ""
+);
