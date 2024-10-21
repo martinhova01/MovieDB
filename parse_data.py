@@ -59,7 +59,6 @@ def get_all_movies(df: pd.DataFrame):
             "release_date",
             "revenue",
             "runtime",
-            "adult",
             "backdrop_path",
             "budget",
             "homepage",
@@ -100,6 +99,7 @@ def load_movie_data(rows: int | None = None) -> pd.DataFrame:
     df.dropna(
         subset=["id", "title", "release_date", "overview", "runtime"], inplace=True
     )  # Drop rows with missing values in these columns, as they are required
+    df = df[df["adult"] == False]
     df.rename({"id": "_id"}, axis=1, inplace=True)
     df.drop_duplicates(subset=["_id"], inplace=True)
     if rows is not None:

@@ -16,7 +16,6 @@ interface Movie {
     release_date: Date;
     revenue: number;
     runtime: number;
-    adult: boolean;
     backdrop_path?: string;
     budget: number;
     homepage?: string;

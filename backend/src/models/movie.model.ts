@@ -9,7 +9,6 @@ const MovieSchema = new mongoose.Schema({
     release_date: Date,
     revenue: Number,
     runtime: Number,
-    adult: Boolean,
     backdrop_path: String,
     budget: Number,
     homepage: String,

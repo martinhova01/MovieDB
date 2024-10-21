@@ -11,7 +11,6 @@ export const typeDefs = `#graphql
     release_date: Date!
     revenue: Float!
     runtime: Int!
-    adult: Boolean!
     backdrop_path: String
     budget: Int!
     homepage: String
