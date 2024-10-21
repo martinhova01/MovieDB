@@ -28,7 +28,7 @@ const NavbarOverlay = ({ links }: { links: NavbarProps }) => {
                             <li key={link.name}>
                                 <Link
                                     to={link.href}
-                                    className="hover:text-primary text-foreground transition-colors"
+                                    className="text-foreground transition-colors hover:text-primary"
                                 >
                                     {link.name}
                                 </Link>

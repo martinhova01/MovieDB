@@ -12,13 +12,13 @@ const Navbar = () => {
     ];
 
     return (
-        <header className="w-full flex items-center p-4 justify-between bg-gradient-to-r from-muted-foreground to-primary">
+        <header className="flex w-full items-center justify-between bg-gradient-to-r from-muted-foreground to-primary p-4">
             <nav className="flex items-center gap-10 text-background">
-                <Link to="/" className="text-2xl font-bold flex flex-row gap-3">
+                <Link to="/" className="flex flex-row gap-3 text-2xl font-bold">
                     <img src={logo} alt="logo" className="h-8 w-8" />
                     MovieDB
                 </Link>
-                <ul className="hidden sm:flex gap-4 text-lg">
+                <ul className="hidden gap-4 text-lg sm:flex">
                     {links.map((link) => (
                         <li key={link.name}>
                             <Link to={link.href} className="hover:underline">

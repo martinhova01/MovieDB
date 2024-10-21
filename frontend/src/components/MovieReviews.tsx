@@ -72,7 +72,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
     return (
         <Card className="m-4">
             <section className="m-4 mb-6">
-                <h3 className="text-2xl font-bold mb-4">Submit review</h3>
+                <h3 className="mb-4 text-2xl font-bold">Submit review</h3>
                 <form onSubmit={handleSubmitReview} className="space-y-4">
                     <Ratings
                         value={rating}
@@ -96,12 +96,12 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
             </section>
             <section className="m-4 space-y-4">
                 {reviews.length > 0 && (
-                    <h3 className="text-2xl font-bold mb-4">Reviews</h3>
+                    <h3 className="mb-4 text-2xl font-bold">Reviews</h3>
                 )}
                 {reviews.map((review) => (
                     <Card key={review.id}>
                         <CardContent className="mt-4">
-                            <section className="flex justify-between items-start mb-2">
+                            <section className="mb-2 flex items-start justify-between">
                                 <section>
                                     <h4 className="text-xl font-bold">
                                         {review.username}

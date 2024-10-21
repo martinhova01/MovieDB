@@ -22,7 +22,7 @@ const MovieList = ({ movies }: { movies: Movie[] }) => {
                     {movies.slice(0, maxLength).map((movie: Movie) => (
                         <li
                             key={movie._id}
-                            className="w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%] m-2"
+                            className="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
                         >
                             <MovieCard movie={movie} />
                         </li>

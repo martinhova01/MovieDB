@@ -20,7 +20,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
 
     return (
         <Card
-            className="m-4 shadow-lg bg-cover bg-center relative overflow-hidden"
+            className="relative m-4 overflow-hidden bg-cover bg-center shadow-lg"
             style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
             }}
@@ -28,7 +28,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
             {movie.backdrop_path && (
                 <div className="absolute inset-0 bg-black opacity-85" />
             )}
-            <CardContent className="text-white p-6 h-full relative">
+            <CardContent className="relative h-full p-6 text-white">
                 <CardHeader className="mb-4 p-0">
                     <CardTitle className="text-5xl font-bold">
                         {movie.title}
@@ -46,9 +46,9 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                     />
                 </CardHeader>
 
-                <section className="flex flex-col md:flex-row h-full">
+                <section className="flex h-full flex-col md:flex-row">
                     {movie.poster_path && (
-                        <figure className="flex-shrink-0 w-full max-w-72 mb-6 md:mb-0 md:mr-6">
+                        <figure className="mb-6 w-full max-w-72 flex-shrink-0 md:mb-0 md:mr-6">
                             <img
                                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                                 className="rounded-lg"
@@ -58,12 +58,12 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                     )}
                     <section className="flex-grow">
                         {movie.tagline && (
-                            <p className="text-gray-300 text-xl italic mb-2">
+                            <p className="mb-2 text-xl italic text-gray-300">
                                 {movie.tagline}
                             </p>
                         )}
                         <p className="mb-4 text-lg">{movie.overview}</p>
-                        <ul className="flex flex-col gap-2 mb-6">
+                        <ul className="mb-6 flex flex-col gap-2">
                             <li>
                                 <strong>Revenue:</strong> $
                                 {movie.revenue.toLocaleString()}

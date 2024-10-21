@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const MovieCard = ({ movie }: { movie: Movie }) => {
     return (
         <Link to={`/movie/${movie._id}`}>
-            <Card className="shadow-lg hover:shadow-slate-600 hover:cursor-pointer m-0">
+            <Card className="m-0 shadow-lg hover:cursor-pointer hover:shadow-slate-600">
                 <CardHeader className="p-2">
                     <img
                         className="w-full"

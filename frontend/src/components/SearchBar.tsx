@@ -27,7 +27,7 @@ const SearchBar: React.FC = () => {
     };
 
     return (
-        <section className="flex flex-row flex-grow gap-2">
+        <section className="flex flex-grow flex-row gap-2">
             <Input
                 id="searchbar"
                 name="searchbar"

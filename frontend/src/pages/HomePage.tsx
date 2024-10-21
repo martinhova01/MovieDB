@@ -29,7 +29,7 @@ function HomePage() {
 
     return (
         <main>
-            <section className="flex flex-row p-4 gap-2">
+            <section className="flex flex-row gap-2 p-4">
                 <SortAndFilterPanel />
                 <SearchBar />
             </section>

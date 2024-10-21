@@ -29,7 +29,7 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
                     {all_filters.map((filter) => (
                         <li
                             key={filter}
-                            className="flex items-center space-x-2 mb-2"
+                            className="mb-2 flex items-center space-x-2"
                         >
                             <Checkbox
                                 id={filter}
