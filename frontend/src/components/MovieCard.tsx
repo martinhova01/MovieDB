@@ -5,11 +5,11 @@ import {
     CardHeader,
 } from "@/shadcn/components/ui/card";
 import Ratings from "@/shadcn/components/ui/rating";
-import { Movie } from "@/types/movieTypes";
+import { MoviePoster } from "@/types/movieTypes";
 import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 import { Link } from "react-router-dom";
 
-const MovieCard = ({ movie }: { movie: Movie }) => {
+const MovieCard = ({ movie }: { movie: MoviePoster }) => {
     return (
         <Link to={`/movie/${movie._id}`}>
             <Card className="m-0 shadow-lg hover:cursor-pointer hover:shadow-slate-600">

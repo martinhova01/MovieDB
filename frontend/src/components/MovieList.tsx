@@ -1,15 +1,14 @@
-import { Movie } from "@/types/movieTypes";
+import { MoviePoster } from "@/types/movieTypes";
 import MovieCard from "./MovieCard";
 import { Button } from "@/shadcn/components/ui/button";
-import { useEffect, useState } from "react";
 
-const MovieList = ({ movies }: { movies: Movie[] }) => {
-    const [maxLength, setMaxLength] = useState(20);
-
-    useEffect(() => {
-        setMaxLength(Math.min(20, movies.length));
-    }, [movies]);
-
+const MovieList = ({
+    movies,
+    loadMore,
+}: {
+    movies: MoviePoster[];
+    loadMore: () => void;
+}) => {
     return (
         <>
             {movies.length === 0 ? (
@@ -19,7 +18,7 @@ const MovieList = ({ movies }: { movies: Movie[] }) => {
                 </section>
             ) : (
                 <ul className="flex flex-wrap justify-center">
-                    {movies.slice(0, maxLength).map((movie: Movie) => (
+                    {movies.map((movie: MoviePoster) => (
                         <li
                             key={movie._id}
                             className="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
@@ -29,21 +28,11 @@ const MovieList = ({ movies }: { movies: Movie[] }) => {
                     ))}
                 </ul>
             )}
-            {maxLength < movies.length && (
-                <div className="flex justify-center">
-                    <Button
-                        size="lg"
-                        className="m-10"
-                        onClick={() =>
-                            setMaxLength(
-                                Math.min(maxLength + 10, movies.length - 1)
-                            )
-                        }
-                    >
-                        Load More
-                    </Button>
-                </div>
-            )}
+            <div className="flex justify-center">
+                <Button size="lg" className="m-10" onClick={loadMore}>
+                    Load More
+                </Button>
+            </div>
         </>
     );
 };

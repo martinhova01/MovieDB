@@ -33,6 +33,15 @@ interface Movie {
     keywords: string[];
 }
 
+interface MoviePoster {
+    _id: number; // Unique identifier
+    title: string; // Unique in combination with release_date
+    vote_average: number;
+    release_date: Date;
+    runtime: number;
+    poster_path?: string;
+}
+
 interface Review {
     _id: number;
     movie: number;
@@ -43,4 +52,4 @@ interface Review {
 }
 
 export { Status };
-export type { Movie, Review };
+export type { Movie, MoviePoster, Review };

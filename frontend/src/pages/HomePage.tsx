@@ -1,31 +1,87 @@
 import { useEffect, useState } from "react";
 import SortAndFilterPanel from "../components/SortAndFilterPanel";
 import MovieList from "../components/MovieList";
-import { all_movies } from "../mock/util";
-import {
-    filterMovies,
-    searchMovies,
-    sortMovies,
-} from "../utils/searchSortAndFilter";
-import { Movie } from "../types/movieTypes";
+import { MoviePoster } from "../types/movieTypes";
 import SearchBar from "../components/SearchBar";
-import { useReactiveVar } from "@apollo/client";
-import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
+import { gql, useQuery /* useReactiveVar */ } from "@apollo/client";
+/* import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache"; */
+
+const GET_MOVIES = gql`
+    query GetMovies($skip: Int, $limit: Int) {
+        movies(skip: $skip, limit: $limit) {
+            _id
+            title
+            vote_average
+            release_date
+            runtime
+            poster_path
+        }
+    }
+`;
+
+type MoviePosterRaw = Omit<MoviePoster, "release_date"> & {
+    release_date: string;
+};
+
+interface GetMoviesData {
+    movies: MoviePosterRaw[];
+}
 
 function HomePage() {
-    const [movies, setMovies] = useState<Movie[]>(all_movies);
-    const filters = useReactiveVar(filtersVar);
+    const [movies, setMovies] = useState<MoviePoster[]>([]);
+    /* const filters = useReactiveVar(filtersVar);
     const sortOption = useReactiveVar(sortOptionVar);
-    const search = useReactiveVar(searchVar);
+    const search = useReactiveVar(searchVar); */
+
+    const { loading, error, data, fetchMore } = useQuery<GetMoviesData>(
+        GET_MOVIES,
+        {
+            variables: { skip: 0, limit: 20 },
+        }
+    );
 
     useEffect(() => {
-        const sortFilterSearchMovies = sortMovies(
-            sortOption,
-            searchMovies(search, filterMovies([...all_movies], filters))
-        );
+        if (data?.movies) {
+            const moviesWithDate = data.movies.map((movie) => ({
+                ...movie,
+                release_date: new Date(movie.release_date),
+            }));
+            setMovies(moviesWithDate as MoviePoster[]);
+        }
+    }, [data]);
 
-        setMovies(sortFilterSearchMovies);
-    }, [filters, sortOption, search]);
+    if (loading) {
+        return (
+            <main className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">Loading...</h1>
+            </main>
+        );
+    }
+
+    if (error) {
+        return (
+            <main className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">Something went wrong!</h1>
+                <h2 className="text-primary">Try to refresh</h2>
+            </main>
+        );
+    }
+
+    const loadMore = () => {
+        fetchMore({
+            variables: { skip: movies.length },
+            updateQuery(
+                previousData,
+                { fetchMoreResult, variables: { skip } }
+            ) {
+                const updatedMovies = previousData.movies.slice(0);
+                for (let i = 0; i < fetchMoreResult.movies.length; ++i) {
+                    updatedMovies[skip + i] = fetchMoreResult.movies[i];
+                }
+                return { ...previousData, movies: updatedMovies };
+            },
+        });
+    };
 
     return (
         <main>
@@ -33,7 +89,7 @@ function HomePage() {
                 <SortAndFilterPanel />
                 <SearchBar />
             </section>
-            <MovieList movies={movies} />
+            <MovieList movies={movies} loadMore={loadMore} />
         </main>
     );
 }
