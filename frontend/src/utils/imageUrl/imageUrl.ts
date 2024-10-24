@@ -11,7 +11,7 @@ export enum ImageType {
     BACKDROP = "backdrop",
     LOGO = "logo",
     POSTER = "poster",
-    PROFILE = "profiel",
+    PROFILE = "profile",
     STILL = "still",
 }
 
