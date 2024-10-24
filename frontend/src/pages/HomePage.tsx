@@ -4,11 +4,21 @@ import MovieList from "../components/MovieList";
 import { MoviePoster } from "../types/movieTypes";
 import SearchBar from "../components/SearchBar";
 import { gql, useQuery, useReactiveVar } from "@apollo/client";
-import { filtersVar } from "@/utils/cache";
+import { filtersVar, sortOptionVar } from "@/utils/cache";
 
 const GET_MOVIES = gql`
-    query GetMovies($skip: Int, $limit: Int, $filters: MovieFilters) {
-        movies(skip: $skip, limit: $limit, filters: $filters) {
+    query GetMovies(
+        $skip: Int
+        $limit: Int
+        $filters: MovieFilters
+        $sortOption: String
+    ) {
+        movies(
+            skip: $skip
+            limit: $limit
+            filters: $filters
+            sortOption: $sortOption
+        ) {
             _id
             title
             vote_average
@@ -30,6 +40,7 @@ interface GetMoviesData {
 function HomePage() {
     const [movies, setMovies] = useState<MoviePoster[]>([]);
     const filters = useReactiveVar(filtersVar);
+    const sortOption = useReactiveVar(sortOptionVar);
 
     const { data, loading, error, fetchMore } = useQuery<GetMoviesData>(
         GET_MOVIES,
@@ -45,6 +56,7 @@ function HomePage() {
                     status: filters.Status || [],
                     runtime: filters.Runtime || [],
                 },
+                sortOption: sortOption,
             },
         }
     );

@@ -13,16 +13,18 @@ const filterByGenres = (selectedGenres: string[]) => {
 
 const filterByRating = (selectedRatings: string[]) => {
     if (selectedRatings.length) {
-        const mappedRatings = selectedRatings.map(rating => parseInt(rating) * 2);
-        const ratingFilters =  mappedRatings.map(rating => {
+        const mappedRatings = selectedRatings.map(
+            (rating) => parseInt(rating) * 2
+        );
+        const ratingFilters = mappedRatings.map((rating) => {
             return {
                 vote_average: {
                     $gte: rating - 1,
-                    $lt: rating + 1
-                }
+                    $lt: rating + 1,
+                },
             };
-        })
-        return { $or: ratingFilters }
+        });
+        return { $or: ratingFilters };
     }
     return {};
 };
@@ -69,7 +71,7 @@ const filterByRuntime = (selectedRuntimes: string[]) => {
                     return {};
             }
         });
-        return { $or: runtimeQueries }
+        return { $or: runtimeQueries };
     }
     return {};
 };
@@ -82,7 +84,7 @@ export const createFilterQuery = (filters: MovieFilters) => {
         filterByLanguage(filters.language),
         filterByStatus(filters.status),
         filterByRuntime(filters.runtime),
-    ].filter(condition => Object.keys(condition).length > 0);
+    ].filter((condition) => Object.keys(condition).length > 0);
 
     return queryConditions.length > 0 ? { $and: queryConditions } : {};
 };
