@@ -52,5 +52,6 @@ export const typeDefs = `#graphql
       rating: Int!
       description: String!
     ): Review
+    deleteReview(_id: ID!): Review
   }
 `;

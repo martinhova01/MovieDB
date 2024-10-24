@@ -149,6 +149,36 @@ const resolvers = {
                 session.endSession();
             }
         },
+
+        deleteReview: async (_: unknown, { _id }: { _id: string }) => {
+            const review = await ReviewModel.findById(
+                new mongoose.Types.ObjectId(_id)
+            );
+            if (review == null) {
+                return createBadUserInputError("Review not found.");
+            }
+
+            const session = await mongoose.startSession();
+            session.startTransaction();
+
+            try {
+                await review.deleteOne();
+                await MovieModel.updateOne(
+                    { reviews: review._id },
+                    { $pull: { reviews: review._id } }
+                );
+                await session.commitTransaction();
+                return review;
+            } catch (error) {
+                console.error("Error deleting review:", error);
+                await session.abortTransaction();
+                return new GraphQLError("Failed to delete review.", {
+                    extensions: { code: "INTERNAL_SERVER_ERROR" },
+                });
+            } finally {
+                session.endSession();
+            }
+        },
     },
 };
 
