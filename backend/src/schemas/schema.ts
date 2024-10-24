@@ -34,8 +34,8 @@ export const typeDefs = `#graphql
     movie_id: Int!
     username: String!
     rating: Int!
-    description: String!
-    review_date: Date!
+    comment: String!
+    date: Date!
   }
 
   type Query {
@@ -50,7 +50,7 @@ export const typeDefs = `#graphql
       movie_id: Int!
       username: String!
       rating: Int!
-      description: String!
+      comment: String!
     ): Review
     deleteReview(_id: ID!): Review
   }

@@ -34,10 +34,11 @@ interface Movie {
 }
 
 interface Review {
-    id: number;
+    _id: number;
+    movie_id: number;
     username: string;
     rating: number;
-    comment?: string;
+    comment: string;
     date: Date;
 }
 

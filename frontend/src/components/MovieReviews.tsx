@@ -42,10 +42,11 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
     const handleSubmitReview = (e: React.FormEvent) => {
         e.preventDefault();
         const newReview: Review = {
-            id: Date.now(), //Temporary id
+            _id: Date.now(), //Temporary id
+            movie_id: movieId,
             username: username,
             rating,
-            comment: comment.trim() || undefined,
+            comment: comment.trim(),
             date: new Date(),
         };
         const updatedReviews = [...reviews, newReview];
@@ -55,7 +56,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
     };
 
     const handleDeleteReview = (review: Review) => {
-        const updatedReviews = reviews.filter((r) => r.id !== review.id);
+        const updatedReviews = reviews.filter((r) => r._id !== review._id);
         saveReviews(updatedReviews);
     };
 
@@ -99,7 +100,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
                     <h3 className="mb-4 text-2xl font-bold">Reviews</h3>
                 )}
                 {reviews.map((review) => (
-                    <Card key={review.id}>
+                    <Card key={review._id}>
                         <CardContent className="mt-4">
                             <section className="mb-2 flex items-start justify-between">
                                 <section>
@@ -126,7 +127,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
                                 variant="yellow"
                                 totalstars={5}
                             />
-                            {review.comment && (
+                            {review.comment !== "" && (
                                 <p className="mt-2">{review.comment}</p>
                             )}
                         </CardContent>

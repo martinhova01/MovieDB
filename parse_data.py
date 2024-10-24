@@ -166,7 +166,7 @@ def fill_db(rows: int | None = None):
     # MOVIES_COL.create_index("keywords")
 
     REVIEWS_COL.create_index("username")
-    REVIEWS_COL.create_index("review_date")
+    REVIEWS_COL.create_index("date")
 
 
 if __name__ == "__main__":

@@ -73,7 +73,7 @@ const resolvers = {
                 return validationError;
             }
             return await ReviewModel.find()
-                .sort({ review_date: -1 })
+                .sort({ date: -1 })
                 .skip(skip)
                 .limit(limit);
         },
@@ -91,7 +91,7 @@ const resolvers = {
                 return validationError;
             }
             return await ReviewModel.find({ username })
-                .sort({ review_date: -1 })
+                .sort({ date: -1 })
                 .skip(skip)
                 .limit(limit);
         },
@@ -104,12 +104,12 @@ const resolvers = {
                 movie_id,
                 username,
                 rating,
-                description,
+                comment,
             }: {
                 movie_id: number;
                 username: string;
                 rating: number;
-                description: string;
+                comment: string;
             }
         ) => {
             if (rating < 1 || rating > 5) {
@@ -127,8 +127,8 @@ const resolvers = {
                 movie_id,
                 username,
                 rating,
-                description,
-                review_date: new Date(),
+                comment,
+                date: new Date(),
             });
 
             const session = await mongoose.startSession();
