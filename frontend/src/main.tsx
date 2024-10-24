@@ -8,7 +8,6 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { offsetLimitPagination } from "@apollo/client/utilities";
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
     uri: "http://localhost:3001/",
@@ -16,7 +15,20 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
         typePolicies: {
             Query: {
                 fields: {
-                    movies: offsetLimitPagination(),
+                    movies: {
+                        // Cache seperate results based on the filters argument
+                        keyArgs: ["filters"],
+
+                        // Concatenate the incoming list items with the existing list items
+                        merge(existing, incoming, { args }) {
+                            const merged = existing ? existing.slice(0) : [];
+                            const skip = args?.skip || 0;
+                            for (let i = 0; i < incoming.length; ++i) {
+                                merged[skip + i] = incoming[i];
+                            }
+                            return merged;
+                        },
+                    },
                 },
             },
         },

@@ -3,12 +3,12 @@ import SortAndFilterPanel from "../components/SortAndFilterPanel";
 import MovieList from "../components/MovieList";
 import { MoviePoster } from "../types/movieTypes";
 import SearchBar from "../components/SearchBar";
-import { gql, useQuery /* useReactiveVar */ } from "@apollo/client";
-/* import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache"; */
+import { gql, useQuery, useReactiveVar } from "@apollo/client";
+import { filtersVar } from "@/utils/cache";
 
 const GET_MOVIES = gql`
-    query GetMovies($skip: Int, $limit: Int) {
-        movies(skip: $skip, limit: $limit) {
+    query GetMovies($skip: Int, $limit: Int, $filters: MovieFilters) {
+        movies(skip: $skip, limit: $limit, filters: $filters) {
             _id
             title
             vote_average
@@ -29,14 +29,23 @@ interface GetMoviesData {
 
 function HomePage() {
     const [movies, setMovies] = useState<MoviePoster[]>([]);
-    /* const filters = useReactiveVar(filtersVar);
-    const sortOption = useReactiveVar(sortOptionVar);
-    const search = useReactiveVar(searchVar); */
+    const filters = useReactiveVar(filtersVar);
 
-    const { loading, error, data, fetchMore } = useQuery<GetMoviesData>(
+    const { data, loading, error, fetchMore } = useQuery<GetMoviesData>(
         GET_MOVIES,
         {
-            variables: { skip: 0, limit: 20 },
+            variables: {
+                skip: 0,
+                limit: 20,
+                filters: {
+                    genre: filters.Genre || [],
+                    rating: filters.Rating || [],
+                    releaseYear: filters["Release Year"] || [],
+                    language: filters.Language || [],
+                    status: filters.Status || [],
+                    runtime: filters.Runtime || [],
+                },
+            },
         }
     );
 
@@ -70,16 +79,6 @@ function HomePage() {
     const loadMore = () => {
         fetchMore({
             variables: { skip: movies.length },
-            updateQuery(
-                previousData,
-                { fetchMoreResult, variables: { skip } }
-            ) {
-                const updatedMovies = previousData.movies.slice(0);
-                for (let i = 0; i < fetchMoreResult.movies.length; ++i) {
-                    updatedMovies[skip + i] = fetchMoreResult.movies[i];
-                }
-                return { ...previousData, movies: updatedMovies };
-            },
         });
     };
 

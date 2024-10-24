@@ -2,6 +2,7 @@ import { GraphQLError, GraphQLScalarType } from "graphql";
 import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
 import mongoose from "mongoose";
+import { createFilterQuery, MovieFilters } from "../utils/filterUtils.js";
 
 const dateScalar = new GraphQLScalarType({
     name: "Date",
@@ -52,13 +53,13 @@ const resolvers = {
 
         movies: async (
             _: unknown,
-            { skip = 0, limit = 10 }: { skip?: number; limit?: number }
+            { skip = 0, limit = 10, filters }: { skip?: number; limit?: number, filters: MovieFilters }
         ) => {
             const validationError = validateSkipLimit(skip, limit);
             if (validationError != null) {
                 return validationError;
             }
-            return await MovieModel.find()
+            return await MovieModel.find(createFilterQuery(filters))
                 .skip(skip)
                 .limit(limit)
                 .populate({ path: "reviews", model: ReviewModel });
