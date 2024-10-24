@@ -24,6 +24,7 @@ const MovieSchema = new mongoose.Schema({
     production_countries: [String],
     spoken_languages: [String],
     keywords: [String],
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
 });
 
 const MovieModel = mongoose.model("Movie", MovieSchema, "movies");

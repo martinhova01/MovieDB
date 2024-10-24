@@ -26,6 +26,16 @@ export const typeDefs = `#graphql
     production_countries: [String!]!
     spoken_languages: [String!]!
     keywords: [String!]!
+    reviews: [Review!]!
+  }
+
+  type Review {
+    _id: ID!
+    movie_id: Int!
+    username: String!
+    rating: Int!
+    description: String!
+    review_date: Date!
   }
 
   type Query {

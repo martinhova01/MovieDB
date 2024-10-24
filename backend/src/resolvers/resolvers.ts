@@ -1,5 +1,6 @@
 import { GraphQLError, GraphQLScalarType } from "graphql";
 import MovieModel from "../models/movie.model.js";
+import ReviewModel from "../models/review.model.js";
 
 const dateScalar = new GraphQLScalarType({
     name: "Date",
@@ -23,7 +24,10 @@ const resolvers = {
         movie: async (_: unknown, { id }: { id: number }) => {
             // "Int!" in `schema.ts` makes sure that the id is a non-nullable integer,
             //  so we don't need to check for null/float.
-            return await MovieModel.findById(id);
+            return await MovieModel.findById(id).populate({
+                path: "reviews",
+                model: ReviewModel,
+            });
         },
         movies: async (
             _: unknown,
@@ -44,7 +48,10 @@ const resolvers = {
                     "Skip must be an integer of size at least 0."
                 );
             }
-            return await MovieModel.find().skip(skip).limit(limit);
+            return await MovieModel.find()
+                .skip(skip)
+                .limit(limit)
+                .populate({ path: "reviews", model: ReviewModel });
         },
     },
 };

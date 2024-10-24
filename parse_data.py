@@ -84,6 +84,8 @@ def get_all_movies(df: pd.DataFrame):
                 continue
 
             movie_data[col] = movie_row[col].split(", ")
+        
+        movie_data["reviews"] = []
 
         yield movie_data
 
@@ -122,10 +124,12 @@ def create_mock_data(rows: int = 50):
 def fill_db(rows: int | None = None):
     DB_NAME = "T26-Project-2"
     MOVIES_COL_NAME = "movies"
+    REVIEWS_COL_NAME = "reviews"
 
     CLIENT = pymongo.MongoClient("mongodb://localhost:27017/")
     DB = CLIENT[DB_NAME]
     MOVIES_COL = DB[MOVIES_COL_NAME]
+    REVIEWS_COL = DB[REVIEWS_COL_NAME]
 
     if MOVIES_COL.count_documents({}) > 0:
         print("Database already has data. First drop all data.")
@@ -160,6 +164,9 @@ def fill_db(rows: int | None = None):
     # MOVIES_COL.create_index("production_companies")
     # MOVIES_COL.create_index("production_countries")
     # MOVIES_COL.create_index("keywords")
+
+    REVIEWS_COL.create_index("username")
+    REVIEWS_COL.create_index("review_date")
 
 
 if __name__ == "__main__":
