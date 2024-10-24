@@ -8,6 +8,7 @@ import {
 } from "../shadcn/components/ui/card";
 import { Button } from "../shadcn/components/ui/button";
 import Ratings from "../shadcn/components/ui/rating";
+import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 
 interface MovieCardDetailedProps {
     movie: Movie;
@@ -22,7 +23,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
         <Card
             className="relative m-4 overflow-hidden bg-cover bg-center shadow-lg"
             style={{
-                backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
+                backgroundImage: `url(${getImageUrl(ImageType.BACKDROP, movie.backdrop_path)})`,
             }}
         >
             {movie.backdrop_path && (
@@ -50,7 +51,11 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                     {movie.poster_path && (
                         <figure className="mb-6 w-full max-w-72 flex-shrink-0 md:mb-0 md:mr-6">
                             <img
-                                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                src={getImageUrl(
+                                    ImageType.POSTER,
+                                    movie.poster_path,
+                                    "w500"
+                                )}
                                 className="rounded-lg"
                                 alt={`Poster of ${movie.title}`}
                             />

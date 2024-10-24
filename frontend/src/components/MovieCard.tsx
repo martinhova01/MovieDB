@@ -6,6 +6,7 @@ import {
 } from "@/shadcn/components/ui/card";
 import Ratings from "@/shadcn/components/ui/rating";
 import { Movie } from "@/types/movieTypes";
+import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
@@ -15,11 +16,13 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 <CardHeader className="p-2">
                     <img
                         className="w-full"
-                        src={
-                            "https://image.tmdb.org/t/p/w500" +
-                            movie.poster_path
-                        }
+                        src={getImageUrl(
+                            ImageType.POSTER,
+                            movie.poster_path,
+                            "w342"
+                        )}
                         alt={movie.title}
+                        title={movie.title}
                     />
                 </CardHeader>
                 <CardContent className="p-2">
