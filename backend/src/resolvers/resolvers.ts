@@ -76,6 +76,24 @@ const resolvers = {
                 .skip(skip)
                 .limit(limit);
         },
+
+        userReviews: async (
+            _: unknown,
+            {
+                username,
+                skip = 0,
+                limit = 10,
+            }: { username: string; skip?: number; limit?: number }
+        ) => {
+            const validationError = validateSkipLimit(skip, limit);
+            if (validationError != null) {
+                return validationError;
+            }
+            return await ReviewModel.find({ username })
+                .sort({ review_date: -1 })
+                .skip(skip)
+                .limit(limit);
+        },
     },
 };
 

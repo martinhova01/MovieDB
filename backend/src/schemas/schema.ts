@@ -42,5 +42,6 @@ export const typeDefs = `#graphql
     movie(id: Int!): Movie
     movies(skip: Int, limit: Int): [Movie!]!
     latestReviews(skip: Int, limit: Int): [Review!]!
+    userReviews(username: String!, skip: Int, limit: Int): [Review!]!
   }
 `;
