@@ -44,4 +44,13 @@ export const typeDefs = `#graphql
     latestReviews(skip: Int, limit: Int): [Review!]!
     userReviews(username: String!, skip: Int, limit: Int): [Review!]!
   }
+
+  type Mutation {
+    addReview(
+      movie_id: Int!
+      username: String!
+      rating: Int!
+      description: String!
+    ): Review
+  }
 `;
