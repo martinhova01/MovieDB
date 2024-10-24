@@ -41,5 +41,6 @@ export const typeDefs = `#graphql
   type Query {
     movie(id: Int!): Movie
     movies(skip: Int, limit: Int): [Movie!]!
+    latestReviews(skip: Int, limit: Int): [Review!]!
   }
 `;

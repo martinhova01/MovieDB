@@ -18,6 +18,25 @@ function createBadUserInputError(message: string) {
     });
 }
 
+function validateSkipLimit(skip: number, limit: number) {
+    if (limit == null || limit < 1) {
+        return createBadUserInputError(
+            "Limit must be an integer of size at least 1."
+        );
+    }
+    if (limit > 100) {
+        return createBadUserInputError(
+            "Limit must be an integer of size at most 100."
+        );
+    }
+    if (skip == null || skip < 0) {
+        return createBadUserInputError(
+            "Skip must be an integer of size at least 0."
+        );
+    }
+    return null;
+}
+
 const resolvers = {
     Date: dateScalar,
     Query: {
@@ -29,29 +48,33 @@ const resolvers = {
                 model: ReviewModel,
             });
         },
+
         movies: async (
             _: unknown,
             { skip = 0, limit = 10 }: { skip?: number; limit?: number }
         ) => {
-            if (limit == null || limit < 1) {
-                return createBadUserInputError(
-                    "Limit must be an integer of size at least 1."
-                );
-            }
-            if (limit > 100) {
-                return createBadUserInputError(
-                    "Limit must be an integer of size at most 100."
-                );
-            }
-            if (skip == null || skip < 0) {
-                return createBadUserInputError(
-                    "Skip must be an integer of size at least 0."
-                );
+            const validationError = validateSkipLimit(skip, limit);
+            if (validationError != null) {
+                return validationError;
             }
             return await MovieModel.find()
                 .skip(skip)
                 .limit(limit)
                 .populate({ path: "reviews", model: ReviewModel });
+        },
+
+        latestReviews: async (
+            _: unknown,
+            { skip = 0, limit = 10 }: { skip?: number; limit?: number }
+        ) => {
+            const validationError = validateSkipLimit(skip, limit);
+            if (validationError != null) {
+                return validationError;
+            }
+            return await ReviewModel.find()
+                .sort({ review_date: -1 })
+                .skip(skip)
+                .limit(limit);
         },
     },
 };
