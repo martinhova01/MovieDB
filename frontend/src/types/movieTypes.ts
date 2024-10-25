@@ -35,7 +35,7 @@ interface Movie {
 
 interface Review {
     _id: number;
-    movie_id: number;
+    movie: number;
     username: string;
     rating: number;
     comment: string;

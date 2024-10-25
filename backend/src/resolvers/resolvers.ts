@@ -75,7 +75,8 @@ const resolvers = {
             return await ReviewModel.find()
                 .sort({ date: -1 })
                 .skip(skip)
-                .limit(limit);
+                .limit(limit)
+                .populate({ path: "movie", model: MovieModel });
         },
 
         userReviews: async (
@@ -93,7 +94,8 @@ const resolvers = {
             return await ReviewModel.find({ username })
                 .sort({ date: -1 })
                 .skip(skip)
-                .limit(limit);
+                .limit(limit)
+                .populate({ path: "movie", model: MovieModel });
         },
     },
 
@@ -124,7 +126,7 @@ const resolvers = {
             }
 
             const review = new ReviewModel({
-                movie_id,
+                movie: movie_id,
                 username,
                 rating,
                 comment,
@@ -138,7 +140,7 @@ const resolvers = {
                 await review.save();
                 await movie.updateOne({ $push: { reviews: review._id } });
                 await session.commitTransaction();
-                return review;
+                return review.populate({ path: "movie", model: MovieModel });
             } catch (error) {
                 console.error("Error adding review:", error);
                 await session.abortTransaction();

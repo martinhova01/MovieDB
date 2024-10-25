@@ -31,7 +31,7 @@ export const typeDefs = `#graphql
 
   type Review {
     _id: ID!
-    movie_id: Int!
+    movie: Movie!
     username: String!
     rating: Int!
     comment: String!

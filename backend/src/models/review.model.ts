@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const ReviewSchema = new mongoose.Schema({
-    movie_id: Number,
+    movie: { type: Number, ref: "Movie" },
     username: String,
     rating: Number,
     comment: String,

@@ -43,7 +43,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
         e.preventDefault();
         const newReview: Review = {
             _id: Date.now(), //Temporary id
-            movie_id: movieId,
+            movie: movieId,
             username: username,
             rating,
             comment: comment.trim(),
