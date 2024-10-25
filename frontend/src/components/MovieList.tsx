@@ -1,14 +1,96 @@
 import { MoviePoster } from "@/types/movieTypes";
 import MovieCard from "./MovieCard";
 import { Button } from "@/shadcn/components/ui/button";
+import { gql, useQuery, useReactiveVar } from "@apollo/client";
+import { useEffect, useState } from "react";
+import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
 
-const MovieList = ({
-    movies,
-    loadMore,
-}: {
-    movies: MoviePoster[];
-    loadMore: () => void;
-}) => {
+const GET_MOVIES = gql`
+    query GetMovies(
+        $skip: Int
+        $limit: Int
+        $filters: MovieFilters
+        $sortOption: String
+        $search: String
+    ) {
+        movies(
+            skip: $skip
+            limit: $limit
+            filters: $filters
+            sortOption: $sortOption
+            search: $search
+        ) {
+            _id
+            title
+            vote_average
+            release_date
+            runtime
+            poster_path
+        }
+    }
+`;
+
+type MoviePosterRaw = Omit<MoviePoster, "release_date"> & {
+    release_date: string;
+};
+
+interface GetMoviesData {
+    movies: MoviePosterRaw[];
+}
+
+const MovieList = () => {
+    const [movies, setMovies] = useState<MoviePoster[]>([]);
+    const filters = useReactiveVar(filtersVar);
+    const sortOption = useReactiveVar(sortOptionVar);
+    const search = useReactiveVar(searchVar);
+
+    const { data, loading, error, fetchMore } = useQuery<GetMoviesData>(
+        GET_MOVIES,
+        {
+            variables: {
+                skip: 0,
+                limit: 20,
+                filters: {
+                    genre: filters.Genre || [],
+                    rating: filters.Rating || [],
+                    releaseYear: filters["Release Year"] || [],
+                    language: filters.Language || [],
+                    status: filters.Status || [],
+                    runtime: filters.Runtime || [],
+                },
+                sortOption: sortOption,
+                search: search,
+            },
+        }
+    );
+
+    useEffect(() => {
+        if (data?.movies) {
+            const moviesWithDate = data.movies.map((movie) => ({
+                ...movie,
+                release_date: new Date(movie.release_date),
+            }));
+            setMovies(moviesWithDate as MoviePoster[]);
+        }
+    }, [data]);
+
+    if (loading) {
+        return (
+            <section className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">Loading...</h1>
+            </section>
+        );
+    }
+
+    if (error) {
+        return (
+            <section className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">Something went wrong!</h1>
+                <h2 className="text-primary">Try to refresh</h2>
+            </section>
+        );
+    }
+
     return (
         <>
             {movies.length === 0 ? (
@@ -29,7 +111,13 @@ const MovieList = ({
                 </ul>
             )}
             <div className="flex justify-center">
-                <Button size="lg" className="m-10" onClick={loadMore}>
+                <Button
+                    size="lg"
+                    className="m-10"
+                    onClick={() =>
+                        fetchMore({ variables: { skip: movies.length } })
+                    }
+                >
                     Load More
                 </Button>
             </div>
