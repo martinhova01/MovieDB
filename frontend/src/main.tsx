@@ -16,8 +16,8 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
             Query: {
                 fields: {
                     movies: {
-                        // Cache seperate results based on the filters and sortOption argument
-                        keyArgs: ["filters", "sortOption"],
+                        // Cache seperate results based on the filters, sortOption and search
+                        keyArgs: ["filters", "sortOption", "search"],
 
                         // Concatenate the incoming list items with the existing list items
                         merge(existing, incoming, { args }) {

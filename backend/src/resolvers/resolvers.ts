@@ -2,7 +2,7 @@ import { GraphQLError, GraphQLScalarType } from "graphql";
 import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
 import mongoose from "mongoose";
-import { createFilterQuery, MovieFilters } from "../utils/filterUtils.js";
+import { createFilters, MovieFilters } from "../utils/filterUtils.js";
 import { getSortQuery } from "../utils/sortUtils.js";
 
 const dateScalar = new GraphQLScalarType({
@@ -51,16 +51,37 @@ const resolvers = {
                 model: ReviewModel,
             });
         },
-
         movies: async (
             _: unknown,
-            { skip = 0, limit = 10, filters, sortOption }: { skip?: number; limit?: number, filters: MovieFilters, sortOption: string }
+            {
+                skip = 0,
+                limit = 10,
+                filters,
+                sortOption,
+                search,
+            }: {
+                skip?: number;
+                limit?: number;
+                filters: MovieFilters;
+                sortOption: string;
+                search: string;
+            }
         ) => {
             const validationError = validateSkipLimit(skip, limit);
             if (validationError != null) {
                 return validationError;
             }
-            return await MovieModel.find(createFilterQuery(filters))
+
+            return await MovieModel.find(
+                search
+                    ? {
+                          $and: [
+                              ...createFilters(filters),
+                              { $text: { $search: `\"${search}\"` } },
+                          ],
+                      }
+                    : { $and: createFilters(filters) }
+            )
                 .sort(getSortQuery(sortOption))
                 .skip(skip)
                 .limit(limit)

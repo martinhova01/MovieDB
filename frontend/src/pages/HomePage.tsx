@@ -4,7 +4,7 @@ import MovieList from "../components/MovieList";
 import { MoviePoster } from "../types/movieTypes";
 import SearchBar from "../components/SearchBar";
 import { gql, useQuery, useReactiveVar } from "@apollo/client";
-import { filtersVar, sortOptionVar } from "@/utils/cache";
+import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
 
 const GET_MOVIES = gql`
     query GetMovies(
@@ -12,12 +12,14 @@ const GET_MOVIES = gql`
         $limit: Int
         $filters: MovieFilters
         $sortOption: String
+        $search: String
     ) {
         movies(
             skip: $skip
             limit: $limit
             filters: $filters
             sortOption: $sortOption
+            search: $search
         ) {
             _id
             title
@@ -41,6 +43,7 @@ function HomePage() {
     const [movies, setMovies] = useState<MoviePoster[]>([]);
     const filters = useReactiveVar(filtersVar);
     const sortOption = useReactiveVar(sortOptionVar);
+    const search = useReactiveVar(searchVar);
 
     const { data, loading, error, fetchMore } = useQuery<GetMoviesData>(
         GET_MOVIES,
@@ -57,6 +60,7 @@ function HomePage() {
                     runtime: filters.Runtime || [],
                 },
                 sortOption: sortOption,
+                search: search,
             },
         }
     );

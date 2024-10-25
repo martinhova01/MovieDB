@@ -7,11 +7,11 @@ export type MovieFilters = {
     runtime: string[];
 };
 
-const filterByGenres = (selectedGenres: string[]) => {
+const createFilterForGenres = (selectedGenres: string[]) => {
     return selectedGenres.length ? { genres: { $all: selectedGenres } } : {};
 };
 
-const filterByRating = (selectedRatings: string[]) => {
+const createFilterForRating = (selectedRatings: string[]) => {
     if (selectedRatings.length) {
         const mappedRatings = selectedRatings.map(
             (rating) => parseInt(rating) * 2
@@ -29,7 +29,7 @@ const filterByRating = (selectedRatings: string[]) => {
     return {};
 };
 
-const filterByReleaseYear = (selectedDecades: string[]) => {
+const createFilterForReleaseYear = (selectedDecades: string[]) => {
     if (selectedDecades.length) {
         const yearFilters = selectedDecades.map((decade) => {
             const startYear = parseInt(decade.slice(0, 4));
@@ -45,17 +45,17 @@ const filterByReleaseYear = (selectedDecades: string[]) => {
     return {};
 };
 
-const filterByLanguage = (selectedLanguages: string[]) => {
+const createFilterForLanguage = (selectedLanguages: string[]) => {
     return selectedLanguages.length
         ? { spoken_languages: { $all: selectedLanguages } }
         : {};
 };
 
-const filterByStatus = (selectedStatuses: string[]) => {
+const createFilterForStatus = (selectedStatuses: string[]) => {
     return selectedStatuses.length ? { status: { $in: selectedStatuses } } : {};
 };
 
-const filterByRuntime = (selectedRuntimes: string[]) => {
+const createFilterForRuntime = (selectedRuntimes: string[]) => {
     if (selectedRuntimes.length) {
         const runtimeQueries = selectedRuntimes.map((runtimeFilter) => {
             switch (runtimeFilter) {
@@ -76,15 +76,13 @@ const filterByRuntime = (selectedRuntimes: string[]) => {
     return {};
 };
 
-export const createFilterQuery = (filters: MovieFilters) => {
-    const queryConditions = [
-        filterByGenres(filters.genre),
-        filterByRating(filters.rating),
-        filterByReleaseYear(filters.releaseYear),
-        filterByLanguage(filters.language),
-        filterByStatus(filters.status),
-        filterByRuntime(filters.runtime),
+export const createFilters = (filters: MovieFilters) => {
+    return [
+        createFilterForGenres(filters.genre),
+        createFilterForRating(filters.rating),
+        createFilterForReleaseYear(filters.releaseYear),
+        createFilterForLanguage(filters.language),
+        createFilterForStatus(filters.status),
+        createFilterForRuntime(filters.runtime),
     ].filter((condition) => Object.keys(condition).length > 0);
-
-    return queryConditions.length > 0 ? { $and: queryConditions } : {};
 };
