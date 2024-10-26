@@ -40,16 +40,18 @@ interface GetMoviesData {
 
 const MovieList = () => {
     const [movies, setMovies] = useState<MoviePoster[]>([]);
+    const [isMoreMovies, setIsMoreMovies] = useState<boolean>(false);
     const filters = useReactiveVar(filtersVar);
     const sortOption = useReactiveVar(sortOptionVar);
     const search = useReactiveVar(searchVar);
+    const LIMIT = 20;
 
     const { data, loading, error, fetchMore } = useQuery<GetMoviesData>(
         GET_MOVIES,
         {
             variables: {
                 skip: 0,
-                limit: 20,
+                limit: LIMIT,
                 filters: {
                     genre: filters.Genre || [],
                     rating: filters.Rating || [],
@@ -60,6 +62,14 @@ const MovieList = () => {
                 },
                 sortOption: sortOption,
                 search: search,
+            },
+            onCompleted: (data) => {
+                if (data.movies) {
+                    setIsMoreMovies(
+                        data.movies.length >= LIMIT &&
+                            data.movies.length % LIMIT === 0
+                    );
+                }
             },
         }
     );
@@ -73,6 +83,14 @@ const MovieList = () => {
             setMovies(moviesWithDate as MoviePoster[]);
         }
     }, [data]);
+
+    const handleLoadMore = () => {
+        fetchMore({ variables: { skip: movies.length } }).then(
+            (fetchMoreResult) => {
+                setIsMoreMovies(fetchMoreResult.data.movies.length === LIMIT);
+            }
+        );
+    };
 
     if (loading) {
         return (
@@ -110,17 +128,13 @@ const MovieList = () => {
                     ))}
                 </ul>
             )}
-            <div className="flex justify-center">
-                <Button
-                    size="lg"
-                    className="m-10"
-                    onClick={() =>
-                        fetchMore({ variables: { skip: movies.length } })
-                    }
-                >
-                    Load More
-                </Button>
-            </div>
+            {isMoreMovies && (
+                <div className="flex justify-center">
+                    <Button size="lg" className="m-10" onClick={handleLoadMore}>
+                        Load More
+                    </Button>
+                </div>
+            )}
         </>
     );
 };
