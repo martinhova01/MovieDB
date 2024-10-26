@@ -11,7 +11,7 @@ enum SortingType {
     SHORTEST_RUNTIME = "Shortest runtime",
 }
 
-export const getSortQuery = (
+export const getSortOrder = (
     sortOption: string
 ): { [key: string]: SortOrder } => {
     switch (sortOption) {
