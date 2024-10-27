@@ -1,10 +1,9 @@
-export type MovieFilters = {
-    genre: string[];
-    rating: string[];
-    releaseYear: string[];
-    language: string[];
-    status: string[];
-    runtime: string[];
+export type Filters = {
+    Genre: string[];
+    Rating: string[];
+    Decade: string[];
+    Status: string[];
+    Runtime: string[];
 };
 
 const createFilterForGenres = (selectedGenres: string[]) => {
@@ -45,12 +44,6 @@ const createFilterForReleaseYear = (selectedDecades: string[]) => {
     return {};
 };
 
-const createFilterForLanguage = (selectedLanguages: string[]) => {
-    return selectedLanguages.length
-        ? { spoken_languages: { $all: selectedLanguages } }
-        : {};
-};
-
 const createFilterForStatus = (selectedStatuses: string[]) => {
     return selectedStatuses.length ? { status: { $in: selectedStatuses } } : {};
 };
@@ -76,13 +69,12 @@ const createFilterForRuntime = (selectedRuntimes: string[]) => {
     return {};
 };
 
-export const createFilters = (filters: MovieFilters) => {
+export const createFilters = (filters: Filters) => {
     return [
-        createFilterForGenres(filters.genre),
-        createFilterForRating(filters.rating),
-        createFilterForReleaseYear(filters.releaseYear),
-        createFilterForLanguage(filters.language),
-        createFilterForStatus(filters.status),
-        createFilterForRuntime(filters.runtime),
+        createFilterForGenres(filters.Genre),
+        createFilterForRating(filters.Rating),
+        createFilterForReleaseYear(filters.Decade),
+        createFilterForStatus(filters.Status),
+        createFilterForRuntime(filters.Runtime),
     ].filter((condition) => Object.keys(condition).length > 0);
 };

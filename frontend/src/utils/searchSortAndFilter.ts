@@ -1,36 +1,4 @@
-import { all_genres, all_languages } from "../mock/util";
-import { Movie, Status } from "../types/movieTypes";
-
-export const all_filters: { [key: string]: string[] } = {
-    Genre: all_genres,
-    Rating: ["5", "4", "3", "2", "1"],
-    "Release Year": [
-        "2020s",
-        "2010s",
-        "2000s",
-        "1990s",
-        "1980s",
-        "1970s",
-        "1960s",
-        "1950s",
-        "1940s",
-        "1930s",
-        "1920s",
-        "1910s",
-        "1900s",
-        "1890s",
-        "1880s",
-        "1870s",
-    ],
-    Language: all_languages,
-    Status: Object.values(Status) as string[],
-    Runtime: [
-        "Less than 1 hour",
-        "1 - 2 hours",
-        "2 - 3 hours",
-        "3 hours or more",
-    ],
-};
+import { Movie } from "../types/movieTypes";
 
 const filterByGenres = (movies: Movie[], selectedGenres: string[]) => {
     if (selectedGenres.length) {

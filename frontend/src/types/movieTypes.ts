@@ -51,5 +51,13 @@ interface Review {
     date: Date;
 }
 
+interface Filters {
+    Genre: string[];
+    Rating: string[];
+    Decade: string[];
+    Status: string[];
+    Runtime: string[];
+}
+
 export { Status };
-export type { Movie, MoviePoster, Review };
+export type { Movie, MoviePoster, Review, Filters };

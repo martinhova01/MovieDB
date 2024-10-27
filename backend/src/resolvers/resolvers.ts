@@ -2,7 +2,7 @@ import { GraphQLError, GraphQLScalarType } from "graphql";
 import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
 import mongoose from "mongoose";
-import { createFilters, MovieFilters } from "../utils/filterUtils.js";
+import { createFilters, Filters } from "../utils/filterUtils.js";
 import { getSortOrder } from "../utils/sortUtils.js";
 
 const dateScalar = new GraphQLScalarType({
@@ -51,6 +51,7 @@ const resolvers = {
                 model: ReviewModel,
             });
         },
+        
         movies: async (
             _: unknown,
             {
@@ -62,7 +63,7 @@ const resolvers = {
             }: {
                 skip?: number;
                 limit?: number;
-                filters: MovieFilters;
+                filters: Filters;
                 sortOption: string;
                 search: string;
             }
@@ -86,6 +87,61 @@ const resolvers = {
                 .skip(skip)
                 .limit(limit)
                 .populate({ path: "reviews", model: ReviewModel });
+        },
+
+        filters: async () => {
+            const genres: string[] = (
+                await MovieModel.distinct("genres")
+            ).filter((genre) => genre != null);
+
+            const ratings: string[] = ["5", "4", "3", "2", "1", "0"];
+
+            const decades = await MovieModel.aggregate([
+                {
+                    $group: {
+                        _id: {
+                            $floor: {
+                                $divide: [{ $year: "$release_date" }, 10],
+                            },
+                        },
+                    },
+                },
+                {
+                    $project: {
+                        _id: { $concat: [{ $toString: "$_id" }, "0s"] },
+                    },
+                },
+                {
+                    $sort: { _id: -1 },
+                },
+            ]);
+            const decadeList: string[] = decades
+                .map((decade) => decade._id)
+                .filter((decade) => decade != null);
+
+            const statuses: string[] = [
+                "Released",
+                "In Production",
+                "Post Production",
+                "Planned",
+                "Rumored",
+                "Canceled",
+            ];
+
+            const runtimes: string[] = [
+                "Less than 1 hour",
+                "1 - 2 hours",
+                "2 - 3 hours",
+                "3 hours or more",
+            ];
+
+            return {
+                Genre: genres,
+                Rating: ratings,
+                Decade: decadeList,
+                Status: statuses,
+                Runtime: runtimes,
+            };
         },
 
         latestReviews: async (

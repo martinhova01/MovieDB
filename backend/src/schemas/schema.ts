@@ -38,27 +38,26 @@ export const typeDefs = `#graphql
     date: Date!
   }
 
-  input MovieFilters {
-    genre: [String!]!
-    rating: [String!]!
-    releaseYear: [String!]!
-    language: [String!]!
-    status: [String!]!
-    runtime: [String!]!
+  type Filters {
+    Genre: [String!]!
+    Rating: [String!]!
+    Decade: [String!]!
+    Status: [String!]!
+    Runtime: [String!]!
   }
 
-  input MovieFilters {
-    genre: [String!]!
-    rating: [String!]!
-    releaseYear: [String!]!
-    language: [String!]!
-    status: [String!]!
-    runtime: [String!]!
+  input FiltersInput {
+    Genre: [String!]!
+    Rating: [String!]!
+    Decade: [String!]!
+    Status: [String!]!
+    Runtime: [String!]!
   }
 
   type Query {
     movie(id: Int!): Movie
-    movies(skip: Int, limit: Int, filters: MovieFilters, sortOption: String, search: String): [Movie!]!
+    movies(skip: Int, limit: Int, filters: FiltersInput, sortOption: String, search: String): [Movie!]!
+    filters: Filters
     latestReviews(skip: Int, limit: Int): [Review!]!
     userReviews(username: String!, skip: Int, limit: Int): [Review!]!
   }

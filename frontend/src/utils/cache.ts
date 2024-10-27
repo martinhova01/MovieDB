@@ -1,14 +1,22 @@
 import { makeVar } from "@apollo/client";
 import { SortingType } from "./searchSortAndFilter";
+import { Filters } from "@/types/movieTypes";
 
 export const sortOptionVar = makeVar<SortingType>(
     (sessionStorage.getItem("sort_option") as SortingType) ??
         SortingType.NEWEST_FIRST
 );
 
-export const filtersVar = makeVar<{ [key: string]: string[] }>(
-    JSON.parse(sessionStorage.getItem("filters") ?? "{}")
-);
+
+const storedFilters = sessionStorage.getItem("filters");
+const initialFilters: Filters = storedFilters ? JSON.parse(storedFilters) : {
+    Genre: [],
+    Rating: [],
+    Decade: [],
+    Status: [],
+    Runtime: [],
+};
+export const filtersVar = makeVar<Filters>(initialFilters);
 
 export const searchVar = makeVar<string>(
     sessionStorage.getItem("search") ?? ""

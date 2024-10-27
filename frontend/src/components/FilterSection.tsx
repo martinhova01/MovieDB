@@ -1,3 +1,4 @@
+import { Filters } from "@/types/movieTypes";
 import {
     AccordionContent,
     AccordionItem,
@@ -6,10 +7,10 @@ import {
 import { Checkbox } from "../shadcn/components/ui/checkbox";
 
 interface FilterSectionInterface {
-    category: string;
+    category: keyof Filters;
     all_filters: string[];
     applied_filters: string[];
-    updateFilters: (category: string, filter: string) => void;
+    updateFilters: (category: keyof Filters, filter: string) => void;
 }
 
 const FilterSection: React.FC<FilterSectionInterface> = ({

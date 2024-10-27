@@ -9,7 +9,7 @@ const GET_MOVIES = gql`
     query GetMovies(
         $skip: Int
         $limit: Int
-        $filters: MovieFilters
+        $filters: FiltersInput
         $sortOption: String
         $search: String
     ) {
@@ -52,14 +52,7 @@ const MovieList = () => {
             variables: {
                 skip: 0,
                 limit: LIMIT,
-                filters: {
-                    genre: filters.Genre || [],
-                    rating: filters.Rating || [],
-                    releaseYear: filters["Release Year"] || [],
-                    language: filters.Language || [],
-                    status: filters.Status || [],
-                    runtime: filters.Runtime || [],
-                },
+                filters: filters,
                 sortOption: sortOption,
                 search: search,
             },
@@ -104,7 +97,7 @@ const MovieList = () => {
         return (
             <section className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">Something went wrong!</h1>
-                <h2 className="text-primary">Try to refresh</h2>
+                <p className="text-primary">Try to refresh</p>
             </section>
         );
     }

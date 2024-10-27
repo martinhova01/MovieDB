@@ -12,6 +12,7 @@ import "./index.css";
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
     uri: "http://localhost:3001/",
     cache: new InMemoryCache({
+        addTypename: false,
         typePolicies: {
             Query: {
                 fields: {
