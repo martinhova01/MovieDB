@@ -140,7 +140,11 @@ const resolvers = {
                 await review.save();
                 await movie.updateOne({ $push: { reviews: review._id } });
                 await session.commitTransaction();
-                return review.populate({ path: "movie", model: MovieModel });
+
+                return await MovieModel.findById(movie_id).populate({
+                    path: "reviews",
+                    model: ReviewModel,
+                });
             } catch (error) {
                 console.error("Error adding review:", error);
                 await session.abortTransaction();
@@ -170,7 +174,11 @@ const resolvers = {
                     { $pull: { reviews: review._id } }
                 );
                 await session.commitTransaction();
-                return review;
+
+                return await MovieModel.findById(review.movie).populate({
+                    path: "reviews",
+                    model: ReviewModel,
+                });
             } catch (error) {
                 console.error("Error deleting review:", error);
                 await session.abortTransaction();

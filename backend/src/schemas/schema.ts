@@ -51,7 +51,7 @@ export const typeDefs = `#graphql
       username: String!
       rating: Int!
       comment: String!
-    ): Review
-    deleteReview(_id: ID!): Review
+    ): Movie!
+    deleteReview(_id: ID!): Movie!
   }
 `;
