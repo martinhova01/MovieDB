@@ -1,16 +1,17 @@
-import { MoviePoster } from "@/types/movieTypes";
+import { MoviePoster, SortingType } from "@/types/movieTypes";
 import MovieCard from "./MovieCard";
 import { Button } from "@/shadcn/components/ui/button";
 import { gql, useQuery, useReactiveVar } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
+import { getSortingTypeKey } from "@/utils/searchSortAndFilter";
 
 const GET_MOVIES = gql`
     query GetMovies(
         $skip: Int
         $limit: Int
         $filters: FiltersInput
-        $sortOption: String
+        $sortOption: SortingType
         $search: String
     ) {
         movies(
@@ -53,7 +54,7 @@ const MovieList = () => {
                 skip: 0,
                 limit: LIMIT,
                 filters: filters,
-                sortOption: sortOption,
+                sortOption: getSortingTypeKey(sortOption) ?? getSortingTypeKey(SortingType.NEWEST_FIRST),
                 search: search,
             },
             onCompleted: (data) => {

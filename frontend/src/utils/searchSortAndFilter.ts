@@ -136,3 +136,12 @@ export const searchMovies = (search: string, movies: Movie[]) => {
         movie.title.toLowerCase().includes(search.toLowerCase())
     );
 };
+
+export const getSortingTypeKey = (displayString: string) => {
+    for (const [key, value] of Object.entries(SortingType)) {
+        if (value === displayString) {
+            return key;
+        }
+    }
+    return undefined;
+}

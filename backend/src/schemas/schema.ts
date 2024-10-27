@@ -54,9 +54,18 @@ export const typeDefs = `#graphql
     Runtime: [String!]!
   }
 
+  enum SortingType {
+    NEWEST_FIRST
+    OLDEST_FIRST
+    BEST_RATED
+    WORST_RATED
+    LONGEST_RUNTIME
+    SHORTEST_RUNTIME
+  }
+
   type Query {
     movie(id: Int!): Movie
-    movies(skip: Int, limit: Int, filters: FiltersInput, sortOption: String, search: String): [Movie!]!
+    movies(skip: Int, limit: Int, filters: FiltersInput, sortOption: SortingType, search: String): [Movie!]!
     filters: Filters
     latestReviews(skip: Int, limit: Int): [Review!]!
     userReviews(username: String!, skip: Int, limit: Int): [Review!]!

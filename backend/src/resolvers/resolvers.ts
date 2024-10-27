@@ -3,7 +3,7 @@ import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
 import mongoose from "mongoose";
 import { createFilters, Filters } from "../utils/filterUtils.js";
-import { getSortOrder } from "../utils/sortUtils.js";
+import { getSortOrder, SortingType } from "../utils/sortUtils.js";
 
 const dateScalar = new GraphQLScalarType({
     name: "Date",
@@ -64,7 +64,7 @@ const resolvers = {
                 skip?: number;
                 limit?: number;
                 filters: Filters;
-                sortOption: string;
+                sortOption: SortingType;
                 search: string;
             }
         ) => {
