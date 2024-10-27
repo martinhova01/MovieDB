@@ -8,9 +8,9 @@ import {
     AccordionTrigger,
 } from "../shadcn/components/ui/accordion";
 import { Label } from "../shadcn/components/ui/label";
-import { SortingType } from "../utils/searchSortAndFilter";
 import { sortOptionVar } from "@/utils/cache";
 import { useReactiveVar } from "@apollo/client";
+import { SortingType } from "@/types/movieTypes";
 
 const SortSection: React.FC = () => {
     const sortOption = useReactiveVar(sortOptionVar);

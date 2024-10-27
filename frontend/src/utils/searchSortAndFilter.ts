@@ -1,4 +1,4 @@
-import { Movie } from "../types/movieTypes";
+import { Movie, SortingType } from "../types/movieTypes";
 
 const filterByGenres = (movies: Movie[], selectedGenres: string[]) => {
     if (selectedGenres.length) {
@@ -105,17 +105,6 @@ export const filterMovies = (
     return filteredMovies;
 };
 
-export enum SortingType {
-    NEWEST_FIRST = "Newest first",
-    OLDEST_FIRST = "Oldest first",
-    TITLE_ASC = "Title A-Z",
-    TITLE_DESC = "Title Z-A",
-    BEST_RATED = "Best rated",
-    WORST_RATED = "Worst rated",
-    LONGEST_RUNTIME = "Longest runtime",
-    SHORTEST_RUNTIME = "Shortest runtime",
-}
-
 const sortingMap: Map<SortingType, (a: Movie, b: Movie) => number> = new Map<
     SortingType,
     (a: Movie, b: Movie) => number
@@ -128,8 +117,6 @@ const sortingMap: Map<SortingType, (a: Movie, b: Movie) => number> = new Map<
         SortingType.OLDEST_FIRST,
         (a, b) => a.release_date.getTime() - b.release_date.getTime(),
     ],
-    [SortingType.TITLE_ASC, (a, b) => a.title.localeCompare(b.title)],
-    [SortingType.TITLE_DESC, (a, b) => b.title.localeCompare(a.title)],
     [SortingType.BEST_RATED, (a, b) => b.vote_average - a.vote_average],
     [SortingType.WORST_RATED, (a, b) => a.vote_average - b.vote_average],
     [SortingType.LONGEST_RUNTIME, (a, b) => b.runtime - a.runtime],

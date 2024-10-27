@@ -59,5 +59,14 @@ interface Filters {
     Runtime: string[];
 }
 
-export { Status };
+enum SortingType {
+    NEWEST_FIRST = "Newest first",
+    OLDEST_FIRST = "Oldest first",
+    BEST_RATED = "Best rated",
+    WORST_RATED = "Worst rated",
+    LONGEST_RUNTIME = "Longest runtime",
+    SHORTEST_RUNTIME = "Shortest runtime",
+}
+
+export { Status, SortingType };
 export type { Movie, MoviePoster, Review, Filters };

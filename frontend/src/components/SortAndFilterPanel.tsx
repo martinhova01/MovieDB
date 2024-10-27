@@ -13,10 +13,9 @@ import {
 import { SlidersHorizontal } from "lucide-react";
 import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
-import { SortingType } from "../utils/searchSortAndFilter";
 import { filtersVar, sortOptionVar } from "@/utils/cache";
 import { gql, useQuery, useReactiveVar } from "@apollo/client";
-import { Filters } from "@/types/movieTypes";
+import { Filters, SortingType } from "@/types/movieTypes";
 
 const GET_FILTERS = gql`
     query GetFilters {
