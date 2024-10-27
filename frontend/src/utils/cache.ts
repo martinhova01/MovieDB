@@ -6,15 +6,16 @@ export const sortOptionVar = makeVar<SortingType>(
         SortingType.NEWEST_FIRST
 );
 
-
 const storedFilters = sessionStorage.getItem("filters");
-const initialFilters: Filters = storedFilters ? JSON.parse(storedFilters) : {
-    Genre: [],
-    Rating: [],
-    Decade: [],
-    Status: [],
-    Runtime: [],
-};
+const initialFilters: Filters = storedFilters
+    ? JSON.parse(storedFilters)
+    : {
+          Genre: [],
+          Rating: [],
+          Decade: [],
+          Status: [],
+          Runtime: [],
+      };
 export const filtersVar = makeVar<Filters>(initialFilters);
 
 export const searchVar = makeVar<string>(

@@ -144,4 +144,4 @@ export const getSortingTypeKey = (displayString: string) => {
         }
     }
     return undefined;
-}
+};

@@ -54,7 +54,9 @@ const MovieList = () => {
                 skip: 0,
                 limit: LIMIT,
                 filters: filters,
-                sortOption: getSortingTypeKey(sortOption) ?? getSortingTypeKey(SortingType.NEWEST_FIRST),
+                sortOption:
+                    getSortingTypeKey(sortOption) ??
+                    getSortingTypeKey(SortingType.NEWEST_FIRST),
                 search: search,
             },
             onCompleted: (data) => {

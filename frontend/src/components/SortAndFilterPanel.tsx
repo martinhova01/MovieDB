@@ -30,13 +30,14 @@ const GET_FILTERS = gql`
 `;
 
 interface GetFiltersQueryResult {
-    filters: Filters
+    filters: Filters;
 }
 
 const SortAndFilterPanel: React.FC = () => {
     const filters = useReactiveVar(filtersVar);
 
-    const { data, loading, error } = useQuery<GetFiltersQueryResult>(GET_FILTERS);
+    const { data, loading, error } =
+        useQuery<GetFiltersQueryResult>(GET_FILTERS);
 
     const updateFilters = (category: keyof Filters, filter: string) => {
         let newFilters: string[] = [...(filters[category] || [])];
@@ -93,21 +94,24 @@ const SortAndFilterPanel: React.FC = () => {
                         <p className="text-primary">Try to refresh</p>
                     </section>
                 )}
-                {!loading && !error && data && 
+                {!loading && !error && data && (
                     <section>
                         <Accordion type="single" collapsible className="w-full">
                             <SortSection />
-                            {(Object.entries(data.filters) as [keyof Filters, string[]][]).map(
-                                ([category, filter_list]) => (
-                                    <FilterSection
-                                        key={category}
-                                        category={category}
-                                        all_filters={filter_list}
-                                        applied_filters={filters[category] ?? []}
-                                        updateFilters={updateFilters}
-                                    />
-                                )
-                            )}
+                            {(
+                                Object.entries(data.filters) as [
+                                    keyof Filters,
+                                    string[],
+                                ][]
+                            ).map(([category, filter_list]) => (
+                                <FilterSection
+                                    key={category}
+                                    category={category}
+                                    all_filters={filter_list}
+                                    applied_filters={filters[category] ?? []}
+                                    updateFilters={updateFilters}
+                                />
+                            ))}
                         </Accordion>
                         <SheetFooter className="mt-5">
                             <Button type="reset" onClick={clearAll}>
@@ -120,7 +124,7 @@ const SortAndFilterPanel: React.FC = () => {
                             </SheetClose>
                         </SheetFooter>
                     </section>
-                }
+                )}
             </SheetContent>
         </Sheet>
     );
