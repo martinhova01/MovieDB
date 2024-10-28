@@ -1,12 +1,13 @@
-import { MoviePoster, SortingType } from "@/types/movieTypes";
+import { MoviePoster } from "@/types/movieTypes";
 import MovieCard from "./MovieCard";
 import { Button } from "@/shadcn/components/ui/button";
-import { gql, useQuery, useReactiveVar } from "@apollo/client";
+import { useQuery, useReactiveVar } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
-import { getSortingTypeKey } from "@/utils/searchSortAndFilter";
+import { gql } from "@/__generated__";
+import { FiltersInput } from "@/__generated__/types";
 
-const GET_MOVIES = gql`
+const GET_MOVIES = gql(`
     query GetMovies(
         $skip: Int
         $limit: Int
@@ -29,15 +30,7 @@ const GET_MOVIES = gql`
             poster_path
         }
     }
-`;
-
-type MoviePosterRaw = Omit<MoviePoster, "release_date"> & {
-    release_date: string;
-};
-
-interface GetMoviesData {
-    movies: MoviePosterRaw[];
-}
+`);
 
 const MovieList = () => {
     const [movies, setMovies] = useState<MoviePoster[]>([]);
@@ -47,16 +40,14 @@ const MovieList = () => {
     const search = useReactiveVar(searchVar);
     const LIMIT = 20;
 
-    const { data, loading, error, fetchMore } = useQuery<GetMoviesData>(
+    const { data, loading, error, fetchMore } = useQuery(
         GET_MOVIES,
         {
             variables: {
                 skip: 0,
                 limit: LIMIT,
-                filters: filters,
-                sortOption:
-                    getSortingTypeKey(sortOption) ??
-                    getSortingTypeKey(SortingType.NEWEST_FIRST),
+                filters: filters as FiltersInput,
+                sortOption: sortOption,
                 search: search,
             },
             onCompleted: (data) => {
@@ -114,7 +105,7 @@ const MovieList = () => {
                 </section>
             ) : (
                 <ul className="flex flex-wrap justify-center">
-                    {movies.map((movie: MoviePoster) => (
+                    {movies.map((movie) => (
                         <li
                             key={movie._id}
                             className="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"

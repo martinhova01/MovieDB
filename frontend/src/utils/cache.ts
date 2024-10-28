@@ -1,9 +1,9 @@
 import { makeVar } from "@apollo/client";
-import { Filters, SortingType } from "@/types/movieTypes";
+import { Filters, SortingType } from "@/__generated__/types";
 
 export const sortOptionVar = makeVar<SortingType>(
     (sessionStorage.getItem("sort_option") as SortingType) ??
-        SortingType.NEWEST_FIRST
+        SortingType.NewestFirst
 );
 
 const storedFilters = sessionStorage.getItem("filters");

@@ -17,7 +17,7 @@ export enum ImageType {
 
 export const getImageUrl = (
     type: ImageType,
-    imagePath: string | undefined,
+    imagePath?: string | null,
     imageSize: string = "original"
 ): string => {
     if (!imagePath) {

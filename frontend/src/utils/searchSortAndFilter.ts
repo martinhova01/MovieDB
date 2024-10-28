@@ -1,4 +1,4 @@
-import { Movie, SortingType } from "../types/movieTypes";
+import { Movie, SortingType } from "@/__generated__/types";
 
 const filterByGenres = (movies: Movie[], selectedGenres: string[]) => {
     if (selectedGenres.length) {
@@ -110,17 +110,17 @@ const sortingMap: Map<SortingType, (a: Movie, b: Movie) => number> = new Map<
     (a: Movie, b: Movie) => number
 >([
     [
-        SortingType.NEWEST_FIRST,
+        SortingType.NewestFirst,
         (a, b) => b.release_date.getTime() - a.release_date.getTime(),
     ],
     [
-        SortingType.OLDEST_FIRST,
+        SortingType.OldestFirst,
         (a, b) => a.release_date.getTime() - b.release_date.getTime(),
     ],
-    [SortingType.BEST_RATED, (a, b) => b.vote_average - a.vote_average],
-    [SortingType.WORST_RATED, (a, b) => a.vote_average - b.vote_average],
-    [SortingType.LONGEST_RUNTIME, (a, b) => b.runtime - a.runtime],
-    [SortingType.SHORTEST_RUNTIME, (a, b) => a.runtime - b.runtime],
+    [SortingType.BestRated, (a, b) => b.vote_average - a.vote_average],
+    [SortingType.WorstRated, (a, b) => a.vote_average - b.vote_average],
+    [SortingType.LongestRuntime, (a, b) => b.runtime - a.runtime],
+    [SortingType.ShortestRuntime, (a, b) => a.runtime - b.runtime],
 ]);
 
 export const sortMovies = (sortOption: SortingType, movies: Movie[]) => {
@@ -137,11 +137,15 @@ export const searchMovies = (search: string, movies: Movie[]) => {
     );
 };
 
-export const getSortingTypeKey = (displayString: string) => {
-    for (const [key, value] of Object.entries(SortingType)) {
-        if (value === displayString) {
-            return key;
-        }
-    }
-    return undefined;
-};
+const sortingDisplayNames: Map<SortingType, string> = new Map<SortingType, string>([
+    [SortingType.BestRated, "Best rated"],
+    [SortingType.LongestRuntime, "Longest runtime"],
+    [SortingType.NewestFirst, "Newest first"],
+    [SortingType.OldestFirst, "Oldest first"],
+    [SortingType.ShortestRuntime, "Shortest runtime"],
+    [SortingType.WorstRated, "Worst rated"],
+  ]);
+
+export const getSortOptionDisplayName = (sortType: SortingType) => {
+    return sortingDisplayNames.get(sortType);
+}

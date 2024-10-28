@@ -1,5 +1,4 @@
 import React from "react";
-import { Movie } from "../types/movieTypes";
 import {
     Card,
     CardContent,
@@ -9,6 +8,7 @@ import {
 import { Button } from "../shadcn/components/ui/button";
 import Ratings from "../shadcn/components/ui/rating";
 import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
+import { Movie } from "@/__generated__/types";
 
 interface MovieCardDetailedProps {
     movie: Movie;

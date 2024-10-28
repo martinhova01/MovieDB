@@ -2,10 +2,11 @@ import { useState } from "react";
 import MovieCardDetailed from "../components/MovieCardDetailed";
 import MovieReviews from "../components/MovieReviews";
 import { Link, useParams } from "react-router-dom";
-import { Movie } from "../types/movieTypes";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { gql } from "@/__generated__";
+import { Movie } from "@/__generated__/types";
 
-const GET_MOVIE = gql`
+const GET_MOVIE = gql(`
     query GetMovie($movieId: Int!) {
         movie(id: $movieId) {
             _id
@@ -33,22 +34,14 @@ const GET_MOVIE = gql`
             keywords
         }
     }
-`;
-
-type MovieRaw = Omit<Movie, "release_date"> & {
-    release_date: string;
-};
-
-interface GetMovieData {
-    movie: MovieRaw;
-}
+`);
 
 function MovieDetailPage() {
     const [movie, setMovie] = useState<Movie | null>(null);
     const { movieId } = useParams<{ movieId: string }>();
     const movieIdAsInt = Number(movieId);
 
-    const { loading, error } = useQuery<GetMovieData>(GET_MOVIE, {
+    const { loading, error } = useQuery(GET_MOVIE, {
         variables: { movieId: movieIdAsInt },
         skip: isNaN(movieIdAsInt),
         onCompleted: (data) => {

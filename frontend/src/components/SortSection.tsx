@@ -10,7 +10,8 @@ import {
 import { Label } from "../shadcn/components/ui/label";
 import { sortOptionVar } from "@/utils/cache";
 import { useReactiveVar } from "@apollo/client";
-import { SortingType } from "@/types/movieTypes";
+import { SortingType } from "@/__generated__/types";
+import { getSortOptionDisplayName } from "@/utils/searchSortAndFilter";
 
 const SortSection: React.FC = () => {
     const sortOption = useReactiveVar(sortOptionVar);
@@ -22,7 +23,7 @@ const SortSection: React.FC = () => {
 
     return (
         <AccordionItem value={`Sort item`}>
-            <AccordionTrigger>Sort by ({sortOption})</AccordionTrigger>
+            <AccordionTrigger>Sort by ({getSortOptionDisplayName(sortOption)})</AccordionTrigger>
             <AccordionContent>
                 <RadioGroup value={sortOption} onValueChange={updateSortOption}>
                     <ul className="grid gap-2">
@@ -36,7 +37,7 @@ const SortSection: React.FC = () => {
                                     htmlFor={option}
                                     className="hover:cursor-pointer"
                                 >
-                                    {option}
+                                    {getSortOptionDisplayName(option)}
                                 </Label>
                             </li>
                         ))}

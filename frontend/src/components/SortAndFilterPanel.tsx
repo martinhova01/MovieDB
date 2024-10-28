@@ -14,10 +14,11 @@ import { SlidersHorizontal } from "lucide-react";
 import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
 import { filtersVar, sortOptionVar } from "@/utils/cache";
-import { gql, useQuery, useReactiveVar } from "@apollo/client";
-import { Filters, SortingType } from "@/types/movieTypes";
+import { useQuery, useReactiveVar } from "@apollo/client";
+import { gql } from "@/__generated__";
+import { Filters, SortingType } from "@/__generated__/types";
 
-const GET_FILTERS = gql`
+const GET_FILTERS = gql(`
     query GetFilters {
         filters {
             Genre
@@ -27,17 +28,13 @@ const GET_FILTERS = gql`
             Runtime
         }
     }
-`;
+`);
 
-interface GetFiltersQueryResult {
-    filters: Filters;
-}
 
 const SortAndFilterPanel: React.FC = () => {
     const filters = useReactiveVar(filtersVar);
 
-    const { data, loading, error } =
-        useQuery<GetFiltersQueryResult>(GET_FILTERS);
+    const { data, loading, error } = useQuery(GET_FILTERS);
 
     const updateFilters = (category: keyof Filters, filter: string) => {
         let newFilters: string[] = [...(filters[category] || [])];
@@ -62,8 +59,8 @@ const SortAndFilterPanel: React.FC = () => {
         sessionStorage.setItem("filters", JSON.stringify(emptyFilters));
         filtersVar(emptyFilters);
 
-        sessionStorage.setItem("sort_option", SortingType.NEWEST_FIRST);
-        sortOptionVar(SortingType.NEWEST_FIRST);
+        sessionStorage.setItem("sort_option", SortingType.NewestFirst);
+        sortOptionVar(SortingType.NewestFirst);
     };
 
     return (
@@ -94,24 +91,21 @@ const SortAndFilterPanel: React.FC = () => {
                         <p className="text-primary">Try to refresh</p>
                     </section>
                 )}
-                {!loading && !error && data && (
+                {!loading && !error && data?.filters && (
                     <section>
                         <Accordion type="single" collapsible className="w-full">
                             <SortSection />
-                            {(
-                                Object.entries(data.filters) as [
-                                    keyof Filters,
-                                    string[],
-                                ][]
-                            ).map(([category, filter_list]) => (
-                                <FilterSection
-                                    key={category}
-                                    category={category}
-                                    all_filters={filter_list}
-                                    applied_filters={filters[category] ?? []}
-                                    updateFilters={updateFilters}
-                                />
-                            ))}
+                            {Object.entries(data.filters as Filters)
+                                .map(([category, filter_list]) => (
+                                    <FilterSection
+                                        key={category}
+                                        category={category as keyof Filters}
+                                        all_filters={filter_list}
+                                        applied_filters={filters[category as keyof Filters] ?? []}
+                                        updateFilters={updateFilters}
+                                    />
+                                )
+                            )}
                         </Accordion>
                         <SheetFooter className="mt-5">
                             <Button type="reset" onClick={clearAll}>

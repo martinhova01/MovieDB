@@ -1,4 +1,4 @@
-import { Filters } from "@/types/movieTypes";
+import { Filters } from "@/__generated__/types";
 import {
     AccordionContent,
     AccordionItem,
