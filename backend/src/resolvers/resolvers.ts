@@ -42,7 +42,7 @@ const resolvers = {
                 model: ReviewModel,
             });
         },
-        
+
         movies: async (
             _: unknown,
             {
@@ -54,9 +54,9 @@ const resolvers = {
             }: {
                 skip?: number;
                 limit?: number;
-                filters: Filters;
-                sortOption: SortingType;
-                search: string;
+                filters?: Filters;
+                sortOption?: SortingType;
+                search?: string;
             }
         ) => {
             const validationError = validateSkipLimit(skip, limit);
@@ -64,17 +64,16 @@ const resolvers = {
                 return validationError;
             }
 
-            return await MovieModel.find(
-                search
-                    ? {
-                          $and: [
-                              ...createFilters(filters),
-                              { $text: { $search: `\"${search}\"` } },
-                          ],
-                      }
-                    : { $and: createFilters(filters) }
-            )
-                .sort({ ...getSortOrder(sortOption), _id: 1 })
+            return await MovieModel.find({
+                $and: [
+                    ...(filters ? createFilters(filters) : []),
+                    search ? { $text: { $search: `\"${search}\"` } } : {},
+                ],
+            })
+                .sort({
+                    ...getSortOrder(sortOption ?? SortingType.NEWEST_FIRST),
+                    _id: 1,
+                })
                 .skip(skip)
                 .limit(limit)
                 .populate({ path: "reviews", model: ReviewModel });
