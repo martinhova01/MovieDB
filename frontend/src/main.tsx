@@ -12,8 +12,16 @@ import "./index.css";
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
     uri: "http://localhost:3001/",
     cache: new InMemoryCache({
-        addTypename: false,
         typePolicies: {
+            Movie: {
+                fields: {
+                    release_date: {
+                        read(value) {
+                            return value ? new Date(value) : null;
+                        },
+                    },
+                },
+            },
             Query: {
                 fields: {
                     movies: {

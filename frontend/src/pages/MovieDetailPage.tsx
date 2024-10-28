@@ -1,4 +1,3 @@
-import { useState } from "react";
 import MovieCardDetailed from "../components/MovieCardDetailed";
 import MovieReviews from "../components/MovieReviews";
 import { Link, useParams } from "react-router-dom";
@@ -37,22 +36,12 @@ const GET_MOVIE = gql(`
 `);
 
 function MovieDetailPage() {
-    const [movie, setMovie] = useState<Movie | null>(null);
     const { movieId } = useParams<{ movieId: string }>();
     const movieIdAsInt = Number(movieId);
 
-    const { loading, error } = useQuery(GET_MOVIE, {
+    const { data, loading, error } = useQuery(GET_MOVIE, {
         variables: { movieId: movieIdAsInt },
         skip: isNaN(movieIdAsInt),
-        onCompleted: (data) => {
-            if (data.movie) {
-                const movieWithDate: Movie = {
-                    ...data.movie,
-                    release_date: new Date(data.movie.release_date),
-                };
-                setMovie(movieWithDate as Movie);
-            }
-        },
     });
 
     if (error) {
@@ -74,7 +63,7 @@ function MovieDetailPage() {
         );
     }
 
-    if (!movie) {
+    if (!data?.movie) {
         return (
             <main className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">Could not find movie!</h1>
@@ -87,8 +76,8 @@ function MovieDetailPage() {
 
     return (
         <main>
-            <MovieCardDetailed movie={movie} />
-            <MovieReviews movieId={movie._id} />
+            <MovieCardDetailed movie={data?.movie as Movie} />
+            <MovieReviews movieId={(data?.movie as Movie)._id} />
         </main>
     );
 }

@@ -2,7 +2,7 @@ import { MoviePoster } from "@/types/movieTypes";
 import MovieCard from "./MovieCard";
 import { Button } from "@/shadcn/components/ui/button";
 import { useQuery, useReactiveVar } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
 import { gql } from "@/__generated__";
 import { FiltersInput } from "@/__generated__/types";
@@ -33,46 +33,32 @@ const GET_MOVIES = gql(`
 `);
 
 const MovieList = () => {
-    const [movies, setMovies] = useState<MoviePoster[]>([]);
     const [isMoreMovies, setIsMoreMovies] = useState<boolean>(false);
     const filters = useReactiveVar(filtersVar);
     const sortOption = useReactiveVar(sortOptionVar);
     const search = useReactiveVar(searchVar);
     const LIMIT = 20;
 
-    const { data, loading, error, fetchMore } = useQuery(
-        GET_MOVIES,
-        {
-            variables: {
-                skip: 0,
-                limit: LIMIT,
-                filters: filters as FiltersInput,
-                sortOption: sortOption,
-                search: search,
-            },
-            onCompleted: (data) => {
-                if (data.movies) {
-                    setIsMoreMovies(
-                        data.movies.length >= LIMIT &&
-                            data.movies.length % LIMIT === 0
-                    );
-                }
-            },
-        }
-    );
-
-    useEffect(() => {
-        if (data?.movies) {
-            const moviesWithDate = data.movies.map((movie) => ({
-                ...movie,
-                release_date: new Date(movie.release_date),
-            }));
-            setMovies(moviesWithDate as MoviePoster[]);
-        }
-    }, [data]);
+    const { data, loading, error, fetchMore } = useQuery(GET_MOVIES, {
+        variables: {
+            skip: 0,
+            limit: LIMIT,
+            filters: filters as FiltersInput,
+            sortOption: sortOption,
+            search: search,
+        },
+        onCompleted: (data) => {
+            if (data.movies) {
+                setIsMoreMovies(
+                    data.movies.length >= LIMIT &&
+                        data.movies.length % LIMIT === 0
+                );
+            }
+        },
+    });
 
     const handleLoadMore = () => {
-        fetchMore({ variables: { skip: movies.length } }).then(
+        fetchMore({ variables: { skip: data?.movies.length } }).then(
             (fetchMoreResult) => {
                 setIsMoreMovies(fetchMoreResult.data.movies.length === LIMIT);
             }
@@ -98,14 +84,14 @@ const MovieList = () => {
 
     return (
         <>
-            {movies.length === 0 ? (
+            {!data?.movies || data.movies.length === 0 ? (
                 <section className="text-center">
                     <h1 className="text-2xl">No movies found</h1>
                     <p className="text-primary">Please refine your search</p>
                 </section>
             ) : (
                 <ul className="flex flex-wrap justify-center">
-                    {movies.map((movie) => (
+                    {(data.movies as MoviePoster[]).map((movie) => (
                         <li
                             key={movie._id}
                             className="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"

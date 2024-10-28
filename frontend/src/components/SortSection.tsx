@@ -23,7 +23,9 @@ const SortSection: React.FC = () => {
 
     return (
         <AccordionItem value={`Sort item`}>
-            <AccordionTrigger>Sort by ({getSortOptionDisplayName(sortOption)})</AccordionTrigger>
+            <AccordionTrigger>
+                Sort by ({getSortOptionDisplayName(sortOption)})
+            </AccordionTrigger>
             <AccordionContent>
                 <RadioGroup value={sortOption} onValueChange={updateSortOption}>
                     <ul className="grid gap-2">

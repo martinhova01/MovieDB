@@ -1,19 +1,10 @@
-import { GraphQLError, GraphQLScalarType } from "graphql";
+import { GraphQLError } from "graphql";
 import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
 import mongoose from "mongoose";
 import { createFilters, Filters } from "../utils/filterUtils.js";
 import { getSortOrder, SortingType } from "../utils/sortUtils.js";
-
-const dateScalar = new GraphQLScalarType({
-    name: "Date",
-    parseValue(value: string) {
-        return new Date(value);
-    },
-    serialize(value: Date) {
-        return value.toISOString();
-    },
-});
+import { DateTimeResolver } from "graphql-scalars";
 
 function createBadUserInputError(message: string) {
     return new GraphQLError(message, {
@@ -41,7 +32,7 @@ function validateSkipLimit(skip: number, limit: number) {
 }
 
 const resolvers = {
-    Date: dateScalar,
+    Date: DateTimeResolver,
     Query: {
         movie: async (_: unknown, { id }: { id: number }) => {
             // "Int!" in `schema.ts` makes sure that the id is a non-nullable integer,

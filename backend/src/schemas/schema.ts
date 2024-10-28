@@ -1,5 +1,4 @@
 export const typeDefs = `#graphql
-  # Date is defined in resolvers.ts
   scalar Date
 
   type Movie {

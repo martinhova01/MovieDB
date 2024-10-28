@@ -30,7 +30,6 @@ const GET_FILTERS = gql(`
     }
 `);
 
-
 const SortAndFilterPanel: React.FC = () => {
     const filters = useReactiveVar(filtersVar);
 
@@ -61,6 +60,29 @@ const SortAndFilterPanel: React.FC = () => {
 
         sessionStorage.setItem("sort_option", SortingType.NewestFirst);
         sortOptionVar(SortingType.NewestFirst);
+    };
+
+    const renderFilterSections = () => {
+        return Object.entries(data?.filters as Filters).map(
+            ([category, filter_list]) => {
+                if (category === "__typename") {
+                    return null;
+                }
+                const all_filters = filter_list as string[];
+                const applied_filters = filters[category as keyof Filters] as
+                    | string[]
+                    | undefined;
+                return (
+                    <FilterSection
+                        key={category}
+                        category={category as keyof Filters}
+                        all_filters={all_filters}
+                        applied_filters={applied_filters ?? []}
+                        updateFilters={updateFilters}
+                    />
+                );
+            }
+        );
     };
 
     return (
@@ -95,17 +117,7 @@ const SortAndFilterPanel: React.FC = () => {
                     <section>
                         <Accordion type="single" collapsible className="w-full">
                             <SortSection />
-                            {Object.entries(data.filters as Filters)
-                                .map(([category, filter_list]) => (
-                                    <FilterSection
-                                        key={category}
-                                        category={category as keyof Filters}
-                                        all_filters={filter_list}
-                                        applied_filters={filters[category as keyof Filters] ?? []}
-                                        updateFilters={updateFilters}
-                                    />
-                                )
-                            )}
+                            {renderFilterSections()}
                         </Accordion>
                         <SheetFooter className="mt-5">
                             <Button type="reset" onClick={clearAll}>
