@@ -34,7 +34,7 @@ export const typeDefs = `#graphql
     username: String!
     rating: Int!
     comment: String!
-    date: Date!
+    date: DateTime!
   }
 
   type Filters {
