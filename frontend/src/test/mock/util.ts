@@ -1,4 +1,4 @@
-import { Movie, Status } from "../types/movieTypes.ts";
+import { Movie } from "@/types/__generated__/types.ts";
 import _genres from "./mock_genres.json";
 import _keywords from "./mock_keywords.json";
 import _movies from "./mock_movies.json";
@@ -14,7 +14,6 @@ export const all_production_countries: string[] = _production_countries;
 
 export const all_movies: Movie[] = _movies.map((movie) => ({
     ...movie,
-    status: movie.status as Status,
     release_date: new Date(movie.release_date),
     backdrop_path: movie.backdrop_path ?? undefined,
     homepage: movie.homepage ?? undefined,

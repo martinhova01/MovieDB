@@ -1,12 +1,3 @@
-enum Status {
-    Released = "Released",
-    InProduction = "In Production",
-    PostProduction = "Post Production",
-    Planned = "Planned",
-    Rumored = "Rumored",
-    Canceled = "Canceled",
-}
-
 interface MoviePoster {
     __typename?: "Movie";
     _id: number; // Unique identifier
@@ -26,5 +17,4 @@ interface Review {
     date: Date;
 }
 
-export { Status };
 export type { MoviePoster, Review };

@@ -4,33 +4,8 @@ import { Button } from "@/shadcn/components/ui/button";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { useState } from "react";
 import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
-import { gql } from "@/types/__generated__";
 import { FiltersInput } from "@/types/__generated__/types";
-
-const GET_MOVIES = gql(`
-    query GetMovies(
-        $skip: Int
-        $limit: Int
-        $filters: FiltersInput
-        $sortOption: SortingType
-        $search: String
-    ) {
-        movies(
-            skip: $skip
-            limit: $limit
-            filters: $filters
-            sortOption: $sortOption
-            search: $search
-        ) {
-            _id
-            title
-            vote_average
-            release_date
-            runtime
-            poster_path
-        }
-    }
-`);
+import { GET_MOVIES } from "@/api/queries";
 
 const MovieList = () => {
     const [isMoreMovies, setIsMoreMovies] = useState<boolean>(false);

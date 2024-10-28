@@ -2,38 +2,8 @@ import MovieCardDetailed from "../components/MovieCardDetailed";
 import MovieReviews from "../components/MovieReviews";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { gql } from "@/types/__generated__";
 import { Movie } from "@/types/__generated__/types";
-
-const GET_MOVIE = gql(`
-    query GetMovie($movieId: Int!) {
-        movie(id: $movieId) {
-            _id
-            title
-            vote_average
-            vote_count
-            status
-            release_date
-            revenue
-            runtime
-            backdrop_path
-            budget
-            homepage
-            imdb_id
-            original_language
-            original_title
-            overview
-            popularity
-            poster_path
-            tagline
-            genres
-            production_companies
-            production_countries
-            spoken_languages
-            keywords
-        }
-    }
-`);
+import { GET_MOVIE } from "@/api/queries";
 
 function MovieDetailPage() {
     const { movieId } = useParams<{ movieId: string }>();
