@@ -32,7 +32,7 @@ function validateSkipLimit(skip: number, limit: number) {
 }
 
 const resolvers = {
-    Date: DateTimeResolver,
+    DateTime: DateTimeResolver,
     Query: {
         movie: async (_: unknown, { id }: { id: number }) => {
             // "Int!" in `schema.ts` makes sure that the id is a non-nullable integer,

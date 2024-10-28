@@ -27,7 +27,7 @@ export type Scalars = {
     Boolean: { input: boolean; output: boolean };
     Int: { input: number; output: number };
     Float: { input: number; output: number };
-    Date: { input: Date; output: Date };
+    DateTime: { input: Date; output: Date };
 };
 
 export type Movie = {
@@ -37,7 +37,7 @@ export type Movie = {
     vote_average: Scalars["Float"]["output"];
     vote_count: Scalars["Int"]["output"];
     status: Scalars["String"]["output"];
-    release_date: Scalars["Date"]["output"];
+    release_date: Scalars["DateTime"]["output"];
     revenue: Scalars["Float"]["output"];
     runtime: Scalars["Int"]["output"];
     backdrop_path?: Maybe<Scalars["String"]["output"]>;

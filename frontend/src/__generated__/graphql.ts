@@ -28,7 +28,8 @@ export type Scalars = {
     Boolean: { input: boolean; output: boolean };
     Int: { input: number; output: number };
     Float: { input: number; output: number };
-    Date: { input: Date; output: Date };
+    /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
+    DateTime: { input: Date; output: Date };
 };
 
 export type FiltersInput = {
@@ -69,20 +70,6 @@ export type GetMoviesQuery = {
     }>;
 };
 
-export type GetFiltersQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetFiltersQuery = {
-    __typename?: "Query";
-    filters?: {
-        __typename?: "Filters";
-        Genre: Array<string>;
-        Rating: Array<string>;
-        Decade: Array<string>;
-        Status: Array<string>;
-        Runtime: Array<string>;
-    } | null;
-};
-
 export type GetMovieQueryVariables = Exact<{
     movieId: Scalars["Int"]["input"];
 }>;
@@ -114,6 +101,20 @@ export type GetMovieQuery = {
         production_countries: Array<string>;
         spoken_languages: Array<string>;
         keywords: Array<string>;
+    } | null;
+};
+
+export type GetFiltersQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetFiltersQuery = {
+    __typename?: "Query";
+    filters?: {
+        __typename?: "Filters";
+        Genre: Array<string>;
+        Rating: Array<string>;
+        Decade: Array<string>;
+        Status: Array<string>;
+        Runtime: Array<string>;
     } | null;
 };
 
@@ -273,50 +274,6 @@ export const GetMoviesDocument = {
         },
     ],
 } as unknown as DocumentNode<GetMoviesQuery, GetMoviesQueryVariables>;
-export const GetFiltersDocument = {
-    kind: "Document",
-    definitions: [
-        {
-            kind: "OperationDefinition",
-            operation: "query",
-            name: { kind: "Name", value: "GetFilters" },
-            selectionSet: {
-                kind: "SelectionSet",
-                selections: [
-                    {
-                        kind: "Field",
-                        name: { kind: "Name", value: "filters" },
-                        selectionSet: {
-                            kind: "SelectionSet",
-                            selections: [
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "Genre" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "Rating" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "Decade" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "Status" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "Runtime" },
-                                },
-                            ],
-                        },
-                    },
-                ],
-            },
-        },
-    ],
-} as unknown as DocumentNode<GetFiltersQuery, GetFiltersQueryVariables>;
 export const GetMovieDocument = {
     kind: "Document",
     definitions: [
@@ -486,3 +443,47 @@ export const GetMovieDocument = {
         },
     ],
 } as unknown as DocumentNode<GetMovieQuery, GetMovieQueryVariables>;
+export const GetFiltersDocument = {
+    kind: "Document",
+    definitions: [
+        {
+            kind: "OperationDefinition",
+            operation: "query",
+            name: { kind: "Name", value: "GetFilters" },
+            selectionSet: {
+                kind: "SelectionSet",
+                selections: [
+                    {
+                        kind: "Field",
+                        name: { kind: "Name", value: "filters" },
+                        selectionSet: {
+                            kind: "SelectionSet",
+                            selections: [
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "Genre" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "Rating" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "Decade" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "Status" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "Runtime" },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<GetFiltersQuery, GetFiltersQueryVariables>;

@@ -5,7 +5,7 @@ const config: CodegenConfig = {
     config: {
         sort: false,
         scalars: {
-            Date: "Date",
+            DateTime: "Date",
         },
     },
     documents: ["src/**/*.tsx"],

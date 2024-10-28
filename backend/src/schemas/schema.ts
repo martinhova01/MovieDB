@@ -1,5 +1,5 @@
 export const typeDefs = `#graphql
-  scalar Date
+  scalar DateTime
 
   type Movie {
     _id: Int!
@@ -7,7 +7,7 @@ export const typeDefs = `#graphql
     vote_average: Float!
     vote_count: Int!
     status: String!
-    release_date: Date!
+    release_date: DateTime!
     revenue: Float!
     runtime: Int!
     backdrop_path: String
