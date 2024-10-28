@@ -10,13 +10,13 @@ const config: CodegenConfig = {
     },
     documents: ["src/**/*.tsx"],
     generates: {
-        "./src/__generated__/": {
+        "./src/types/__generated__/": {
             preset: "client",
             presetConfig: {
                 gqlTagName: "gql",
             },
         },
-        "./src/__generated__/types.ts": {
+        "./src/types/__generated__/types.ts": {
             plugins: ["typescript", "typescript-operations"],
         },
     },

@@ -2,8 +2,8 @@ import MovieCardDetailed from "../components/MovieCardDetailed";
 import MovieReviews from "../components/MovieReviews";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { gql } from "@/__generated__";
-import { Movie } from "@/__generated__/types";
+import { gql } from "@/types/__generated__";
+import { Movie } from "@/types/__generated__/types";
 
 const GET_MOVIE = gql(`
     query GetMovie($movieId: Int!) {

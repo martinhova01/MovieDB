@@ -15,8 +15,8 @@ import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
 import { filtersVar, sortOptionVar } from "@/utils/cache";
 import { useQuery, useReactiveVar } from "@apollo/client";
-import { gql } from "@/__generated__";
-import { Filters, SortingType } from "@/__generated__/types";
+import { gql } from "@/types/__generated__";
+import { Filters, SortingType } from "@/types/__generated__/types";
 
 const GET_FILTERS = gql(`
     query GetFilters {

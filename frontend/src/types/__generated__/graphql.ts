@@ -49,27 +49,6 @@ export enum SortingType {
     ShortestRuntime = "SHORTEST_RUNTIME",
 }
 
-export type GetMoviesQueryVariables = Exact<{
-    skip?: InputMaybe<Scalars["Int"]["input"]>;
-    limit?: InputMaybe<Scalars["Int"]["input"]>;
-    filters?: InputMaybe<FiltersInput>;
-    sortOption?: InputMaybe<SortingType>;
-    search?: InputMaybe<Scalars["String"]["input"]>;
-}>;
-
-export type GetMoviesQuery = {
-    __typename?: "Query";
-    movies: Array<{
-        __typename?: "Movie";
-        _id: number;
-        title: string;
-        vote_average: number;
-        release_date: Date;
-        runtime: number;
-        poster_path?: string | null;
-    }>;
-};
-
 export type GetMovieQueryVariables = Exact<{
     movieId: Scalars["Int"]["input"];
 }>;
@@ -104,6 +83,27 @@ export type GetMovieQuery = {
     } | null;
 };
 
+export type GetMoviesQueryVariables = Exact<{
+    skip?: InputMaybe<Scalars["Int"]["input"]>;
+    limit?: InputMaybe<Scalars["Int"]["input"]>;
+    filters?: InputMaybe<FiltersInput>;
+    sortOption?: InputMaybe<SortingType>;
+    search?: InputMaybe<Scalars["String"]["input"]>;
+}>;
+
+export type GetMoviesQuery = {
+    __typename?: "Query";
+    movies: Array<{
+        __typename?: "Movie";
+        _id: number;
+        title: string;
+        vote_average: number;
+        release_date: Date;
+        runtime: number;
+        poster_path?: string | null;
+    }>;
+};
+
 export type GetFiltersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetFiltersQuery = {
@@ -118,162 +118,6 @@ export type GetFiltersQuery = {
     } | null;
 };
 
-export const GetMoviesDocument = {
-    kind: "Document",
-    definitions: [
-        {
-            kind: "OperationDefinition",
-            operation: "query",
-            name: { kind: "Name", value: "GetMovies" },
-            variableDefinitions: [
-                {
-                    kind: "VariableDefinition",
-                    variable: {
-                        kind: "Variable",
-                        name: { kind: "Name", value: "skip" },
-                    },
-                    type: {
-                        kind: "NamedType",
-                        name: { kind: "Name", value: "Int" },
-                    },
-                },
-                {
-                    kind: "VariableDefinition",
-                    variable: {
-                        kind: "Variable",
-                        name: { kind: "Name", value: "limit" },
-                    },
-                    type: {
-                        kind: "NamedType",
-                        name: { kind: "Name", value: "Int" },
-                    },
-                },
-                {
-                    kind: "VariableDefinition",
-                    variable: {
-                        kind: "Variable",
-                        name: { kind: "Name", value: "filters" },
-                    },
-                    type: {
-                        kind: "NamedType",
-                        name: { kind: "Name", value: "FiltersInput" },
-                    },
-                },
-                {
-                    kind: "VariableDefinition",
-                    variable: {
-                        kind: "Variable",
-                        name: { kind: "Name", value: "sortOption" },
-                    },
-                    type: {
-                        kind: "NamedType",
-                        name: { kind: "Name", value: "SortingType" },
-                    },
-                },
-                {
-                    kind: "VariableDefinition",
-                    variable: {
-                        kind: "Variable",
-                        name: { kind: "Name", value: "search" },
-                    },
-                    type: {
-                        kind: "NamedType",
-                        name: { kind: "Name", value: "String" },
-                    },
-                },
-            ],
-            selectionSet: {
-                kind: "SelectionSet",
-                selections: [
-                    {
-                        kind: "Field",
-                        name: { kind: "Name", value: "movies" },
-                        arguments: [
-                            {
-                                kind: "Argument",
-                                name: { kind: "Name", value: "skip" },
-                                value: {
-                                    kind: "Variable",
-                                    name: { kind: "Name", value: "skip" },
-                                },
-                            },
-                            {
-                                kind: "Argument",
-                                name: { kind: "Name", value: "limit" },
-                                value: {
-                                    kind: "Variable",
-                                    name: { kind: "Name", value: "limit" },
-                                },
-                            },
-                            {
-                                kind: "Argument",
-                                name: { kind: "Name", value: "filters" },
-                                value: {
-                                    kind: "Variable",
-                                    name: { kind: "Name", value: "filters" },
-                                },
-                            },
-                            {
-                                kind: "Argument",
-                                name: { kind: "Name", value: "sortOption" },
-                                value: {
-                                    kind: "Variable",
-                                    name: { kind: "Name", value: "sortOption" },
-                                },
-                            },
-                            {
-                                kind: "Argument",
-                                name: { kind: "Name", value: "search" },
-                                value: {
-                                    kind: "Variable",
-                                    name: { kind: "Name", value: "search" },
-                                },
-                            },
-                        ],
-                        selectionSet: {
-                            kind: "SelectionSet",
-                            selections: [
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "_id" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "title" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: {
-                                        kind: "Name",
-                                        value: "vote_average",
-                                    },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: {
-                                        kind: "Name",
-                                        value: "release_date",
-                                    },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "runtime" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: {
-                                        kind: "Name",
-                                        value: "poster_path",
-                                    },
-                                },
-                            ],
-                        },
-                    },
-                ],
-            },
-        },
-    ],
-} as unknown as DocumentNode<GetMoviesQuery, GetMoviesQueryVariables>;
 export const GetMovieDocument = {
     kind: "Document",
     definitions: [
@@ -443,6 +287,162 @@ export const GetMovieDocument = {
         },
     ],
 } as unknown as DocumentNode<GetMovieQuery, GetMovieQueryVariables>;
+export const GetMoviesDocument = {
+    kind: "Document",
+    definitions: [
+        {
+            kind: "OperationDefinition",
+            operation: "query",
+            name: { kind: "Name", value: "GetMovies" },
+            variableDefinitions: [
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "skip" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "Int" },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "limit" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "Int" },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "filters" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "FiltersInput" },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "sortOption" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "SortingType" },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "search" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "String" },
+                    },
+                },
+            ],
+            selectionSet: {
+                kind: "SelectionSet",
+                selections: [
+                    {
+                        kind: "Field",
+                        name: { kind: "Name", value: "movies" },
+                        arguments: [
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "skip" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "skip" },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "limit" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "limit" },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "filters" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "filters" },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "sortOption" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "sortOption" },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "search" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "search" },
+                                },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: "SelectionSet",
+                            selections: [
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "_id" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "title" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: {
+                                        kind: "Name",
+                                        value: "vote_average",
+                                    },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: {
+                                        kind: "Name",
+                                        value: "release_date",
+                                    },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "runtime" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: {
+                                        kind: "Name",
+                                        value: "poster_path",
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<GetMoviesQuery, GetMoviesQueryVariables>;
 export const GetFiltersDocument = {
     kind: "Document",
     definitions: [

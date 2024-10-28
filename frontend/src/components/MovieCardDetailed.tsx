@@ -8,7 +8,7 @@ import {
 import { Button } from "../shadcn/components/ui/button";
 import Ratings from "../shadcn/components/ui/rating";
 import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
-import { Movie } from "@/__generated__/types";
+import { Movie } from "@/types/__generated__/types";
 
 interface MovieCardDetailedProps {
     movie: Movie;

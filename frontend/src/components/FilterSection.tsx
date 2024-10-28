@@ -1,4 +1,4 @@
-import { Filters } from "@/__generated__/types";
+import { Filters } from "@/types/__generated__/types";
 import {
     AccordionContent,
     AccordionItem,

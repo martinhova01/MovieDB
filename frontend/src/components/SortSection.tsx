@@ -10,8 +10,8 @@ import {
 import { Label } from "../shadcn/components/ui/label";
 import { sortOptionVar } from "@/utils/cache";
 import { useReactiveVar } from "@apollo/client";
-import { SortingType } from "@/__generated__/types";
-import { getSortOptionDisplayName } from "@/utils/searchSortAndFilter";
+import { getSortOptionDisplayName } from "@/utils/sortOptionUtil";
+import { SortingType } from "@/types/__generated__/types";
 
 const SortSection: React.FC = () => {
     const sortOption = useReactiveVar(sortOptionVar);

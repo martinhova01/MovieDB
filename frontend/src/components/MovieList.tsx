@@ -4,8 +4,8 @@ import { Button } from "@/shadcn/components/ui/button";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { useState } from "react";
 import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
-import { gql } from "@/__generated__";
-import { FiltersInput } from "@/__generated__/types";
+import { gql } from "@/types/__generated__";
+import { FiltersInput } from "@/types/__generated__/types";
 
 const GET_MOVIES = gql(`
     query GetMovies(
