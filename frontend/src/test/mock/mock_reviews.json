@@ -1,0 +1,133 @@
+[
+    {
+        "_id": 1001,
+        "movieId": 157336,
+        "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+        "username": "cosmic_dreamer",
+        "rating": 5,
+        "comment": "Just finished watching Interstellar for the third time and I'm still discovering new layers to this masterpiece. The way Nolan weaves together the scientific concepts with raw human emotion is unprecedented. The scene where Cooper watches the messages from his children gets me every single time. Hans Zimmer's score elevates every moment to another dimension entirely. This isn't just sci-fi, it's a meditation on love, time, and humanity's place in the cosmos.",
+        "date": "2024-10-22T14:23:00Z"
+    },
+    {
+        "_id": 1002,
+        "movieId": 27205,
+        "poster_path": "/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+        "username": "film_buff_alex",
+        "rating": 5,
+        "comment": "Inception remains a cinematic triumph. The layered dreams, the intricate plot, the visual effects that still hold up perfectly - it's a testament to what's possible in filmmaking.",
+        "date": "2024-10-21T18:45:00Z"
+    },
+    {
+        "_id": 1003,
+        "movieId": 155,
+        "poster_path": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+        "username": "gotham_knight",
+        "rating": 5,
+        "comment": "Heath Ledger's Joker is the greatest villain performance in cinema history. Period.",
+        "date": "2024-10-20T09:15:00Z"
+    },
+    {
+        "_id": 1004,
+        "movieId": 19995,
+        "poster_path": "/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
+        "username": "pandora_explorer",
+        "rating": 4,
+        "date": "2024-10-19T22:30:00Z"
+    },
+    {
+        "_id": 1005,
+        "movieId": 24428,
+        "poster_path": "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+        "username": "marvel_fan_2000",
+        "rating": 5,
+        "comment": "The battle of New York still gives me chills! Perfect combination of all our favorite heroes.",
+        "date": "2024-10-18T11:20:00Z"
+    },
+    {
+        "_id": 1006,
+        "movieId": 293660,
+        "poster_path": "/zq8Cl3PNIDGU3iWNRoc5nEZ6pCe.jpg",
+        "username": "deadpool_lover",
+        "rating": 5,
+        "comment": "Finally! A superhero movie that doesn't take itself too seriously. Ryan Reynolds was born to play this role.",
+        "date": "2024-10-17T15:40:00Z"
+    },
+    {
+        "_id": 1007,
+        "movieId": 157336,
+        "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+        "username": "space_enthusiast",
+        "rating": 3,
+        "comment": "Visually stunning but the plot gets too convoluted in the third act.",
+        "date": "2024-10-15T20:10:00Z"
+    },
+    {
+        "_id": 1008,
+        "movieId": 27205,
+        "poster_path": "/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+        "username": "dream_walker",
+        "rating": 4,
+        "date": "2024-10-14T13:25:00Z"
+    },
+    {
+        "_id": 1009,
+        "movieId": 155,
+        "poster_path": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+        "username": "cinema_critic",
+        "rating": 5,
+        "comment": "The Dark Knight transcends the superhero genre to become a compelling crime drama that explores the nature of chaos, order, and moral choices. Christopher Nolan's direction is impeccable, creating tension that never lets up. The interplay between Batman and Joker serves as a perfect metaphor for the eternal struggle between good and evil, order and chaos. Every scene with Heath Ledger is absolutely mesmerizing. This film redefined what superhero movies could be.",
+        "date": "2024-10-12T08:50:00Z"
+    },
+    {
+        "_id": 1010,
+        "movieId": 19995,
+        "poster_path": "/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
+        "username": "scifi_lover",
+        "rating": 5,
+        "comment": "Revolutionary visual effects that still hold up today. Cameron's world-building is unmatched.",
+        "date": "2024-10-10T19:15:00Z"
+    },
+    {
+        "_id": 1011,
+        "movieId": 24428,
+        "poster_path": "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+        "username": "avengers_assemble",
+        "rating": 4,
+        "date": "2024-10-08T14:30:00Z"
+    },
+    {
+        "_id": 1012,
+        "movieId": 293660,
+        "poster_path": "/zq8Cl3PNIDGU3iWNRoc5nEZ6pCe.jpg",
+        "username": "honest_reviewer",
+        "rating": 2,
+        "comment": "Too much reliance on crude humor. The fourth wall breaking gets old quickly.",
+        "date": "2024-10-05T16:45:00Z"
+    },
+    {
+        "_id": 1013,
+        "movieId": 157336,
+        "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+        "username": "movie_buff_42",
+        "rating": 4,
+        "comment": "Beautiful cinematography and amazing sound design.",
+        "date": "2024-10-03T21:20:00Z"
+    },
+    {
+        "_id": 1014,
+        "movieId": 27205,
+        "poster_path": "/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+        "username": "deep_thinker",
+        "rating": 3,
+        "comment": "Impressive but sometimes tries too hard to be clever.",
+        "date": "2024-10-01T10:05:00Z"
+    },
+    {
+        "_id": 1015,
+        "movieId": 155,
+        "poster_path": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+        "username": "bat_fan",
+        "rating": 5,
+        "date": "2024-09-29T17:40:00Z"
+    }
+]
