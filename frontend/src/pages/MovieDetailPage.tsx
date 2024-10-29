@@ -50,7 +50,7 @@ function MovieDetailPage() {
     return (
         <main>
             <MovieCardDetailed movie={movie} />
-            <MovieReviews movieId={movie._id} />
+            <MovieReviews movie={movie} />
         </main>
     );
 }

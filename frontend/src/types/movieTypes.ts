@@ -8,13 +8,4 @@ interface MoviePoster {
     poster_path?: string;
 }
 
-interface Review {
-    _id: number;
-    movie: number;
-    username: string;
-    rating: number;
-    comment: string;
-    date: Date;
-}
-
-export type { MoviePoster, Review };
+export type { MoviePoster };

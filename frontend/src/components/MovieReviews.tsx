@@ -3,37 +3,46 @@ import { Button } from "../shadcn/components/ui/button";
 import { Textarea } from "../shadcn/components/ui/textarea";
 import { Card, CardContent } from "../shadcn/components/ui/card";
 import Ratings from "../shadcn/components/ui/rating";
-import { Review } from "../types/movieTypes";
 import { usernameVar } from "@/utils/cache";
 import { useReactiveVar } from "@apollo/client";
+import { Movie, Review } from "@/types/__generated__/types";
 interface MovieReviewsProps {
-    movieId: number;
+    movie: Movie;
 }
 
-const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
+const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
     const [reviews, setReviews] = useState<Review[]>([]);
     const [rating, setRating] = useState<number>(0);
     const [comment, setComment] = useState<string>("");
     const username = useReactiveVar(usernameVar);
 
     useEffect(() => {
-        const storedReviews = localStorage.getItem(`movieReviews_${movieId}`);
+        const storedReviews = localStorage.getItem(`movieReviews_${movie._id}`);
         if (storedReviews) {
             const reviews = JSON.parse(storedReviews) as Array<
-                Omit<Review, "date"> & { date: string }
+                Omit<Review, "date" | "movie"> & {
+                    date: string;
+                    movie: Omit<Movie, "release_date"> & {
+                        release_date: string;
+                    };
+                }
             >;
             setReviews(
                 reviews.map((review) => ({
                     ...review,
                     date: new Date(review.date),
+                    movie: {
+                        ...review.movie,
+                        release_date: new Date(review.movie.release_date),
+                    },
                 }))
             );
         }
-    }, [movieId]);
+    }, [movie]);
 
     const saveReviews = (updatedReviews: Review[]) => {
         localStorage.setItem(
-            `movieReviews_${movieId}`,
+            `movieReviews_${movie._id}`,
             JSON.stringify(updatedReviews)
         );
         setReviews(updatedReviews);
@@ -42,8 +51,8 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
     const handleSubmitReview = (e: React.FormEvent) => {
         e.preventDefault();
         const newReview: Review = {
-            _id: Date.now(), //Temporary id
-            movie: movieId,
+            _id: Date.now().toString(), //Temporary id
+            movie: movie,
             username: username,
             rating,
             comment: comment.trim(),

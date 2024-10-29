@@ -20,4 +20,5 @@ export const all_movies: Movie[] = _movies.map((movie) => ({
     imdb_id: movie.imdb_id ?? undefined,
     poster_path: movie.poster_path ?? undefined,
     tagline: movie.tagline ?? undefined,
+    reviews: [],
 }));
