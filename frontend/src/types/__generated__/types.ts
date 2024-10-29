@@ -55,6 +55,17 @@ export type Movie = {
     production_countries: Array<Scalars["String"]["output"]>;
     spoken_languages: Array<Scalars["String"]["output"]>;
     keywords: Array<Scalars["String"]["output"]>;
+    reviews: Array<Review>;
+};
+
+export type Review = {
+    __typename?: "Review";
+    _id: Scalars["ID"]["output"];
+    movie: Movie;
+    username: Scalars["String"]["output"];
+    rating: Scalars["Int"]["output"];
+    comment: Scalars["String"]["output"];
+    date: Scalars["DateTime"]["output"];
 };
 
 export type Filters = {
@@ -75,31 +86,61 @@ export type FiltersInput = {
 };
 
 export enum SortingType {
-    NewestFirst = "NEWEST_FIRST",
-    OldestFirst = "OLDEST_FIRST",
-    BestRated = "BEST_RATED",
-    WorstRated = "WORST_RATED",
-    LongestRuntime = "LONGEST_RUNTIME",
-    ShortestRuntime = "SHORTEST_RUNTIME",
+    NEWEST_FIRST = "NEWEST_FIRST",
+    OLDEST_FIRST = "OLDEST_FIRST",
+    BEST_RATED = "BEST_RATED",
+    WORST_RATED = "WORST_RATED",
+    LONGEST_RUNTIME = "LONGEST_RUNTIME",
+    SHORTEST_RUNTIME = "SHORTEST_RUNTIME",
 }
 
 export type Query = {
     __typename?: "Query";
     movie?: Maybe<Movie>;
     movies: Array<Movie>;
-    filters?: Maybe<Filters>;
+    filters: Filters;
+    latestReviews: Array<Review>;
+    userReviews: Array<Review>;
 };
 
-export type QueryMovieArgs = {
+export type QuerymovieArgs = {
     id: Scalars["Int"]["input"];
 };
 
-export type QueryMoviesArgs = {
+export type QuerymoviesArgs = {
     skip?: InputMaybe<Scalars["Int"]["input"]>;
     limit?: InputMaybe<Scalars["Int"]["input"]>;
     filters?: InputMaybe<FiltersInput>;
     sortOption?: InputMaybe<SortingType>;
     search?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type QuerylatestReviewsArgs = {
+    skip?: InputMaybe<Scalars["Int"]["input"]>;
+    limit?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type QueryuserReviewsArgs = {
+    username: Scalars["String"]["input"];
+    skip?: InputMaybe<Scalars["Int"]["input"]>;
+    limit?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type Mutation = {
+    __typename?: "Mutation";
+    addReview: Movie;
+    deleteReview: Movie;
+};
+
+export type MutationaddReviewArgs = {
+    movie_id: Scalars["Int"]["input"];
+    username: Scalars["String"]["input"];
+    rating: Scalars["Int"]["input"];
+    comment: Scalars["String"]["input"];
+};
+
+export type MutationdeleteReviewArgs = {
+    _id: Scalars["ID"]["input"];
 };
 
 export type GetMoviesQueryVariables = Exact<{
@@ -121,20 +162,6 @@ export type GetMoviesQuery = {
         runtime: number;
         poster_path?: string | null;
     }>;
-};
-
-export type GetFiltersQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetFiltersQuery = {
-    __typename?: "Query";
-    filters?: {
-        __typename?: "Filters";
-        Genre: Array<string>;
-        Rating: Array<string>;
-        Decade: Array<string>;
-        Status: Array<string>;
-        Runtime: Array<string>;
-    } | null;
 };
 
 export type GetMovieQueryVariables = Exact<{
@@ -169,4 +196,18 @@ export type GetMovieQuery = {
         spoken_languages: Array<string>;
         keywords: Array<string>;
     } | null;
+};
+
+export type GetFiltersQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetFiltersQuery = {
+    __typename?: "Query";
+    filters: {
+        __typename?: "Filters";
+        Genre: Array<string>;
+        Rating: Array<string>;
+        Decade: Array<string>;
+        Status: Array<string>;
+        Runtime: Array<string>;
+    };
 };

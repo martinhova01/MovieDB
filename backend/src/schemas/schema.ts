@@ -65,7 +65,7 @@ export const typeDefs = `#graphql
   type Query {
     movie(id: Int!): Movie
     movies(skip: Int, limit: Int, filters: FiltersInput, sortOption: SortingType, search: String): [Movie!]!
-    filters: Filters
+    filters: Filters!
     latestReviews(skip: Int, limit: Int): [Review!]!
     userReviews(username: String!, skip: Int, limit: Int): [Review!]!
   }

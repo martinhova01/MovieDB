@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { Movie } from "@/types/__generated__/types";
 import { GET_MOVIE } from "@/api/queries";
+import { useMemo } from "react";
 
 function MovieDetailPage() {
     const { movieId } = useParams<{ movieId: string }>();
@@ -13,6 +14,8 @@ function MovieDetailPage() {
         variables: { movieId: movieIdAsInt },
         skip: isNaN(movieIdAsInt),
     });
+
+    const movie = useMemo(() => data?.movie as Movie | undefined, [data]);
 
     if (error) {
         return (
@@ -33,7 +36,7 @@ function MovieDetailPage() {
         );
     }
 
-    if (!data?.movie) {
+    if (!movie) {
         return (
             <main className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">Could not find movie!</h1>
@@ -46,8 +49,8 @@ function MovieDetailPage() {
 
     return (
         <main>
-            <MovieCardDetailed movie={data?.movie as Movie} />
-            <MovieReviews movieId={(data?.movie as Movie)._id} />
+            <MovieCardDetailed movie={movie} />
+            <MovieReviews movieId={movie._id} />
         </main>
     );
 }

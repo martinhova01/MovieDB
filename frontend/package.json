@@ -13,7 +13,7 @@
         "prettier": "prettier --check .",
         "prettier:fix": "prettier --write .",
         "preview": "vite preview",
-        "generate": "graphql-codegen"
+        "generate": "graphql-codegen && prettier --write src/types/__generated__"
     },
     "dependencies": {
         "@apollo/client": "^3.11.8",

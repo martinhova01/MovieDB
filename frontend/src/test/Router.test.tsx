@@ -26,7 +26,7 @@ const mocks = [
                     Status: [],
                     Runtime: [],
                 } as FiltersInput,
-                sortOption: SortingType.NewestFirst,
+                sortOption: SortingType.NEWEST_FIRST,
                 search: "",
             },
         },

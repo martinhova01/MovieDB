@@ -46,8 +46,8 @@ const SortAndFilterPanel: React.FC = () => {
         sessionStorage.setItem("filters", JSON.stringify(emptyFilters));
         filtersVar(emptyFilters);
 
-        sessionStorage.setItem("sort_option", SortingType.NewestFirst);
-        sortOptionVar(SortingType.NewestFirst);
+        sessionStorage.setItem("sort_option", SortingType.NEWEST_FIRST);
+        sortOptionVar(SortingType.NEWEST_FIRST);
     };
 
     const renderFilterSections = () => {
