@@ -7,8 +7,7 @@ export type NavbarProps = { name: string; href: string }[];
 
 const Navbar = () => {
     const links: NavbarProps = [
-        // TODO: Add links when pages are created
-        // { name: "Movies", href: "/movies" },
+        { name: "Activity", href: "/activity" },
     ];
 
     return (
