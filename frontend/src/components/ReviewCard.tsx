@@ -1,7 +1,7 @@
 import { Button } from "@/shadcn/components/ui/button";
 import { Card, CardContent } from "@/shadcn/components/ui/card";
 import Ratings from "@/shadcn/components/ui/rating";
-import { Review } from "@/types/movieTypes";
+import { Review } from "@/types/__generated__/types";
 import { usernameVar } from "@/utils/cache";
 import { formatDate } from "@/utils/formatDate";
 import { useReactiveVar } from "@apollo/client";
@@ -74,12 +74,12 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
                             </AlertDialogContent>
                         </AlertDialog>
                     )}
-                <Link to={`/movie/${review.movieId}`}>
+                <Link to={`/movie/${review.movie._id}`}>
                     <img
-                        title="Visit movie"
-                        src={`https://image.tmdb.org/t/p/w342/${review.poster_path}`}
+                        title={review.movie.title}
+                        src={`https://image.tmdb.org/t/p/w342/${review.movie.poster_path}`}
                         className="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                        alt="Movie Poster"
+                        alt={`${review.movie.title} poster`}
                     />
                 </Link>
                 <section className="min-h-[12rem]">

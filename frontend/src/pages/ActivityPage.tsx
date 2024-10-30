@@ -1,7 +1,7 @@
 import ReviewCard from "@/components/ReviewCard";
-import { all_reviews } from "@/mock/util";
+import { all_reviews } from "@/test/mock/util";
 import { Button } from "@/shadcn/components/ui/button";
-import { Review } from "@/types/movieTypes";
+import { Review } from "@/types/__generated__/types";
 import { useEffect, useState } from "react";
 
 function ActivityPage() {
