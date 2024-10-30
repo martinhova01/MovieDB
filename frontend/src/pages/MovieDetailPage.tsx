@@ -48,7 +48,7 @@ function MovieDetailPage() {
     }
 
     return (
-        <main>
+        <main className="pb-2">
             <MovieCardDetailed movie={movie} />
             <MovieReviews movie={movie} />
         </main>

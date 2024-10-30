@@ -7,6 +7,19 @@ import { usernameVar } from "@/utils/cache";
 import { useApolloClient, useMutation, useReactiveVar } from "@apollo/client";
 import { Movie, Review } from "@/types/__generated__/types";
 import { ADD_REVIEW, DELETE_REVIEW } from "@/api/queries";
+import { formatDate } from "@/utils/formatDate";
+import { Trash2 } from "lucide-react";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/shadcn/components/ui/alert-dialog";
 interface MovieReviewsProps {
     movie: Movie;
 }
@@ -91,16 +104,6 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
         client.cache.gc();
     };
 
-    const formatDate = (date: Date) => {
-        return date.toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-    };
-
     if (addReviewError || deleteReviewError) {
         return (
             <section className="mt-2 w-dvw text-center">
@@ -146,22 +149,57 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                         <CardContent className="mt-4">
                             <section className="mb-2 flex items-start justify-between">
                                 <section>
-                                    <h4 className="text-xl font-bold">
+                                    <h4 className="text-lg font-bold sm:text-xl">
                                         {review.username}
                                     </h4>
-                                    <time className="text-sm text-gray-500">
+                                    <time className="text-xs text-gray-500 sm:text-sm">
                                         {formatDate(review.date)}
                                     </time>
                                 </section>
                                 {review.username !== "Guest" &&
                                     username === review.username && (
-                                        <Button
-                                            onClick={() =>
-                                                handleDeleteReview(review)
-                                            }
-                                        >
-                                            Delete
-                                        </Button>
+                                        <AlertDialog>
+                                            <AlertDialogTrigger asChild>
+                                                <Button
+                                                    size="sm"
+                                                    className="h-8 px-2"
+                                                >
+                                                    <Trash2 className="h-4 w-4 sm:hidden" />
+                                                    <span className="hidden sm:inline">
+                                                        Delete
+                                                    </span>
+                                                </Button>
+                                            </AlertDialogTrigger>
+
+                                            <AlertDialogContent>
+                                                <AlertDialogHeader>
+                                                    <AlertDialogTitle>
+                                                        Are you sure you want to
+                                                        delete this review?
+                                                    </AlertDialogTitle>
+                                                    <AlertDialogDescription>
+                                                        This action cannot be
+                                                        undone. This will
+                                                        permanently delete this
+                                                        review.
+                                                    </AlertDialogDescription>
+                                                </AlertDialogHeader>
+                                                <AlertDialogFooter>
+                                                    <AlertDialogCancel>
+                                                        Cancel
+                                                    </AlertDialogCancel>
+                                                    <AlertDialogAction
+                                                        onClick={() =>
+                                                            handleDeleteReview(
+                                                                review
+                                                            )
+                                                        }
+                                                    >
+                                                        Continue
+                                                    </AlertDialogAction>
+                                                </AlertDialogFooter>
+                                            </AlertDialogContent>
+                                        </AlertDialog>
                                     )}
                             </section>
                             <Ratings
@@ -170,7 +208,9 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                                 totalstars={5}
                             />
                             {review.comment !== "" && (
-                                <p className="mt-2">{review.comment}</p>
+                                <p className="mt-2 text-sm sm:text-base">
+                                    {review.comment}
+                                </p>
                             )}
                         </CardContent>
                     </Card>
