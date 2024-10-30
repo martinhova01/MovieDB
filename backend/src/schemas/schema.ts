@@ -54,6 +54,7 @@ export const typeDefs = `#graphql
   }
 
   enum SortingType {
+    MOST_POPULAR
     NEWEST_FIRST
     OLDEST_FIRST
     BEST_RATED

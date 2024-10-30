@@ -4,6 +4,7 @@ const sortingDisplayNames: Map<SortingType, string> = new Map<
     SortingType,
     string
 >([
+    [SortingType.MOST_POPULAR, "Most popular"],
     [SortingType.BEST_RATED, "Best rated"],
     [SortingType.LONGEST_RUNTIME, "Longest runtime"],
     [SortingType.NEWEST_FIRST, "Newest first"],

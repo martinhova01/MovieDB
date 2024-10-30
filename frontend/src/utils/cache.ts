@@ -3,7 +3,7 @@ import { makeVar } from "@apollo/client";
 
 export const sortOptionVar = makeVar<SortingType>(
     (sessionStorage.getItem("sort_option") as SortingType) ??
-        SortingType.NEWEST_FIRST
+        SortingType.MOST_POPULAR
 );
 
 const storedFilters = sessionStorage.getItem("filters");

@@ -41,6 +41,7 @@ export type FiltersInput = {
 };
 
 export enum SortingType {
+    MOST_POPULAR = "MOST_POPULAR",
     NEWEST_FIRST = "NEWEST_FIRST",
     OLDEST_FIRST = "OLDEST_FIRST",
     BEST_RATED = "BEST_RATED",

@@ -1,6 +1,7 @@
 import { SortOrder } from "mongoose";
 
 export enum SortingType {
+    MOST_POPULAR = "MOST_POPULAR",
     NEWEST_FIRST = "NEWEST_FIRST",
     OLDEST_FIRST = "OLDEST_FIRST",
     BEST_RATED = "BEST_RATED",
@@ -13,6 +14,8 @@ export const getSortOrder = (
     sortOption: SortingType
 ): { [key: string]: SortOrder } => {
     switch (sortOption) {
+        case SortingType.MOST_POPULAR:
+            return { popularity: -1 };
         case SortingType.NEWEST_FIRST:
             return { release_date: -1 };
         case SortingType.OLDEST_FIRST:

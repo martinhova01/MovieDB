@@ -71,7 +71,7 @@ const resolvers = {
                 ],
             })
                 .sort({
-                    ...getSortOrder(sortOption ?? SortingType.NEWEST_FIRST),
+                    ...getSortOrder(sortOption ?? SortingType.MOST_POPULAR),
                     _id: 1,
                 })
                 .skip(skip)
