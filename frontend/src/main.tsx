@@ -22,6 +22,15 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
                     },
                 },
             },
+            Review: {
+                fields: {
+                    date: {
+                        read(value) {
+                            return value ? new Date(value) : null;
+                        },
+                    },
+                },
+            },
             Query: {
                 fields: {
                     movies: {

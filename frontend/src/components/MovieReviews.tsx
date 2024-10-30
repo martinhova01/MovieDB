@@ -1,72 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "../shadcn/components/ui/button";
 import { Textarea } from "../shadcn/components/ui/textarea";
 import { Card, CardContent } from "../shadcn/components/ui/card";
 import Ratings from "../shadcn/components/ui/rating";
 import { usernameVar } from "@/utils/cache";
-import { useReactiveVar } from "@apollo/client";
+import { useMutation, useReactiveVar } from "@apollo/client";
 import { Movie, Review } from "@/types/__generated__/types";
+import { ADD_REVIEW } from "@/api/queries";
 interface MovieReviewsProps {
     movie: Movie;
 }
 
 const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
-    const [reviews, setReviews] = useState<Review[]>([]);
+    const [reviews] = useState<Review[]>([...movie.reviews]);
     const [rating, setRating] = useState<number>(0);
     const [comment, setComment] = useState<string>("");
     const username = useReactiveVar(usernameVar);
 
-    useEffect(() => {
-        const storedReviews = localStorage.getItem(`movieReviews_${movie._id}`);
-        if (storedReviews) {
-            const reviews = JSON.parse(storedReviews) as Array<
-                Omit<Review, "date" | "movie"> & {
-                    date: string;
-                    movie: Omit<Movie, "release_date"> & {
-                        release_date: string;
-                    };
-                }
-            >;
-            setReviews(
-                reviews.map((review) => ({
-                    ...review,
-                    date: new Date(review.date),
-                    movie: {
-                        ...review.movie,
-                        release_date: new Date(review.movie.release_date),
-                    },
-                }))
-            );
-        }
-    }, [movie]);
+    const [addReview] = useMutation(ADD_REVIEW);
 
-    const saveReviews = (updatedReviews: Review[]) => {
-        localStorage.setItem(
-            `movieReviews_${movie._id}`,
-            JSON.stringify(updatedReviews)
-        );
-        setReviews(updatedReviews);
-    };
-
-    const handleSubmitReview = (e: React.FormEvent) => {
+    const handleSubmitReview = async (e: React.FormEvent) => {
         e.preventDefault();
-        const newReview: Review = {
-            _id: Date.now().toString(), //Temporary id
-            movie: movie,
-            username: username,
-            rating,
-            comment: comment.trim(),
-            date: new Date(),
-        };
-        const updatedReviews = [...reviews, newReview];
-        saveReviews(updatedReviews);
+
+        await addReview({
+            variables: {
+                movieId: movie._id,
+                username: username,
+                rating: rating,
+                comment: comment.trim(),
+            },
+        });
+
         setRating(0);
         setComment("");
     };
 
     const handleDeleteReview = (review: Review) => {
-        const updatedReviews = reviews.filter((r) => r._id !== review._id);
-        saveReviews(updatedReviews);
+        console.log(review);
+        // const updatedReviews = reviews.filter((r) => r._id !== review._id);
+        // saveReviews(updatedReviews);
     };
 
     const formatDate = (date: Date) => {

@@ -102,6 +102,14 @@ export type GetMovieQuery = {
         production_countries: Array<string>;
         spoken_languages: Array<string>;
         keywords: Array<string>;
+        reviews: Array<{
+            __typename?: "Review";
+            _id: string;
+            username: string;
+            rating: number;
+            comment: string;
+            date: Date;
+        }>;
     } | null;
 };
 
@@ -117,6 +125,18 @@ export type GetFiltersQuery = {
         Status: Array<string>;
         Runtime: Array<string>;
     };
+};
+
+export type AddReviewMutationVariables = Exact<{
+    movieId: Scalars["Int"]["input"];
+    username: Scalars["String"]["input"];
+    rating: Scalars["Int"]["input"];
+    comment: Scalars["String"]["input"];
+}>;
+
+export type AddReviewMutation = {
+    __typename?: "Mutation";
+    addReview: { __typename?: "Movie"; _id: number };
 };
 
 export const GetMoviesDocument = {
@@ -436,6 +456,50 @@ export const GetMovieDocument = {
                                     kind: "Field",
                                     name: { kind: "Name", value: "keywords" },
                                 },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "reviews" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "_id",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "username",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "rating",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "comment",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "date",
+                                                },
+                                            },
+                                        ],
+                                    },
+                                },
                             ],
                         },
                     },
@@ -488,3 +552,123 @@ export const GetFiltersDocument = {
         },
     ],
 } as unknown as DocumentNode<GetFiltersQuery, GetFiltersQueryVariables>;
+export const AddReviewDocument = {
+    kind: "Document",
+    definitions: [
+        {
+            kind: "OperationDefinition",
+            operation: "mutation",
+            name: { kind: "Name", value: "AddReview" },
+            variableDefinitions: [
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "movieId" },
+                    },
+                    type: {
+                        kind: "NonNullType",
+                        type: {
+                            kind: "NamedType",
+                            name: { kind: "Name", value: "Int" },
+                        },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "username" },
+                    },
+                    type: {
+                        kind: "NonNullType",
+                        type: {
+                            kind: "NamedType",
+                            name: { kind: "Name", value: "String" },
+                        },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "rating" },
+                    },
+                    type: {
+                        kind: "NonNullType",
+                        type: {
+                            kind: "NamedType",
+                            name: { kind: "Name", value: "Int" },
+                        },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "comment" },
+                    },
+                    type: {
+                        kind: "NonNullType",
+                        type: {
+                            kind: "NamedType",
+                            name: { kind: "Name", value: "String" },
+                        },
+                    },
+                },
+            ],
+            selectionSet: {
+                kind: "SelectionSet",
+                selections: [
+                    {
+                        kind: "Field",
+                        name: { kind: "Name", value: "addReview" },
+                        arguments: [
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "movie_id" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "movieId" },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "username" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "username" },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "rating" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "rating" },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "comment" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "comment" },
+                                },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: "SelectionSet",
+                            selections: [
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "_id" },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<AddReviewMutation, AddReviewMutationVariables>;

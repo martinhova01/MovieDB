@@ -196,6 +196,14 @@ export type GetMovieQuery = {
         production_countries: Array<string>;
         spoken_languages: Array<string>;
         keywords: Array<string>;
+        reviews: Array<{
+            __typename?: "Review";
+            _id: string;
+            username: string;
+            rating: number;
+            comment: string;
+            date: Date;
+        }>;
     } | null;
 };
 
@@ -210,5 +218,27 @@ export type GetFiltersQuery = {
         Decade: Array<string>;
         Status: Array<string>;
         Runtime: Array<string>;
+    };
+};
+
+export type AddReviewMutationVariables = Exact<{
+    movieId: Scalars["Int"]["input"];
+    username: Scalars["String"]["input"];
+    rating: Scalars["Int"]["input"];
+    comment: Scalars["String"]["input"];
+}>;
+
+export type AddReviewMutation = {
+    __typename?: "Mutation";
+    addReview: {
+        __typename?: "Movie";
+        reviews: Array<{
+            __typename?: "Review";
+            _id: string;
+            username: string;
+            rating: number;
+            comment: string;
+            date: Date;
+        }>;
     };
 };

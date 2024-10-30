@@ -51,6 +51,13 @@ export const GET_MOVIE = gql(`
             production_countries
             spoken_languages
             keywords
+            reviews {
+                _id
+                username
+                rating
+                comment
+                date
+            }
         }
     }
 `);
@@ -63,6 +70,30 @@ export const GET_FILTERS = gql(`
             Decade
             Status
             Runtime
+        }
+    }
+`);
+
+export const ADD_REVIEW = gql(`
+    mutation AddReview(
+        $movieId: Int!,
+        $username: String!,
+        $rating: Int!,
+        $comment: String!
+    ) {
+        addReview(
+            movie_id: $movieId,
+            username: $username,
+            rating: $rating,
+            comment: $comment
+        ) {
+            reviews {
+                _id
+                username
+                rating
+                comment
+                date
+            }
         }
     }
 `);
