@@ -154,6 +154,7 @@ def fill_db(rows: int | None = None):
     MOVIES_COL.create_index("vote_average")
     MOVIES_COL.create_index("vote_count")
     MOVIES_COL.create_index("status")
+    MOVIES_COL.create_index("popularity")
 
     # These indexes are created to speed up filtering/sorting and to retrieve unique values
     MOVIES_COL.create_index("genres")
