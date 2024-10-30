@@ -10,6 +10,8 @@ export enum SortingType {
     SHORTEST_RUNTIME = "SHORTEST_RUNTIME",
 }
 
+export const defaultSortOption = SortingType.MOST_POPULAR;
+
 export const getSortOrder = (
     sortOption: SortingType
 ): { [key: string]: SortOrder } => {

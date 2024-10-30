@@ -3,7 +3,11 @@ import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
 import mongoose from "mongoose";
 import { createFilters, Filters } from "../utils/filterUtils.js";
-import { getSortOrder, SortingType } from "../utils/sortUtils.js";
+import {
+    defaultSortOption,
+    getSortOrder,
+    SortingType,
+} from "../utils/sortUtils.js";
 import { DateTimeResolver } from "graphql-scalars";
 
 function createBadUserInputError(message: string) {
@@ -71,7 +75,7 @@ const resolvers = {
                 ],
             })
                 .sort({
-                    ...getSortOrder(sortOption ?? SortingType.MOST_POPULAR),
+                    ...getSortOrder(sortOption ?? defaultSortOption),
                     _id: 1,
                 })
                 .skip(skip)

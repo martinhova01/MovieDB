@@ -15,8 +15,9 @@ import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
 import { filtersVar, sortOptionVar } from "@/utils/cache";
 import { useQuery, useReactiveVar } from "@apollo/client";
-import { Filters, SortingType } from "@/types/__generated__/types";
+import { Filters } from "@/types/__generated__/types";
 import { GET_FILTERS } from "@/api/queries";
+import { defaultSortOption } from "@/utils/sortOptionUtil";
 
 const SortAndFilterPanel: React.FC = () => {
     const filters = useReactiveVar(filtersVar);
@@ -46,8 +47,8 @@ const SortAndFilterPanel: React.FC = () => {
         sessionStorage.setItem("filters", JSON.stringify(emptyFilters));
         filtersVar(emptyFilters);
 
-        sessionStorage.setItem("sort_option", SortingType.NEWEST_FIRST);
-        sortOptionVar(SortingType.NEWEST_FIRST);
+        sessionStorage.setItem("sort_option", defaultSortOption);
+        sortOptionVar(defaultSortOption);
     };
 
     const renderFilterSections = () => {

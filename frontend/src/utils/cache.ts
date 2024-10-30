@@ -1,9 +1,9 @@
 import { Filters, SortingType } from "@/types/__generated__/types";
 import { makeVar } from "@apollo/client";
+import { defaultSortOption } from "./sortOptionUtil";
 
 export const sortOptionVar = makeVar<SortingType>(
-    (sessionStorage.getItem("sort_option") as SortingType) ??
-        SortingType.MOST_POPULAR
+    (sessionStorage.getItem("sort_option") as SortingType) ?? defaultSortOption
 );
 
 const storedFilters = sessionStorage.getItem("filters");

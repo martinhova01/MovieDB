@@ -4,13 +4,10 @@ import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import routerConfig from "@/utils/routerConfig";
 import userEvent from "@testing-library/user-event";
 import { MockedProvider } from "@apollo/client/testing";
-import {
-    Filters,
-    FiltersInput,
-    SortingType,
-} from "@/types/__generated__/types";
+import { Filters, FiltersInput } from "@/types/__generated__/types";
 import { all_movies } from "./mock/util";
 import { GET_FILTERS, GET_MOVIE, GET_MOVIES } from "@/api/queries";
+import { defaultSortOption } from "@/utils/sortOptionUtil";
 
 const mocks = [
     {
@@ -26,7 +23,7 @@ const mocks = [
                     Status: [],
                     Runtime: [],
                 } as FiltersInput,
-                sortOption: SortingType.MOST_POPULAR,
+                sortOption: defaultSortOption,
                 search: "",
             },
         },

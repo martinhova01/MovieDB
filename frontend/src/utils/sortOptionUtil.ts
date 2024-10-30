@@ -16,3 +16,5 @@ const sortingDisplayNames: Map<SortingType, string> = new Map<
 export const getSortOptionDisplayName = (sortType: SortingType) => {
     return sortingDisplayNames.get(sortType);
 };
+
+export const defaultSortOption = SortingType.MOST_POPULAR;
