@@ -138,6 +138,7 @@ export type AddReviewMutation = {
     __typename?: "Mutation";
     addReview: {
         __typename?: "Movie";
+        _id: number;
         reviews: Array<{
             __typename?: "Review";
             _id: string;
@@ -157,6 +158,7 @@ export type DeleteReviewMutation = {
     __typename?: "Mutation";
     deleteReview: {
         __typename?: "Movie";
+        _id: number;
         reviews: Array<{
             __typename?: "Review";
             _id: string;
@@ -691,6 +693,10 @@ export const AddReviewDocument = {
                             selections: [
                                 {
                                     kind: "Field",
+                                    name: { kind: "Name", value: "_id" },
+                                },
+                                {
+                                    kind: "Field",
                                     name: { kind: "Name", value: "reviews" },
                                     selectionSet: {
                                         kind: "SelectionSet",
@@ -783,6 +789,10 @@ export const DeleteReviewDocument = {
                         selectionSet: {
                             kind: "SelectionSet",
                             selections: [
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "_id" },
+                                },
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "reviews" },

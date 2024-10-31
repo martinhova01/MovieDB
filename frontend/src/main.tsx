@@ -20,6 +20,12 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
                             return value ? new Date(value) : null;
                         },
                     },
+                    reviews: {
+                        // Use the latest version of the reviews-list.
+                        merge(_, incoming) {
+                            return incoming;
+                        },
+                    },
                 },
             },
             Review: {

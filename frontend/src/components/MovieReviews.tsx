@@ -4,26 +4,51 @@ import { Textarea } from "../shadcn/components/ui/textarea";
 import { Card, CardContent } from "../shadcn/components/ui/card";
 import Ratings from "../shadcn/components/ui/rating";
 import { usernameVar } from "@/utils/cache";
-import { useMutation, useReactiveVar } from "@apollo/client";
+import { useApolloClient, useMutation, useReactiveVar } from "@apollo/client";
 import { Movie, Review } from "@/types/__generated__/types";
 import { ADD_REVIEW, DELETE_REVIEW } from "@/api/queries";
-import { parseReviewResponse } from "@/api/apiUtils";
 interface MovieReviewsProps {
     movie: Movie;
 }
 
 const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
+    const client = useApolloClient();
     const [reviews, setReviews] = useState<Review[]>([...movie.reviews]);
     const [rating, setRating] = useState<number>(0);
     const [comment, setComment] = useState<string>("");
     const username = useReactiveVar(usernameVar);
 
     const [addReview, { loading: addReviewLoading, error: AddReviewError }] =
-        useMutation(ADD_REVIEW);
+        useMutation(ADD_REVIEW, {
+            update(cache, { data }) {
+                if (!data?.addReview) return;
+
+                cache.modify({
+                    id: data.addReview._id.toString(),
+                    fields: {
+                        reviews() {
+                            return data.addReview.reviews;
+                        },
+                    },
+                });
+            },
+        });
     const [
         deleteReview,
         { loading: deleteReviewLoading, error: deleteReviewError },
-    ] = useMutation(DELETE_REVIEW);
+    ] = useMutation(DELETE_REVIEW, {
+        update(cache, { data }) {
+            if (!data?.deleteReview) return;
+            cache.modify({
+                id: data.deleteReview._id.toString(),
+                fields: {
+                    reviews() {
+                        return data.deleteReview.reviews;
+                    },
+                },
+            });
+        },
+    });
 
     const handleSubmitReview = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -40,11 +65,8 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
         if (response.data == undefined) {
             return;
         }
-
-        // Make sure date is correctly initialized as a Date-object.
-        const newReviews: Review[] = parseReviewResponse(
-            response.data.addReview.reviews
-        );
+        const newReviews: Review[] = response.data.addReview
+            .reviews as Review[];
         setReviews(newReviews);
 
         setRating(0);
@@ -62,11 +84,12 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
             return;
         }
 
-        // Make sure date is correctly initialized as a Date-object.
-        const newReviews: Review[] = parseReviewResponse(
-            response.data.deleteReview.reviews
-        );
+        const newReviews: Review[] = response.data.deleteReview
+            .reviews as Review[];
         setReviews(newReviews);
+
+        // Make sure the deleted review is deleted from cache.
+        client.cache.gc();
     };
 
     const formatDate = (date: Date) => {

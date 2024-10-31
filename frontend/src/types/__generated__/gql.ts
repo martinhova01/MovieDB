@@ -20,9 +20,9 @@ const documents = {
         types.GetMovieDocument,
     "\n    query GetFilters {\n        filters {\n            Genre\n            Rating\n            Decade\n            Status\n            Runtime\n        }\n    }\n":
         types.GetFiltersDocument,
-    "\n    mutation AddReview(\n        $movieId: Int!,\n        $username: String!,\n        $rating: Int!,\n        $comment: String!\n    ) {\n        addReview(\n            movie_id: $movieId,\n            username: $username,\n            rating: $rating,\n            comment: $comment\n        ) {\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n":
+    "\n    mutation AddReview(\n        $movieId: Int!,\n        $username: String!,\n        $rating: Int!,\n        $comment: String!\n    ) {\n        addReview(\n            movie_id: $movieId,\n            username: $username,\n            rating: $rating,\n            comment: $comment\n        ) {\n            _id\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n":
         types.AddReviewDocument,
-    "\n    mutation DeleteReview($id: ID!) {\n        deleteReview(_id: $id) {\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n":
+    "\n    mutation DeleteReview($id: ID!) {\n        deleteReview(_id: $id) {\n            _id\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n":
         types.DeleteReviewDocument,
 };
 
@@ -62,14 +62,14 @@ export function gql(
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(
-    source: "\n    mutation AddReview(\n        $movieId: Int!,\n        $username: String!,\n        $rating: Int!,\n        $comment: String!\n    ) {\n        addReview(\n            movie_id: $movieId,\n            username: $username,\n            rating: $rating,\n            comment: $comment\n        ) {\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n"
-): (typeof documents)["\n    mutation AddReview(\n        $movieId: Int!,\n        $username: String!,\n        $rating: Int!,\n        $comment: String!\n    ) {\n        addReview(\n            movie_id: $movieId,\n            username: $username,\n            rating: $rating,\n            comment: $comment\n        ) {\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n"];
+    source: "\n    mutation AddReview(\n        $movieId: Int!,\n        $username: String!,\n        $rating: Int!,\n        $comment: String!\n    ) {\n        addReview(\n            movie_id: $movieId,\n            username: $username,\n            rating: $rating,\n            comment: $comment\n        ) {\n            _id\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n"
+): (typeof documents)["\n    mutation AddReview(\n        $movieId: Int!,\n        $username: String!,\n        $rating: Int!,\n        $comment: String!\n    ) {\n        addReview(\n            movie_id: $movieId,\n            username: $username,\n            rating: $rating,\n            comment: $comment\n        ) {\n            _id\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(
-    source: "\n    mutation DeleteReview($id: ID!) {\n        deleteReview(_id: $id) {\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n"
-): (typeof documents)["\n    mutation DeleteReview($id: ID!) {\n        deleteReview(_id: $id) {\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n"];
+    source: "\n    mutation DeleteReview($id: ID!) {\n        deleteReview(_id: $id) {\n            _id\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n"
+): (typeof documents)["\n    mutation DeleteReview($id: ID!) {\n        deleteReview(_id: $id) {\n            _id\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n"];
 
 export function gql(source: string) {
     return (documents as any)[source] ?? {};

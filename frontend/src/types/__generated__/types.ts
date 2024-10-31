@@ -232,6 +232,7 @@ export type AddReviewMutation = {
     __typename?: "Mutation";
     addReview: {
         __typename?: "Movie";
+        _id: number;
         reviews: Array<{
             __typename?: "Review";
             _id: string;
@@ -251,6 +252,7 @@ export type DeleteReviewMutation = {
     __typename?: "Mutation";
     deleteReview: {
         __typename?: "Movie";
+        _id: number;
         reviews: Array<{
             __typename?: "Review";
             _id: string;

@@ -87,6 +87,7 @@ export const ADD_REVIEW = gql(`
             rating: $rating,
             comment: $comment
         ) {
+            _id
             reviews {
                 _id
                 username
@@ -101,6 +102,7 @@ export const ADD_REVIEW = gql(`
 export const DELETE_REVIEW = gql(`
     mutation DeleteReview($id: ID!) {
         deleteReview(_id: $id) {
+            _id
             reviews {
                 _id
                 username
