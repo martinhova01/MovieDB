@@ -212,7 +212,9 @@ const resolvers = {
 
             try {
                 await review.save();
-                await movie.updateOne({ $push: { reviews: review._id } });
+                await movie.updateOne({
+                    $push: { reviews: { $each: [review._id], $position: 0 } },
+                });
                 await session.commitTransaction();
 
                 return await MovieModel.findById(movie_id).populate({
