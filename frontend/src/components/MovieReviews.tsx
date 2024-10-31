@@ -45,6 +45,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
             });
         },
     });
+
     const [deleteReview, { error: deleteReviewError }] = useMutation(
         DELETE_REVIEW,
         {

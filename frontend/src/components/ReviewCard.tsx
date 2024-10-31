@@ -1,10 +1,9 @@
 import { Button } from "@/shadcn/components/ui/button";
 import { Card, CardContent } from "@/shadcn/components/ui/card";
 import Ratings from "@/shadcn/components/ui/rating";
-import { Review } from "@/types/__generated__/types";
 import { usernameVar } from "@/utils/cache";
 import { formatDate } from "@/utils/formatDate";
-import { useReactiveVar } from "@apollo/client";
+import { useApolloClient, useMutation, useReactiveVar } from "@apollo/client";
 import { Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
@@ -18,6 +17,8 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/shadcn/components/ui/alert-dialog";
+import { DELETE_REVIEW } from "../api/queries";
+import { Review } from "@/types/__generated__/types";
 
 interface ReviewCardProps {
     review: Review;
@@ -25,10 +26,50 @@ interface ReviewCardProps {
 
 const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
     const username = useReactiveVar(usernameVar);
+    const client = useApolloClient();
 
-    const handleDeleteReview = (review: Review) => {
-        console.log(review._id);
+    const [deleteReview, { loading, error: deleteReviewError }] = useMutation(
+        DELETE_REVIEW,
+        {
+            update(cache, { data }) {
+                if (!data?.deleteReview) return;
+                cache.modify({
+                    id: cache.identify({
+                        __typename: "Movie",
+                        _id: review.movie._id,
+                    }),
+                    fields: {
+                        reviews() {
+                            return data.deleteReview.reviews;
+                        },
+                    },
+                });
+            },
+        }
+    );
+
+    const handleDeleteReview = async (review: Review) => {
+        const response = await deleteReview({
+            variables: {
+                id: review._id,
+            },
+        });
+
+        if (response.data?.deleteReview) {
+            client.cache.gc();
+        }
     };
+
+    if (deleteReviewError) {
+        return (
+            <section className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">
+                    Something went wrong when deleting reviews!
+                </h1>
+                <p className="text-primary">Try to refresh</p>
+            </section>
+        );
+    }
 
     return (
         <Card>
@@ -43,7 +84,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
                                 >
                                     <Trash2 className="h-4 w-4 sm:hidden" />
                                     <span className="hidden sm:inline">
-                                        Delete
+                                        {loading ? "Deleting..." : "Delete"}
                                     </span>
                                 </Button>
                             </AlertDialogTrigger>
@@ -67,8 +108,9 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
                                         onClick={() =>
                                             handleDeleteReview(review)
                                         }
+                                        disabled={loading}
                                     >
-                                        Continue
+                                        {loading ? "Deleting..." : "Continue"}
                                     </AlertDialogAction>
                                 </AlertDialogFooter>
                             </AlertDialogContent>
