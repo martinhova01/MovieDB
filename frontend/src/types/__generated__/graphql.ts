@@ -127,6 +127,52 @@ export type GetFiltersQuery = {
     };
 };
 
+export type GetLatestReviewsQueryVariables = Exact<{
+    skip?: InputMaybe<Scalars["Int"]["input"]>;
+    limit?: InputMaybe<Scalars["Int"]["input"]>;
+}>;
+
+export type GetLatestReviewsQuery = {
+    __typename?: "Query";
+    latestReviews: Array<{
+        __typename?: "Review";
+        _id: string;
+        username: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            title: string;
+            poster_path?: string | null;
+        };
+    }>;
+};
+
+export type GetUserReviewsQueryVariables = Exact<{
+    username: Scalars["String"]["input"];
+    skip?: InputMaybe<Scalars["Int"]["input"]>;
+    limit?: InputMaybe<Scalars["Int"]["input"]>;
+}>;
+
+export type GetUserReviewsQuery = {
+    __typename?: "Query";
+    userReviews: Array<{
+        __typename?: "Review";
+        _id: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            title: string;
+            poster_path?: string | null;
+        };
+    }>;
+};
+
 export type AddReviewMutationVariables = Exact<{
     movieId: Scalars["Int"]["input"];
     username: Scalars["String"]["input"];
@@ -583,6 +629,259 @@ export const GetFiltersDocument = {
         },
     ],
 } as unknown as DocumentNode<GetFiltersQuery, GetFiltersQueryVariables>;
+export const GetLatestReviewsDocument = {
+    kind: "Document",
+    definitions: [
+        {
+            kind: "OperationDefinition",
+            operation: "query",
+            name: { kind: "Name", value: "GetLatestReviews" },
+            variableDefinitions: [
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "skip" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "Int" },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "limit" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "Int" },
+                    },
+                },
+            ],
+            selectionSet: {
+                kind: "SelectionSet",
+                selections: [
+                    {
+                        kind: "Field",
+                        name: { kind: "Name", value: "latestReviews" },
+                        arguments: [
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "skip" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "skip" },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "limit" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "limit" },
+                                },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: "SelectionSet",
+                            selections: [
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "_id" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "movie" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "_id",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "title",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "poster_path",
+                                                },
+                                            },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "username" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "rating" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "comment" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "date" },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<
+    GetLatestReviewsQuery,
+    GetLatestReviewsQueryVariables
+>;
+export const GetUserReviewsDocument = {
+    kind: "Document",
+    definitions: [
+        {
+            kind: "OperationDefinition",
+            operation: "query",
+            name: { kind: "Name", value: "GetUserReviews" },
+            variableDefinitions: [
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "username" },
+                    },
+                    type: {
+                        kind: "NonNullType",
+                        type: {
+                            kind: "NamedType",
+                            name: { kind: "Name", value: "String" },
+                        },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "skip" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "Int" },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "limit" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "Int" },
+                    },
+                },
+            ],
+            selectionSet: {
+                kind: "SelectionSet",
+                selections: [
+                    {
+                        kind: "Field",
+                        name: { kind: "Name", value: "userReviews" },
+                        arguments: [
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "username" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "username" },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "skip" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "skip" },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "limit" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "limit" },
+                                },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: "SelectionSet",
+                            selections: [
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "_id" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "movie" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "_id",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "title",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "poster_path",
+                                                },
+                                            },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "rating" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "comment" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "date" },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<GetUserReviewsQuery, GetUserReviewsQueryVariables>;
 export const AddReviewDocument = {
     kind: "Document",
     definitions: [

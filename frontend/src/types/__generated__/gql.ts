@@ -20,6 +20,10 @@ const documents = {
         types.GetMovieDocument,
     "\n    query GetFilters {\n        filters {\n            Genre\n            Rating\n            Decade\n            Status\n            Runtime\n        }\n    }\n":
         types.GetFiltersDocument,
+    "\n    query GetLatestReviews(\n        $skip: Int,\n        $limit: Int\n    ) {\n        latestReviews(\n            skip: $skip,\n            limit: $limit\n        ) {\n            _id\n            movie {\n                _id\n                title\n                poster_path\n            }\n            username\n            rating\n            comment\n            date\n        }\n    }\n":
+        types.GetLatestReviewsDocument,
+    "\n    query GetUserReviews(\n        $username: String!,\n        $skip: Int,\n        $limit: Int\n    ) {\n        userReviews(\n            username: $username,\n            skip: $skip,\n            limit: $limit\n        ) {\n            _id\n            movie {\n                _id\n                title\n                poster_path\n            }\n            rating\n            comment\n            date\n        }\n    }\n":
+        types.GetUserReviewsDocument,
     "\n    mutation AddReview(\n        $movieId: Int!,\n        $username: String!,\n        $rating: Int!,\n        $comment: String!\n    ) {\n        addReview(\n            movie_id: $movieId,\n            username: $username,\n            rating: $rating,\n            comment: $comment\n        ) {\n            _id\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n":
         types.AddReviewDocument,
     "\n    mutation DeleteReview($id: ID!) {\n        deleteReview(_id: $id) {\n            _id\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n":
@@ -58,6 +62,18 @@ export function gql(
 export function gql(
     source: "\n    query GetFilters {\n        filters {\n            Genre\n            Rating\n            Decade\n            Status\n            Runtime\n        }\n    }\n"
 ): (typeof documents)["\n    query GetFilters {\n        filters {\n            Genre\n            Rating\n            Decade\n            Status\n            Runtime\n        }\n    }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(
+    source: "\n    query GetLatestReviews(\n        $skip: Int,\n        $limit: Int\n    ) {\n        latestReviews(\n            skip: $skip,\n            limit: $limit\n        ) {\n            _id\n            movie {\n                _id\n                title\n                poster_path\n            }\n            username\n            rating\n            comment\n            date\n        }\n    }\n"
+): (typeof documents)["\n    query GetLatestReviews(\n        $skip: Int,\n        $limit: Int\n    ) {\n        latestReviews(\n            skip: $skip,\n            limit: $limit\n        ) {\n            _id\n            movie {\n                _id\n                title\n                poster_path\n            }\n            username\n            rating\n            comment\n            date\n        }\n    }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(
+    source: "\n    query GetUserReviews(\n        $username: String!,\n        $skip: Int,\n        $limit: Int\n    ) {\n        userReviews(\n            username: $username,\n            skip: $skip,\n            limit: $limit\n        ) {\n            _id\n            movie {\n                _id\n                title\n                poster_path\n            }\n            rating\n            comment\n            date\n        }\n    }\n"
+): (typeof documents)["\n    query GetUserReviews(\n        $username: String!,\n        $skip: Int,\n        $limit: Int\n    ) {\n        userReviews(\n            username: $username,\n            skip: $skip,\n            limit: $limit\n        ) {\n            _id\n            movie {\n                _id\n                title\n                poster_path\n            }\n            rating\n            comment\n            date\n        }\n    }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

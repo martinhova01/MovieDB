@@ -221,6 +221,52 @@ export type GetFiltersQuery = {
     };
 };
 
+export type GetLatestReviewsQueryVariables = Exact<{
+    skip?: InputMaybe<Scalars["Int"]["input"]>;
+    limit?: InputMaybe<Scalars["Int"]["input"]>;
+}>;
+
+export type GetLatestReviewsQuery = {
+    __typename?: "Query";
+    latestReviews: Array<{
+        __typename?: "Review";
+        _id: string;
+        username: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            title: string;
+            poster_path?: string | null;
+        };
+    }>;
+};
+
+export type GetUserReviewsQueryVariables = Exact<{
+    username: Scalars["String"]["input"];
+    skip?: InputMaybe<Scalars["Int"]["input"]>;
+    limit?: InputMaybe<Scalars["Int"]["input"]>;
+}>;
+
+export type GetUserReviewsQuery = {
+    __typename?: "Query";
+    userReviews: Array<{
+        __typename?: "Review";
+        _id: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            title: string;
+            poster_path?: string | null;
+        };
+    }>;
+};
+
 export type AddReviewMutationVariables = Exact<{
     movieId: Scalars["Int"]["input"];
     username: Scalars["String"]["input"];

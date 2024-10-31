@@ -74,6 +74,53 @@ export const GET_FILTERS = gql(`
     }
 `);
 
+export const GET_LATEST_REVIEWS = gql(`
+    query GetLatestReviews(
+        $skip: Int,
+        $limit: Int
+    ) {
+        latestReviews(
+            skip: $skip,
+            limit: $limit
+        ) {
+            _id
+            movie {
+                _id
+                title
+                poster_path
+            }
+            username
+            rating
+            comment
+            date
+        }
+    }
+`);
+
+export const GET_USER_REVIEWS = gql(`
+    query GetUserReviews(
+        $username: String!,
+        $skip: Int,
+        $limit: Int
+    ) {
+        userReviews(
+            username: $username,
+            skip: $skip,
+            limit: $limit
+        ) {
+            _id
+            movie {
+                _id
+                title
+                poster_path
+            }
+            rating
+            comment
+            date
+        }
+    }
+`);
+
 export const ADD_REVIEW = gql(`
     mutation AddReview(
         $movieId: Int!,
