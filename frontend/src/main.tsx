@@ -8,9 +8,10 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import { BACKEND_URL } from "./utils/config.ts";
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-    uri: "http://localhost:3001/",
+    uri: BACKEND_URL,
     cache: new InMemoryCache({
         typePolicies: {
             Movie: {
