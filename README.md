@@ -6,6 +6,8 @@ Repository: <https://git.ntnu.no/IT2810-H24/T26-Project-2>
 
 ## Usage
 
+### Running the frontend locally
+
 The following commands should be run in the `T26-Project-2/frontend` directory:
 
 - `npm install` to install dependencies.
@@ -17,6 +19,64 @@ The following commands should be run in the `T26-Project-2/frontend` directory:
 - `npm test` to run all tests
 - `npm run build` to build the project
   - it will be built in the `dist` folder
+
+### Restarting the frontend on the VM
+
+Navigate to the `~T26-Project-2/frontend` directory
+
+- `npm ci` to install dependencies (and stop on mismatches between the `package[-lock].json` files)
+- `npm run build` to build the project
+- `../reload_server_frontend` to update the apache server
+
+### Running the backend locally
+
+The following commands should be run in the `T26-Project-2/backend` directory:
+
+- `npm install` to install dependencies.
+- `npm run prettier` to check code formatting
+  - `npm run prettier:fix` to fix formatting
+- `npm run lint` to check for linting errors
+  - `npm run lint:fix` to fix auto fixable linting errors
+- `npm run build` to build the project
+- `npm run start` to start the server
+
+### Running the backend on the VM
+
+Navigate to the `~T26-Project-2/backend` directory
+
+- `npm install pm2 -g` to install pm2 globally
+- `npm ci` to install dependencies (and stop on mismatches between the `package[-lock].json` files)
+- `npm run build` to build the project
+- `pm2 start dist/index.js` to start the server in the background
+  - `pm2 logs` to see the logs
+  - `pm2 list` to see the status of the process
+  - `pm2 restart <id>` to restart the process (use the id from `pm2 list`)
+  - `pm2 stop <id>` to stop the process (use the id from `pm2 list`)
+
+### Setting up the database / backend for the first time
+
+#### NB: This is already done, so you don't need to do this
+
+```bash
+cd ~/T26-Project-2
+
+# Download the dataset
+curl -L -o archive.zip https://www.kaggle.com/api/v1/datasets/download/asaniczka/tmdb-movies-dataset-2023-930k-movies
+sudo apt-get install unzip
+unzip archive.zip
+rm archive.zip
+mv TMDB_movie_dataset_v11.csv TMDB_movie_dataset.csv
+
+# Parse the data and insert it into the database
+pip install pandas pymongo tqdm
+./parse_data.py db 0
+
+# Start the backend
+cd backend/
+npm ci
+npm run build
+pm2 start dist/index.js
+```
 
 ## MovieDB
 
