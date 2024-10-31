@@ -18,37 +18,36 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
     const [comment, setComment] = useState<string>("");
     const username = useReactiveVar(usernameVar);
 
-    const [addReview, { loading: addReviewLoading, error: AddReviewError }] =
-        useMutation(ADD_REVIEW, {
-            update(cache, { data }) {
-                if (!data?.addReview) return;
-
-                cache.modify({
-                    id: data.addReview._id.toString(),
-                    fields: {
-                        reviews() {
-                            return data.addReview.reviews;
-                        },
-                    },
-                });
-            },
-        });
-    const [
-        deleteReview,
-        { loading: deleteReviewLoading, error: deleteReviewError },
-    ] = useMutation(DELETE_REVIEW, {
+    const [addReview, { error: addReviewError }] = useMutation(ADD_REVIEW, {
         update(cache, { data }) {
-            if (!data?.deleteReview) return;
+            if (!data?.addReview) return;
+
             cache.modify({
-                id: data.deleteReview._id.toString(),
+                id: data.addReview._id.toString(),
                 fields: {
                     reviews() {
-                        return data.deleteReview.reviews;
+                        return data.addReview.reviews;
                     },
                 },
             });
         },
     });
+    const [deleteReview, { error: deleteReviewError }] = useMutation(
+        DELETE_REVIEW,
+        {
+            update(cache, { data }) {
+                if (!data?.deleteReview) return;
+                cache.modify({
+                    id: data.deleteReview._id.toString(),
+                    fields: {
+                        reviews() {
+                            return data.deleteReview.reviews;
+                        },
+                    },
+                });
+            },
+        }
+    );
 
     const handleSubmitReview = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -102,15 +101,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
         });
     };
 
-    if (addReviewLoading || deleteReviewLoading) {
-        return (
-            <section className="mt-2 w-dvw text-center">
-                <h1 className="text-2xl">Loading reviews...</h1>
-            </section>
-        );
-    }
-
-    if (AddReviewError || deleteReviewError) {
+    if (addReviewError || deleteReviewError) {
         return (
             <section className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">
