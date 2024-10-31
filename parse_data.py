@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-import itertools
 import json
 import os
 import sys
@@ -84,7 +83,7 @@ def get_all_movies(df: pd.DataFrame):
                 continue
 
             movie_data[col] = movie_row[col].split(", ")
-        
+
         movie_data["reviews"] = []
 
         yield movie_data
@@ -121,6 +120,38 @@ def create_mock_data(rows: int = 50):
     print("Data written to mock_movies.json")
 
 
+def load_movie_data_chunks(rows: int | None = None, chunksize: int = 1000):
+    in_file_name = "TMDB_movie_dataset.csv"
+    if in_file_name not in os.listdir():
+        raise FileNotFoundError(
+            f"{in_file_name} not found. Download it from {DOWNLOAD_DATA_URL} and unzip it in the same directory as this script with the correct filename."
+        )
+
+    yielded_movie_count = 0
+
+    with pd.read_csv(in_file_name, chunksize=chunksize) as reader:
+        for chunk in reader:
+            chunk.dropna(
+                subset=["id", "title", "release_date", "overview", "runtime"],
+                inplace=True,
+            )  # Drop rows with missing values in these columns, as they are required
+            chunk = chunk[~chunk["adult"]]
+            chunk.rename({"id": "_id"}, axis=1, inplace=True)
+            chunk.drop_duplicates(subset=["_id"], inplace=True)
+            chunk["release_date"] = pd.to_datetime(
+                chunk["release_date"], errors="coerce"
+            )
+            chunk["revenue"] = chunk["revenue"].astype(float)
+
+            if rows is not None and yielded_movie_count + chunk.shape[0] > rows:
+                chunk = chunk.head(rows - yielded_movie_count)
+                yield chunk
+                break
+
+            yielded_movie_count += chunk.shape[0]
+            yield chunk
+
+
 def fill_db(rows: int | None = None):
     DB_NAME = "T26-Project-2"
     MOVIES_COL_NAME = "movies"
@@ -135,18 +166,22 @@ def fill_db(rows: int | None = None):
         print("Database already has data. First drop all data.")
         return
 
-    df = load_movie_data(rows)
-    df["release_date"] = pd.to_datetime(df["release_date"], errors="coerce")
-    df["revenue"] = df["revenue"].astype(float)
-
-    all_movies = get_all_movies(df)
-
     BATCH_SIZE = 1000
-    with tqdm(total=len(df.index)) as pbar:
-        for movies_batch in itertools.batched(all_movies, BATCH_SIZE):
-            MOVIES_COL.insert_many(movies_batch)
-            pbar.update(len(movies_batch))
+    with tqdm(desc="Inserting movies", unit=" movies", total=rows) as pbar:
+        for chunk in load_movie_data_chunks(rows, BATCH_SIZE):
+            if chunk.empty:
+                continue
+            movies_batch = get_all_movies(chunk)
+            try:
+                MOVIES_COL.insert_many(movies_batch, ordered=False)
+            except pymongo.errors.BulkWriteError:
+                # Ignore duplicate key errors
+                # ordered=False is used to continue inserting other documents even if one fails
+                pass
+            pbar.update(chunk.shape[0])
 
+    print("Done inserting movies")
+    print("Creating indexes...")
     # These indexes are created to speed up search/filtering/sorting
     MOVIES_COL.create_index([("title", pymongo.TEXT)])
     MOVIES_COL.create_index("release_date")
@@ -168,6 +203,8 @@ def fill_db(rows: int | None = None):
 
     REVIEWS_COL.create_index("username")
     REVIEWS_COL.create_index("date")
+
+    print("Done creating indexes")
 
 
 if __name__ == "__main__":
