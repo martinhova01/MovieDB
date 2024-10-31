@@ -242,3 +242,22 @@ export type AddReviewMutation = {
         }>;
     };
 };
+
+export type DeleteReviewMutationVariables = Exact<{
+    id: Scalars["ID"]["input"];
+}>;
+
+export type DeleteReviewMutation = {
+    __typename?: "Mutation";
+    deleteReview: {
+        __typename?: "Movie";
+        reviews: Array<{
+            __typename?: "Review";
+            _id: string;
+            username: string;
+            rating: number;
+            comment: string;
+            date: Date;
+        }>;
+    };
+};

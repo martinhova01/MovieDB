@@ -6,23 +6,29 @@ import Ratings from "../shadcn/components/ui/rating";
 import { usernameVar } from "@/utils/cache";
 import { useMutation, useReactiveVar } from "@apollo/client";
 import { Movie, Review } from "@/types/__generated__/types";
-import { ADD_REVIEW } from "@/api/queries";
+import { ADD_REVIEW, DELETE_REVIEW } from "@/api/queries";
+import { parseReviewResponse } from "@/api/apiUtils";
 interface MovieReviewsProps {
     movie: Movie;
 }
 
 const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
-    const [reviews] = useState<Review[]>([...movie.reviews]);
+    const [reviews, setReviews] = useState<Review[]>([...movie.reviews]);
     const [rating, setRating] = useState<number>(0);
     const [comment, setComment] = useState<string>("");
     const username = useReactiveVar(usernameVar);
 
-    const [addReview] = useMutation(ADD_REVIEW);
+    const [addReview, { loading: addReviewLoading, error: AddReviewError }] =
+        useMutation(ADD_REVIEW);
+    const [
+        deleteReview,
+        { loading: deleteReviewLoading, error: deleteReviewError },
+    ] = useMutation(DELETE_REVIEW);
 
     const handleSubmitReview = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        await addReview({
+        const response = await addReview({
             variables: {
                 movieId: movie._id,
                 username: username,
@@ -31,14 +37,36 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
             },
         });
 
+        if (response.data == undefined) {
+            return;
+        }
+
+        // Make sure date is correctly initialized as a Date-object.
+        const newReviews: Review[] = parseReviewResponse(
+            response.data.addReview.reviews
+        );
+        setReviews(newReviews);
+
         setRating(0);
         setComment("");
     };
 
-    const handleDeleteReview = (review: Review) => {
-        console.log(review);
-        // const updatedReviews = reviews.filter((r) => r._id !== review._id);
-        // saveReviews(updatedReviews);
+    const handleDeleteReview = async (review: Review) => {
+        const response = await deleteReview({
+            variables: {
+                id: review._id,
+            },
+        });
+
+        if (response.data == undefined) {
+            return;
+        }
+
+        // Make sure date is correctly initialized as a Date-object.
+        const newReviews: Review[] = parseReviewResponse(
+            response.data.deleteReview.reviews
+        );
+        setReviews(newReviews);
     };
 
     const formatDate = (date: Date) => {
@@ -50,6 +78,25 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
             minute: "2-digit",
         });
     };
+
+    if (addReviewLoading || deleteReviewLoading) {
+        return (
+            <section className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">Loading reviews...</h1>
+            </section>
+        );
+    }
+
+    if (AddReviewError || deleteReviewError) {
+        return (
+            <section className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">
+                    Something went wrong when loading reviews!
+                </h1>
+                <p className="text-primary">Try to refresh</p>
+            </section>
+        );
+    }
 
     return (
         <Card className="m-4">

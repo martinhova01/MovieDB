@@ -136,7 +136,36 @@ export type AddReviewMutationVariables = Exact<{
 
 export type AddReviewMutation = {
     __typename?: "Mutation";
-    addReview: { __typename?: "Movie"; _id: number };
+    addReview: {
+        __typename?: "Movie";
+        reviews: Array<{
+            __typename?: "Review";
+            _id: string;
+            username: string;
+            rating: number;
+            comment: string;
+            date: Date;
+        }>;
+    };
+};
+
+export type DeleteReviewMutationVariables = Exact<{
+    id: Scalars["ID"]["input"];
+}>;
+
+export type DeleteReviewMutation = {
+    __typename?: "Mutation";
+    deleteReview: {
+        __typename?: "Movie";
+        reviews: Array<{
+            __typename?: "Review";
+            _id: string;
+            username: string;
+            rating: number;
+            comment: string;
+            date: Date;
+        }>;
+    };
 };
 
 export const GetMoviesDocument = {
@@ -662,7 +691,47 @@ export const AddReviewDocument = {
                             selections: [
                                 {
                                     kind: "Field",
-                                    name: { kind: "Name", value: "_id" },
+                                    name: { kind: "Name", value: "reviews" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "_id",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "username",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "rating",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "comment",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "date",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                             ],
                         },
@@ -672,3 +741,100 @@ export const AddReviewDocument = {
         },
     ],
 } as unknown as DocumentNode<AddReviewMutation, AddReviewMutationVariables>;
+export const DeleteReviewDocument = {
+    kind: "Document",
+    definitions: [
+        {
+            kind: "OperationDefinition",
+            operation: "mutation",
+            name: { kind: "Name", value: "DeleteReview" },
+            variableDefinitions: [
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "id" },
+                    },
+                    type: {
+                        kind: "NonNullType",
+                        type: {
+                            kind: "NamedType",
+                            name: { kind: "Name", value: "ID" },
+                        },
+                    },
+                },
+            ],
+            selectionSet: {
+                kind: "SelectionSet",
+                selections: [
+                    {
+                        kind: "Field",
+                        name: { kind: "Name", value: "deleteReview" },
+                        arguments: [
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "_id" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "id" },
+                                },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: "SelectionSet",
+                            selections: [
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "reviews" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "_id",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "username",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "rating",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "comment",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "date",
+                                                },
+                                            },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<
+    DeleteReviewMutation,
+    DeleteReviewMutationVariables
+>;
