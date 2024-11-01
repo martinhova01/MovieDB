@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/shadcn/components/ui/card";
 import Ratings from "@/shadcn/components/ui/rating";
 import { usernameVar } from "@/utils/cache";
 import { formatDate } from "@/utils/formatUtil";
-import { useApolloClient, useMutation, useReactiveVar } from "@apollo/client";
+import { Reference, useMutation, useReactiveVar } from "@apollo/client";
 import { Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
@@ -17,11 +17,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/shadcn/components/ui/alert-dialog";
-import {
-    DELETE_REVIEW,
-    GET_LATEST_REVIEWS,
-    GET_USER_REVIEWS,
-} from "../api/queries";
+import { DELETE_REVIEW } from "../api/queries";
 import { Review } from "@/types/__generated__/types";
 import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 import Loader from "./Loader";
@@ -29,56 +25,51 @@ import Loader from "./Loader";
 interface ReviewCardProps {
     review: Review;
     showPoster?: boolean;
-    onDelete?: (review: Review) => void;
 }
 
 const ReviewCard: React.FC<ReviewCardProps> = ({
     review,
     showPoster = true,
-    onDelete,
 }) => {
     const username = useReactiveVar(usernameVar);
-    const client = useApolloClient();
 
     const [deleteReview, { loading, error: deleteReviewError }] = useMutation(
         DELETE_REVIEW,
         {
             update(cache, { data }) {
                 if (!data?.deleteReview) return;
+                const deletedRef: string = `Review:${data.deleteReview._id}`;
                 cache.modify({
-                    id: data.deleteReview._id.toString(),
+                    id: `Movie:${data.deleteReview.movie._id}`,
                     fields: {
-                        reviews() {
-                            return data.deleteReview.reviews;
+                        reviews(existingReviewRefs = []) {
+                            return existingReviewRefs.filter(
+                                (reviewRef: Reference) =>
+                                    reviewRef.__ref != deletedRef
+                            );
                         },
                     },
                 });
+                cache.modify({
+                    fields: {
+                        latestReviews(existingReviewRefs = []) {
+                            return existingReviewRefs.filter(
+                                (reviewRef: Reference) =>
+                                    reviewRef.__ref != deletedRef
+                            );
+                        },
+                        userReviews(existingReviewRefs = []) {
+                            return existingReviewRefs.filter(
+                                (reviewRef: Reference) =>
+                                    reviewRef.__ref != deletedRef
+                            );
+                        },
+                    },
+                });
+                cache.evict({ id: deletedRef });
             },
         }
     );
-
-    const handleDeleteReview = async (review: Review) => {
-        const response = await deleteReview({
-            variables: {
-                id: review._id,
-            },
-            refetchQueries: [
-                {
-                    query: GET_LATEST_REVIEWS,
-                    variables: { skip: 0, limit: 20 },
-                },
-                {
-                    query: GET_USER_REVIEWS,
-                    variables: { username: username, skip: 0, limit: 20 },
-                },
-            ],
-        });
-
-        if (response.data?.deleteReview) {
-            onDelete?.(review);
-            client.cache.gc();
-        }
-    };
 
     if (deleteReviewError) {
         return (
@@ -135,7 +126,9 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                                     </AlertDialogCancel>
                                     <AlertDialogAction
                                         onClick={() =>
-                                            handleDeleteReview(review)
+                                            deleteReview({
+                                                variables: { id: review._id },
+                                            })
                                         }
                                         disabled={loading}
                                     >

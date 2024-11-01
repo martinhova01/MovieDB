@@ -4,20 +4,15 @@ import { Textarea } from "../shadcn/components/ui/textarea";
 import { Card } from "../shadcn/components/ui/card";
 import Ratings from "../shadcn/components/ui/rating";
 import { usernameVar } from "@/utils/cache";
-import { useMutation, useReactiveVar } from "@apollo/client";
-import { Movie, Review } from "@/types/__generated__/types";
-import {
-    ADD_REVIEW,
-    GET_LATEST_REVIEWS,
-    GET_USER_REVIEWS,
-} from "@/api/queries";
+import { Reference, useMutation, useReactiveVar } from "@apollo/client";
+import { Movie } from "@/types/__generated__/types";
+import { ADD_REVIEW } from "@/api/queries";
 import ReviewCard from "./ReviewCard";
 interface MovieReviewsProps {
     movie: Movie;
 }
 
 const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
-    const [reviews, setReviews] = useState<Review[]>([...movie.reviews]);
     const [rating, setRating] = useState<number>(0);
     const [comment, setComment] = useState<string>("");
     const username = useReactiveVar(usernameVar);
@@ -25,12 +20,22 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
     const [addReview, { error: addReviewError }] = useMutation(ADD_REVIEW, {
         update(cache, { data }) {
             if (!data?.addReview) return;
-
+            const newRef: Reference = { __ref: `Review:${data.addReview._id}` };
             cache.modify({
-                id: data.addReview._id.toString(),
+                id: `Movie:${data.addReview.movie._id}`,
                 fields: {
-                    reviews() {
-                        return data.addReview.reviews;
+                    reviews(existingReviewRefs = []) {
+                        return [newRef, ...existingReviewRefs];
+                    },
+                },
+            });
+            cache.modify({
+                fields: {
+                    latestReviews(existingReviewRefs = []) {
+                        return [newRef, ...existingReviewRefs];
+                    },
+                    userReviews(existingReviewRefs = []) {
+                        return [newRef, ...existingReviewRefs];
                     },
                 },
             });
@@ -47,32 +52,15 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                     rating: rating,
                     comment: comment.trim(),
                 },
-                refetchQueries: [
-                    {
-                        query: GET_LATEST_REVIEWS,
-                        variables: { skip: 0, limit: 20 },
-                    },
-                    {
-                        query: GET_USER_REVIEWS,
-                        variables: { username: username, skip: 0, limit: 20 },
-                    },
-                ],
             });
 
             if (response.data?.addReview) {
-                setReviews(response.data.addReview.reviews as Review[]);
-                setRating(0);
+                    setRating(0);
                 setComment("");
             }
         } catch {
             // Intentionally empty - errors handled by addReviewError
         }
-    };
-
-    const handleDeleteReview = (deletedReview: Review) => {
-        setReviews(
-            reviews.filter((review) => review._id !== deletedReview._id)
-        );
     };
 
     if (addReviewError) {
@@ -112,17 +100,13 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                 </form>
             </section>
             <section className="m-4 space-y-4">
-                {reviews.length > 0 && (
+                {movie.reviews.length > 0 && (
                     <h3 className="mb-4 text-2xl font-bold">Reviews</h3>
                 )}
                 <ul className="space-y-6">
-                    {reviews.map((review) => (
+                    {movie.reviews.map((review) => (
                         <li key={review._id}>
-                            <ReviewCard
-                                review={review}
-                                showPoster={false}
-                                onDelete={handleDeleteReview}
-                            />
+                            <ReviewCard review={review} showPoster={false} />
                         </li>
                     ))}
                 </ul>

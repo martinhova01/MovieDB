@@ -140,8 +140,8 @@ export type QueryuserReviewsArgs = {
 
 export type Mutation = {
     __typename?: "Mutation";
-    addReview: Movie;
-    deleteReview: Movie;
+    addReview: Review;
+    deleteReview: Review;
 };
 
 export type MutationaddReviewArgs = {
@@ -291,18 +291,18 @@ export type AddReviewMutationVariables = Exact<{
 export type AddReviewMutation = {
     __typename?: "Mutation";
     addReview: {
-        __typename?: "Movie";
-        _id: number;
-        vote_average: number;
-        vote_count: number;
-        reviews: Array<{
-            __typename?: "Review";
-            _id: string;
-            username: string;
-            rating: number;
-            comment: string;
-            date: Date;
-        }>;
+        __typename?: "Review";
+        _id: string;
+        username: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            vote_average: number;
+            vote_count: number;
+        };
     };
 };
 
@@ -313,17 +313,17 @@ export type DeleteReviewMutationVariables = Exact<{
 export type DeleteReviewMutation = {
     __typename?: "Mutation";
     deleteReview: {
-        __typename?: "Movie";
-        _id: number;
-        vote_average: number;
-        vote_count: number;
-        reviews: Array<{
-            __typename?: "Review";
-            _id: string;
-            username: string;
-            rating: number;
-            comment: string;
-            date: Date;
-        }>;
+        __typename?: "Review";
+        _id: string;
+        username: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            vote_average: number;
+            vote_count: number;
+        };
     };
 };

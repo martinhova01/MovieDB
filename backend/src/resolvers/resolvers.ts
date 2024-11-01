@@ -340,9 +340,9 @@ const resolvers = {
                 });
                 await session.commitTransaction();
 
-                return await MovieModel.findById(movie_id).populate({
-                    path: "reviews",
-                    model: ReviewModel,
+                return await review.populate({
+                    path: "movie",
+                    model: MovieModel,
                 });
             } catch (error) {
                 console.error("Error adding review:", error);
@@ -387,9 +387,9 @@ const resolvers = {
                 });
                 await session.commitTransaction();
 
-                return await MovieModel.findById(review.movie).populate({
-                    path: "reviews",
-                    model: ReviewModel,
+                return await review.populate({
+                    path: "movie",
+                    model: MovieModel,
                 });
             } catch (error) {
                 console.error("Error deleting review:", error);

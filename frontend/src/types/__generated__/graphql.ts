@@ -186,18 +186,18 @@ export type AddReviewMutationVariables = Exact<{
 export type AddReviewMutation = {
     __typename?: "Mutation";
     addReview: {
-        __typename?: "Movie";
-        _id: number;
-        vote_average: number;
-        vote_count: number;
-        reviews: Array<{
-            __typename?: "Review";
-            _id: string;
-            username: string;
-            rating: number;
-            comment: string;
-            date: Date;
-        }>;
+        __typename?: "Review";
+        _id: string;
+        username: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            vote_average: number;
+            vote_count: number;
+        };
     };
 };
 
@@ -208,18 +208,18 @@ export type DeleteReviewMutationVariables = Exact<{
 export type DeleteReviewMutation = {
     __typename?: "Mutation";
     deleteReview: {
-        __typename?: "Movie";
-        _id: number;
-        vote_average: number;
-        vote_count: number;
-        reviews: Array<{
-            __typename?: "Review";
-            _id: string;
-            username: string;
-            rating: number;
-            comment: string;
-            date: Date;
-        }>;
+        __typename?: "Review";
+        _id: string;
+        username: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            vote_average: number;
+            vote_count: number;
+        };
     };
 };
 
@@ -1143,18 +1143,7 @@ export const AddReviewDocument = {
                                 },
                                 {
                                     kind: "Field",
-                                    name: {
-                                        kind: "Name",
-                                        value: "vote_average",
-                                    },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "vote_count" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "reviews" },
+                                    name: { kind: "Name", value: "movie" },
                                     selectionSet: {
                                         kind: "SelectionSet",
                                         selections: [
@@ -1169,32 +1158,34 @@ export const AddReviewDocument = {
                                                 kind: "Field",
                                                 name: {
                                                     kind: "Name",
-                                                    value: "username",
+                                                    value: "vote_average",
                                                 },
                                             },
                                             {
                                                 kind: "Field",
                                                 name: {
                                                     kind: "Name",
-                                                    value: "rating",
-                                                },
-                                            },
-                                            {
-                                                kind: "Field",
-                                                name: {
-                                                    kind: "Name",
-                                                    value: "comment",
-                                                },
-                                            },
-                                            {
-                                                kind: "Field",
-                                                name: {
-                                                    kind: "Name",
-                                                    value: "date",
+                                                    value: "vote_count",
                                                 },
                                             },
                                         ],
                                     },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "username" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "rating" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "comment" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "date" },
                                 },
                             ],
                         },
@@ -1252,18 +1243,7 @@ export const DeleteReviewDocument = {
                                 },
                                 {
                                     kind: "Field",
-                                    name: {
-                                        kind: "Name",
-                                        value: "vote_average",
-                                    },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "vote_count" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "reviews" },
+                                    name: { kind: "Name", value: "movie" },
                                     selectionSet: {
                                         kind: "SelectionSet",
                                         selections: [
@@ -1278,32 +1258,34 @@ export const DeleteReviewDocument = {
                                                 kind: "Field",
                                                 name: {
                                                     kind: "Name",
-                                                    value: "username",
+                                                    value: "vote_average",
                                                 },
                                             },
                                             {
                                                 kind: "Field",
                                                 name: {
                                                     kind: "Name",
-                                                    value: "rating",
-                                                },
-                                            },
-                                            {
-                                                kind: "Field",
-                                                name: {
-                                                    kind: "Name",
-                                                    value: "comment",
-                                                },
-                                            },
-                                            {
-                                                kind: "Field",
-                                                name: {
-                                                    kind: "Name",
-                                                    value: "date",
+                                                    value: "vote_count",
                                                 },
                                             },
                                         ],
                                     },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "username" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "rating" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "comment" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "date" },
                                 },
                             ],
                         },

@@ -55,7 +55,8 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
                         },
                     },
                     latestReviews: {
-                        keyArgs: [], // only have one key for latest reviews
+                        keyArgs: false,
+
                         merge(existing, incoming, { args }) {
                             const merged = existing ? existing.slice(0) : [];
                             const skip = args?.skip || 0;
@@ -66,7 +67,9 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
                         },
                     },
                     userReviews: {
-                        keyArgs: [], // only have one key for user reviews
+                        // Cache seperate results based on username
+                        keyArgs: ["username"],
+
                         merge(existing, incoming, { args }) {
                             const merged = existing ? existing.slice(0) : [];
                             const skip = args?.skip || 0;

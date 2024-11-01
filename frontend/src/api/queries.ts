@@ -156,15 +156,15 @@ export const ADD_REVIEW = gql(`
             comment: $comment
         ) {
             _id
-            vote_average
-            vote_count
-            reviews {
+            movie {
                 _id
-                username
-                rating
-                comment
-                date
+                vote_average
+                vote_count
             }
+            username
+            rating
+            comment
+            date
         }
     }
 `);
@@ -173,15 +173,15 @@ export const DELETE_REVIEW = gql(`
     mutation DeleteReview($id: ID!) {
         deleteReview(_id: $id) {
             _id
-            vote_average
-            vote_count
-            reviews {
+            movie {
                 _id
-                username
-                rating
-                comment
-                date
+                vote_average
+                vote_count
             }
+            username
+            rating
+            comment
+            date
         }
     }
 `);
