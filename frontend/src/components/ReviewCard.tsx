@@ -19,6 +19,7 @@ import {
 } from "@/shadcn/components/ui/alert-dialog";
 import { DELETE_REVIEW } from "../api/queries";
 import { Review } from "@/types/__generated__/types";
+import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 
 interface ReviewCardProps {
     review: Review;
@@ -34,10 +35,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
             update(cache, { data }) {
                 if (!data?.deleteReview) return;
                 cache.modify({
-                    id: cache.identify({
-                        __typename: "Movie",
-                        _id: review.movie._id,
-                    }),
+                    id: data.deleteReview._id.toString(),
                     fields: {
                         reviews() {
                             return data.deleteReview.reviews;
@@ -62,12 +60,14 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
 
     if (deleteReviewError) {
         return (
-            <section className="mt-2 w-dvw text-center">
-                <h1 className="text-2xl">
-                    Something went wrong when deleting reviews!
-                </h1>
-                <p className="text-primary">Try to refresh</p>
-            </section>
+            <div className="flex h-full items-center justify-center">
+                <section className="text-center">
+                    <h1 className="text-2xl">
+                        Something went wrong when deleting the review!
+                    </h1>
+                    <p className="text-primary">Try to refresh</p>
+                </section>
+            </div>
         );
     }
 
@@ -96,8 +96,8 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
                                         review?
                                     </AlertDialogTitle>
                                     <AlertDialogDescription>
-                                        This action cannot be undone. This will
-                                        permanently delete this review.
+                                        This action cannot be undone and will
+                                        permanently delete the review.
                                     </AlertDialogDescription>
                                 </AlertDialogHeader>
                                 <AlertDialogFooter>
@@ -119,7 +119,11 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
                 <Link to={`/movie/${review.movie._id}`}>
                     <img
                         title={review.movie.title}
-                        src={`https://image.tmdb.org/t/p/w342/${review.movie.poster_path}`}
+                        src={getImageUrl(
+                            ImageType.POSTER,
+                            review.movie.poster_path,
+                            "w342"
+                        )}
                         className="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
                         alt={`${review.movie.title} poster`}
                     />

@@ -2,11 +2,19 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import NavbarOverlay from "./NavbarOverlay";
 import UserDropdown from "./UserDropdown";
+import { usernameVar } from "@/utils/cache";
+import { useReactiveVar } from "@apollo/client";
 
 export type NavbarProps = { name: string; href: string }[];
 
 const Navbar = () => {
-    const links: NavbarProps = [{ name: "Activity", href: "/activity" }];
+    const username = useReactiveVar(usernameVar);
+    const links: NavbarProps = [
+        { name: "Activity", href: "/activity" },
+        ...(username != "Guest"
+            ? [{ name: "My Reviews", href: "/myReviews" }]
+            : []),
+    ];
 
     return (
         <header className="flex w-full items-center justify-between bg-gradient-to-r from-muted-foreground to-primary p-4">

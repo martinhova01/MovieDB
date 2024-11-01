@@ -60,7 +60,7 @@ const ActivityPage = () => {
     if (latestReviews.length === 0) {
         return (
             <section className="mt-6 text-center">
-                <h1 className="text-2xl">No reviews found</h1>
+                <h1 className="text-2xl">No reviews have been added yet</h1>
                 <Link to="/" className="text-primary hover:underline">
                     Return to home page
                 </Link>

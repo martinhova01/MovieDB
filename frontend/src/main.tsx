@@ -54,6 +54,28 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
                             return merged;
                         },
                     },
+                    latestReviews: {
+                        keyArgs: [], // only have one key for latest reviews
+                        merge(existing, incoming, { args }) {
+                            const merged = existing ? existing.slice(0) : [];
+                            const skip = args?.skip || 0;
+                            for (let i = 0; i < incoming.length; ++i) {
+                                merged[skip + i] = incoming[i];
+                            }
+                            return merged;
+                        },
+                    },
+                    userReviews: {
+                        keyArgs: [], // only have one key for user reviews
+                        merge(existing, incoming, { args }) {
+                            const merged = existing ? existing.slice(0) : [];
+                            const skip = args?.skip || 0;
+                            for (let i = 0; i < incoming.length; ++i) {
+                                merged[skip + i] = incoming[i];
+                            }
+                            return merged;
+                        },
+                    },
                 },
             },
         },

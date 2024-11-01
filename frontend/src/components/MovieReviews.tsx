@@ -180,8 +180,8 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                                                     </AlertDialogTitle>
                                                     <AlertDialogDescription>
                                                         This action cannot be
-                                                        undone. This will
-                                                        permanently delete this
+                                                        undone and will
+                                                        permanently delete the
                                                         review.
                                                     </AlertDialogDescription>
                                                 </AlertDialogHeader>
