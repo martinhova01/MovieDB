@@ -6,9 +6,7 @@ import UserDropdown from "./UserDropdown";
 export type NavbarProps = { name: string; href: string }[];
 
 const Navbar = () => {
-    const links: NavbarProps = [
-        { name: "Activity", href: "/activity" },
-    ];
+    const links: NavbarProps = [{ name: "Activity", href: "/activity" }];
 
     return (
         <header className="flex w-full items-center justify-between bg-gradient-to-r from-muted-foreground to-primary p-4">
