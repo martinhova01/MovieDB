@@ -1,4 +1,4 @@
-import { BACKEND_URL } from "@/utils/config";
+import { BACKEND_URL } from "./src/utils/config";
 import { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
