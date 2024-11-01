@@ -1,3 +1,4 @@
+import { usernameVar } from "@/utils/cache";
 import { Button } from "@/shadcn/components/ui/button";
 import {
     Dialog,
@@ -17,38 +18,33 @@ import {
 } from "@/shadcn/components/ui/dropdown-menu";
 import { Input } from "@/shadcn/components/ui/input";
 import { Label } from "@/shadcn/components/ui/label";
+import { useReactiveVar } from "@apollo/client";
 import { Edit, LogOut, User } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const UserDropdown = () => {
-    const [username, setUsername] = useState("Guest");
+    const username = useReactiveVar(usernameVar);
     const [newUsername, setNewUsername] = useState("");
     const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-    useEffect(() => {
-        const storedUsername = localStorage.getItem("username");
-        if (storedUsername) {
-            setUsername(storedUsername);
-        }
-    }, []);
 
     const handleUsernameChange = (e: React.FormEvent) => {
         e.preventDefault();
         if (newUsername.trim()) {
-            setUsername(newUsername.trim());
+            usernameVar(newUsername.trim());
             localStorage.setItem("username", newUsername.trim());
             setNewUsername("");
             setIsDialogOpen(false);
-            // Reloading the page is a temporary solution until we have global state management
-            window.location.reload();
         }
     };
 
     const handleSignOut = () => {
         localStorage.removeItem("username");
-        setUsername("Guest");
-        // Reloading the page is a temporary solution until we have global state management
-        window.location.reload();
+        usernameVar("Guest");
+    };
+
+    const handleDialogOpenChange = (open: boolean) => {
+        setIsDialogOpen(open);
+        setNewUsername("");
     };
 
     return (
@@ -59,7 +55,7 @@ const UserDropdown = () => {
                     className="flex items-center space-x-2"
                 >
                     <User className="h-4 w-4" />
-                    <span className="hidden sm:max-w-32 sm:flex truncate">
+                    <span className="hidden truncate sm:flex sm:max-w-32">
                         {username}
                     </span>
                 </Button>
@@ -71,7 +67,10 @@ const UserDropdown = () => {
                     {username}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <Dialog
+                    open={isDialogOpen}
+                    onOpenChange={(open) => handleDialogOpenChange(open)}
+                >
                     <DialogTrigger asChild>
                         <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                             <Edit className="mr-2 h-4 w-4" />

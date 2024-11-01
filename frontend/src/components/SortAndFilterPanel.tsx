@@ -11,83 +11,67 @@ import {
     SheetTrigger,
 } from "../shadcn/components/ui/sheet";
 import { SlidersHorizontal } from "lucide-react";
-import { useEffect, useState } from "react";
 import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
-import { all_filters, SortingType } from "../utils/searchSortAndFilter";
+import { filtersVar, sortOptionVar } from "@/utils/cache";
+import { useQuery, useReactiveVar } from "@apollo/client";
+import { Filters } from "@/types/__generated__/types";
+import { GET_FILTERS } from "@/api/queries";
+import { defaultSortOption } from "@/utils/sortOptionUtil";
 
-interface SortAndFilterPanelInterface {
-    handleFilterChange: (
-        filters: { [key: string]: string[] },
-        sortOption: SortingType
-    ) => void;
-    handleSortChange: (sortOption: SortingType) => void;
-}
+const SortAndFilterPanel: React.FC = () => {
+    const filters = useReactiveVar(filtersVar);
 
-const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
-    handleFilterChange,
-    handleSortChange,
-}) => {
-    const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
-    const [sortOption, setSortOption] = useState<SortingType>(
-        SortingType.NEWEST_FIRST
-    );
+    const { data, loading, error } = useQuery(GET_FILTERS);
 
-    useEffect(() => {
-        const storedFilters = sessionStorage.getItem("filters");
-        const parsedFilters: { [key: string]: string[] } = storedFilters
-            ? JSON.parse(storedFilters)
-            : {};
-        const storedSortOption = sessionStorage.getItem("sort_option");
-        const parsedSortOption: SortingType = storedSortOption
-            ? (storedSortOption as SortingType)
-            : SortingType.NEWEST_FIRST;
-
-        setFilters(parsedFilters);
-        setSortOption(parsedSortOption);
-
-        const storedSearch = sessionStorage.getItem("search");
-
-        if (storedFilters || storedSearch) {
-            handleFilterChange(parsedFilters, parsedSortOption);
-        } else {
-            handleSortChange(parsedSortOption);
-        }
-
-        // Ignoring the ESLint warning here because we want this to run only when
-        // the component mounts to restore filters and sorting from sessionStorage.
-        // Including `handleFilterChange` and `handleSortChange` would make this useEffect re-run
-        // every time those functions change, which we don't want since this logic only is
-        // for initial setup.
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const updateFilters = (category: string, filter: string) => {
+    const updateFilters = (category: keyof Filters, filter: string) => {
         let newFilters: string[] = [...(filters[category] || [])];
         if (newFilters.includes(filter)) {
             newFilters = newFilters.filter((e) => e != filter);
         } else {
             newFilters.push(filter);
         }
-        const updatedFilters = { ...filters, [category]: newFilters };
+        const updatedFilters: Filters = { ...filters, [category]: newFilters };
         sessionStorage.setItem("filters", JSON.stringify(updatedFilters));
-        setFilters(updatedFilters);
-        handleFilterChange(updatedFilters, sortOption);
+        filtersVar(updatedFilters);
     };
 
     const clearAll = () => {
-        sessionStorage.setItem("filters", JSON.stringify({}));
-        sessionStorage.setItem("sort_option", SortingType.NEWEST_FIRST);
-        setFilters({});
-        setSortOption(SortingType.NEWEST_FIRST);
-        handleFilterChange({}, SortingType.NEWEST_FIRST);
+        const emptyFilters: Filters = {
+            Genre: [],
+            Rating: [],
+            Decade: [],
+            Status: [],
+            Runtime: [],
+        };
+        sessionStorage.setItem("filters", JSON.stringify(emptyFilters));
+        filtersVar(emptyFilters);
+
+        sessionStorage.setItem("sort_option", defaultSortOption);
+        sortOptionVar(defaultSortOption);
     };
 
-    const updateSortOption = (option: SortingType) => {
-        sessionStorage.setItem("sort_option", option);
-        setSortOption(option);
-        handleSortChange(option);
+    const renderFilterSections = () => {
+        return Object.entries(data?.filters as Filters).map(
+            ([category, filter_list]) => {
+                if (category === "__typename") {
+                    return null;
+                }
+                const all_filters = filter_list as string[];
+                const applied_filters = filters[category as keyof Filters] as
+                    | string[]
+                    | undefined;
+                return (
+                    <FilterSection
+                        key={category}
+                        category={category as keyof Filters}
+                        all_filters={all_filters}
+                        applied_filters={applied_filters ?? []}
+                        updateFilters={updateFilters}
+                    />
+                );
+            }
+        );
     };
 
     return (
@@ -107,34 +91,35 @@ const SortAndFilterPanel: React.FC<SortAndFilterPanelInterface> = ({
                         Use the tools below to refine your results
                     </SheetDescription>
                 </SheetHeader>
-                <Accordion type="single" collapsible className="w-full">
-                    <SortSection
-                        sortOption={sortOption}
-                        sortOptions={Object.values(SortingType)}
-                        updateSortOption={updateSortOption}
-                    />
-                    {Object.entries(all_filters).map(
-                        ([category, filter_list]) => (
-                            <FilterSection
-                                key={category}
-                                category={category}
-                                all_filters={filter_list}
-                                applied_filters={filters[category] ?? []}
-                                updateFilters={updateFilters}
-                            />
-                        )
-                    )}
-                </Accordion>
-                <SheetFooter className="mt-5">
-                    <Button type="reset" onClick={clearAll}>
-                        Clear All
-                    </Button>
-                    <SheetClose asChild>
-                        <Button type="submit" className="mb-2">
-                            Apply
-                        </Button>
-                    </SheetClose>
-                </SheetFooter>
+                {loading && (
+                    <section className="text-center">
+                        <p>Loading...</p>
+                    </section>
+                )}
+                {error && (
+                    <section className="text-center">
+                        <p>Something went wrong!</p>
+                        <p className="text-primary">Try to refresh</p>
+                    </section>
+                )}
+                {!loading && !error && data?.filters && (
+                    <section>
+                        <Accordion type="single" collapsible className="w-full">
+                            <SortSection />
+                            {renderFilterSections()}
+                        </Accordion>
+                        <SheetFooter className="mt-5">
+                            <Button type="reset" onClick={clearAll}>
+                                Clear All
+                            </Button>
+                            <SheetClose asChild>
+                                <Button type="submit" className="mb-2">
+                                    Apply
+                                </Button>
+                            </SheetClose>
+                        </SheetFooter>
+                    </section>
+                )}
             </SheetContent>
         </Sheet>
     );

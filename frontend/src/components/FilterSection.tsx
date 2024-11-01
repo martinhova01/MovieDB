@@ -1,3 +1,4 @@
+import { Filters } from "@/types/__generated__/types";
 import {
     AccordionContent,
     AccordionItem,
@@ -6,10 +7,10 @@ import {
 import { Checkbox } from "../shadcn/components/ui/checkbox";
 
 interface FilterSectionInterface {
-    category: string;
+    category: keyof Filters;
     all_filters: string[];
     applied_filters: string[];
-    updateFilters: (category: string, filter: string) => void;
+    updateFilters: (category: keyof Filters, filter: string) => void;
 }
 
 const FilterSection: React.FC<FilterSectionInterface> = ({
@@ -29,7 +30,7 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
                     {all_filters.map((filter) => (
                         <li
                             key={filter}
-                            className="flex items-center space-x-2 mb-2"
+                            className="mb-2 flex items-center space-x-2"
                         >
                             <Checkbox
                                 id={filter}

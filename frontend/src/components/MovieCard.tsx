@@ -5,24 +5,27 @@ import {
     CardHeader,
 } from "@/shadcn/components/ui/card";
 import Ratings from "@/shadcn/components/ui/rating";
-import { Movie } from "@/types/movieTypes";
+import { MoviePoster } from "@/types/movieTypes";
+import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 import { Link } from "react-router-dom";
 
-const MovieCard = ({ movie }: { movie: Movie }) => {
+const MovieCard = ({ movie }: { movie: MoviePoster }) => {
     return (
-        <Link to={`/movie/${movie.id}`}>
-            <Card className="shadow-lg hover:shadow-slate-600 hover:cursor-pointer m-0">
-                <CardHeader className="p-2">
+        <Link to={`/movie/${movie._id}`}>
+            <Card className="m-0 shadow-lg hover:cursor-pointer hover:shadow-slate-600">
+                <CardHeader className="aspect-[2/3] p-2">
                     <img
-                        className="w-full"
-                        src={
-                            "https://image.tmdb.org/t/p/w500" +
-                            movie.poster_path
-                        }
+                        className="h-full object-scale-down object-top"
+                        src={getImageUrl(
+                            ImageType.POSTER,
+                            movie.poster_path,
+                            "w342"
+                        )}
                         alt={movie.title}
+                        title={movie.title}
                     />
                 </CardHeader>
-                <CardContent className="p-2">
+                <CardContent className="px-2 pb-2">
                     <CardDescription className="text-center">
                         {movie.release_date.getFullYear()} •{" "}
                         {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m

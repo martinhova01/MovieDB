@@ -1,38 +1,26 @@
-import { useEffect, useState } from "react";
 import MovieCardDetailed from "../components/MovieCardDetailed";
 import MovieReviews from "../components/MovieReviews";
 import { Link, useParams } from "react-router-dom";
-import { all_movies } from "../mock/util";
-import { Movie } from "../types/movieTypes";
+import { useQuery } from "@apollo/client";
+import { Movie } from "@/types/__generated__/types";
+import { GET_MOVIE } from "@/api/queries";
+import { useMemo } from "react";
 
 function MovieDetailPage() {
-    const [movie, setMovie] = useState<Movie | null>(null);
-    const [error, setError] = useState<string | null>(null);
     const { movieId } = useParams<{ movieId: string }>();
+    const movieIdAsInt = Number(movieId);
 
-    useEffect(() => {
-        const numericMovieId = parseInt(movieId!, 10);
+    const { data, loading, error } = useQuery(GET_MOVIE, {
+        variables: { movieId: movieIdAsInt },
+        skip: isNaN(movieIdAsInt),
+    });
 
-        if (isNaN(numericMovieId)) {
-            setError("Invalid movieID");
-            return;
-        }
-
-        const foundMovie = all_movies.find(
-            (movie: Movie) => movie.id === numericMovieId
-        );
-
-        if (foundMovie) {
-            setMovie(foundMovie);
-        } else {
-            setError("Movie not found");
-        }
-    }, [movieId]);
+    const movie = useMemo(() => data?.movie as Movie | undefined, [data]);
 
     if (error) {
         return (
-            <main className="w-dvw text-center mt-2">
-                <h1 className="text-2xl">{error}</h1>
+            <main className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">Something went wrong!</h1>
                 <Link to="/" className="text-primary hover:underline">
                     Return to home page
                 </Link>
@@ -40,12 +28,29 @@ function MovieDetailPage() {
         );
     }
 
-    if (!movie) return <div>Loading...</div>;
+    if (loading) {
+        return (
+            <main className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">Loading...</h1>
+            </main>
+        );
+    }
+
+    if (!movie) {
+        return (
+            <main className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">Could not find movie!</h1>
+                <Link to="/" className="text-primary hover:underline">
+                    Return to home page
+                </Link>
+            </main>
+        );
+    }
 
     return (
-        <main>
+        <main className="pb-2">
             <MovieCardDetailed movie={movie} />
-            <MovieReviews movieId={movie.id} />
+            <MovieReviews movie={movie} />
         </main>
     );
 }

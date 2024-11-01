@@ -1,34 +1,7 @@
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/HomePage.tsx";
-import MovieDetailPage from "./pages/MovieDetailPage.tsx";
-import NotFoundPage from "./pages/NotFoundPage.tsx";
-import Navbar from "./components/Navbar.tsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import routerConfig from "./utils/routerConfig.tsx";
 
-const router = createBrowserRouter(
-    [
-        {
-            path: "/",
-            element: (
-                <>
-                    <Navbar />
-                    <Outlet />
-                </>
-            ),
-            errorElement: <NotFoundPage />,
-            children: [
-                {
-                    path: "",
-                    element: <HomePage />,
-                },
-                {
-                    path: "movie/:movieId",
-                    element: <MovieDetailPage />,
-                },
-            ],
-        },
-    ],
-    { basename: "/project2" }
-);
+const router = createBrowserRouter(routerConfig, { basename: "/project2" });
 
 function App() {
     return <RouterProvider router={router} />;

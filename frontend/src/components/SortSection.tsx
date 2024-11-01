@@ -8,26 +8,28 @@ import {
     AccordionTrigger,
 } from "../shadcn/components/ui/accordion";
 import { Label } from "../shadcn/components/ui/label";
-import { SortingType } from "../utils/searchSortAndFilter";
+import { sortOptionVar } from "@/utils/cache";
+import { useReactiveVar } from "@apollo/client";
+import { getSortOptionDisplayName } from "@/utils/sortOptionUtil";
+import { SortingType } from "@/types/__generated__/types";
 
-interface SortSectionInterface {
-    sortOption: SortingType;
-    sortOptions: SortingType[];
-    updateSortOption: (option: SortingType) => void;
-}
+const SortSection: React.FC = () => {
+    const sortOption = useReactiveVar(sortOptionVar);
 
-const SortSection: React.FC<SortSectionInterface> = ({
-    sortOption,
-    sortOptions,
-    updateSortOption,
-}) => {
+    const updateSortOption = (option: SortingType) => {
+        sessionStorage.setItem("sort_option", option);
+        sortOptionVar(option);
+    };
+
     return (
         <AccordionItem value={`Sort item`}>
-            <AccordionTrigger>Sort by ({sortOption})</AccordionTrigger>
+            <AccordionTrigger>
+                Sort by ({getSortOptionDisplayName(sortOption)})
+            </AccordionTrigger>
             <AccordionContent>
                 <RadioGroup value={sortOption} onValueChange={updateSortOption}>
                     <ul className="grid gap-2">
-                        {sortOptions.map((option) => (
+                        {Object.values(SortingType).map((option) => (
                             <li
                                 key={option}
                                 className="flex items-center space-x-2"
@@ -37,7 +39,7 @@ const SortSection: React.FC<SortSectionInterface> = ({
                                     htmlFor={option}
                                     className="hover:cursor-pointer"
                                 >
-                                    {option}
+                                    {getSortOptionDisplayName(option)}
                                 </Label>
                             </li>
                         ))}

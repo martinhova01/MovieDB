@@ -1,85 +1,92 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "../shadcn/components/ui/button";
 import { Textarea } from "../shadcn/components/ui/textarea";
-import { Card, CardContent } from "../shadcn/components/ui/card";
+import { Card } from "../shadcn/components/ui/card";
 import Ratings from "../shadcn/components/ui/rating";
-import { Review } from "../types/movieTypes";
+import { usernameVar } from "@/utils/cache";
+import { useMutation, useReactiveVar } from "@apollo/client";
+import { Movie, Review } from "@/types/__generated__/types";
+import {
+    ADD_REVIEW,
+    GET_LATEST_REVIEWS,
+    GET_USER_REVIEWS,
+} from "@/api/queries";
+import ReviewCard from "./ReviewCard";
 interface MovieReviewsProps {
-    movieId: number;
+    movie: Movie;
 }
 
-const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
-    const [reviews, setReviews] = useState<Review[]>([]);
+const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
+    const [reviews, setReviews] = useState<Review[]>([...movie.reviews]);
     const [rating, setRating] = useState<number>(0);
     const [comment, setComment] = useState<string>("");
+    const username = useReactiveVar(usernameVar);
 
-    useEffect(() => {
-        const storedReviews = localStorage.getItem(`movieReviews_${movieId}`);
-        if (storedReviews) {
-            const reviews = JSON.parse(storedReviews) as Array<
-                Omit<Review, "date"> & { date: string }
-            >;
-            setReviews(
-                reviews.map((review) => ({
-                    ...review,
-                    date: new Date(review.date),
-                }))
-            );
-        }
-    }, [movieId]);
+    const [addReview, { error: addReviewError }] = useMutation(ADD_REVIEW, {
+        update(cache, { data }) {
+            if (!data?.addReview) return;
 
-    const saveReviews = (updatedReviews: Review[]) => {
-        localStorage.setItem(
-            `movieReviews_${movieId}`,
-            JSON.stringify(updatedReviews)
-        );
-        setReviews(updatedReviews);
-    };
+            cache.modify({
+                id: data.addReview._id.toString(),
+                fields: {
+                    reviews() {
+                        return data.addReview.reviews;
+                    },
+                },
+            });
+        },
+    });
 
-    const handleSubmitReview = (e: React.FormEvent) => {
+    const handleSubmitReview = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const username = localStorage.getItem("username") || "Guest";
-        const newReview: Review = {
-            id: Date.now(), //Temporary id
-            username: username,
-            rating,
-            comment: comment.trim() || undefined,
-            date: new Date(),
-        };
-        const updatedReviews = [...reviews, newReview];
-        saveReviews(updatedReviews);
-        setRating(0);
-        setComment("");
-    };
-
-    const handleDeleteReview = (review: Review) => {
-        if (review.username === "Guest") {
-            // Restrict deletion of guest reviews
-            // The delete button is also hidden for guest reviews
-            return;
-        }
-
-        if (localStorage.getItem("username") === review.username) {
-            const updatedReviews = reviews.filter((r) => r.id !== review.id);
-            saveReviews(updatedReviews);
-        }
-    };
-
-    const formatDate = (date: Date) => {
-        return date.toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
+        const response = await addReview({
+            variables: {
+                movieId: movie._id,
+                username: username,
+                rating: rating,
+                comment: comment.trim(),
+            },
+            refetchQueries: [
+                {
+                    query: GET_LATEST_REVIEWS,
+                    variables: { skip: 0, limit: 20 },
+                },
+                {
+                    query: GET_USER_REVIEWS,
+                    variables: { username: username, skip: 0, limit: 20 },
+                },
+            ],
         });
+
+        if (response.data?.addReview) {
+            setReviews(response.data.addReview.reviews as Review[]);
+            setRating(0);
+            setComment("");
+        }
     };
+
+    const handleDeleteReview = (deletedReview: Review) => {
+        setReviews(
+            reviews.filter((review) => review._id !== deletedReview._id)
+        );
+    };
+
+    if (addReviewError) {
+        return (
+            <section className="mt-2 w-dvw text-center">
+                <h1 className="text-2xl">
+                    Something went wrong when adding reviews
+                </h1>
+                <p className="text-primary">Try to refresh</p>
+            </section>
+        );
+    }
 
     return (
         <Card className="m-4">
             <section className="m-4 mb-6">
-                <h3 className="text-2xl font-bold mb-4">Submit review</h3>
+                <h3 className="mb-4 text-2xl font-bold">Submit review</h3>
                 <form onSubmit={handleSubmitReview} className="space-y-4">
                     <Ratings
                         value={rating}
@@ -103,43 +110,19 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
             </section>
             <section className="m-4 space-y-4">
                 {reviews.length > 0 && (
-                    <h3 className="text-2xl font-bold mb-4">Reviews</h3>
+                    <h3 className="mb-4 text-2xl font-bold">Reviews</h3>
                 )}
-                {reviews.map((review) => (
-                    <Card key={review.id}>
-                        <CardContent className="mt-4">
-                            <section className="flex justify-between items-start mb-2">
-                                <section>
-                                    <h4 className="text-xl font-bold">
-                                        {review.username}
-                                    </h4>
-                                    <time className="text-sm text-gray-500">
-                                        {formatDate(review.date)}
-                                    </time>
-                                </section>
-                                {review.username !== "Guest" &&
-                                    localStorage.getItem("username") ===
-                                        review.username && (
-                                        <Button
-                                            onClick={() =>
-                                                handleDeleteReview(review)
-                                            }
-                                        >
-                                            Delete
-                                        </Button>
-                                    )}
-                            </section>
-                            <Ratings
-                                value={review.rating}
-                                variant="yellow"
-                                totalstars={5}
+                <ul className="space-y-6">
+                    {reviews.map((review) => (
+                        <li key={review._id}>
+                            <ReviewCard
+                                review={review}
+                                showPoster={false}
+                                onDelete={handleDeleteReview}
                             />
-                            {review.comment && (
-                                <p className="mt-2">{review.comment}</p>
-                            )}
-                        </CardContent>
-                    </Card>
-                ))}
+                        </li>
+                    ))}
+                </ul>
             </section>
         </Card>
     );

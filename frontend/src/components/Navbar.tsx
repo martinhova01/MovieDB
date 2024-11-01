@@ -2,23 +2,28 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import NavbarOverlay from "./NavbarOverlay";
 import UserDropdown from "./UserDropdown";
+import { usernameVar } from "@/utils/cache";
+import { useReactiveVar } from "@apollo/client";
 
 export type NavbarProps = { name: string; href: string }[];
 
 const Navbar = () => {
+    const username = useReactiveVar(usernameVar);
     const links: NavbarProps = [
-        // TODO: Add links when pages are created
-        // { name: "Movies", href: "/movies" },
+        { name: "Activity", href: "/activity" },
+        ...(username != "Guest"
+            ? [{ name: "My Reviews", href: "/myReviews" }]
+            : []),
     ];
 
     return (
-        <header className="w-full flex items-center p-4 justify-between bg-gradient-to-r from-muted-foreground to-primary">
+        <header className="flex w-full items-center justify-between bg-gradient-to-r from-muted-foreground to-primary p-4">
             <nav className="flex items-center gap-10 text-background">
-                <Link to="/" className="text-2xl font-bold flex flex-row gap-3">
+                <Link to="/" className="flex flex-row gap-3 text-2xl font-bold">
                     <img src={logo} alt="logo" className="h-8 w-8" />
                     MovieDB
                 </Link>
-                <ul className="hidden sm:flex gap-4 text-lg">
+                <ul className="hidden gap-4 text-lg sm:flex">
                     {links.map((link) => (
                         <li key={link.name}>
                             <Link to={link.href} className="hover:underline">

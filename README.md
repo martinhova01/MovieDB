@@ -6,7 +6,9 @@ Repository: <https://git.ntnu.no/IT2810-H24/T26-Project-2>
 
 ## Usage
 
-The following commands should be run in the `T26-Project-2/frontend` directory:
+### Running the frontend locally
+
+The following commands can be run in the `T26-Project-2/frontend` directory:
 
 - `npm install` to install dependencies.
 - `npm run dev` to start the development server
@@ -15,8 +17,67 @@ The following commands should be run in the `T26-Project-2/frontend` directory:
 - `npm run lint` to check for linting errors
   - `npm run lint:fix` to fix auto fixable linting errors
 - `npm test` to run all tests
+  - `npm run coverage` to generate a test coverage report at `frontend/coverage/index.html`
 - `npm run build` to build the project
   - it will be built in the `dist` folder
+
+### Restarting the frontend on the VM
+
+Navigate to the `~T26-Project-2/frontend` directory
+
+- `npm ci` to install dependencies (and stop on mismatches between the `package[-lock].json` files)
+- `npm run build` to build the project
+- `../reload_server_frontend` to update the apache server
+
+### Running the backend locally
+
+The following commands can be run in the `T26-Project-2/backend` directory:
+
+- `npm install` to install dependencies.
+- `npm run prettier` to check code formatting
+  - `npm run prettier:fix` to fix formatting
+- `npm run lint` to check for linting errors
+  - `npm run lint:fix` to fix auto fixable linting errors
+- `npm run build` to build the project
+- `npm run start` to start the server
+
+### Running the backend on the VM
+
+Navigate to the `~T26-Project-2/backend` directory
+
+- `npm install pm2 -g` to install pm2 globally
+- `npm ci` to install dependencies (and stop on mismatches between the `package[-lock].json` files)
+- `npm run build` to build the project
+- `pm2 start dist/index.js` to start the server in the background
+  - `pm2 logs` to see the logs
+  - `pm2 list` to see the status of the process
+  - `pm2 restart <id>` to restart the process (use the id from `pm2 list`)
+  - `pm2 stop <id>` to stop the process (use the id from `pm2 list`)
+
+### Setting up the database / backend for the first time
+
+#### NB: This is already done, so you don't need to do this
+
+```bash
+cd ~/T26-Project-2
+
+# Download the dataset
+curl -L -o archive.zip https://www.kaggle.com/api/v1/datasets/download/asaniczka/tmdb-movies-dataset-2023-930k-movies
+sudo apt-get install unzip
+unzip archive.zip
+rm archive.zip
+mv TMDB_movie_dataset_v11.csv TMDB_movie_dataset.csv
+
+# Parse the data and insert it into the database
+pip install pandas pymongo tqdm
+./parse_data.py db 0
+
+# Start the backend
+cd backend/
+npm ci
+npm run build
+pm2 start dist/index.js
+```
 
 ## MovieDB
 
@@ -24,17 +85,31 @@ MovieDB is a website for browsing through a wide variety of movies. Current feat
 
 - A feed of movies
 - Detailed movie information pages
-- Search (temporary solution)
-- Sorting and filtering  (temporary solution)
-- Reviews (temporary solution)
-- Simple user handling (temporary solution)
-
-Naturally, this will expand as we continue our work on the project.
+- Search for movie titles
+- Sorting and filtering with various options
+- Changing users by updating your username
+- Adding reviews for movies
+- A feed of the latest reviews from all users
+- A list of your own reviews
 
 ## Choices
 
-As this is not the final submission, our project is not yet finished. For now, we've used a mock dataset for our application, which will later be changed out with our database. In order to minimize the amount of refactoring needed later, we have decided to limit the complexity of the logic implemented now. We still wanted to have some logic in order to get a good feel for the application, so we've tried to find a middleground. Making it impossible to filter to no results is for example something we'll handle later.
+### Frontend
 
-Global state management is also something we've decided to postpone until the backend is set up, again to limit the refactoring work. Therefore, we've some places had to use sessionStorage and localStorage to communicate states. This will naturally be changed when we set up the global state management. However, sessionStorage is also used to remember filtering, sorting and search during a session. Currently, localStorage is used to store the username and reviews.
+We've used UI components from `shadcn`, as it allows us to copy and paste components directly into our project. This gives us more flexibility and control over the components and provides the opportunity to, for example, adjust styling to meet our needs. It also allows us to include only the components we need, resulting in a smaller bundle size and faster load times.
 
-We've used UI components from shadcn, as it allows us to copy and paste components directly into our project. This gives us more flexibility and control over the components, and gives us the oppertunity to for example change styling to meet our desires. It also allows us to include only the components we need, resulting in a smaller bundle size and faster load times.
+We use `Tailwind CSS`, instead of traditional CSS, because we believe it makes us develop code more efficiently, and it allows us to write less code to achieve the same result.
+
+We use `Apollo Client` for managing global state across all components and for creating GraphQL queries to the backend. It also provides caching of our queries to improve the performance of the application. For GraphQL queries and types, we use `GraphQL Codegen` to generate the types automatically based on the schemas provided by the backend. This makes our queries type-safe in the frontend and we only need to define the types in one place (the types are generated by running `npm run generate`).
+
+LocalStorage is used to remember the username of the logged in user, so that the user is remembered even when you close the browser. SessionStorage on the other hand is used to remember filters, sorting option and search during a session.
+
+### Backend
+
+For the backend, we use `Apollo Server` with `MongoDB` as our database. We believe that `MongoDB` works well in combination with GraphQL because it allows us to store data in a similar format to the GraphQL types. This minimizes the work required for processing data before inserting it into the database and after retrieving data from the database.
+
+Our sorting, filtering and search logic is in the backend so that we can use the whole dataset. Here we use indexes in order to improve performance. For search, we only match on full words/phrases, not partial match. There are two reasons for this. The first and most important one is that this allows us to use a text index for titles, which improves performance. The second reason is that we thought partial match could become too vague with such a large dataset, as many movie titles would be substrings of others. 
+
+### Note
+
+At the moment we perform several queries in order to maintain concistency with regards to the reviews. As this is not the final deliverable we have not yet had time to optimize this. However, this is something we are aware of and in the process of fixing for the final deliverable. 
