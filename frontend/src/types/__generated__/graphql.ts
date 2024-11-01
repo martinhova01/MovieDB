@@ -185,6 +185,8 @@ export type AddReviewMutation = {
     addReview: {
         __typename?: "Movie";
         _id: number;
+        vote_average: number;
+        vote_count: number;
         reviews: Array<{
             __typename?: "Review";
             _id: string;
@@ -205,6 +207,8 @@ export type DeleteReviewMutation = {
     deleteReview: {
         __typename?: "Movie";
         _id: number;
+        vote_average: number;
+        vote_count: number;
         reviews: Array<{
             __typename?: "Review";
             _id: string;
@@ -996,6 +1000,17 @@ export const AddReviewDocument = {
                                 },
                                 {
                                     kind: "Field",
+                                    name: {
+                                        kind: "Name",
+                                        value: "vote_average",
+                                    },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "vote_count" },
+                                },
+                                {
+                                    kind: "Field",
                                     name: { kind: "Name", value: "reviews" },
                                     selectionSet: {
                                         kind: "SelectionSet",
@@ -1091,6 +1106,17 @@ export const DeleteReviewDocument = {
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "_id" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: {
+                                        kind: "Name",
+                                        value: "vote_average",
+                                    },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "vote_count" },
                                 },
                                 {
                                     kind: "Field",

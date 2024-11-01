@@ -279,6 +279,8 @@ export type AddReviewMutation = {
     addReview: {
         __typename?: "Movie";
         _id: number;
+        vote_average: number;
+        vote_count: number;
         reviews: Array<{
             __typename?: "Review";
             _id: string;
@@ -299,6 +301,8 @@ export type DeleteReviewMutation = {
     deleteReview: {
         __typename?: "Movie";
         _id: number;
+        vote_average: number;
+        vote_count: number;
         reviews: Array<{
             __typename?: "Review";
             _id: string;
