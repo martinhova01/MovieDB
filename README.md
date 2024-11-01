@@ -109,3 +109,7 @@ LocalStorage is used to remember the username of the logged in user, so that the
 For the backend, we use `Apollo Server` with `MongoDB` as our database. We believe that `MongoDB` works well in combination with GraphQL because it allows us to store data in a similar format to the GraphQL types. This minimizes the work required for processing data before inserting it into the database and after retrieving data from the database.
 
 Our sorting, filtering and search logic is in the backend so that we can use the whole dataset. Here we use indexes in order to improve performance. For search, we only match on full words/phrases, not partial match. There are two reasons for this. The first and most important one is that this allows us to use a text index for titles, which improves performance. The second reason is that we thought partial match could become too vague with such a large dataset, as many movie titles would be substrings of others. 
+
+### Note
+
+At the moment we perform several queries in order to maintain concistency with regards to the reviews. As this is not the final deliverable we have not yet had time to optimize this. However, this is something we are aware of and in the process of fixing for the final deliverable. 
