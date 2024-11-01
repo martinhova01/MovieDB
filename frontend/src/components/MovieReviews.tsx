@@ -7,7 +7,7 @@ import { usernameVar } from "@/utils/cache";
 import { useApolloClient, useMutation, useReactiveVar } from "@apollo/client";
 import { Movie, Review } from "@/types/__generated__/types";
 import { ADD_REVIEW, DELETE_REVIEW } from "@/api/queries";
-import { formatDate } from "@/utils/formatDate";
+import { formatDate } from "@/utils/reviewUtil";
 import { Trash2 } from "lucide-react";
 import {
     AlertDialog,
