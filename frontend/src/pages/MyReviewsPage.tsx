@@ -1,6 +1,6 @@
 import ReviewCard from "@/components/ReviewCard";
 import { Button } from "@/shadcn/components/ui/button";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { GET_USER_REVIEWS } from "../api/queries";
@@ -12,21 +12,28 @@ const MyReviewsPage = () => {
     const [isMoreReviews, setIsMoreReviews] = useState<boolean>(true);
     const LIMIT = 20;
 
-    const { data, loading, error, fetchMore } = useQuery(GET_USER_REVIEWS, {
-        variables: {
-            username: username,
-            skip: 0,
-            limit: LIMIT,
-        },
-        onCompleted: (data) => {
-            if (data.userReviews) {
-                setIsMoreReviews(
-                    data.userReviews.length >= LIMIT &&
-                        data.userReviews.length % LIMIT === 0
-                );
-            }
-        },
-    });
+    const { data, loading, error, fetchMore, refetch } = useQuery(
+        GET_USER_REVIEWS,
+        {
+            variables: {
+                username: username,
+                skip: 0,
+                limit: LIMIT,
+            },
+            onCompleted: (data) => {
+                if (data.userReviews) {
+                    setIsMoreReviews(
+                        data.userReviews.length >= LIMIT &&
+                            data.userReviews.length % LIMIT === 0
+                    );
+                }
+            },
+        }
+    );
+
+    useEffect(() => {
+        refetch();
+    }, [username, refetch]);
 
     const userReviews = useMemo(
         () => data?.userReviews as Review[] | undefined,
