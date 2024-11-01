@@ -27,9 +27,15 @@ import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 
 interface ReviewCardProps {
     review: Review;
+    showPoster?: boolean;
+    onDelete?: (review: Review) => void;
 }
 
-const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
+const ReviewCard: React.FC<ReviewCardProps> = ({
+    review,
+    showPoster = true,
+    onDelete,
+}) => {
     const username = useReactiveVar(usernameVar);
     const client = useApolloClient();
 
@@ -68,6 +74,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
         });
 
         if (response.data?.deleteReview) {
+            onDelete?.(review);
             client.cache.gc();
         }
     };
@@ -130,19 +137,21 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
                             </AlertDialogContent>
                         </AlertDialog>
                     )}
-                <Link to={`/movie/${review.movie._id}`}>
-                    <img
-                        title={review.movie.title}
-                        src={getImageUrl(
-                            ImageType.POSTER,
-                            review.movie.poster_path,
-                            "w342"
-                        )}
-                        className="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                        alt={`${review.movie.title} poster`}
-                    />
-                </Link>
-                <section className="min-h-[12rem]">
+                {showPoster && (
+                    <Link to={`/movie/${review.movie._id}`}>
+                        <img
+                            title={review.movie.title}
+                            src={getImageUrl(
+                                ImageType.POSTER,
+                                review.movie.poster_path,
+                                "w342"
+                            )}
+                            className="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
+                            alt={`${review.movie.title} poster`}
+                        />
+                    </Link>
+                )}
+                <section className={showPoster ? "min-h-[12rem]" : ""}>
                     <section className="mb-2 pr-16">
                         <h4 className="text-lg font-bold sm:text-xl">
                             {review.username}

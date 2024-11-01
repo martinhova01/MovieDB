@@ -1,36 +1,22 @@
 import React, { useState } from "react";
 import { Button } from "../shadcn/components/ui/button";
 import { Textarea } from "../shadcn/components/ui/textarea";
-import { Card, CardContent } from "../shadcn/components/ui/card";
+import { Card } from "../shadcn/components/ui/card";
 import Ratings from "../shadcn/components/ui/rating";
 import { usernameVar } from "@/utils/cache";
-import { useApolloClient, useMutation, useReactiveVar } from "@apollo/client";
+import { useMutation, useReactiveVar } from "@apollo/client";
 import { Movie, Review } from "@/types/__generated__/types";
 import {
     ADD_REVIEW,
-    DELETE_REVIEW,
     GET_LATEST_REVIEWS,
     GET_USER_REVIEWS,
 } from "@/api/queries";
-import { formatDate } from "@/utils/reviewUtil";
-import { Trash2 } from "lucide-react";
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-} from "@/shadcn/components/ui/alert-dialog";
+import ReviewCard from "./ReviewCard";
 interface MovieReviewsProps {
     movie: Movie;
 }
 
 const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
-    const client = useApolloClient();
     const [reviews, setReviews] = useState<Review[]>([...movie.reviews]);
     const [rating, setRating] = useState<number>(0);
     const [comment, setComment] = useState<string>("");
@@ -50,23 +36,6 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
             });
         },
     });
-
-    const [deleteReview, { error: deleteReviewError }] = useMutation(
-        DELETE_REVIEW,
-        {
-            update(cache, { data }) {
-                if (!data?.deleteReview) return;
-                cache.modify({
-                    id: data.deleteReview._id.toString(),
-                    fields: {
-                        reviews() {
-                            return data.deleteReview.reviews;
-                        },
-                    },
-                });
-            },
-        }
-    );
 
     const handleSubmitReview = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -90,51 +59,24 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
             ],
         });
 
-        if (response.data == undefined) {
-            return;
+        if (response.data?.addReview) {
+            setReviews(response.data.addReview.reviews as Review[]);
+            setRating(0);
+            setComment("");
         }
-        const newReviews: Review[] = response.data.addReview
-            .reviews as Review[];
-        setReviews(newReviews);
-
-        setRating(0);
-        setComment("");
     };
 
-    const handleDeleteReview = async (review: Review) => {
-        const response = await deleteReview({
-            variables: {
-                id: review._id,
-            },
-            refetchQueries: [
-                {
-                    query: GET_LATEST_REVIEWS,
-                    variables: { skip: 0, limit: 20 },
-                },
-                {
-                    query: GET_USER_REVIEWS,
-                    variables: { username: username, skip: 0, limit: 20 },
-                },
-            ],
-        });
-
-        if (response.data == undefined) {
-            return;
-        }
-
-        const newReviews: Review[] = response.data.deleteReview
-            .reviews as Review[];
-        setReviews(newReviews);
-
-        // Make sure the deleted review is deleted from cache.
-        client.cache.gc();
+    const handleDeleteReview = (deletedReview: Review) => {
+        setReviews(
+            reviews.filter((review) => review._id !== deletedReview._id)
+        );
     };
 
-    if (addReviewError || deleteReviewError) {
+    if (addReviewError) {
         return (
             <section className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">
-                    Something went wrong when loading reviews!
+                    Something went wrong when adding reviews
                 </h1>
                 <p className="text-primary">Try to refresh</p>
             </section>
@@ -170,77 +112,17 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                 {reviews.length > 0 && (
                     <h3 className="mb-4 text-2xl font-bold">Reviews</h3>
                 )}
-                {reviews.map((review) => (
-                    <Card key={review._id}>
-                        <CardContent className="mt-4">
-                            <section className="mb-2 flex items-start justify-between">
-                                <section>
-                                    <h4 className="text-lg font-bold sm:text-xl">
-                                        {review.username}
-                                    </h4>
-                                    <time className="text-xs text-gray-500 sm:text-sm">
-                                        {formatDate(review.date)}
-                                    </time>
-                                </section>
-                                {review.username !== "Guest" &&
-                                    username === review.username && (
-                                        <AlertDialog>
-                                            <AlertDialogTrigger asChild>
-                                                <Button
-                                                    size="sm"
-                                                    className="h-8 px-2"
-                                                >
-                                                    <Trash2 className="h-4 w-4 sm:hidden" />
-                                                    <span className="hidden sm:inline">
-                                                        Delete
-                                                    </span>
-                                                </Button>
-                                            </AlertDialogTrigger>
-
-                                            <AlertDialogContent>
-                                                <AlertDialogHeader>
-                                                    <AlertDialogTitle>
-                                                        Are you sure you want to
-                                                        delete this review?
-                                                    </AlertDialogTitle>
-                                                    <AlertDialogDescription>
-                                                        This action cannot be
-                                                        undone and will
-                                                        permanently delete the
-                                                        review.
-                                                    </AlertDialogDescription>
-                                                </AlertDialogHeader>
-                                                <AlertDialogFooter>
-                                                    <AlertDialogCancel>
-                                                        Cancel
-                                                    </AlertDialogCancel>
-                                                    <AlertDialogAction
-                                                        onClick={() =>
-                                                            handleDeleteReview(
-                                                                review
-                                                            )
-                                                        }
-                                                    >
-                                                        Continue
-                                                    </AlertDialogAction>
-                                                </AlertDialogFooter>
-                                            </AlertDialogContent>
-                                        </AlertDialog>
-                                    )}
-                            </section>
-                            <Ratings
-                                value={review.rating}
-                                variant="yellow"
-                                totalstars={5}
+                <ul className="space-y-6">
+                    {reviews.map((review) => (
+                        <li key={review._id}>
+                            <ReviewCard
+                                review={review}
+                                showPoster={false}
+                                onDelete={handleDeleteReview}
                             />
-                            {review.comment !== "" && (
-                                <p className="mt-2 text-sm sm:text-base">
-                                    {review.comment}
-                                </p>
-                            )}
-                        </CardContent>
-                    </Card>
-                ))}
+                        </li>
+                    ))}
+                </ul>
             </section>
         </Card>
     );
