@@ -15,7 +15,7 @@ const MovieCard = ({ movie }: { movie: MoviePoster }) => {
             <Card className="m-0 shadow-lg hover:cursor-pointer hover:shadow-slate-600">
                 <CardHeader className="aspect-[2/3] p-2">
                     <img
-                        className="w-full"
+                        className="h-full object-scale-down object-top"
                         src={getImageUrl(
                             ImageType.POSTER,
                             movie.poster_path,
