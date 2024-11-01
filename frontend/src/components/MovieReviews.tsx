@@ -6,7 +6,12 @@ import Ratings from "../shadcn/components/ui/rating";
 import { usernameVar } from "@/utils/cache";
 import { useApolloClient, useMutation, useReactiveVar } from "@apollo/client";
 import { Movie, Review } from "@/types/__generated__/types";
-import { ADD_REVIEW, DELETE_REVIEW } from "@/api/queries";
+import {
+    ADD_REVIEW,
+    DELETE_REVIEW,
+    GET_LATEST_REVIEWS,
+    GET_USER_REVIEWS,
+} from "@/api/queries";
 import { formatDate } from "@/utils/reviewUtil";
 import { Trash2 } from "lucide-react";
 import {
@@ -73,6 +78,16 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                 rating: rating,
                 comment: comment.trim(),
             },
+            refetchQueries: [
+                {
+                    query: GET_LATEST_REVIEWS,
+                    variables: { skip: 0, limit: 20 },
+                },
+                {
+                    query: GET_USER_REVIEWS,
+                    variables: { username: username, skip: 0, limit: 20 },
+                },
+            ],
         });
 
         if (response.data == undefined) {
@@ -91,6 +106,16 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
             variables: {
                 id: review._id,
             },
+            refetchQueries: [
+                {
+                    query: GET_LATEST_REVIEWS,
+                    variables: { skip: 0, limit: 20 },
+                },
+                {
+                    query: GET_USER_REVIEWS,
+                    variables: { username: username, skip: 0, limit: 20 },
+                },
+            ],
         });
 
         if (response.data == undefined) {

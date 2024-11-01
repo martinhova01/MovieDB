@@ -17,7 +17,11 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/shadcn/components/ui/alert-dialog";
-import { DELETE_REVIEW } from "../api/queries";
+import {
+    DELETE_REVIEW,
+    GET_LATEST_REVIEWS,
+    GET_USER_REVIEWS,
+} from "../api/queries";
 import { Review } from "@/types/__generated__/types";
 import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 
@@ -51,6 +55,16 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
             variables: {
                 id: review._id,
             },
+            refetchQueries: [
+                {
+                    query: GET_LATEST_REVIEWS,
+                    variables: { skip: 0, limit: 20 },
+                },
+                {
+                    query: GET_USER_REVIEWS,
+                    variables: { username: username, skip: 0, limit: 20 },
+                },
+            ],
         });
 
         if (response.data?.deleteReview) {
