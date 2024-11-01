@@ -207,6 +207,9 @@ const resolvers = {
                 date: new Date(),
             });
 
+            // The database uses ratings from 0 to 10, so we need to multiply by 2
+            const review_rating = review.rating * 2;
+
             const session = await mongoose.startSession();
             session.startTransaction();
 
@@ -214,6 +217,13 @@ const resolvers = {
                 await review.save();
                 await movie.updateOne({
                     $push: { reviews: { $each: [review._id], $position: 0 } },
+                    $set: {
+                        vote_average:
+                            (movie.vote_average * movie.vote_count +
+                                review_rating) /
+                            (movie.vote_count + 1),
+                        vote_count: movie.vote_count + 1,
+                    },
                 });
                 await session.commitTransaction();
 
@@ -240,15 +250,28 @@ const resolvers = {
                 return createBadUserInputError("Review not found.");
             }
 
+            // The database uses ratings from 0 to 10, so we need to multiply by 2
+            const review_rating = review.rating * 2;
+
             const session = await mongoose.startSession();
             session.startTransaction();
 
             try {
                 await review.deleteOne();
-                await MovieModel.updateOne(
-                    { reviews: review._id },
-                    { $pull: { reviews: review._id } }
-                );
+                const movie = await MovieModel.findById(review.movie);
+                const new_rating =
+                    movie.vote_count - 1 == 0
+                        ? 0
+                        : (movie.vote_average * movie.vote_count -
+                              review_rating) /
+                          (movie.vote_count - 1);
+                await movie.updateOne({
+                    $pull: { reviews: review._id },
+                    $set: {
+                        vote_average: new_rating,
+                        vote_count: movie.vote_count - 1,
+                    },
+                });
                 await session.commitTransaction();
 
                 return await MovieModel.findById(review.movie).populate({
