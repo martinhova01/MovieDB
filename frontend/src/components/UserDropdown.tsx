@@ -21,6 +21,7 @@ import { Label } from "@/shadcn/components/ui/label";
 import { useReactiveVar } from "@apollo/client";
 import { Edit, LogOut, User } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const UserDropdown = () => {
     const username = useReactiveVar(usernameVar);
@@ -66,6 +67,10 @@ const UserDropdown = () => {
                 <DropdownMenuLabel className="truncate">
                     {username}
                 </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                    <Link to="/myReviews">My Reviews</Link>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <Dialog
                     open={isDialogOpen}
