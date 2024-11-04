@@ -79,8 +79,13 @@ const ActivityPage = () => {
                 initialLoad={false}
                 threshold={100}
                 loader={
-                    <div key={-1} className="text-center">
-                        <h1 className="text-2xl">Loading...</h1>
+                    <div
+                        key={-1}
+                        aria-live="polite"
+                        aria-label="Loading more reviews..."
+                        className="text-center"
+                    >
+                        <p className="text-2xl">Loading...</p>
                     </div>
                 }
             >
