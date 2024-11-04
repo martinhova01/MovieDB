@@ -1,5 +1,5 @@
 import ReviewCard from "@/components/ReviewCard";
-import { Button } from "@/shadcn/components/ui/button";
+import InfiniteScroll from "react-infinite-scroller";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, useReactiveVar } from "@apollo/client";
@@ -9,7 +9,7 @@ import { usernameVar } from "@/utils/cache";
 
 const MyReviewsPage = () => {
     const username = useReactiveVar(usernameVar);
-    const [isMoreReviews, setIsMoreReviews] = useState<boolean>(true);
+    const [isMoreReviews, setIsMoreReviews] = useState<boolean>(false);
     const LIMIT = 20;
 
     const { data, loading, error, fetchMore, refetch } = useQuery(
@@ -81,30 +81,30 @@ const MyReviewsPage = () => {
     return (
         <main className="mx-auto mt-8 max-w-6xl px-4 pb-4">
             <h1 className="mb-6 text-center text-3xl font-bold">My Reviews</h1>
-            <ul className="space-y-6">
-                {userReviews?.map((review) => (
-                    <li key={review._id}>
-                        <ReviewCard
-                            review={{
-                                ...review,
-                                username,
-                            }}
-                        />
-                    </li>
-                ))}
-            </ul>
-            {isMoreReviews && (
-                <div className="flex justify-center">
-                    <Button
-                        size="lg"
-                        className="m-10"
-                        onClick={handleLoadMore}
-                        disabled={loading}
-                    >
-                        {loading ? "Loading..." : "Load More"}
-                    </Button>
-                </div>
-            )}
+            <InfiniteScroll
+                loadMore={handleLoadMore}
+                hasMore={isMoreReviews}
+                initialLoad={false}
+                threshold={100}
+                loader={
+                    <div key={-1} className="text-center">
+                        <h1 className="text-2xl">Loading...</h1>
+                    </div>
+                }
+            >
+                <ul className="space-y-6">
+                    {userReviews?.map((review) => (
+                        <li key={review._id}>
+                            <ReviewCard
+                                review={{
+                                    ...review,
+                                    username,
+                                }}
+                            />
+                        </li>
+                    ))}
+                </ul>
+            </InfiniteScroll>
         </main>
     );
 };

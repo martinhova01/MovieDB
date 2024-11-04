@@ -1,6 +1,6 @@
 import { MoviePoster } from "@/types/movieTypes";
 import MovieCard from "./MovieCard";
-import { Button } from "@/shadcn/components/ui/button";
+import InfiniteScroll from "react-infinite-scroller";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { useMemo, useState } from "react";
 import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
@@ -72,7 +72,17 @@ const MovieList = () => {
     }
 
     return (
-        <>
+        <InfiniteScroll
+            loadMore={handleLoadMore}
+            hasMore={isMoreMovies}
+            initialLoad={false}
+            threshold={100}
+            loader={
+                <div key={-1} className="text-center">
+                    <h1 className="text-2xl">Loading...</h1>
+                </div>
+            }
+        >
             <ul className="flex flex-wrap justify-center">
                 {movies.map((movie) => (
                     <li
@@ -83,14 +93,7 @@ const MovieList = () => {
                     </li>
                 ))}
             </ul>
-            {isMoreMovies && (
-                <div className="flex justify-center">
-                    <Button size="lg" className="m-10" onClick={handleLoadMore}>
-                        Load More
-                    </Button>
-                </div>
-            )}
-        </>
+        </InfiniteScroll>
     );
 };
 

@@ -1,5 +1,5 @@
 import ReviewCard from "@/components/ReviewCard";
-import { Button } from "@/shadcn/components/ui/button";
+import InfiniteScroll from "react-infinite-scroller";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -7,7 +7,7 @@ import { GET_LATEST_REVIEWS } from "../api/queries";
 import { Review } from "@/types/__generated__/types";
 
 const ActivityPage = () => {
-    const [isMoreReviews, setIsMoreReviews] = useState<boolean>(true);
+    const [isMoreReviews, setIsMoreReviews] = useState<boolean>(false);
     const LIMIT = 20;
 
     const { data, loading, error, fetchMore } = useQuery(GET_LATEST_REVIEWS, {
@@ -73,25 +73,25 @@ const ActivityPage = () => {
             <h1 className="mb-6 text-center text-3xl font-bold">
                 Latest Activity
             </h1>
-            <ul className="space-y-6">
-                {latestReviews.map((review) => (
-                    <li key={review._id}>
-                        <ReviewCard review={review} />
-                    </li>
-                ))}
-            </ul>
-            {isMoreReviews && (
-                <div className="flex justify-center">
-                    <Button
-                        size="lg"
-                        className="m-10"
-                        onClick={handleLoadMore}
-                        disabled={loading}
-                    >
-                        {loading ? "Loading..." : "Load More"}
-                    </Button>
-                </div>
-            )}
+            <InfiniteScroll
+                loadMore={handleLoadMore}
+                hasMore={isMoreReviews}
+                initialLoad={false}
+                threshold={100}
+                loader={
+                    <div key={-1} className="text-center">
+                        <h1 className="text-2xl">Loading...</h1>
+                    </div>
+                }
+            >
+                <ul className="space-y-6">
+                    {latestReviews.map((review) => (
+                        <li key={review._id}>
+                            <ReviewCard review={review} />
+                        </li>
+                    ))}
+                </ul>
+            </InfiniteScroll>
         </main>
     );
 };

@@ -31,6 +31,7 @@
         "lucide-react": "^0.446.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "react-infinite-scroller": "^1.2.6",
         "t26-project-2": "file:",
         "tailwind-merge": "^2.5.2",
         "tailwindcss-animate": "^1.0.7"
@@ -48,6 +49,7 @@
         "@types/node": "^22.7.4",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
+        "@types/react-infinite-scroller": "^1.2.5",
         "@vitejs/plugin-react-swc": "^3.5.0",
         "@vitest/coverage-v8": "^2.1.3",
         "autoprefixer": "^10.4.20",
