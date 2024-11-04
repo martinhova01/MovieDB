@@ -17,6 +17,7 @@ import { useQuery, useReactiveVar } from "@apollo/client";
 import { Filters } from "@/types/__generated__/types";
 import { GET_FILTERS } from "@/api/queries";
 import { defaultSortOption } from "@/utils/sortOptionUtil";
+import Loader from "./Loader";
 
 const SortAndFilterPanel: React.FC = () => {
     const filters = useReactiveVar(filtersVar);
@@ -91,9 +92,9 @@ const SortAndFilterPanel: React.FC = () => {
                     </SheetDescription>
                 </SheetHeader>
                 {loading && (
-                    <section className="text-center">
+                    <Loader>
                         <p>Loading...</p>
-                    </section>
+                    </Loader>
                 )}
                 {error && (
                     <section className="text-center">

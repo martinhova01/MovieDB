@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
 import { FiltersInput } from "@/types/__generated__/types";
 import { GET_MOVIES } from "@/api/queries";
+import Loader from "./Loader";
 
 const MovieList = () => {
     const [isMoreMovies, setIsMoreMovies] = useState<boolean>(false);
@@ -48,7 +49,9 @@ const MovieList = () => {
     if (loading) {
         return (
             <section className="mt-2 w-dvw text-center">
-                <h1 className="text-2xl">Loading...</h1>
+                <Loader size="lg">
+                    <h1 className="text-2xl">Loading...</h1>
+                </Loader>
             </section>
         );
     }
@@ -78,14 +81,13 @@ const MovieList = () => {
             initialLoad={false}
             threshold={100}
             loader={
-                <div
+                <Loader
                     key={-1}
-                    aria-live="polite"
                     aria-label="Loading more movies..."
                     className="text-center"
                 >
                     <p className="text-2xl">Loading...</p>
-                </div>
+                </Loader>
             }
         >
             <ul className="flex flex-wrap justify-center">

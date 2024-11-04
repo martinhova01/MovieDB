@@ -6,6 +6,7 @@ import { useQuery, useReactiveVar } from "@apollo/client";
 import { GET_USER_REVIEWS } from "../api/queries";
 import { Review } from "@/types/__generated__/types";
 import { usernameVar } from "@/utils/cache";
+import Loader from "../components/Loader";
 
 const MyReviewsPage = () => {
     const username = useReactiveVar(usernameVar);
@@ -53,7 +54,9 @@ const MyReviewsPage = () => {
     if (loading) {
         return (
             <section className="mt-6 w-dvw text-center">
-                <h1 className="text-2xl">Loading...</h1>
+                <Loader size="lg">
+                    <h1 className="text-2xl">Loading...</h1>
+                </Loader>
             </section>
         );
     }
@@ -87,18 +90,17 @@ const MyReviewsPage = () => {
                 initialLoad={false}
                 threshold={100}
                 loader={
-                    <div
+                    <Loader
                         key={-1}
-                        aria-live="polite"
                         aria-label="Loading more reviews..."
                         className="text-center"
                     >
                         <p className="text-2xl">Loading...</p>
-                    </div>
+                    </Loader>
                 }
             >
                 <ul className="space-y-6">
-                    {userReviews?.map((review) => (
+                    {userReviews.map((review) => (
                         <li key={review._id}>
                             <ReviewCard
                                 review={{

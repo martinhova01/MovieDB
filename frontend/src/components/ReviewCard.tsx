@@ -24,6 +24,7 @@ import {
 } from "../api/queries";
 import { Review } from "@/types/__generated__/types";
 import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
+import Loader from "./Loader";
 
 interface ReviewCardProps {
     review: Review;
@@ -99,15 +100,22 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                     username === review.username && (
                         <AlertDialog>
                             <AlertDialogTrigger asChild>
-                                <Button
-                                    size="sm"
-                                    className="absolute right-4 top-4 h-8 px-2"
-                                >
-                                    <Trash2 className="h-4 w-4 sm:hidden" />
-                                    <span className="hidden sm:inline">
-                                        {loading ? "Deleting..." : "Delete"}
-                                    </span>
-                                </Button>
+                                {loading ? (
+                                    <Loader
+                                        size="sm"
+                                        className="absolute right-4 top-4 m-0 h-8 px-2"
+                                    />
+                                ) : (
+                                    <Button
+                                        size="sm"
+                                        className="absolute right-4 top-4 h-8 px-2"
+                                    >
+                                        <Trash2 className="h-4 w-4 sm:hidden" />
+                                        <span className="hidden sm:inline">
+                                            Delete
+                                        </span>
+                                    </Button>
+                                )}
                             </AlertDialogTrigger>
 
                             <AlertDialogContent>

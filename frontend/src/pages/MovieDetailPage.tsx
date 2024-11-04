@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { Movie } from "@/types/__generated__/types";
 import { GET_MOVIE } from "@/api/queries";
 import { useMemo } from "react";
+import Loader from "../components/Loader";
 
 function MovieDetailPage() {
     const { movieId } = useParams<{ movieId: string }>();
@@ -31,7 +32,9 @@ function MovieDetailPage() {
     if (loading) {
         return (
             <main className="mt-2 w-dvw text-center">
-                <h1 className="text-2xl">Loading...</h1>
+                <Loader size="lg">
+                    <h1 className="text-2xl">Loading...</h1>
+                </Loader>
             </main>
         );
     }

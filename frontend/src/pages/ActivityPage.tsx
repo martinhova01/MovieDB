@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_LATEST_REVIEWS } from "../api/queries";
 import { Review } from "@/types/__generated__/types";
+import Loader from "../components/Loader";
 
 const ActivityPage = () => {
     const [isMoreReviews, setIsMoreReviews] = useState<boolean>(false);
@@ -43,7 +44,9 @@ const ActivityPage = () => {
     if (loading) {
         return (
             <section className="mt-6 w-dvw text-center">
-                <h1 className="text-2xl">Loading...</h1>
+                <Loader size="lg">
+                    <h1 className="text-2xl">Loading...</h1>
+                </Loader>
             </section>
         );
     }
@@ -79,14 +82,13 @@ const ActivityPage = () => {
                 initialLoad={false}
                 threshold={100}
                 loader={
-                    <div
+                    <Loader
                         key={-1}
-                        aria-live="polite"
                         aria-label="Loading more reviews..."
                         className="text-center"
                     >
                         <p className="text-2xl">Loading...</p>
-                    </div>
+                    </Loader>
                 }
             >
                 <ul className="space-y-6">
