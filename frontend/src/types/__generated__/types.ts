@@ -70,11 +70,17 @@ export type Review = {
 
 export type Filters = {
     __typename?: "Filters";
-    Genre: Array<Scalars["String"]["output"]>;
-    Rating: Array<Scalars["String"]["output"]>;
-    Decade: Array<Scalars["String"]["output"]>;
-    Status: Array<Scalars["String"]["output"]>;
-    Runtime: Array<Scalars["String"]["output"]>;
+    Genre: Array<Filter>;
+    Rating: Array<Filter>;
+    Decade: Array<Filter>;
+    Status: Array<Filter>;
+    Runtime: Array<Filter>;
+};
+
+export type Filter = {
+    __typename?: "Filter";
+    name: Scalars["String"]["output"];
+    hits: Scalars["Int"]["output"];
 };
 
 export type FiltersInput = {
@@ -213,11 +219,11 @@ export type GetFiltersQuery = {
     __typename?: "Query";
     filters: {
         __typename?: "Filters";
-        Genre: Array<string>;
-        Rating: Array<string>;
-        Decade: Array<string>;
-        Status: Array<string>;
-        Runtime: Array<string>;
+        Genre: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Rating: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Decade: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Status: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Runtime: Array<{ __typename?: "Filter"; name: string; hits: number }>;
     };
 };
 

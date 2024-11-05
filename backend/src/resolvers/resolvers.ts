@@ -2,7 +2,7 @@ import { GraphQLError } from "graphql";
 import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
 import mongoose from "mongoose";
-import { createFilters, Filters } from "../utils/filterUtils.js";
+import { createFilters, Filter, FiltersInput } from "../utils/filterUtils.js";
 import {
     defaultSortOption,
     getSortOrder,
@@ -58,7 +58,7 @@ const resolvers = {
             }: {
                 skip?: number;
                 limit?: number;
-                filters?: Filters;
+                filters?: FiltersInput;
                 sortOption?: SortingType;
                 search?: string;
             }
@@ -84,29 +84,34 @@ const resolvers = {
         },
 
         filters: async () => {
-            const genres: string[] = (
-                await MovieModel.distinct("genres")
-            ).filter((genre) => genre != null);
+            //TODO: count the hits in the database
+            const genres: Filter[] = (await MovieModel.distinct("genres"))
+                .filter((genre) => genre != null)
+                .map((genre) => ({ name: genre, hits: 0 }));
 
-            const ratings: string[] = ["5", "4", "3", "2", "1", "0"];
+            const ratingStrings: string[] = ["5", "4", "3", "2", "1", "0"];
+            const ratings: Filter[] = ratingStrings.map((rating) => ({
+                name: rating,
+                hits: 0,
+            }));
 
-            const decades: string[] = (await MovieModel.distinct("decade"))
+            const decades: Filter[] = (await MovieModel.distinct("decade"))
                 .sort((a, b) => b - a)
-                .map((decade) => decade.toString() + "s");
+                .map((decade) => ({ name: decade.toString() + "s", hits: 0 }));
 
-            const statuses: string[] = [
+            const statuses: Filter[] = [
                 "Released",
                 "In Production",
                 "Post Production",
                 "Planned",
-            ];
+            ].map((status) => ({ name: status, hits: 0 }));
 
-            const runtimes: string[] = [
+            const runtimes: Filter[] = [
                 "Less than 1 hour",
                 "1 - 2 hours",
                 "2 - 3 hours",
                 "3 hours or more",
-            ];
+            ].map((runtime) => ({ name: runtime, hits: 0 }));
 
             return {
                 Genre: genres,

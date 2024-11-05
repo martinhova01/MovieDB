@@ -14,7 +14,7 @@ import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
 import { filtersVar, sortOptionVar } from "@/utils/cache";
 import { useQuery, useReactiveVar } from "@apollo/client";
-import { Filters } from "@/types/__generated__/types";
+import { Filter, Filters } from "@/types/__generated__/types";
 import { GET_FILTERS } from "@/api/queries";
 import { defaultSortOption } from "@/utils/sortOptionUtil";
 import Loader from "./Loader";
@@ -24,8 +24,13 @@ const SortAndFilterPanel: React.FC = () => {
 
     const { data, loading, error } = useQuery(GET_FILTERS);
 
-    const updateFilters = (category: keyof Filters, filter: string) => {
-        let newFilters: string[] = [...(filters[category] || [])];
+    const updateFilters = (category: keyof Filters, filter: Filter) => {
+
+        //category will never be "__typename" so we just ignore that case.
+        if (category === "__typename") {
+            return;
+        }
+        let newFilters: Filter[] = [...(filters[category] || [])];
         if (newFilters.includes(filter)) {
             newFilters = newFilters.filter((e) => e != filter);
         } else {
@@ -54,18 +59,18 @@ const SortAndFilterPanel: React.FC = () => {
     const renderFilterSections = () => {
         return Object.entries(data?.filters as Filters).map(
             ([category, filter_list]) => {
-                if (category === "__typename") {
+                if (category === "__typename" || filter_list === "Filters") {
                     return null;
                 }
-                const all_filters = filter_list as string[];
+                const filter_names = filter_list as Filter[];
                 const applied_filters = filters[category as keyof Filters] as
-                    | string[]
+                    | Filter[]
                     | undefined;
                 return (
                     <FilterSection
                         key={category}
                         category={category as keyof Filters}
-                        all_filters={all_filters}
+                        all_filters={filter_names}
                         applied_filters={applied_filters ?? []}
                         updateFilters={updateFilters}
                     />

@@ -18,7 +18,7 @@ const documents = {
         types.GetMoviesDocument,
     "\n    query GetMovie($movieId: Int!) {\n        movie(id: $movieId) {\n            _id\n            title\n            vote_average\n            vote_count\n            status\n            release_date\n            revenue\n            runtime\n            backdrop_path\n            budget\n            homepage\n            imdb_id\n            original_language\n            original_title\n            overview\n            popularity\n            poster_path\n            tagline\n            genres\n            production_companies\n            production_countries\n            spoken_languages\n            keywords\n            reviews {\n                _id\n                username\n                rating\n                comment\n                date\n            }\n        }\n    }\n":
         types.GetMovieDocument,
-    "\n    query GetFilters {\n        filters {\n            Genre\n            Rating\n            Decade\n            Status\n            Runtime\n        }\n    }\n":
+    "\n    query GetFilters {\n        filters {\n            Genre {\n                name\n                hits\n            }\n            Rating {\n                name\n                hits\n            }\n            Decade {\n                name\n                hits\n            }\n            Status {\n                name\n                hits\n            }\n            Runtime {\n                name\n                hits\n            }\n        }\n    }\n":
         types.GetFiltersDocument,
     "\n    query GetLatestReviews(\n        $skip: Int,\n        $limit: Int\n    ) {\n        latestReviews(\n            skip: $skip,\n            limit: $limit\n        ) {\n            _id\n            movie {\n                _id\n                title\n                poster_path\n            }\n            username\n            rating\n            comment\n            date\n        }\n    }\n":
         types.GetLatestReviewsDocument,
@@ -60,8 +60,8 @@ export function gql(
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(
-    source: "\n    query GetFilters {\n        filters {\n            Genre\n            Rating\n            Decade\n            Status\n            Runtime\n        }\n    }\n"
-): (typeof documents)["\n    query GetFilters {\n        filters {\n            Genre\n            Rating\n            Decade\n            Status\n            Runtime\n        }\n    }\n"];
+    source: "\n    query GetFilters {\n        filters {\n            Genre {\n                name\n                hits\n            }\n            Rating {\n                name\n                hits\n            }\n            Decade {\n                name\n                hits\n            }\n            Status {\n                name\n                hits\n            }\n            Runtime {\n                name\n                hits\n            }\n        }\n    }\n"
+): (typeof documents)["\n    query GetFilters {\n        filters {\n            Genre {\n                name\n                hits\n            }\n            Rating {\n                name\n                hits\n            }\n            Decade {\n                name\n                hits\n            }\n            Status {\n                name\n                hits\n            }\n            Runtime {\n                name\n                hits\n            }\n        }\n    }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

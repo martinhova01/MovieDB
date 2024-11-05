@@ -65,11 +65,26 @@ export const GET_MOVIE = gql(`
 export const GET_FILTERS = gql(`
     query GetFilters {
         filters {
-            Genre
-            Rating
-            Decade
-            Status
-            Runtime
+            Genre {
+                name
+                hits
+            }
+            Rating {
+                name
+                hits
+            }
+            Decade {
+                name
+                hits
+            }
+            Status {
+                name
+                hits
+            }
+            Runtime {
+                name
+                hits
+            }
         }
     }
 `);

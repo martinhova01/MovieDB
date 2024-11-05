@@ -1,4 +1,17 @@
 export type Filters = {
+    Genre: Filter[];
+    Rating: Filter[];
+    Decade: Filter[];
+    Status: Filter[];
+    Runtime: Filter[];
+};
+
+export type Filter = {
+    name: string;
+    hits: number;
+};
+
+export type FiltersInput = {
     Genre: string[];
     Rating: string[];
     Decade: string[];
@@ -60,7 +73,7 @@ const createFilterForRuntime = (selectedRuntimes: string[]) => {
     return {};
 };
 
-export const createFilters = (filters: Filters) => {
+export const createFilters = (filters: FiltersInput) => {
     return [
         createFilterForGenres(filters.Genre),
         createFilterForRating(filters.Rating),

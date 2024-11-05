@@ -119,11 +119,31 @@ export type GetFiltersQuery = {
     __typename?: "Query";
     filters: {
         __typename?: "Filters";
-        Genre: Array<string>;
-        Rating: Array<string>;
-        Decade: Array<string>;
-        Status: Array<string>;
-        Runtime: Array<string>;
+        Genre: Array<{
+            __typename?: "Filter";
+            name?: string | null;
+            hits: number;
+        }>;
+        Rating: Array<{
+            __typename?: "Filter";
+            name?: string | null;
+            hits: number;
+        }>;
+        Decade: Array<{
+            __typename?: "Filter";
+            name?: string | null;
+            hits: number;
+        }>;
+        Status: Array<{
+            __typename?: "Filter";
+            name?: string | null;
+            hits: number;
+        }>;
+        Runtime: Array<{
+            __typename?: "Filter";
+            name?: string | null;
+            hits: number;
+        }>;
     };
 };
 
@@ -608,22 +628,117 @@ export const GetFiltersDocument = {
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "Genre" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "name",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "hits",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "Rating" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "name",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "hits",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "Decade" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "name",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "hits",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "Status" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "name",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "hits",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "Runtime" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "name",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "hits",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                             ],
                         },

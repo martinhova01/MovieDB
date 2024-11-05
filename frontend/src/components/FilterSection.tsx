@@ -1,4 +1,4 @@
-import { Filters } from "@/types/__generated__/types";
+import { Filter, Filters } from "@/types/__generated__/types";
 import {
     AccordionContent,
     AccordionItem,
@@ -8,9 +8,9 @@ import { Checkbox } from "../shadcn/components/ui/checkbox";
 
 interface FilterSectionInterface {
     category: keyof Filters;
-    all_filters: string[];
-    applied_filters: string[];
-    updateFilters: (category: keyof Filters, filter: string) => void;
+    all_filters: Filter[];
+    applied_filters: Filter[];
+    updateFilters: (category: keyof Filters, filter: Filter) => void;
 }
 
 const FilterSection: React.FC<FilterSectionInterface> = ({
@@ -23,27 +23,27 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
         <AccordionItem value={`${category} item`}>
             <AccordionTrigger>
                 {category}
-                {applied_filters.length ? ` (${applied_filters.length})` : ""}
+                {` (${applied_filters.map((filter) => filter.hits).reduce((acc, current) => acc + current, 0)})`}
             </AccordionTrigger>
             <AccordionContent>
                 <ul>
                     {all_filters.map((filter) => (
                         <li
-                            key={filter}
+                            key={filter.name}
                             className="mb-2 flex items-center space-x-2"
                         >
                             <Checkbox
-                                id={filter}
+                                id={filter.name}
                                 checked={applied_filters.includes(filter)}
                                 onCheckedChange={() =>
                                     updateFilters(category, filter)
                                 }
                             />
                             <label
-                                htmlFor={filter}
+                                htmlFor={filter.name}
                                 className="text-sm font-medium leading-none hover:cursor-pointer"
                             >
-                                {filter}
+                                {filter.name}({filter.hits})
                             </label>
                         </li>
                     ))}

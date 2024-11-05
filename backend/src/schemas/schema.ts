@@ -38,11 +38,16 @@ export const typeDefs = `#graphql
   }
 
   type Filters {
-    Genre: [String!]!
-    Rating: [String!]!
-    Decade: [String!]!
-    Status: [String!]!
-    Runtime: [String!]!
+    Genre: [Filter!]!
+    Rating: [Filter!]!
+    Decade: [Filter!]!
+    Status: [Filter!]!
+    Runtime: [Filter!]!
+  }
+  
+  type Filter {
+    name: String!
+    hits: Int!
   }
 
   input FiltersInput {

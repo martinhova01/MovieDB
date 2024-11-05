@@ -4,7 +4,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { useMemo, useState } from "react";
 import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
-import { FiltersInput } from "@/types/__generated__/types";
+import { Filters, FiltersInput } from "@/types/__generated__/types";
 import { GET_MOVIES } from "@/api/queries";
 import Loader from "./Loader";
 import MovieCardSkeleton from "./MovieCardSkeleton";
@@ -16,11 +16,21 @@ const MovieList = () => {
     const search = useReactiveVar(searchVar);
     const LIMIT = 20;
 
+    function getFiltersAsInput(filters: Filters): FiltersInput {
+        return {
+            Decade: filters.Decade.map((filter) => filter.name),
+            Genre: filters.Genre.map((filter) => filter.name),
+            Rating: filters.Rating.map((filter) => filter.name),
+            Status: filters.Status.map((filter) => filter.name),
+            Runtime: filters.Runtime.map((filter) => filter.name),
+        };
+    }
+
     const { data, loading, error, fetchMore } = useQuery(GET_MOVIES, {
         variables: {
             skip: 0,
             limit: LIMIT,
-            filters: filters as FiltersInput,
+            filters: getFiltersAsInput(filters),
             sortOption: sortOption,
             search: search,
         },
