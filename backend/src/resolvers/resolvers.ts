@@ -90,21 +90,9 @@ const resolvers = {
 
             const ratings: string[] = ["5", "4", "3", "2", "1", "0"];
 
-            const decades = await MovieModel.aggregate([
-                {
-                    $group: {
-                        _id: "$decade",
-                    },
-                },
-                {
-                    $sort: {
-                        _id: -1,
-                    },
-                },
-            ]);
-            const decadeList: string[] = decades
-                .map((decade) => decade._id.toString() + "s")
-                .filter((decade) => decade != null);
+            const decades: string[] = (await MovieModel.distinct("decade"))
+                .sort((a, b) => b - a)
+                .map((decade) => decade.toString() + "s");
 
             const statuses: string[] = [
                 "Released",
@@ -125,7 +113,7 @@ const resolvers = {
             return {
                 Genre: genres,
                 Rating: ratings,
-                Decade: decadeList,
+                Decade: decades,
                 Status: statuses,
                 Runtime: runtimes,
             };
