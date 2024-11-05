@@ -93,24 +93,17 @@ const resolvers = {
             const decades = await MovieModel.aggregate([
                 {
                     $group: {
-                        _id: {
-                            $floor: {
-                                $divide: [{ $year: "$release_date" }, 10],
-                            },
-                        },
+                        _id: "$decade",
                     },
                 },
                 {
-                    $project: {
-                        _id: { $concat: [{ $toString: "$_id" }, "0s"] },
+                    $sort: {
+                        _id: -1,
                     },
-                },
-                {
-                    $sort: { _id: -1 },
                 },
             ]);
             const decadeList: string[] = decades
-                .map((decade) => decade._id)
+                .map((decade) => decade._id.toString() + "s")
                 .filter((decade) => decade != null);
 
             const statuses: string[] = [

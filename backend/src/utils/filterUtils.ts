@@ -29,19 +29,10 @@ const createFilterForRating = (selectedRatings: string[]) => {
 };
 
 const createFilterForReleaseYear = (selectedDecades: string[]) => {
-    if (selectedDecades.length) {
-        const yearFilters = selectedDecades.map((decade) => {
-            const startYear = parseInt(decade.slice(0, 4));
-            return {
-                release_date: {
-                    $gte: new Date(`${startYear}-01-01`),
-                    $lt: new Date(`${startYear + 10}-01-01`),
-                },
-            };
-        });
-        return { $or: yearFilters };
-    }
-    return {};
+    const decades: number[] = selectedDecades.map((d) =>
+        parseInt(d.slice(0, 4))
+    );
+    return selectedDecades.length ? { decade: { $in: decades } } : {};
 };
 
 const createFilterForStatus = (selectedStatuses: string[]) => {

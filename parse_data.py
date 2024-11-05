@@ -68,7 +68,7 @@ def get_all_movies(df: pd.DataFrame):
             "popularity",
             "poster_path",
             "tagline",
-            "decade"
+            "decade",
         ]:
             movie_data[col] = movie_row[col] if not pd.isnull(movie_row[col]) else None
 
