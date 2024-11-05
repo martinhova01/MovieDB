@@ -122,6 +122,11 @@ export type QuerymoviesArgs = {
     search?: InputMaybe<Scalars["String"]["input"]>;
 };
 
+export type QueryfiltersArgs = {
+    appliedFilters?: InputMaybe<FiltersInput>;
+    search?: InputMaybe<Scalars["String"]["input"]>;
+};
+
 export type QuerylatestReviewsArgs = {
     skip?: InputMaybe<Scalars["Int"]["input"]>;
     limit?: InputMaybe<Scalars["Int"]["input"]>;
@@ -213,7 +218,10 @@ export type GetMovieQuery = {
     } | null;
 };
 
-export type GetFiltersQueryVariables = Exact<{ [key: string]: never }>;
+export type GetFiltersQueryVariables = Exact<{
+    appliedFilters?: InputMaybe<FiltersInput>;
+    search?: InputMaybe<Scalars["String"]["input"]>;
+}>;
 
 export type GetFiltersQuery = {
     __typename?: "Query";

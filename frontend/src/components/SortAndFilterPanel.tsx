@@ -12,27 +12,33 @@ import {
 import { SlidersHorizontal } from "lucide-react";
 import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
-import { filtersVar, sortOptionVar } from "@/utils/cache";
+import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { Filter, Filters } from "@/types/__generated__/types";
 import { GET_FILTERS } from "@/api/queries";
 import { defaultSortOption } from "@/utils/sortOptionUtil";
 import Loader from "./Loader";
+import { getFiltersAsInput } from "@/utils/filterUtils";
 
 const SortAndFilterPanel: React.FC = () => {
     const filters = useReactiveVar(filtersVar);
+    const search = useReactiveVar(searchVar);
 
-    const { data, loading, error } = useQuery(GET_FILTERS);
+    const { data, loading, error } = useQuery(GET_FILTERS, {
+        variables: {
+            appliedFilters: getFiltersAsInput(filters),
+            search: search,
+        },
+    });
 
     const updateFilters = (category: keyof Filters, filter: Filter) => {
-
         //category will never be "__typename" so we just ignore that case.
         if (category === "__typename") {
             return;
         }
         let newFilters: Filter[] = [...(filters[category] || [])];
-        if (newFilters.includes(filter)) {
-            newFilters = newFilters.filter((e) => e != filter);
+        if (newFilters.map((e) => e.name).includes(filter.name)) {
+            newFilters = newFilters.filter((e) => e.name != filter.name);
         } else {
             newFilters.push(filter);
         }

@@ -83,7 +83,17 @@ const resolvers = {
                 .populate({ path: "reviews", model: ReviewModel });
         },
 
-        filters: async () => {
+        filters: async (
+            _: unknown,
+            {
+                appliedFilters,
+                search,
+            }: {
+                appliedFilters?: FiltersInput;
+                search?: string;
+            }
+        ) => {
+            console.log(appliedFilters, search);
             //TODO: count the hits in the database
             const genres: Filter[] = (await MovieModel.distinct("genres"))
                 .filter((genre) => genre != null)

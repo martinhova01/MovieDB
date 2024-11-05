@@ -23,7 +23,7 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
         <AccordionItem value={`${category} item`}>
             <AccordionTrigger>
                 {category}
-                {` (${applied_filters.map((filter) => filter.hits).reduce((acc, current) => acc + current, 0)})`}
+                {` (${applied_filters.map((e) => e.hits).reduce((acc, current) => acc + current, 0)})`}
             </AccordionTrigger>
             <AccordionContent>
                 <ul>
@@ -34,7 +34,9 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
                         >
                             <Checkbox
                                 id={filter.name}
-                                checked={applied_filters.includes(filter)}
+                                checked={applied_filters
+                                    .map((e) => e.name)
+                                    .includes(filter.name)}
                                 onCheckedChange={() =>
                                     updateFilters(category, filter)
                                 }

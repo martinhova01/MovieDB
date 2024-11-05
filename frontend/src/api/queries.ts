@@ -63,8 +63,14 @@ export const GET_MOVIE = gql(`
 `);
 
 export const GET_FILTERS = gql(`
-    query GetFilters {
-        filters {
+    query GetFilters(
+        $appliedFilters: FiltersInput
+        $search: String
+    ) {
+        filters(
+            appliedFilters: $appliedFilters
+            search: $search
+        ) {
             Genre {
                 name
                 hits

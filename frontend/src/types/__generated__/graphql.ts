@@ -113,37 +113,20 @@ export type GetMovieQuery = {
     } | null;
 };
 
-export type GetFiltersQueryVariables = Exact<{ [key: string]: never }>;
+export type GetFiltersQueryVariables = Exact<{
+    appliedFilters?: InputMaybe<FiltersInput>;
+    search?: InputMaybe<Scalars["String"]["input"]>;
+}>;
 
 export type GetFiltersQuery = {
     __typename?: "Query";
     filters: {
         __typename?: "Filters";
-        Genre: Array<{
-            __typename?: "Filter";
-            name?: string | null;
-            hits: number;
-        }>;
-        Rating: Array<{
-            __typename?: "Filter";
-            name?: string | null;
-            hits: number;
-        }>;
-        Decade: Array<{
-            __typename?: "Filter";
-            name?: string | null;
-            hits: number;
-        }>;
-        Status: Array<{
-            __typename?: "Filter";
-            name?: string | null;
-            hits: number;
-        }>;
-        Runtime: Array<{
-            __typename?: "Filter";
-            name?: string | null;
-            hits: number;
-        }>;
+        Genre: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Rating: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Decade: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Status: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Runtime: Array<{ __typename?: "Filter"; name: string; hits: number }>;
     };
 };
 
@@ -616,12 +599,57 @@ export const GetFiltersDocument = {
             kind: "OperationDefinition",
             operation: "query",
             name: { kind: "Name", value: "GetFilters" },
+            variableDefinitions: [
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "appliedFilters" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "FiltersInput" },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "search" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "String" },
+                    },
+                },
+            ],
             selectionSet: {
                 kind: "SelectionSet",
                 selections: [
                     {
                         kind: "Field",
                         name: { kind: "Name", value: "filters" },
+                        arguments: [
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "appliedFilters" },
+                                value: {
+                                    kind: "Variable",
+                                    name: {
+                                        kind: "Name",
+                                        value: "appliedFilters",
+                                    },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "search" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "search" },
+                                },
+                            },
+                        ],
                         selectionSet: {
                             kind: "SelectionSet",
                             selections: [
