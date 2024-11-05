@@ -1,11 +1,9 @@
 import { searchVar } from "@/utils/cache";
 import { Input } from "@/shadcn/components/ui/input";
-import React, { useState } from "react";
+import React from "react";
 import { useDebouncedCallback } from "use-debounce";
 
 const SearchBar: React.FC = () => {
-    const [search, setSearch] = useState<string>(searchVar());
-
     const handleSearch = (searchString: string) => {
         searchString = searchString.trim();
         sessionStorage.setItem("search", searchString);
@@ -15,7 +13,6 @@ const SearchBar: React.FC = () => {
     const debouncedHandleSearch = useDebouncedCallback(handleSearch, 510);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
         debouncedHandleSearch(e.target.value);
         if (!e.target.value) {
             debouncedHandleSearch.flush();
@@ -36,7 +33,6 @@ const SearchBar: React.FC = () => {
                 name="searchbar"
                 type="search"
                 placeholder="Search..."
-                value={search}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 aria-label="Search for movies"
