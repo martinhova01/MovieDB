@@ -68,6 +68,7 @@ def get_all_movies(df: pd.DataFrame):
             "popularity",
             "poster_path",
             "tagline",
+            "decade"
         ]:
             movie_data[col] = movie_row[col] if not pd.isnull(movie_row[col]) else None
 
@@ -103,6 +104,7 @@ def load_movie_data(rows: int | None = None) -> pd.DataFrame:
     df = df[~df["adult"]]
     df.rename({"id": "_id"}, axis=1, inplace=True)
     df.drop_duplicates(subset=["_id"], inplace=True)
+    df["decade"] = (df["release_date"].astype(str).str[:4].astype(int) // 10) * 10
     if rows is not None:
         df = df.head(rows)
     print("Done reading CSV")
@@ -141,6 +143,7 @@ def load_movie_data_chunks(rows: int | None = None, chunksize: int = 1000):
             chunk["release_date"] = pd.to_datetime(
                 chunk["release_date"], errors="coerce"
             )
+            chunk["decade"] = (chunk["release_date"].dt.year // 10) * 10
             chunk["revenue"] = chunk["revenue"].astype(float)
 
             if rows is not None and yielded_movie_count + chunk.shape[0] > rows:
@@ -190,6 +193,7 @@ def fill_db(rows: int | None = None):
     MOVIES_COL.create_index("vote_count")
     MOVIES_COL.create_index("status")
     MOVIES_COL.create_index("popularity")
+    MOVIES_COL.create_index("decade")
 
     # These indexes are created to speed up filtering/sorting and to retrieve unique values
     MOVIES_COL.create_index("genres")
