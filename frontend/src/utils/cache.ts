@@ -25,3 +25,5 @@ export const searchVar = makeVar<string>(
 export const usernameVar = makeVar<string>(
     localStorage.getItem("username") ?? "Guest"
 );
+
+export const totalHitsVar = makeVar<number>(0);

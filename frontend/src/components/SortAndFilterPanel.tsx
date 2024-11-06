@@ -12,7 +12,12 @@ import {
 import { SlidersHorizontal } from "lucide-react";
 import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
-import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
+import {
+    filtersVar,
+    searchVar,
+    sortOptionVar,
+    totalHitsVar,
+} from "@/utils/cache";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { Filter, Filters } from "@/types/__generated__/types";
 import { GET_FILTERS } from "@/api/queries";
@@ -28,6 +33,12 @@ const SortAndFilterPanel: React.FC = () => {
         variables: {
             appliedFilters: getFiltersAsInput(filters),
             search: search,
+        },
+        onCompleted: (data) => {
+            const hits = data.filters.Status.map((s: Filter) => s.hits).reduce(
+                (acc, curr) => acc + curr
+            );
+            totalHitsVar(hits);
         },
     });
 

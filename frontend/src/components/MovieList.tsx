@@ -3,7 +3,12 @@ import MovieCard from "./MovieCard";
 import InfiniteScroll from "react-infinite-scroller";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { useMemo, useState } from "react";
-import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
+import {
+    filtersVar,
+    searchVar,
+    sortOptionVar,
+    totalHitsVar,
+} from "@/utils/cache";
 import { GET_MOVIES } from "@/api/queries";
 import Loader from "./Loader";
 import MovieCardSkeleton from "./MovieCardSkeleton";
@@ -14,6 +19,7 @@ const MovieList = () => {
     const filters = useReactiveVar(filtersVar);
     const sortOption = useReactiveVar(sortOptionVar);
     const search = useReactiveVar(searchVar);
+    const totalHits = useReactiveVar(totalHitsVar);
     const LIMIT = 20;
 
     const { data, loading, error, fetchMore } = useQuery(GET_MOVIES, {
@@ -83,6 +89,9 @@ const MovieList = () => {
                 </Loader>
             }
         >
+            <p className="px-3 py-1 text-center text-lg font-bold">
+                Total Hits: {totalHits}
+            </p>
             <ul className="flex flex-wrap justify-center">
                 {loading
                     ? Array.from({ length: LIMIT }, (_, i) => i).map((i) => (
