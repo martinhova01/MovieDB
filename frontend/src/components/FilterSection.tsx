@@ -23,32 +23,37 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
         <AccordionItem value={`${category} item`}>
             <AccordionTrigger>
                 {category}
-                {` (${applied_filters.map((e) => e.hits).reduce((acc, current) => acc + current, 0)})`}
+                {applied_filters.length
+                    ? ` (${applied_filters.length} applied)`
+                    : ""}
             </AccordionTrigger>
             <AccordionContent>
                 <ul>
-                    {all_filters.map((filter) => (
-                        <li
-                            key={filter.name}
-                            className="mb-2 flex items-center space-x-2"
-                        >
-                            <Checkbox
-                                id={filter.name}
-                                checked={applied_filters
-                                    .map((e) => e.name)
-                                    .includes(filter.name)}
-                                onCheckedChange={() =>
-                                    updateFilters(category, filter)
-                                }
-                            />
-                            <label
-                                htmlFor={filter.name}
-                                className="text-sm font-medium leading-none hover:cursor-pointer"
-                            >
-                                {filter.name}({filter.hits})
-                            </label>
-                        </li>
-                    ))}
+                    {all_filters.map(
+                        (filter) =>
+                            filter.hits > 0 && (
+                                <li
+                                    key={filter.name}
+                                    className="mb-2 flex items-center space-x-2"
+                                >
+                                    <Checkbox
+                                        id={filter.name}
+                                        checked={applied_filters
+                                            .map((e) => e.name)
+                                            .includes(filter.name)}
+                                        onCheckedChange={() =>
+                                            updateFilters(category, filter)
+                                        }
+                                    />
+                                    <label
+                                        htmlFor={filter.name}
+                                        className="text-sm font-medium leading-none hover:cursor-pointer"
+                                    >
+                                        {filter.name} ({filter.hits})
+                                    </label>
+                                </li>
+                            )
+                    )}
                 </ul>
             </AccordionContent>
         </AccordionItem>

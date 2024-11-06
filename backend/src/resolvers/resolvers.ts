@@ -2,11 +2,7 @@ import { GraphQLError } from "graphql";
 import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
 import mongoose from "mongoose";
-import {
-    createFilterAndSearch,
-    createFilters,
-    FiltersInput,
-} from "../utils/filterUtils.js";
+import { createFilterAndSearch, FiltersInput } from "../utils/filterUtils.js";
 import {
     defaultSortOption,
     getSortOrder,
@@ -72,12 +68,7 @@ const resolvers = {
                 return validationError;
             }
 
-            return await MovieModel.find({
-                $and: [
-                    ...(filters ? createFilters(filters) : []),
-                    search ? { $text: { $search: `\"${search}\"` } } : {},
-                ],
-            })
+            return await MovieModel.find(createFilterAndSearch(filters, search))
                 .sort({
                     ...getSortOrder(sortOption ?? defaultSortOption),
                     _id: 1,
@@ -103,21 +94,21 @@ const resolvers = {
                         genreStrings
                             .filter((genre) => genre != null)
                             .map(async (genre) => {
-                                const filters = appliedFilters
-                                    ? {
-                                          ...appliedFilters,
-                                          Genre: [
-                                              ...appliedFilters.Genre,
-                                              genre,
-                                          ],
-                                      }
-                                    : {
-                                          Decade: [],
-                                          Rating: [],
-                                          Genre: [genre],
-                                          Status: [],
-                                          Runtime: [],
-                                      };
+                                let filters: FiltersInput;
+                                if (appliedFilters) {
+                                    filters = {
+                                        ...appliedFilters,
+                                        Genre: [...appliedFilters.Genre, genre],
+                                    };
+                                } else {
+                                    filters = {
+                                        Decade: [],
+                                        Rating: [],
+                                        Genre: [genre],
+                                        Status: [],
+                                        Runtime: [],
+                                    };
+                                }
 
                                 const hits = await MovieModel.countDocuments(
                                     createFilterAndSearch(filters, search)
@@ -129,15 +120,18 @@ const resolvers = {
 
             const ratingsPromise = Promise.all(
                 ["5", "4", "3", "2", "1", "0"].map(async (rating) => {
-                    const filters = appliedFilters
-                        ? { ...appliedFilters, Rating: [rating] }
-                        : {
-                              Decade: [],
-                              Rating: [rating],
-                              Genre: [],
-                              Status: [],
-                              Runtime: [],
-                          };
+                    let filters: FiltersInput;
+                    if (appliedFilters) {
+                        filters = { ...appliedFilters, Rating: [rating] };
+                    } else {
+                        filters = {
+                            Decade: [],
+                            Rating: [rating],
+                            Genre: [],
+                            Status: [],
+                            Runtime: [],
+                        };
+                    }
 
                     const hits = await MovieModel.countDocuments(
                         createFilterAndSearch(filters, search)
@@ -152,18 +146,21 @@ const resolvers = {
                         decades
                             .sort((a, b) => b - a)
                             .map(async (d) => {
-                                const filters = appliedFilters
-                                    ? {
-                                          ...appliedFilters,
-                                          Decade: [d.toString() + "s"],
-                                      }
-                                    : {
-                                          Decade: [d.toString() + "s"],
-                                          Rating: [],
-                                          Genre: [],
-                                          Status: [],
-                                          Runtime: [],
-                                      };
+                                let filters: FiltersInput;
+                                if (appliedFilters) {
+                                    filters = {
+                                        ...appliedFilters,
+                                        Decade: [d.toString() + "s"],
+                                    };
+                                } else {
+                                    filters = {
+                                        Decade: [d.toString() + "s"],
+                                        Rating: [],
+                                        Genre: [],
+                                        Status: [],
+                                        Runtime: [],
+                                    };
+                                }
 
                                 const hits = await MovieModel.countDocuments(
                                     createFilterAndSearch(filters, search)
@@ -182,15 +179,18 @@ const resolvers = {
                     "Rumored",
                     "Canceled",
                 ].map(async (status) => {
-                    const filters = appliedFilters
-                        ? { ...appliedFilters, Status: [status] }
-                        : {
-                              Decade: [],
-                              Rating: [],
-                              Genre: [],
-                              Status: [status],
-                              Runtime: [],
-                          };
+                    let filters: FiltersInput;
+                    if (appliedFilters) {
+                        filters = { ...appliedFilters, Status: [status] };
+                    } else {
+                        filters = {
+                            Decade: [],
+                            Rating: [],
+                            Genre: [],
+                            Status: [status],
+                            Runtime: [],
+                        };
+                    }
 
                     const hits = await MovieModel.countDocuments(
                         createFilterAndSearch(filters, search)
@@ -206,15 +206,19 @@ const resolvers = {
                     "2 - 3 hours",
                     "3 hours or more",
                 ].map(async (runtime) => {
-                    const filters = appliedFilters
-                        ? { ...appliedFilters, Runtime: [runtime] }
-                        : {
-                              Decade: [],
-                              Rating: [],
-                              Genre: [],
-                              Status: [],
-                              Runtime: [runtime],
-                          };
+                    let filters: FiltersInput;
+                    if (appliedFilters) {
+                        filters = { ...appliedFilters, Runtime: [runtime] };
+                    } else {
+                        filters = {
+                            Decade: [],
+                            Rating: [],
+                            Genre: [],
+                            Status: [],
+                            Runtime: [runtime],
+                        };
+                    }
+
                     const hits = await MovieModel.countDocuments(
                         createFilterAndSearch(filters, search)
                     );
