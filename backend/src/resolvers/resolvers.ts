@@ -2,7 +2,12 @@ import { GraphQLError } from "graphql";
 import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
 import mongoose from "mongoose";
-import { createFilters, Filter, FiltersInput } from "../utils/filterUtils.js";
+import {
+    createFilterAndSearch,
+    createFilters,
+    Filter,
+    FiltersInput,
+} from "../utils/filterUtils.js";
 import {
     defaultSortOption,
     getSortOrder,
@@ -95,33 +100,147 @@ const resolvers = {
         ) => {
             console.log(appliedFilters, search);
             //TODO: count the hits in the database
-            const genres: Filter[] = (await MovieModel.distinct("genres"))
-                .filter((genre) => genre != null)
-                .map((genre) => ({ name: genre, hits: 0 }));
+            const genreStrings: string[] = (
+                await MovieModel.distinct("genres")
+            ).filter((genre) => genre != null);
+
+            const genres: Filter[] = [];
+            for (const genre of genreStrings) {
+                let filters: FiltersInput;
+                if (appliedFilters == undefined) {
+                    filters = {
+                        Decade: [],
+                        Rating: [],
+                        Genre: [genre],
+                        Status: [],
+                        Runtime: [],
+                    };
+                } else {
+                    filters = {
+                        ...appliedFilters,
+                        Genre: [...appliedFilters.Genre, genre],
+                    };
+                }
+                const hits = await MovieModel.countDocuments(
+                    createFilterAndSearch(filters, search)
+                );
+                genres.push({ name: genre, hits: hits });
+            }
 
             const ratingStrings: string[] = ["5", "4", "3", "2", "1", "0"];
-            const ratings: Filter[] = ratingStrings.map((rating) => ({
-                name: rating,
-                hits: 0,
-            }));
+            const ratings: Filter[] = [];
+            for (const rating of ratingStrings) {
+                let filters: FiltersInput;
+                if (appliedFilters == undefined) {
+                    filters = {
+                        Decade: [],
+                        Rating: [rating],
+                        Genre: [],
+                        Status: [],
+                        Runtime: [],
+                    };
+                } else {
+                    filters = {
+                        ...appliedFilters,
+                        Rating: [rating],
+                    };
+                }
+                const hits = await MovieModel.countDocuments(
+                    createFilterAndSearch(filters, search)
+                );
+                ratings.push({ name: rating, hits: hits });
+            }
 
-            const decades: Filter[] = (await MovieModel.distinct("decade"))
-                .sort((a, b) => b - a)
-                .map((decade) => ({ name: decade.toString() + "s", hits: 0 }));
+            const decades: Filter[] = await MovieModel.distinct("decade").then(
+                (decades) =>
+                    Promise.all(
+                        decades
+                            .sort((a, b) => b - a)
+                            .map(async (d) => {
+                                let filters: FiltersInput;
+                                if (appliedFilters == undefined) {
+                                    filters = {
+                                        Decade: [d.toString() + "s"],
+                                        Rating: [],
+                                        Genre: [],
+                                        Status: [],
+                                        Runtime: [],
+                                    };
+                                } else {
+                                    filters = {
+                                        ...appliedFilters,
+                                        Decade: [d.toString() + "s"],
+                                    };
+                                }
+                                const hits = await MovieModel.countDocuments(
+                                    createFilterAndSearch(filters, search)
+                                );
+                                return { name: d.toString() + "s", hits };
+                            })
+                    )
+            );
 
-            const statuses: Filter[] = [
+            const statusesStrings = [
                 "Released",
                 "In Production",
                 "Post Production",
                 "Planned",
-            ].map((status) => ({ name: status, hits: 0 }));
+                "Rumored",
+                "Canceled",
+            ];
+            const statuses: Filter[] = [];
 
-            const runtimes: Filter[] = [
+            for (const status of statusesStrings) {
+                let filters: FiltersInput;
+                if (appliedFilters == undefined) {
+                    filters = {
+                        Decade: [],
+                        Rating: [],
+                        Genre: [],
+                        Status: [status],
+                        Runtime: [],
+                    };
+                } else {
+                    filters = {
+                        ...appliedFilters,
+                        Status: [status],
+                    };
+                }
+                const hits = await MovieModel.countDocuments(
+                    createFilterAndSearch(filters, search)
+                );
+                statuses.push({ name: status, hits: hits });
+            }
+
+            const runtimeStrings: string[] = [
                 "Less than 1 hour",
                 "1 - 2 hours",
                 "2 - 3 hours",
                 "3 hours or more",
-            ].map((runtime) => ({ name: runtime, hits: 0 }));
+            ];
+            const runtimes: Filter[] = [];
+
+            for (const runtime of runtimeStrings) {
+                let filters: FiltersInput;
+                if (appliedFilters == undefined) {
+                    filters = {
+                        Decade: [],
+                        Rating: [],
+                        Genre: [],
+                        Status: [],
+                        Runtime: [runtime],
+                    };
+                } else {
+                    filters = {
+                        ...appliedFilters,
+                        Runtime: [runtime],
+                    };
+                }
+                const hits = await MovieModel.countDocuments(
+                    createFilterAndSearch(filters, search)
+                );
+                runtimes.push({ name: runtime, hits: hits });
+            }
 
             return {
                 Genre: genres,

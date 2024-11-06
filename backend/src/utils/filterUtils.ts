@@ -74,6 +74,9 @@ const createFilterForRuntime = (selectedRuntimes: string[]) => {
 };
 
 export const createFilters = (filters: FiltersInput) => {
+    if (filters == undefined) {
+        return [];
+    }
     return [
         createFilterForGenres(filters.Genre),
         createFilterForRating(filters.Rating),
@@ -81,4 +84,20 @@ export const createFilters = (filters: FiltersInput) => {
         createFilterForStatus(filters.Status),
         createFilterForRuntime(filters.Runtime),
     ].filter((condition) => Object.keys(condition).length > 0);
+};
+
+export const createSearch = (search: string) => {
+    if (search == undefined || search == "") {
+        return {};
+    }
+    return { $text: { $search: `\"${search}\"` } };
+};
+
+export const createFilterAndSearch = (
+    filters: FiltersInput,
+    search: string
+) => {
+    return {
+        $and: [...createFilters(filters), createSearch(search)],
+    };
 };
