@@ -2,7 +2,6 @@ import { Button } from "../shadcn/components/ui/button";
 import { Accordion } from "../shadcn/components/ui/accordion";
 import {
     Sheet,
-    SheetClose,
     SheetContent,
     SheetDescription,
     SheetFooter,
@@ -112,11 +111,6 @@ const SortAndFilterPanel: React.FC = () => {
                             <Button type="reset" onClick={clearAll}>
                                 Clear All
                             </Button>
-                            <SheetClose asChild>
-                                <Button type="submit" className="mb-2">
-                                    Apply
-                                </Button>
-                            </SheetClose>
                         </SheetFooter>
                     </section>
                 )}
