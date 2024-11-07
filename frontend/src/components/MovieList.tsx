@@ -3,6 +3,7 @@ import MovieCard from "./MovieCard";
 import InfiniteScroll from "react-infinite-scroller";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { useMemo, useState } from "react";
+import { formatNumber } from "@/utils/formatUtil";
 import {
     filtersVar,
     searchVar,
@@ -12,7 +13,6 @@ import {
 import { GET_MOVIES } from "@/api/queries";
 import Loader from "./Loader";
 import MovieCardSkeleton from "./MovieCardSkeleton";
-import { getFiltersAsInput } from "@/utils/filterUtils";
 
 const MovieList = () => {
     const [isMoreMovies, setIsMoreMovies] = useState<boolean>(false);
@@ -26,7 +26,7 @@ const MovieList = () => {
         variables: {
             skip: 0,
             limit: LIMIT,
-            filters: getFiltersAsInput(filters),
+            filters: filters,
             sortOption: sortOption,
             search: search,
         },
@@ -90,7 +90,7 @@ const MovieList = () => {
             }
         >
             <p className="px-3 py-1 text-center text-lg font-bold">
-                Total Hits: {totalHits}
+                Total Hits: {formatNumber(totalHits)}
             </p>
             <ul className="flex flex-wrap justify-center">
                 {loading

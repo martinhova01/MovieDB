@@ -2,7 +2,7 @@ import { Button } from "@/shadcn/components/ui/button";
 import { Card, CardContent } from "@/shadcn/components/ui/card";
 import Ratings from "@/shadcn/components/ui/rating";
 import { usernameVar } from "@/utils/cache";
-import { formatDate } from "@/utils/reviewUtil";
+import { formatDate } from "@/utils/formatUtil";
 import { useApolloClient, useMutation, useReactiveVar } from "@apollo/client";
 import { Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";

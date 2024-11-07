@@ -23,8 +23,11 @@ const SortSection: React.FC = () => {
 
     return (
         <AccordionItem value={`Sort item`}>
-            <AccordionTrigger>
-                Sort by ({getSortOptionDisplayName(sortOption)})
+            <AccordionTrigger className="justify-start">
+                Sort by&nbsp;
+                <span className="opacity-60">
+                    ({getSortOptionDisplayName(sortOption)})
+                </span>
             </AccordionTrigger>
             <AccordionContent>
                 <RadioGroup value={sortOption} onValueChange={updateSortOption}>

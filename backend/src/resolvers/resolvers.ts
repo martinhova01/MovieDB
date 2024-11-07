@@ -98,7 +98,12 @@ const resolvers = {
                                 if (appliedFilters) {
                                     filters = {
                                         ...appliedFilters,
-                                        Genre: [...appliedFilters.Genre, genre],
+                                        Genre: [
+                                            ...new Set([
+                                                ...appliedFilters.Genre,
+                                                genre,
+                                            ]),
+                                        ],
                                     };
                                 } else {
                                     filters = {
@@ -145,16 +150,16 @@ const resolvers = {
                     Promise.all(
                         decades
                             .sort((a, b) => b - a)
-                            .map(async (d) => {
+                            .map(async (decade) => {
                                 let filters: FiltersInput;
                                 if (appliedFilters) {
                                     filters = {
                                         ...appliedFilters,
-                                        Decade: [d.toString() + "s"],
+                                        Decade: [decade.toString() + "s"],
                                     };
                                 } else {
                                     filters = {
-                                        Decade: [d.toString() + "s"],
+                                        Decade: [decade.toString() + "s"],
                                         Rating: [],
                                         Genre: [],
                                         Status: [],
@@ -165,7 +170,7 @@ const resolvers = {
                                 const hits = await MovieModel.countDocuments(
                                     createFilterAndSearch(filters, search)
                                 );
-                                return { name: d.toString() + "s", hits };
+                                return { name: decade.toString() + "s", hits };
                             })
                     )
             );

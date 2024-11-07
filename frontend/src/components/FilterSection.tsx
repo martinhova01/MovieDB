@@ -1,16 +1,17 @@
-import { Filter, Filters } from "@/types/__generated__/types";
+import { Filter, FiltersInput } from "@/types/__generated__/types";
 import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
 } from "../shadcn/components/ui/accordion";
 import { Checkbox } from "../shadcn/components/ui/checkbox";
+import { formatNumber } from "@/utils/formatUtil";
 
 interface FilterSectionInterface {
-    category: keyof Filters;
+    category: keyof FiltersInput;
     all_filters: Filter[];
-    applied_filters: Filter[];
-    updateFilters: (category: keyof Filters, filter: Filter) => void;
+    applied_filters: string[];
+    updateFilters: (category: keyof FiltersInput, filter: string) => void;
 }
 
 const FilterSection: React.FC<FilterSectionInterface> = ({
@@ -21,11 +22,15 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
 }) => {
     return (
         <AccordionItem value={`${category} item`}>
-            <AccordionTrigger>
-                {category}
-                {applied_filters.length
-                    ? ` (${applied_filters.length} applied)`
-                    : ""}
+            <AccordionTrigger className="justify-start">
+                {category}&nbsp;
+                {applied_filters.length ? (
+                    <span className="opacity-60">
+                        ({applied_filters.length} applied)
+                    </span>
+                ) : (
+                    ""
+                )}
             </AccordionTrigger>
             <AccordionContent>
                 <ul>
@@ -38,18 +43,21 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
                                 >
                                     <Checkbox
                                         id={filter.name}
-                                        checked={applied_filters
-                                            .map((e) => e.name)
-                                            .includes(filter.name)}
+                                        checked={applied_filters.includes(
+                                            filter.name
+                                        )}
                                         onCheckedChange={() =>
-                                            updateFilters(category, filter)
+                                            updateFilters(category, filter.name)
                                         }
                                     />
                                     <label
                                         htmlFor={filter.name}
                                         className="text-sm font-medium leading-none hover:cursor-pointer"
                                     >
-                                        {filter.name} ({filter.hits})
+                                        {filter.name}{" "}
+                                        <span className="opacity-60">
+                                            ({formatNumber(filter.hits)})
+                                        </span>
                                     </label>
                                 </li>
                             )

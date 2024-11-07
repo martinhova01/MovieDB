@@ -1,4 +1,4 @@
-import { Filters, SortingType } from "@/types/__generated__/types";
+import { FiltersInput, SortingType } from "@/types/__generated__/types";
 import { makeVar } from "@apollo/client";
 import { defaultSortOption } from "./sortOptionUtil";
 
@@ -7,7 +7,7 @@ export const sortOptionVar = makeVar<SortingType>(
 );
 
 const storedFilters = sessionStorage.getItem("filters");
-const initialFilters: Filters = storedFilters
+const initialFilters: FiltersInput = storedFilters
     ? JSON.parse(storedFilters)
     : {
           Genre: [],
@@ -16,7 +16,7 @@ const initialFilters: Filters = storedFilters
           Status: [],
           Runtime: [],
       };
-export const filtersVar = makeVar<Filters>(initialFilters);
+export const filtersVar = makeVar<FiltersInput>(initialFilters);
 
 export const searchVar = makeVar<string>(
     sessionStorage.getItem("search") ?? ""

@@ -19,11 +19,10 @@ import {
     totalHitsVar,
 } from "@/utils/cache";
 import { useQuery, useReactiveVar } from "@apollo/client";
-import { Filter, Filters } from "@/types/__generated__/types";
+import { Filter, Filters, FiltersInput } from "@/types/__generated__/types";
 import { GET_FILTERS } from "@/api/queries";
 import { defaultSortOption } from "@/utils/sortOptionUtil";
 import Loader from "./Loader";
-import { getFiltersAsInput } from "@/utils/filterUtils";
 
 const SortAndFilterPanel: React.FC = () => {
     const filters = useReactiveVar(filtersVar);
@@ -31,35 +30,43 @@ const SortAndFilterPanel: React.FC = () => {
 
     const { data, loading, error } = useQuery(GET_FILTERS, {
         variables: {
-            appliedFilters: getFiltersAsInput(filters),
+            appliedFilters: filters,
             search: search,
         },
         onCompleted: (data) => {
-            const hits = data.filters.Status.map((s: Filter) => s.hits).reduce(
-                (acc, curr) => acc + curr
-            );
+            let hits: number;
+            if (filters.Status.length == 0) {
+                hits = data.filters.Status.map((s: Filter) => s.hits).reduce(
+                    (acc, curr) => acc + curr
+                );
+            } else {
+                hits = data.filters.Status.filter((s: Filter) =>
+                    filters.Status.includes(s.name)
+                )
+                    .map((s: Filter) => s.hits)
+                    .reduce((acc, curr) => acc + curr);
+            }
             totalHitsVar(hits);
         },
     });
 
-    const updateFilters = (category: keyof Filters, filter: Filter) => {
-        //category will never be "__typename" so we just ignore that case.
-        if (category === "__typename") {
-            return;
-        }
-        let newFilters: Filter[] = [...(filters[category] || [])];
-        if (newFilters.map((e) => e.name).includes(filter.name)) {
-            newFilters = newFilters.filter((e) => e.name != filter.name);
+    const updateFilters = (category: keyof FiltersInput, filter: string) => {
+        let newFilters: string[] = [...(filters[category] || [])];
+        if (newFilters.includes(filter)) {
+            newFilters = newFilters.filter((e) => e != filter);
         } else {
             newFilters.push(filter);
         }
-        const updatedFilters: Filters = { ...filters, [category]: newFilters };
+        const updatedFilters: FiltersInput = {
+            ...filters,
+            [category]: newFilters,
+        };
         sessionStorage.setItem("filters", JSON.stringify(updatedFilters));
         filtersVar(updatedFilters);
     };
 
     const clearAll = () => {
-        const emptyFilters: Filters = {
+        const emptyFilters: FiltersInput = {
             Genre: [],
             Rating: [],
             Decade: [],
@@ -79,15 +86,15 @@ const SortAndFilterPanel: React.FC = () => {
                 if (category === "__typename" || filter_list === "Filters") {
                     return null;
                 }
-                const filter_names = filter_list as Filter[];
-                const applied_filters = filters[category as keyof Filters] as
-                    | Filter[]
-                    | undefined;
+                const all_filters = filter_list as Filter[];
+                const applied_filters = filters[
+                    category as keyof FiltersInput
+                ] as string[] | undefined;
                 return (
                     <FilterSection
                         key={category}
-                        category={category as keyof Filters}
-                        all_filters={filter_names}
+                        category={category as keyof FiltersInput}
+                        all_filters={all_filters}
                         applied_filters={applied_filters ?? []}
                         updateFilters={updateFilters}
                     />
