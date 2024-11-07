@@ -7,6 +7,7 @@ import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
 import { FiltersInput } from "@/types/__generated__/types";
 import { GET_MOVIES } from "@/api/queries";
 import Loader from "./Loader";
+import MovieCardSkeleton from "./MovieCardSkeleton";
 
 const MovieList = () => {
     const [isMoreMovies, setIsMoreMovies] = useState<boolean>(false);
@@ -33,10 +34,7 @@ const MovieList = () => {
         },
     });
 
-    const movies = useMemo(
-        () => data?.movies as MoviePoster[] | undefined,
-        [data]
-    );
+    const movies = useMemo(() => data?.movies as MoviePoster[], [data]);
 
     const handleLoadMore = () => {
         fetchMore({ variables: { skip: movies?.length } }).then(
@@ -46,17 +44,7 @@ const MovieList = () => {
         );
     };
 
-    if (loading) {
-        return (
-            <section className="mt-2 w-dvw text-center">
-                <Loader size="lg">
-                    <h1 className="text-2xl">Loading...</h1>
-                </Loader>
-            </section>
-        );
-    }
-
-    if (error || !movies) {
+    if (error || (!loading && !movies)) {
         return (
             <section className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">Something went wrong!</h1>
@@ -65,7 +53,7 @@ const MovieList = () => {
         );
     }
 
-    if (movies.length === 0) {
+    if (!loading && movies.length === 0) {
         return (
             <section className="text-center">
                 <h1 className="text-2xl">No movies found</h1>
@@ -73,6 +61,8 @@ const MovieList = () => {
             </section>
         );
     }
+
+    const listClass = "m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]";
 
     return (
         <InfiniteScroll
@@ -91,14 +81,17 @@ const MovieList = () => {
             }
         >
             <ul className="flex flex-wrap justify-center">
-                {movies.map((movie) => (
-                    <li
-                        key={movie._id}
-                        className="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
-                    >
-                        <MovieCard movie={movie} />
-                    </li>
-                ))}
+                {loading
+                    ? Array.from({ length: LIMIT }, (_, i) => i).map((i) => (
+                          <li key={i} className={listClass}>
+                              <MovieCardSkeleton />
+                          </li>
+                      ))
+                    : movies.map((movie) => (
+                          <li key={movie._id} className={listClass}>
+                              <MovieCard movie={movie} />
+                          </li>
+                      ))}
             </ul>
         </InfiniteScroll>
     );
