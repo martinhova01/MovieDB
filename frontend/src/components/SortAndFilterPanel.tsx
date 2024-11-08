@@ -23,30 +23,40 @@ import { Filter, Filters, FiltersInput } from "@/types/__generated__/types";
 import { GET_FILTERS } from "@/api/queries";
 import { defaultSortOption } from "@/utils/sortOptionUtil";
 import Loader from "./Loader";
+import { useState } from "react";
 
 const SortAndFilterPanel: React.FC = () => {
     const filters = useReactiveVar(filtersVar);
     const search = useReactiveVar(searchVar);
+    const [fetchedFilters, setFetchedFilters] = useState<Filters>({
+        Genre: [],
+        Rating: [],
+        Decade: [],
+        Status: [],
+        Runtime: [],
+    });
 
-    const { data, loading, error } = useQuery(GET_FILTERS, {
+    const { loading, error } = useQuery(GET_FILTERS, {
         variables: {
             appliedFilters: filters,
             search: search,
         },
         onCompleted: (data) => {
             let hits: number;
-            if (filters.Status.length == 0) {
+            if (filtersVar().Status.length == 0) {
                 hits = data.filters.Status.map((s: Filter) => s.hits).reduce(
                     (acc, curr) => acc + curr
                 );
             } else {
                 hits = data.filters.Status.filter((s: Filter) =>
-                    filters.Status.includes(s.name)
+                    filtersVar().Status.includes(s.name)
                 )
                     .map((s: Filter) => s.hits)
                     .reduce((acc, curr) => acc + curr);
             }
             totalHitsVar(hits);
+
+            setFetchedFilters(data.filters);
         },
     });
 
@@ -81,26 +91,25 @@ const SortAndFilterPanel: React.FC = () => {
     };
 
     const renderFilterSections = () => {
-        return Object.entries(data?.filters as Filters).map(
-            ([category, filter_list]) => {
-                if (category === "__typename" || filter_list === "Filters") {
-                    return null;
-                }
-                const all_filters = filter_list as Filter[];
-                const applied_filters = filters[
-                    category as keyof FiltersInput
-                ] as string[] | undefined;
-                return (
-                    <FilterSection
-                        key={category}
-                        category={category as keyof FiltersInput}
-                        all_filters={all_filters}
-                        applied_filters={applied_filters ?? []}
-                        updateFilters={updateFilters}
-                    />
-                );
+        return Object.entries(fetchedFilters).map(([category, filter_list]) => {
+            if (category === "__typename" || filter_list === "Filters") {
+                return null;
             }
-        );
+            const all_filters = filter_list as Filter[];
+            const applied_filters = filters[category as keyof FiltersInput] as
+                | string[]
+                | undefined;
+            return (
+                <FilterSection
+                    key={category}
+                    category={category as keyof FiltersInput}
+                    all_filters={all_filters}
+                    applied_filters={applied_filters ?? []}
+                    updateFilters={updateFilters}
+                    loading={loading}
+                />
+            );
+        });
     };
 
     return (
@@ -125,16 +134,15 @@ const SortAndFilterPanel: React.FC = () => {
                         <p>Loading...</p>
                     </Loader>
                 )}
-                {error && (
+                {error ? (
                     <section className="text-center">
                         <p>Something went wrong!</p>
                         <p className="text-primary">Try to refresh</p>
                     </section>
-                )}
-                {!loading && !error && data?.filters && (
+                ) : (
                     <section>
                         <Accordion type="single" collapsible className="w-full">
-                            <SortSection />
+                            <SortSection loading={loading} />
                             {renderFilterSections()}
                         </Accordion>
                         <SheetFooter className="mt-5">

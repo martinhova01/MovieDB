@@ -12,6 +12,7 @@ interface FilterSectionInterface {
     all_filters: Filter[];
     applied_filters: string[];
     updateFilters: (category: keyof FiltersInput, filter: string) => void;
+    loading: boolean;
 }
 
 const FilterSection: React.FC<FilterSectionInterface> = ({
@@ -19,18 +20,21 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
     all_filters,
     applied_filters,
     updateFilters,
+    loading,
 }) => {
     return (
         <AccordionItem value={`${category} item`}>
-            <AccordionTrigger className="justify-start">
-                {category}&nbsp;
-                {applied_filters.length ? (
-                    <span className="opacity-60">
-                        ({applied_filters.length} applied)
-                    </span>
-                ) : (
-                    ""
-                )}
+            <AccordionTrigger>
+                <p>
+                    {category}&nbsp;
+                    {applied_filters.length ? (
+                        <span className="opacity-60">
+                            ({applied_filters.length} applied)
+                        </span>
+                    ) : (
+                        ""
+                    )}
+                </p>
             </AccordionTrigger>
             <AccordionContent>
                 <ul>
@@ -46,6 +50,7 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
                                         checked={applied_filters.includes(
                                             filter.name
                                         )}
+                                        disabled={loading}
                                         onCheckedChange={() =>
                                             updateFilters(category, filter.name)
                                         }

@@ -13,7 +13,11 @@ import { useReactiveVar } from "@apollo/client";
 import { getSortOptionDisplayName } from "@/utils/sortOptionUtil";
 import { SortingType } from "@/types/__generated__/types";
 
-const SortSection: React.FC = () => {
+interface SortSectionInterface {
+    loading: boolean;
+}
+
+const SortSection: React.FC<SortSectionInterface> = ({ loading }) => {
     const sortOption = useReactiveVar(sortOptionVar);
 
     const updateSortOption = (option: SortingType) => {
@@ -23,11 +27,13 @@ const SortSection: React.FC = () => {
 
     return (
         <AccordionItem value={`Sort item`}>
-            <AccordionTrigger className="justify-start">
-                Sort by&nbsp;
-                <span className="opacity-60">
-                    ({getSortOptionDisplayName(sortOption)})
-                </span>
+            <AccordionTrigger>
+                <p>
+                    Sort by&nbsp;
+                    <span className="opacity-60">
+                        ({getSortOptionDisplayName(sortOption)})
+                    </span>
+                </p>
             </AccordionTrigger>
             <AccordionContent>
                 <RadioGroup value={sortOption} onValueChange={updateSortOption}>
@@ -37,7 +43,11 @@ const SortSection: React.FC = () => {
                                 key={option}
                                 className="flex items-center space-x-2"
                             >
-                                <RadioGroupItem value={option} id={option} />
+                                <RadioGroupItem
+                                    value={option}
+                                    id={option}
+                                    disabled={loading}
+                                />
                                 <Label
                                     htmlFor={option}
                                     className="hover:cursor-pointer"
