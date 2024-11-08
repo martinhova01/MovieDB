@@ -1,9 +1,11 @@
 import { searchVar } from "@/utils/cache";
 import { Input } from "@/shadcn/components/ui/input";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
 const SearchBar: React.FC = () => {
+    const searchInputRef = useRef<HTMLInputElement>(null);
+
     const handleSearch = (searchString: string) => {
         searchString = searchString.trim();
         sessionStorage.setItem("search", searchString);
@@ -26,6 +28,13 @@ const SearchBar: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        const search = sessionStorage.getItem("search");
+        if (search && searchInputRef.current) {
+            searchInputRef.current.value = search;
+        }
+    }, []);
+
     return (
         <section className="flex flex-grow flex-row gap-2">
             <Input
@@ -35,6 +44,7 @@ const SearchBar: React.FC = () => {
                 placeholder="Search..."
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
+                ref={searchInputRef}
                 aria-label="Search for movies"
             />
         </section>
