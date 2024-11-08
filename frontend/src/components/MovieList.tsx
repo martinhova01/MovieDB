@@ -34,7 +34,10 @@ const MovieList = () => {
         },
     });
 
-    const movies = useMemo(() => data?.movies as MoviePoster[], [data]);
+    const movies = useMemo(
+        () => data?.movies as MoviePoster[] | undefined,
+        [data]
+    );
 
     const handleLoadMore = () => {
         fetchMore({ variables: { skip: movies?.length } }).then(
@@ -53,7 +56,7 @@ const MovieList = () => {
         );
     }
 
-    if (!loading && movies.length === 0) {
+    if (!loading && movies?.length === 0) {
         return (
             <section className="text-center">
                 <h1 className="text-2xl">No movies found</h1>
@@ -87,7 +90,7 @@ const MovieList = () => {
                               <MovieCardSkeleton />
                           </li>
                       ))
-                    : movies.map((movie) => (
+                    : movies?.map((movie) => (
                           <li key={movie._id} className={listClass}>
                               <MovieCard movie={movie} />
                           </li>
