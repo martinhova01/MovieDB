@@ -33,7 +33,7 @@ function MovieDetailPage() {
         return (
             <main className="mt-2 w-dvw text-center">
                 <Loader size="lg">
-                    <h1 className="text-2xl">Loading...</h1>
+                    <p className="text-2xl">Loading...</p>
                 </Loader>
             </main>
         );

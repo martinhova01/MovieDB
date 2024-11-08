@@ -23,12 +23,21 @@ const Loader = ({
             aria-live="polite"
             {...props}
         >
-            <div
-                className={cn(
-                    "animate-spin rounded-full border-4 border-primary border-t-background",
-                    sizeClass
-                )}
-            />
+            <svg
+                viewBox="0 0 800 800"
+                xmlns="http://www.w3.org/2000/svg"
+                className={cn("animate-spin stroke-primary", sizeClass)}
+            >
+                <circle
+                    cx="400"
+                    cy="400"
+                    fill="none"
+                    r="350"
+                    strokeWidth="64"
+                    strokeDasharray="1648,550"
+                    strokeLinecap="round"
+                />
+            </svg>
             {children ? children : <span className="sr-only">Loading...</span>}
         </div>
     );
