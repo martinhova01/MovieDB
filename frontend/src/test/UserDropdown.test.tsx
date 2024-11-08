@@ -1,26 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
-import Navbar from "@/components/Navbar";
 import UserDropdown from "@/components/UserDropdown";
 
 describe("UserDropdown", () => {
     it("successfully renders UserDropdown", async () => {
-        render(
-            <BrowserRouter>
-                <UserDropdown />
-            </BrowserRouter>
-        );
+        render(<UserDropdown />);
         expect(screen.getByText("Guest")).toBeInTheDocument();
     });
 
     it("successfully opens UserDropdown", async () => {
-        render(
-            <BrowserRouter>
-                <UserDropdown />
-            </BrowserRouter>
-        );
+        render(<UserDropdown />);
         await userEvent.click(screen.getByText("Guest"));
         expect(screen.getByText("My Account")).toBeInTheDocument();
         expect(screen.getAllByText("Guest")).toHaveLength(2); // In dropdown button and menu
@@ -29,33 +19,21 @@ describe("UserDropdown", () => {
     });
 
     it("successfully closes dropdown on sign out as guest", async () => {
-        render(
-            <BrowserRouter>
-                <UserDropdown />
-            </BrowserRouter>
-        );
+        render(<UserDropdown />);
         await userEvent.click(screen.getByText("Guest"));
         await userEvent.click(screen.getByText("Sign out"));
         expect(screen.queryByText("My Account")).toBeNull();
     });
 
     it("successfully opens dialog on change username", async () => {
-        render(
-            <BrowserRouter>
-                <UserDropdown />
-            </BrowserRouter>
-        );
+        render(<UserDropdown />);
         await userEvent.click(screen.getByText("Guest"));
         await userEvent.click(screen.getByText("Change username"));
         expect(screen.getByText("New username")).toBeInTheDocument();
     });
 
     it("successfully changes username and signs out", async () => {
-        render(
-            <BrowserRouter>
-                <UserDropdown />
-            </BrowserRouter>
-        );
+        render(<UserDropdown />);
         await userEvent.click(screen.getByText("Guest"));
         await userEvent.click(screen.getByText("Change username"));
 
@@ -75,11 +53,7 @@ describe("UserDropdown", () => {
     });
 
     it("successfully handles enter click for username change", async () => {
-        render(
-            <BrowserRouter>
-                <UserDropdown />
-            </BrowserRouter>
-        );
+        render(<UserDropdown />);
         await userEvent.click(screen.getByText("Guest"));
         await userEvent.click(screen.getByText("Change username"));
 
@@ -94,11 +68,7 @@ describe("UserDropdown", () => {
     });
 
     it("successfully handles empty string as new username", async () => {
-        render(
-            <BrowserRouter>
-                <Navbar />
-            </BrowserRouter>
-        );
+        render(<UserDropdown />);
         await userEvent.click(screen.getByText("Guest"));
         await userEvent.click(screen.getByText("Change username"));
 
@@ -110,11 +80,7 @@ describe("UserDropdown", () => {
     });
 
     it("successfully clears new username string", async () => {
-        render(
-            <BrowserRouter>
-                <Navbar />
-            </BrowserRouter>
-        );
+        render(<UserDropdown />);
         await userEvent.click(screen.getByText("Guest"));
         await userEvent.click(screen.getByText("Change username"));
 

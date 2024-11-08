@@ -1,15 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import Navbar from "@/components/Navbar";
 
 describe("Navbar", () => {
     it("successfully renders Navbar", async () => {
         render(
-            <BrowserRouter>
+            <MemoryRouter>
                 <Navbar />
-            </BrowserRouter>
+            </MemoryRouter>
         );
 
         expect(screen.getByAltText("logo")).toBeInTheDocument();
@@ -30,9 +30,9 @@ describe("Navbar", () => {
 
     it("successfully shows 'My Reviews' only for logged in users (not Guests)", async () => {
         render(
-            <BrowserRouter>
+            <MemoryRouter>
                 <Navbar />
-            </BrowserRouter>
+            </MemoryRouter>
         );
 
         expect(screen.queryByText("My Reviews")).toBeNull();

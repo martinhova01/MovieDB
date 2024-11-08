@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { NavbarProps } from "@/components/Navbar";
 import NavbarOverlay from "@/components/NavbarOverlay";
@@ -13,9 +13,9 @@ describe("NavbarOverlay", () => {
             { name: "Contact", href: "/contact" },
         ];
         render(
-            <BrowserRouter>
+            <MemoryRouter>
                 <NavbarOverlay links={mockLinks} />
-            </BrowserRouter>
+            </MemoryRouter>
         );
 
         expect(screen.getByText("Toggle navigation menu")).toBeInTheDocument();
@@ -45,9 +45,9 @@ describe("NavbarOverlay", () => {
     it("successfully renders NavbarOverlay without links", async () => {
         const mockLinks: NavbarProps = [];
         render(
-            <BrowserRouter>
+            <MemoryRouter>
                 <NavbarOverlay links={mockLinks} />
-            </BrowserRouter>
+            </MemoryRouter>
         );
         expect(screen.getByText("Toggle navigation menu")).toBeInTheDocument();
         await userEvent.click(screen.getByText("Toggle navigation menu"));
