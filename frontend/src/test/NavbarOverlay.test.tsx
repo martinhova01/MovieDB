@@ -17,7 +17,7 @@ describe("NavbarOverlay", () => {
                 <NavbarOverlay links={mockLinks} />
             </BrowserRouter>
         );
-        
+
         expect(screen.getByText("Toggle navigation menu")).toBeInTheDocument();
 
         // Opens sheeet
@@ -26,9 +26,11 @@ describe("NavbarOverlay", () => {
         expect(screen.getByText("About")).toBeInTheDocument();
         expect(screen.getByText("Contact")).toBeInTheDocument();
 
-        mockLinks.forEach(link => {
+        mockLinks.forEach((link) => {
             expect(screen.getByText(link.name)).toBeInTheDocument();
-            expect(screen.getByRole("link", { name: link.name })).toHaveAttribute("href", link.href);
+            expect(
+                screen.getByRole("link", { name: link.name })
+            ).toHaveAttribute("href", link.href);
         });
 
         // Closes sheet
