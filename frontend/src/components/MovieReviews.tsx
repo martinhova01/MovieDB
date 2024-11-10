@@ -39,31 +39,32 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
 
     const handleSubmitReview = async (e: React.FormEvent) => {
         e.preventDefault();
-
-        const response = await addReview({
-            variables: {
-                movieId: movie._id,
-                username: username,
-                rating: rating,
-                comment: comment.trim(),
-            },
-            refetchQueries: [
-                {
-                    query: GET_LATEST_REVIEWS,
-                    variables: { skip: 0, limit: 20 },
+        try {
+            const response = await addReview({
+                variables: {
+                    movieId: movie._id,
+                    username: username,
+                    rating: rating,
+                    comment: comment.trim(),
                 },
-                {
-                    query: GET_USER_REVIEWS,
-                    variables: { username: username, skip: 0, limit: 20 },
-                },
-            ],
-        });
+                refetchQueries: [
+                    {
+                        query: GET_LATEST_REVIEWS,
+                        variables: { skip: 0, limit: 20 },
+                    },
+                    {
+                        query: GET_USER_REVIEWS,
+                        variables: { username: username, skip: 0, limit: 20 },
+                    },
+                ],
+            });
 
-        if (response.data?.addReview) {
-            setReviews(response.data.addReview.reviews as Review[]);
-            setRating(0);
-            setComment("");
-        }
+            if (response.data?.addReview) {
+                setReviews(response.data.addReview.reviews as Review[]);
+                setRating(0);
+                setComment("");
+            }
+        } catch (error) {}
     };
 
     const handleDeleteReview = (deletedReview: Review) => {
