@@ -7,15 +7,15 @@ import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 const mockMovie = all_movies[18]; // Joker
 
 describe("MovieCardDetailed", () => {
-    it("displays movie title, release year, runtime and genres", async () => {
+    it("displays movie title, release year, runtime and genres", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
-        expect(await screen.findByText("Joker")).toBeInTheDocument();
+        expect(screen.getByText("Joker")).toBeInTheDocument();
         expect(
-            await screen.findByText("2019 • 2h 2m • Crime, Thriller, Drama")
+            screen.getByText("2019 • 2h 2m • Crime, Thriller, Drama")
         ).toBeInTheDocument();
     });
 
-    it("does not display genres if there are none", async () => {
+    it("does not display genres if there are none", () => {
         render(
             <MovieCardDetailed
                 movie={{
@@ -24,18 +24,18 @@ describe("MovieCardDetailed", () => {
                 }}
             />
         );
-        expect(await screen.findByText("2019 • 2h 2m")).toBeInTheDocument();
+        expect(screen.getByText("2019 • 2h 2m")).toBeInTheDocument();
     });
 
-    it("displays movie rating", async () => {
+    it("displays movie rating", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
-        expect(await screen.findByTitle("4.08")).toBeInTheDocument();
+        expect(screen.getByTitle("4.08")).toBeInTheDocument();
     });
 
-    it("displays movie poster", async () => {
+    it("displays movie poster", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
 
-        const poster = await screen.findByAltText("Poster of Joker");
+        const poster = screen.getByAltText("Poster of Joker");
         expect(poster).toBeInTheDocument();
 
         const expectedPosterUrl = getImageUrl(
@@ -46,7 +46,7 @@ describe("MovieCardDetailed", () => {
         expect(poster).toHaveAttribute("src", expectedPosterUrl);
     });
 
-    it("displays deafult poster when poster path is missing", async () => {
+    it("displays deafult poster when poster path is missing", () => {
         render(
             <MovieCardDetailed
                 movie={{
@@ -56,19 +56,17 @@ describe("MovieCardDetailed", () => {
             />
         );
 
-        const poster = await screen.findByAltText("Poster of Joker");
+        const poster = screen.getByAltText("Poster of Joker");
         expect(poster).toBeInTheDocument();
 
         const defaultPosterUrl = getImageUrl(ImageType.POSTER, null, "w500");
         expect(poster).toHaveAttribute("src", defaultPosterUrl);
     });
 
-    it("displays movie tagline and overview", async () => {
+    it("displays movie tagline and overview", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
-        expect(
-            await screen.findByText("Put on a happy face.")
-        ).toBeInTheDocument();
-        expect(await screen.findByText(mockMovie.overview)).toBeInTheDocument();
+        expect(screen.getByText("Put on a happy face.")).toBeInTheDocument();
+        expect(screen.getByText(mockMovie.overview)).toBeInTheDocument();
     });
 
     it("does not display movie tagline if it is missing", () => {
@@ -85,85 +83,41 @@ describe("MovieCardDetailed", () => {
         ).not.toBeInTheDocument();
     });
 
-    it("displays movie details", async () => {
+    it("displays movie details", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
-        expect(await screen.findByText("Released")).toBeInTheDocument();
-        expect(await screen.findByText("$55 000 000")).toBeInTheDocument();
-        expect(await screen.findByText("$1 074 458 282")).toBeInTheDocument();
+        expect(screen.getByText("Released")).toBeInTheDocument();
+        expect(screen.getByText("$55 000 000")).toBeInTheDocument();
+        expect(screen.getByText("$1 074 458 282")).toBeInTheDocument();
         expect(
-            await screen.findByText(
+            screen.getByText(
                 "Warner Bros. Pictures, Joint Effort, Village Roadshow Pictures, Bron Studios, DC Films"
             )
         ).toBeInTheDocument();
         expect(
-            await screen.findByText("Canada, United States of America")
+            screen.getByText("Canada, United States of America")
         ).toBeInTheDocument();
-        expect(await screen.findByText("English")).toBeInTheDocument();
+        expect(screen.getByText("English")).toBeInTheDocument();
     });
 
-    it("displays N/A if budget is 0", async () => {
+    it("displays N/A for missing fields", () => {
         render(
             <MovieCardDetailed
                 movie={{
                     ...mockMovie,
                     budget: 0,
-                }}
-            />
-        );
-        expect(await screen.findByText("N/A")).toBeInTheDocument();
-    });
-
-    it("displays N/A if revenue is 0", async () => {
-        render(
-            <MovieCardDetailed
-                movie={{
-                    ...mockMovie,
                     revenue: 0,
-                }}
-            />
-        );
-        expect(await screen.findByText("N/A")).toBeInTheDocument();
-    });
-
-    it("displays N/A if there are no production companies", async () => {
-        render(
-            <MovieCardDetailed
-                movie={{
-                    ...mockMovie,
                     production_companies: [],
-                }}
-            />
-        );
-        expect(await screen.findByText("N/A")).toBeInTheDocument();
-    });
-
-    it("displays N/A if there are no production countries", async () => {
-        render(
-            <MovieCardDetailed
-                movie={{
-                    ...mockMovie,
                     production_countries: [],
-                }}
-            />
-        );
-        expect(await screen.findByText("N/A")).toBeInTheDocument();
-    });
-
-    it("displays N/A if there are no spoken languages", async () => {
-        render(
-            <MovieCardDetailed
-                movie={{
-                    ...mockMovie,
                     spoken_languages: [],
                 }}
             />
         );
-        expect(await screen.findByText("N/A")).toBeInTheDocument();
+        expect(screen.getAllByText("N/A").length === 5).toBeTruthy();
     });
 
-    it("displays 'Visit Homepage' button with link", async () => {
+    it("displays 'Visit Homepage' button with link", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
-        const homepageButton = await screen.findByRole("link", {
+        const homepageButton = screen.getByRole("link", {
             name: "Visit Homepage",
         });
         expect(homepageButton).toBeInTheDocument();
@@ -185,29 +139,26 @@ describe("MovieCardDetailed", () => {
         expect(homepageButton).not.toBeInTheDocument();
     });
 
-    it("renders background image correctly", async () => {
+    it("renders background image correctly", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
 
         const backdropUrl = getImageUrl(
             ImageType.BACKDROP,
             mockMovie.backdrop_path
         );
-        const detailedMovieCard =
-            await screen.findByTestId("detailedMovieCard");
-        expect(detailedMovieCard).toHaveStyle(
+
+        expect(screen.getByTestId("detailedMovieCard")).toHaveStyle(
             `background-image: url(${backdropUrl})`
         );
     });
 
-    it("handles missing backdrop path", async () => {
+    it("handles missing backdrop path", () => {
         render(
             <MovieCardDetailed movie={{ ...mockMovie, backdrop_path: null }} />
         );
 
         const backdropUrl = getImageUrl(ImageType.BACKDROP, null);
-        const detailedMovieCard =
-            await screen.findByTestId("detailedMovieCard");
-        expect(detailedMovieCard).toHaveStyle(
+        expect(screen.getByTestId("detailedMovieCard")).toHaveStyle(
             `background-image: url(${backdropUrl})`
         );
     });
