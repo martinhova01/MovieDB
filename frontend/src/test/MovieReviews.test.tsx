@@ -5,6 +5,7 @@ import userEvent from "@testing-library/user-event";
 import MovieReviews from "../components/MovieReviews";
 import {
     ADD_REVIEW,
+    DELETE_REVIEW,
     GET_LATEST_REVIEWS,
     GET_USER_REVIEWS,
 } from "@/api/queries";
@@ -17,7 +18,7 @@ const mockMovie = {
     reviews: [
         {
             _id: "1",
-            username: "testuser1",
+            username: "testuser",
             rating: 4,
             comment: "Great movie!",
             date: new Date(),
@@ -56,6 +57,23 @@ const mockAddReviewMutation = {
                         date: new Date(),
                     },
                 ],
+            },
+        },
+    },
+};
+
+const mockDeleteReviewMutation = {
+    request: {
+        query: DELETE_REVIEW,
+        variables: { id: "1" },
+    },
+    result: {
+        data: {
+            deleteReview: {
+                _id: 475557,
+                vote_average: 4.0,
+                vote_count: 5,
+                reviews: [],
             },
         },
     },
@@ -109,7 +127,7 @@ describe("MovieReviews", () => {
         await waitFor(() => {
             expect(screen.getByText("Reviews")).toBeInTheDocument();
             expect(screen.getByText("Great movie!")).toBeInTheDocument();
-            expect(screen.getByText("testuser1")).toBeInTheDocument();
+            expect(screen.getByText("testuser")).toBeInTheDocument();
         });
     });
 
@@ -204,6 +222,37 @@ describe("MovieReviews", () => {
                 screen.getByText("Something went wrong when adding reviews")
             ).toBeInTheDocument();
             expect(screen.getByText("Try to refresh")).toBeInTheDocument();
+        });
+    });
+
+    it("deletes a review from the list", async () => {
+        usernameVar("testuser");
+
+        render(
+            <MockedProvider
+                mocks={[
+                    mockDeleteReviewMutation,
+                    mockLatestReviewsQuery,
+                    mockUserReviewsQuery,
+                ]}
+                addTypename={false}
+            >
+                <MovieReviews movie={mockMovie} />
+            </MockedProvider>
+        );
+
+        // Check initial reviews
+        expect(screen.getByText("Great movie!")).toBeInTheDocument();
+
+        // Mock delete by simulating `handleDeleteReview`
+        const deleteButton = screen.getByRole("button", { name: "Delete" });
+        await userEvent.click(deleteButton);
+
+        const continueButton = screen.getByRole("button", { name: "Continue" });
+        await userEvent.click(continueButton);
+
+        await waitFor(() => {
+            expect(screen.queryByText("Great movie!")).not.toBeInTheDocument();
         });
     });
 });
