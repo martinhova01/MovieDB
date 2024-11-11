@@ -183,32 +183,27 @@ const resolvers = {
             );
 
             const statusesPromise = Promise.all(
-                [
-                    "Released",
-                    "In Production",
-                    "Post Production",
-                    "Planned",
-                    "Rumored",
-                    "Canceled",
-                ].map(async (status) => {
-                    let filters: FiltersInput;
-                    if (appliedFilters) {
-                        filters = { ...appliedFilters, Status: [status] };
-                    } else {
-                        filters = {
-                            Decade: [],
-                            Rating: [],
-                            Genre: [],
-                            Status: [status],
-                            Runtime: [],
-                        };
-                    }
+                ["Released", "In Production", "Post Production", "Planned"].map(
+                    async (status) => {
+                        let filters: FiltersInput;
+                        if (appliedFilters) {
+                            filters = { ...appliedFilters, Status: [status] };
+                        } else {
+                            filters = {
+                                Decade: [],
+                                Rating: [],
+                                Genre: [],
+                                Status: [status],
+                                Runtime: [],
+                            };
+                        }
 
-                    const hits = await MovieModel.countDocuments(
-                        createFilterAndSearch(filters, search)
-                    );
-                    return { name: status, hits };
-                })
+                        const hits = await MovieModel.countDocuments(
+                            createFilterAndSearch(filters, search)
+                        );
+                        return { name: status, hits };
+                    }
+                )
             );
 
             const runtimesPromise = Promise.all(

@@ -129,11 +129,7 @@ const SortAndFilterPanel: React.FC = () => {
                         Use the tools below to refine your results
                     </SheetDescription>
                 </SheetHeader>
-                {loading && (
-                    <Loader>
-                        <p>Loading...</p>
-                    </Loader>
-                )}
+
                 {error ? (
                     <section className="text-center">
                         <p>Something went wrong!</p>
@@ -151,6 +147,11 @@ const SortAndFilterPanel: React.FC = () => {
                             </Button>
                         </SheetFooter>
                     </section>
+                )}
+                {loading && (
+                    <Loader size="sm">
+                        <p>Updating filters...</p>
+                    </Loader>
                 )}
             </SheetContent>
         </Sheet>
