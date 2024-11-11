@@ -64,7 +64,9 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                 setRating(0);
                 setComment("");
             }
-        } catch (error) {}
+        } catch {
+            // Intentionally empty - errors handled by addReviewError
+        }
     };
 
     const handleDeleteReview = (deletedReview: Review) => {
