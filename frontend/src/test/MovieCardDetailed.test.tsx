@@ -86,8 +86,8 @@ describe("MovieCardDetailed", () => {
     it("displays movie details", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
         expect(screen.getByText("Released")).toBeInTheDocument();
-        expect(screen.getByText("$55 000 000")).toBeInTheDocument();
-        expect(screen.getByText("$1 074 458 282")).toBeInTheDocument();
+        expect(screen.getByText("$55,000,000")).toBeInTheDocument();
+        expect(screen.getByText("$1,074,458,282")).toBeInTheDocument();
         expect(
             screen.getByText(
                 "Warner Bros. Pictures, Joint Effort, Village Roadshow Pictures, Bron Studios, DC Films"

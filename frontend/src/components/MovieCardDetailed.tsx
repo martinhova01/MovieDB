@@ -83,13 +83,13 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                                 {
                                     label: "Budget",
                                     value: movie.budget
-                                        ? `$${movie.budget.toLocaleString()}`
+                                        ? `${movie.budget.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 })}`
                                         : "N/A",
                                 },
                                 {
                                     label: "Revenue",
                                     value: movie.revenue
-                                        ? `$${movie.revenue.toLocaleString()}`
+                                        ? `${movie.revenue.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 })}`
                                         : "N/A",
                                 },
                                 {
