@@ -112,6 +112,10 @@ Our sorting, filtering and search logic is in the backend so that we can use the
 
 We initially had over 700.000 movies in our database, but we later found that most movies were inappropriate or just joke entries. Therefore, we decided to remove many movies based on some criteria. If certain fields are null for example, it doesn't make sense to have the entries: title, release_date, overview, and runtime all have to have a value. Other criteria get rid of a lot of the inappropriate movies: adult = false, imdb_id != null. Then, we only kept the top 10.000 most popular movies. This ensures that we have as many known movies as possible while avoiding most of the inappropriate/irrelevant movies that haven't been filtered out already.
 
+### Caching
+
+We use caching in order to reduce the number of queries to the backend and improve performance. This way we avoid fetching the same data multiple times. When it comes to the caching of reviews, we had to find a balance between having up-to-date data and minimizing the number of queries. We found that the best solution was to have the user refresh in order to be sure of having the latest updates. This allows us to update the cache manually when adding/deleting a review, reducing the number of queries considerably while still feeling intuitive for the user.
+
 ### Note
 
-At the moment we perform several queries in order to maintain concistency with regards to the reviews. As this is not the final deliverable we have not yet had time to optimize this. However, this is something we are aware of and in the process of fixing for the final deliverable. 
+At the moment we perform several queries in order to maintain concistency with regards to the reviews. As this is not the final deliverable we have not yet had time to optimize this. However, this is something we are aware of and in the process of fixing for the final deliverable.
