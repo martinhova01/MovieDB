@@ -2,13 +2,18 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import NavbarOverlay from "./NavbarOverlay";
 import UserDropdown from "./UserDropdown";
+import { useReactiveVar } from "@apollo/client";
+import { usernameVar } from "@/utils/cache";
 
 export type NavbarProps = { name: string; href: string }[];
 
 const Navbar = () => {
+    const username = useReactiveVar(usernameVar);
     const links: NavbarProps = [
         { name: "Activity", href: "/activity" },
-        { name: "My Reviews", href: "/myReviews" },
+        ...(username != "Guest"
+            ? [{ name: "My Reviews", href: "/myReviews" }]
+            : []),
     ];
 
     return (
