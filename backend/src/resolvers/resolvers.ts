@@ -99,8 +99,6 @@ const resolvers = {
                 "In Production",
                 "Post Production",
                 "Planned",
-                "Rumored",
-                "Canceled",
             ];
 
             const runtimes: string[] = [
