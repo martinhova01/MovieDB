@@ -58,7 +58,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                                     reviewRef.__ref != deletedRef
                             );
                         },
-                        userReviews(existingReviewRefs = []) {
+                        userReviews(
+                            existingReviewRefs = [],
+                            { storeFieldName }
+                        ) {
+                            if (!storeFieldName.includes(username)) {
+                                return existingReviewRefs;
+                            }
                             return existingReviewRefs.filter(
                                 (reviewRef: Reference) =>
                                     reviewRef.__ref != deletedRef

@@ -34,7 +34,10 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                     latestReviews(existingReviewRefs = []) {
                         return [newRef, ...existingReviewRefs];
                     },
-                    userReviews(existingReviewRefs = []) {
+                    userReviews(existingReviewRefs = [], { storeFieldName }) {
+                        if (!storeFieldName.includes(username)) {
+                            return existingReviewRefs;
+                        }
                         return [newRef, ...existingReviewRefs];
                     },
                 },
