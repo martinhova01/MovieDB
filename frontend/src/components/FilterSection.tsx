@@ -26,13 +26,12 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
         <AccordionItem value={`${category} item`}>
             <AccordionTrigger>
                 <p>
-                    {category}&nbsp;
-                    {applied_filters.length ? (
+                    {category}
+                    {applied_filters.length > 0 && (
                         <span className="opacity-60">
+                            {" "}
                             ({applied_filters.length} applied)
                         </span>
-                    ) : (
-                        ""
                     )}
                 </p>
             </AccordionTrigger>

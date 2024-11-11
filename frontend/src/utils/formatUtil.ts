@@ -9,9 +9,5 @@ export const formatDate = (date: Date) => {
 };
 
 export const formatNumber = (n: number) => {
-    return new Intl.NumberFormat("en-US", {
-        useGrouping: true,
-    })
-        .format(n)
-        .replace(/,/g, " ");
+    return n.toLocaleString("no-NO");
 };

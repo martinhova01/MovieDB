@@ -88,12 +88,19 @@ const resolvers = {
                 search?: string;
             }
         ) => {
+            const hitsThisQuery = await MovieModel.countDocuments(
+                createFilterAndSearch(appliedFilters, search)
+            );
             const genresPromise = MovieModel.distinct("genres").then(
                 (genreStrings) =>
                     Promise.all(
                         genreStrings
                             .filter((genre) => genre != null)
                             .map(async (genre) => {
+                                if (appliedFilters.Genre.includes(genre)) {
+                                    return { name: genre, hits: hitsThisQuery };
+                                }
+
                                 let filters: FiltersInput;
                                 if (appliedFilters) {
                                     filters = {

@@ -42,19 +42,19 @@ const SortAndFilterPanel: React.FC = () => {
             search: search,
         },
         onCompleted: (data) => {
-            let hits: number;
+            let totalHits: number;
             if (filtersVar().Status.length == 0) {
-                hits = data.filters.Status.map((s: Filter) => s.hits).reduce(
-                    (acc, curr) => acc + curr
-                );
+                totalHits = data.filters.Status.map(
+                    (s: Filter) => s.hits
+                ).reduce((acc, curr) => acc + curr);
             } else {
-                hits = data.filters.Status.filter((s: Filter) =>
+                totalHits = data.filters.Status.filter((s: Filter) =>
                     filtersVar().Status.includes(s.name)
                 )
                     .map((s: Filter) => s.hits)
                     .reduce((acc, curr) => acc + curr);
             }
-            totalHitsVar(hits);
+            totalHitsVar(totalHits);
 
             setFetchedFilters(data.filters);
         },

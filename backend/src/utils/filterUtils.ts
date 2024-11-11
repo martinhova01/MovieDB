@@ -73,7 +73,7 @@ const createFilterForRuntime = (selectedRuntimes: string[]) => {
     return {};
 };
 
-const createFilters = (filters: FiltersInput) => {
+const createFilters = (filters: FiltersInput | undefined) => {
     if (filters == undefined) {
         return [];
     }
@@ -86,7 +86,7 @@ const createFilters = (filters: FiltersInput) => {
     ].filter((condition) => Object.keys(condition).length > 0);
 };
 
-const createSearch = (search: string) => {
+const createSearch = (search: string | undefined) => {
     if (search == undefined || search == "") {
         return {};
     }

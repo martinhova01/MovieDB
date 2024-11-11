@@ -29,7 +29,7 @@ const SortSection: React.FC<SortSectionInterface> = ({ loading }) => {
         <AccordionItem value={`Sort item`}>
             <AccordionTrigger>
                 <p>
-                    Sort by&nbsp;
+                    Sort by{" "}
                     <span className="opacity-60">
                         ({getSortOptionDisplayName(sortOption)})
                     </span>
