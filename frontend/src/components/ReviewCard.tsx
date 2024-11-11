@@ -21,6 +21,7 @@ import { DELETE_REVIEW } from "../api/queries";
 import { Review } from "@/types/__generated__/types";
 import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 import Loader from "./Loader";
+import { toast } from "sonner";
 
 interface ReviewCardProps {
     review: Review;
@@ -33,62 +34,68 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 }) => {
     const username = useReactiveVar(usernameVar);
 
-    const [deleteReview, { loading, error: deleteReviewError }] = useMutation(
-        DELETE_REVIEW,
-        {
-            update(cache, { data }) {
-                if (!data?.deleteReview) return;
-                const deletedRef: string = `Review:${data.deleteReview._id}`;
-                cache.modify({
-                    id: `Movie:${data.deleteReview.movie._id}`,
-                    fields: {
-                        reviews(existingReviewRefs = []) {
-                            return existingReviewRefs.filter(
-                                (reviewRef: Reference) =>
-                                    reviewRef.__ref != deletedRef
-                            );
-                        },
+    const [deleteReview, { loading }] = useMutation(DELETE_REVIEW, {
+        update(cache, { data }) {
+            if (!data?.deleteReview) return;
+            const deletedRef: string = `Review:${data.deleteReview._id}`;
+            cache.modify({
+                id: `Movie:${data.deleteReview.movie._id}`,
+                fields: {
+                    reviews(existingReviewRefs = []) {
+                        return existingReviewRefs.filter(
+                            (reviewRef: Reference) =>
+                                reviewRef.__ref != deletedRef
+                        );
                     },
-                });
-                cache.modify({
-                    fields: {
-                        latestReviews(existingReviewRefs = []) {
-                            return existingReviewRefs.filter(
-                                (reviewRef: Reference) =>
-                                    reviewRef.__ref != deletedRef
-                            );
-                        },
-                        userReviews(
-                            existingReviewRefs = [],
-                            { storeFieldName }
-                        ) {
-                            if (!storeFieldName.includes(username)) {
-                                return existingReviewRefs;
-                            }
-                            return existingReviewRefs.filter(
-                                (reviewRef: Reference) =>
-                                    reviewRef.__ref != deletedRef
-                            );
-                        },
+                },
+            });
+            cache.modify({
+                fields: {
+                    latestReviews(existingReviewRefs = []) {
+                        return existingReviewRefs.filter(
+                            (reviewRef: Reference) =>
+                                reviewRef.__ref != deletedRef
+                        );
                     },
-                });
-                cache.evict({ id: deletedRef });
-            },
-        }
-    );
+                    userReviews(existingReviewRefs = [], { storeFieldName }) {
+                        if (!storeFieldName.includes(username)) {
+                            return existingReviewRefs;
+                        }
+                        return existingReviewRefs.filter(
+                            (reviewRef: Reference) =>
+                                reviewRef.__ref != deletedRef
+                        );
+                    },
+                },
+            });
+            cache.evict({ id: deletedRef });
+        },
+    });
 
-    if (deleteReviewError) {
-        return (
-            <div className="flex h-full items-center justify-center">
-                <section className="text-center">
-                    <h1 className="text-2xl">
-                        Something went wrong when deleting the review!
-                    </h1>
-                    <p className="text-primary">Try to refresh</p>
-                </section>
-            </div>
-        );
-    }
+    const handleDeleteReview = (review: Review) => {
+        deleteReview({
+            variables: {
+                id: review._id,
+            },
+        })
+            .then((response) => {
+                if (response.data?.deleteReview) {
+                    toast.success("Review has been deleted");
+                }
+            })
+            .catch((error) => {
+                toast.error("Failed to delete review", {
+                    action: {
+                        label: "Retry",
+                        onClick: () => handleDeleteReview(review),
+                    },
+                    description:
+                        error instanceof Error
+                            ? error.message
+                            : "An error occurred",
+                });
+            });
+    };
 
     return (
         <Card>
@@ -132,9 +139,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                                     </AlertDialogCancel>
                                     <AlertDialogAction
                                         onClick={() =>
-                                            deleteReview({
-                                                variables: { id: review._id },
-                                            })
+                                            handleDeleteReview(review)
                                         }
                                         disabled={loading}
                                     >

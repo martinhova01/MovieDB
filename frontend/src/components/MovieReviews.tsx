@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "../shadcn/components/ui/button";
 import { Textarea } from "../shadcn/components/ui/textarea";
 import { Card } from "../shadcn/components/ui/card";
@@ -7,7 +8,9 @@ import { usernameVar } from "@/utils/cache";
 import { Reference, useMutation, useReactiveVar } from "@apollo/client";
 import { Movie } from "@/types/__generated__/types";
 import { ADD_REVIEW } from "@/api/queries";
+import Loader from "./Loader";
 import ReviewCard from "./ReviewCard";
+
 interface MovieReviewsProps {
     movie: Movie;
 }
@@ -17,7 +20,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
     const [comment, setComment] = useState<string>("");
     const username = useReactiveVar(usernameVar);
 
-    const [addReview, { error: addReviewError }] = useMutation(ADD_REVIEW, {
+    const [addReview, { loading }] = useMutation(ADD_REVIEW, {
         update(cache, { data }) {
             if (!data?.addReview) return;
             const newRef: Reference = { __ref: `Review:${data.addReview._id}` };
@@ -45,37 +48,37 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
         },
     });
 
-    const handleSubmitReview = async (e: React.FormEvent) => {
-        e.preventDefault();
-        try {
-            const response = await addReview({
-                variables: {
-                    movieId: movie._id,
-                    username: username,
-                    rating: rating,
-                    comment: comment.trim(),
-                },
+    const handleSubmitReview = (e?: React.FormEvent) => {
+        e?.preventDefault();
+
+        addReview({
+            variables: {
+                movieId: movie._id,
+                username: username,
+                rating: rating,
+                comment: comment.trim(),
+            },
+        })
+            .then((response) => {
+                if (response.data?.addReview) {
+                    setRating(0);
+                    setComment("");
+                    toast.success("Review added successfully");
+                }
+            })
+            .catch((error) => {
+                toast.error("Failed to submit review", {
+                    action: {
+                        label: "Retry",
+                        onClick: () => handleSubmitReview(),
+                    },
+                    description:
+                        error instanceof Error
+                            ? error.message
+                            : "An error occurred",
+                });
             });
-
-            if (response.data?.addReview) {
-                setRating(0);
-                setComment("");
-            }
-        } catch {
-            // Intentionally empty - errors handled by addReviewError
-        }
     };
-
-    if (addReviewError) {
-        return (
-            <section className="mt-2 w-dvw text-center">
-                <h1 className="text-2xl">
-                    Something went wrong when adding reviews
-                </h1>
-                <p className="text-primary">Try to refresh</p>
-            </section>
-        );
-    }
 
     return (
         <Card className="m-4">
@@ -97,8 +100,12 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                         onChange={(e) => setComment(e.target.value)}
                         placeholder="Write your review (optional)"
                     />
-                    <Button type="submit" disabled={rating === 0}>
-                        Submit Review
+                    <Button type="submit" disabled={rating === 0 || loading}>
+                        {loading ? (
+                            <Loader size="sm" color="stroke-secondary" />
+                        ) : (
+                            "Submit Review"
+                        )}
                     </Button>
                 </form>
             </section>

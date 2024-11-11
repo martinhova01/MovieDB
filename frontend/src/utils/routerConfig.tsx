@@ -4,15 +4,17 @@ import HomePage from "@/pages/HomePage";
 import MovieDetailPage from "@/pages/MovieDetailPage";
 import MyReviewsPage from "@/pages/MyReviewsPage";
 import NotFoundPage from "@/pages/NotFoundPage";
-import { Outlet } from "react-router-dom";
+import { Toaster } from "@/shadcn/components/ui/sonner";
+import { Outlet, RouteObject } from "react-router-dom";
 
-const routerConfig = [
+const routerConfig: RouteObject[] = [
     {
         path: "/",
         element: (
             <>
                 <Navbar />
                 <Outlet />
+                <Toaster position="top-center" />
             </>
         ),
         errorElement: <NotFoundPage />,

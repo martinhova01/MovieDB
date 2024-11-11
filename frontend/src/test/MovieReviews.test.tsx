@@ -48,6 +48,7 @@ const mockAddReviewMutation = {
         },
     },
 };
+
 const mockNullAddReviewMutation = {
     request: {
         query: ADD_REVIEW,
@@ -63,19 +64,6 @@ const mockNullAddReviewMutation = {
             addReview: null,
         },
     },
-};
-
-const errorMock = {
-    request: {
-        query: ADD_REVIEW,
-        variables: {
-            movieId: 475557,
-            username: "testuser",
-            rating: 5,
-            comment: "Excellent movie!",
-        },
-    },
-    error: new Error("Failed to submit review"),
 };
 
 describe("MovieReviews", () => {
@@ -175,28 +163,5 @@ describe("MovieReviews", () => {
         expect(
             screen.getByPlaceholderText("Write your review (optional)")
         ).toHaveValue("Excellent movie!");
-    });
-
-    it("displays error message when review submission fails", async () => {
-        render(
-            <MockedProvider mocks={[errorMock]} addTypename={false}>
-                <MovieReviews movie={mockMovie} />
-            </MockedProvider>
-        );
-
-        const ratingStars = screen.getAllByRole("input");
-        await userEvent.click(ratingStars[4]);
-        await userEvent.type(
-            screen.getByPlaceholderText("Write your review (optional)"),
-            "Excellent movie!"
-        );
-        await userEvent.click(
-            screen.getByRole("button", { name: "Submit Review" })
-        );
-
-        expect(
-            screen.getByText("Something went wrong when adding reviews")
-        ).toBeInTheDocument();
-        expect(screen.getByText("Try to refresh")).toBeInTheDocument();
     });
 });

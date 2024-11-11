@@ -21,6 +21,7 @@ import { Label } from "@/shadcn/components/ui/label";
 import { useReactiveVar } from "@apollo/client";
 import { Edit, LogOut, User } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const UserDropdown = () => {
     const username = useReactiveVar(usernameVar);
@@ -34,12 +35,14 @@ const UserDropdown = () => {
             localStorage.setItem("username", newUsername.trim());
             setNewUsername("");
             setIsDialogOpen(false);
+            toast.success("Username changed successfully");
         }
     };
 
     const handleSignOut = () => {
         localStorage.removeItem("username");
         usernameVar("Guest");
+        toast.success("Signed out successfully");
     };
 
     const handleDialogOpenChange = (open: boolean) => {
