@@ -46,13 +46,13 @@ const SortAndFilterPanel: React.FC = () => {
             if (filtersVar().Status.length == 0) {
                 totalHits = data.filters.Status.map(
                     (s: Filter) => s.hits
-                ).reduce((acc, curr) => acc + curr);
+                ).reduce((acc, curr) => acc + curr, 0);
             } else {
                 totalHits = data.filters.Status.filter((s: Filter) =>
                     filtersVar().Status.includes(s.name)
                 )
                     .map((s: Filter) => s.hits)
-                    .reduce((acc, curr) => acc + curr);
+                    .reduce((acc, curr) => acc + curr, 0);
             }
             totalHitsVar(totalHits);
 

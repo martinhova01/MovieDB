@@ -48,6 +48,16 @@ const mocks = [
     {
         request: {
             query: GET_FILTERS,
+            variables: {
+                appliedFilters: {
+                    Genre: [],
+                    Rating: [],
+                    Decade: [],
+                    Status: [],
+                    Runtime: [],
+                },
+                search: "",
+            },
         },
         result: {
             data: {
