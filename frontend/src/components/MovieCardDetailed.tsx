@@ -14,6 +14,47 @@ interface MovieCardDetailedProps {
     movie: Movie;
 }
 
+const formatCurrency = (value: number) => {
+    return value.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0,
+    });
+};
+
+const getMovieDetailsList = (movie: Movie) => [
+    {
+        label: "Status",
+        value: movie.status,
+    },
+    {
+        label: "Budget",
+        value: movie.budget ? `${formatCurrency(movie.budget)}` : "N/A",
+    },
+    {
+        label: "Revenue",
+        value: movie.revenue ? `${formatCurrency(movie.revenue)}` : "N/A",
+    },
+    {
+        label: "Production Companies",
+        value: movie.production_companies.length
+            ? movie.production_companies.join(", ")
+            : "N/A",
+    },
+    {
+        label: "Production Countries",
+        value: movie.production_countries.length
+            ? movie.production_countries.join(", ")
+            : "N/A",
+    },
+    {
+        label: "Spoken Languages",
+        value: movie.spoken_languages.length
+            ? movie.spoken_languages.join(", ")
+            : "N/A",
+    },
+];
+
 const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
     const releaseYear = movie.release_date.getFullYear();
     const runtimeHours = Math.floor(movie.runtime / 60);
@@ -75,42 +116,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                         )}
                         <p className="mb-4 text-lg">{movie.overview}</p>
                         <ul className="mb-6 flex flex-col gap-2">
-                            {[
-                                {
-                                    label: "Status",
-                                    value: movie.status,
-                                },
-                                {
-                                    label: "Budget",
-                                    value: movie.budget
-                                        ? `${movie.budget.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 })}`
-                                        : "N/A",
-                                },
-                                {
-                                    label: "Revenue",
-                                    value: movie.revenue
-                                        ? `${movie.revenue.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 })}`
-                                        : "N/A",
-                                },
-                                {
-                                    label: "Production Companies",
-                                    value: movie.production_companies.length
-                                        ? movie.production_companies.join(", ")
-                                        : "N/A",
-                                },
-                                {
-                                    label: "Production Countries",
-                                    value: movie.production_countries.length
-                                        ? movie.production_countries.join(", ")
-                                        : "N/A",
-                                },
-                                {
-                                    label: "Spoken Languages",
-                                    value: movie.spoken_languages.length
-                                        ? movie.spoken_languages.join(", ")
-                                        : "N/A",
-                                },
-                            ].map((item, index) => (
+                            {getMovieDetailsList(movie).map((item, index) => (
                                 <li key={index}>
                                     <strong>{item.label}: </strong>
                                     {item.value}
