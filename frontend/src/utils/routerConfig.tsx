@@ -14,7 +14,7 @@ const routerConfig: RouteObject[] = [
             <>
                 <Navbar />
                 <Outlet />
-                <Toaster position="top-center" />
+                <Toaster position="bottom-right" />
             </>
         ),
         errorElement: <NotFoundPage />,
