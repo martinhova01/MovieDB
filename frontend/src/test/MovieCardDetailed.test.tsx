@@ -112,7 +112,7 @@ describe("MovieCardDetailed", () => {
                 }}
             />
         );
-        expect(screen.getAllByText("N/A").length === 5).toBeTruthy();
+        expect(screen.getAllByText("N/A")).toHaveLength(5);
     });
 
     it("displays 'Visit Homepage' button with link", () => {

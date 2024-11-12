@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MockedProvider } from "@apollo/client/testing";
 import userEvent from "@testing-library/user-event";
@@ -117,6 +117,14 @@ const errorMock = {
 };
 
 describe("MovieReviews", () => {
+    beforeAll(() => {
+        usernameVar("testuser");
+    });
+
+    afterAll(() => {
+        usernameVar("Guest");
+    });
+
     it("renders existing reviews", async () => {
         render(
             <MockedProvider mocks={[]} addTypename={false}>
@@ -124,11 +132,9 @@ describe("MovieReviews", () => {
             </MockedProvider>
         );
 
-        await waitFor(() => {
-            expect(screen.getByText("Reviews")).toBeInTheDocument();
-            expect(screen.getByText("Great movie!")).toBeInTheDocument();
-            expect(screen.getByText("testuser")).toBeInTheDocument();
-        });
+        expect(screen.getByText("Reviews")).toBeInTheDocument();
+        expect(screen.getByText("Great movie!")).toBeInTheDocument();
+        expect(screen.getByText("testuser")).toBeInTheDocument();
     });
 
     it("displays review submission form", async () => {
@@ -163,8 +169,6 @@ describe("MovieReviews", () => {
     });
 
     it("successfully submits a review", async () => {
-        usernameVar("testuser");
-
         render(
             <MockedProvider
                 mocks={[
@@ -184,23 +188,18 @@ describe("MovieReviews", () => {
             screen.getByPlaceholderText("Write your review (optional)"),
             "Excellent movie!"
         );
-
         await userEvent.click(
             screen.getByRole("button", { name: "Submit Review" })
         );
 
-        await waitFor(() => {
-            expect(screen.getByText("Excellent movie!")).toBeInTheDocument();
-        });
-
+        expect(screen.getByText("Excellent movie!")).toBeInTheDocument();
+        expect(screen.getAllByText("testuser")).toHaveLength(2);
         expect(
             screen.getByPlaceholderText("Write your review (optional)")
         ).toHaveValue("");
     });
 
     it("displays error message when review submission fails", async () => {
-        usernameVar("testuser");
-
         render(
             <MockedProvider mocks={[errorMock]} addTypename={false}>
                 <MovieReviews movie={mockMovie} />
@@ -213,21 +212,17 @@ describe("MovieReviews", () => {
             screen.getByPlaceholderText("Write your review (optional)"),
             "Excellent movie!"
         );
-
         await userEvent.click(
             screen.getByRole("button", { name: "Submit Review" })
         );
-        await waitFor(() => {
-            expect(
-                screen.getByText("Something went wrong when adding reviews")
-            ).toBeInTheDocument();
-            expect(screen.getByText("Try to refresh")).toBeInTheDocument();
-        });
+
+        expect(
+            screen.getByText("Something went wrong when adding reviews")
+        ).toBeInTheDocument();
+        expect(screen.getByText("Try to refresh")).toBeInTheDocument();
     });
 
     it("deletes a review from the list", async () => {
-        usernameVar("testuser");
-
         render(
             <MockedProvider
                 mocks={[
@@ -241,18 +236,14 @@ describe("MovieReviews", () => {
             </MockedProvider>
         );
 
-        // Check initial reviews
         expect(screen.getByText("Great movie!")).toBeInTheDocument();
 
-        // Mock delete by simulating `handleDeleteReview`
         const deleteButton = screen.getByRole("button", { name: "Delete" });
         await userEvent.click(deleteButton);
 
         const continueButton = screen.getByRole("button", { name: "Continue" });
         await userEvent.click(continueButton);
 
-        await waitFor(() => {
-            expect(screen.queryByText("Great movie!")).not.toBeInTheDocument();
-        });
+        expect(screen.queryByText("Great movie!")).not.toBeInTheDocument();
     });
 });
