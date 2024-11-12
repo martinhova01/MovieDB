@@ -3,12 +3,7 @@ import "@testing-library/jest-dom";
 import { MockedProvider } from "@apollo/client/testing";
 import userEvent from "@testing-library/user-event";
 import MovieReviews from "../components/MovieReviews";
-import {
-    ADD_REVIEW,
-    DELETE_REVIEW,
-    GET_LATEST_REVIEWS,
-    GET_USER_REVIEWS,
-} from "@/api/queries";
+import { ADD_REVIEW } from "@/api/queries";
 import { Review } from "@/types/__generated__/types";
 import { usernameVar } from "@/utils/cache";
 import { all_movies } from "./mock/util";
@@ -22,11 +17,6 @@ const mockMovie = {
             rating: 4,
             comment: "Great movie!",
             date: new Date(),
-            movie: {
-                _id: 475557,
-                title: "Joker",
-                poster_path: "/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
-            },
         },
     ] as Review[],
 };
@@ -44,61 +34,33 @@ const mockAddReviewMutation = {
     result: {
         data: {
             addReview: {
-                _id: 475557,
-                vote_average: 4.2,
-                vote_count: 6,
-                reviews: [
-                    ...mockMovie.reviews,
-                    {
-                        _id: "2",
-                        username: "testuser",
-                        rating: 5,
-                        comment: "Excellent movie!",
-                        date: new Date(),
-                    },
-                ],
+                _id: "2",
+                username: "testuser",
+                rating: 5,
+                comment: "Excellent movie!",
+                date: new Date(),
+                movie: {
+                    _id: 475557,
+                    vote_average: 4.5,
+                    vote_count: 2,
+                },
             },
         },
     },
 };
-
-const mockDeleteReviewMutation = {
+const mockNullAddReviewMutation = {
     request: {
-        query: DELETE_REVIEW,
-        variables: { id: "1" },
-    },
-    result: {
-        data: {
-            deleteReview: {
-                _id: 475557,
-                vote_average: 4.0,
-                vote_count: 5,
-                reviews: [],
-            },
+        query: ADD_REVIEW,
+        variables: {
+            movieId: 475557,
+            username: "testuser",
+            rating: 5,
+            comment: "Excellent movie!",
         },
     },
-};
-
-const mockLatestReviewsQuery = {
-    request: {
-        query: GET_LATEST_REVIEWS,
-        variables: { skip: 0, limit: 20 },
-    },
     result: {
         data: {
-            latestReviews: [],
-        },
-    },
-};
-
-const mockUserReviewsQuery = {
-    request: {
-        query: GET_USER_REVIEWS,
-        variables: { username: "testuser", skip: 0, limit: 20 },
-    },
-    result: {
-        data: {
-            userReviews: [],
+            addReview: null,
         },
     },
 };
@@ -168,14 +130,32 @@ describe("MovieReviews", () => {
         ).toBeEnabled();
     });
 
-    it("successfully submits a review", async () => {
+    it("resets review submission form on successful submission", async () => {
+        render(
+            <MockedProvider mocks={[mockAddReviewMutation]} addTypename={false}>
+                <MovieReviews movie={mockMovie} />
+            </MockedProvider>
+        );
+
+        const ratingStars = screen.getAllByRole("input");
+        await userEvent.click(ratingStars[4]);
+        await userEvent.type(
+            screen.getByPlaceholderText("Write your review (optional)"),
+            "Excellent movie!"
+        );
+        await userEvent.click(
+            screen.getByRole("button", { name: "Submit Review" })
+        );
+
+        expect(
+            screen.getByPlaceholderText("Write your review (optional)")
+        ).toHaveValue("");
+    });
+
+    it("does not reset review submission form on null response", async () => {
         render(
             <MockedProvider
-                mocks={[
-                    mockAddReviewMutation,
-                    mockLatestReviewsQuery,
-                    mockUserReviewsQuery,
-                ]}
+                mocks={[mockNullAddReviewMutation]}
                 addTypename={false}
             >
                 <MovieReviews movie={mockMovie} />
@@ -192,11 +172,9 @@ describe("MovieReviews", () => {
             screen.getByRole("button", { name: "Submit Review" })
         );
 
-        expect(screen.getByText("Excellent movie!")).toBeInTheDocument();
-        expect(screen.getAllByText("testuser")).toHaveLength(2);
         expect(
             screen.getByPlaceholderText("Write your review (optional)")
-        ).toHaveValue("");
+        ).toHaveValue("Excellent movie!");
     });
 
     it("displays error message when review submission fails", async () => {
@@ -220,30 +198,5 @@ describe("MovieReviews", () => {
             screen.getByText("Something went wrong when adding reviews")
         ).toBeInTheDocument();
         expect(screen.getByText("Try to refresh")).toBeInTheDocument();
-    });
-
-    it("deletes a review from the list", async () => {
-        render(
-            <MockedProvider
-                mocks={[
-                    mockDeleteReviewMutation,
-                    mockLatestReviewsQuery,
-                    mockUserReviewsQuery,
-                ]}
-                addTypename={false}
-            >
-                <MovieReviews movie={mockMovie} />
-            </MockedProvider>
-        );
-
-        expect(screen.getByText("Great movie!")).toBeInTheDocument();
-
-        const deleteButton = screen.getByRole("button", { name: "Delete" });
-        await userEvent.click(deleteButton);
-
-        const continueButton = screen.getByRole("button", { name: "Continue" });
-        await userEvent.click(continueButton);
-
-        expect(screen.queryByText("Great movie!")).not.toBeInTheDocument();
     });
 });

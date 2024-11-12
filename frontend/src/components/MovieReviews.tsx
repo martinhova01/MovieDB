@@ -58,7 +58,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
             });
 
             if (response.data?.addReview) {
-                    setRating(0);
+                setRating(0);
                 setComment("");
             }
         } catch {
