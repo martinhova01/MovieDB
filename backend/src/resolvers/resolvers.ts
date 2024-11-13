@@ -1,14 +1,14 @@
 import { GraphQLError } from "graphql";
+import { DateTimeResolver } from "graphql-scalars";
+import mongoose from "mongoose";
 import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
-import mongoose from "mongoose";
 import { createFilterAndSearch, FiltersInput } from "../utils/filterUtils.js";
 import {
     defaultSortOption,
     getSortOrder,
     SortingType,
 } from "../utils/sortUtils.js";
-import { DateTimeResolver } from "graphql-scalars";
 
 function createBadUserInputError(message: string) {
     return new GraphQLError(message, {
