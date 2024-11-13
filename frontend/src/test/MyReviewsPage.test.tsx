@@ -1,51 +1,51 @@
-import { GET_LATEST_REVIEWS } from "@/api/queries";
+import { GET_USER_REVIEWS } from "@/api/queries";
 import { all_reviews } from "./mock/util";
 import "@testing-library/jest-dom";
 import { usernameVar } from "@/utils/cache";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
-import ActivityPage from "@/pages/ActivityPage";
 import { render, screen, waitFor } from "@testing-library/react";
+import MyReviewsPage from "@/pages/MyReviewsPage";
 
-const mockLatestReviewsEmpty = [
+const mockUserReviews = [
     {
         request: {
-            query: GET_LATEST_REVIEWS,
+            query: GET_USER_REVIEWS,
             variables: {
+                username: "other_user",
                 skip: 0,
                 limit: 20,
             },
         },
         result: {
             data: {
-                latestReviews: [],
+                userReviews: [],
             },
         },
     },
-];
-
-const mockLatestReviews = [
     {
         request: {
-            query: GET_LATEST_REVIEWS,
+            query: GET_USER_REVIEWS,
             variables: {
+                username: "test_user",
                 skip: 0,
                 limit: 20,
             },
         },
         result: {
             data: {
-                latestReviews: all_reviews.slice(0, 20),
+                userReviews: all_reviews.slice(0, 20),
             },
         },
     },
 ];
 
-const mockLatestReviewsError = [
+const mockUserReviewsError = [
     {
         request: {
-            query: GET_LATEST_REVIEWS,
+            query: GET_USER_REVIEWS,
             variables: {
+                username: "test_user",
                 skip: 0,
                 limit: 20,
             },
@@ -57,9 +57,9 @@ const mockLatestReviewsError = [
 describe("ActivityPage", () => {
     const renderComponent = (mocks: MockedResponse[] | undefined) => {
         const router = createMemoryRouter(
-            [{ path: "/activity", element: <ActivityPage /> }],
+            [{ path: "/myReviews", element: <MyReviewsPage /> }],
             {
-                initialEntries: ["/activity"],
+                initialEntries: ["/myReviews"],
             }
         );
 
@@ -74,17 +74,19 @@ describe("ActivityPage", () => {
         usernameVar("Guest");
     });
 
-    it("displays 'No reviews have been added yet' on empty reviews", async () => {
-        renderComponent(mockLatestReviewsEmpty);
+    it("displays 'You have not added any reviews yet' on empty reviews", async () => {
+        usernameVar("other_user");
+        renderComponent(mockUserReviews);
         await waitFor(() =>
             expect(
-                screen.getByText("No reviews have been added yet")
+                screen.getByText("You have not added any reviews yet")
             ).toBeInTheDocument()
         );
     });
 
     it("displays 'Something went wrong!' on error", async () => {
-        renderComponent(mockLatestReviewsError);
+        usernameVar("test_user");
+        renderComponent(mockUserReviewsError);
         await waitFor(() =>
             expect(
                 screen.getByText("Something went wrong!")
@@ -93,7 +95,8 @@ describe("ActivityPage", () => {
     });
 
     it("renders 20 reviews", async () => {
-        renderComponent(mockLatestReviews);
+        usernameVar("test_user");
+        renderComponent(mockUserReviews);
         //All reviews have username 'test_user'
         await waitFor(() =>
             expect(screen.getAllByText("test_user")).toHaveLength(20)
