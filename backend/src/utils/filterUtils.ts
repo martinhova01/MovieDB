@@ -94,10 +94,20 @@ const createSearch = (search: string | undefined) => {
 };
 
 export const createFilterAndSearch = (
-    filters: FiltersInput,
-    search: string
+    filters: FiltersInput | undefined,
+    search: string | undefined
 ) => {
     return {
         $and: [...createFilters(filters), createSearch(search)],
     };
+};
+
+export const exportedForTesting = {
+    createFilterForGenres,
+    createFilterForRating,
+    createFilterForReleaseYear,
+    createFilterForStatus,
+    createFilterForRuntime,
+    createFilters,
+    createSearch,
 };
