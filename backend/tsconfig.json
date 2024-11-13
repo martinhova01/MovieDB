@@ -9,5 +9,6 @@
         "esModuleInterop": true,
         "types": ["node"]
     },
-    "include": ["src"]
+    "exclude": ["**/*.test.ts"],
+    "include": ["src", "vitest.d.ts"]
 }
