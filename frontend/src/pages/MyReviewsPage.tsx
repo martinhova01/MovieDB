@@ -1,7 +1,7 @@
 import ReviewCard from "@/components/ReviewCard";
 import InfiniteScroll from "react-infinite-scroller";
-import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { GET_USER_REVIEWS } from "../api/queries";
 import { Review } from "@/types/__generated__/types";
@@ -12,6 +12,7 @@ const MyReviewsPage = () => {
     const username = useReactiveVar(usernameVar);
     const [isMoreReviews, setIsMoreReviews] = useState<boolean>(false);
     const LIMIT = 20;
+    const navigate = useNavigate();
 
     const { data, loading, error, fetchMore } = useQuery(GET_USER_REVIEWS, {
         variables: {
@@ -19,6 +20,7 @@ const MyReviewsPage = () => {
             skip: 0,
             limit: LIMIT,
         },
+        skip: username === "Guest",
         onCompleted: (data) => {
             if (data.userReviews) {
                 setIsMoreReviews(
@@ -33,6 +35,12 @@ const MyReviewsPage = () => {
         () => data?.userReviews as Review[] | undefined,
         [data]
     );
+
+    useEffect(() => {
+        if (username === "Guest") {
+            navigate("/");
+        }
+    }, [username, navigate]);
 
     const handleLoadMore = () => {
         fetchMore({ variables: { skip: userReviews?.length } }).then(
