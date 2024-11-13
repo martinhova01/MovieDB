@@ -1,5 +1,5 @@
 import { Review } from "@/types/__generated__/types";
-import { mock_review } from "./mock/util";
+import { all_reviews } from "./mock/util";
 import { usernameVar } from "@/utils/cache";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
@@ -8,7 +8,7 @@ import { MockedProvider } from "@apollo/client/testing";
 import { MemoryRouter } from "react-router-dom";
 import { formatDate } from "@/utils/formatUtil";
 
-const mockReview: Review = mock_review;
+const mockReview: Review = all_reviews[0];
 
 describe("ReviewCard", () => {
     const renderComponent = (review: Review, showPoster = false) => {
@@ -27,7 +27,7 @@ describe("ReviewCard", () => {
 
     it("displays username, data and comment", async () => {
         renderComponent(mockReview);
-        expect(screen.getByText("cosmic_dreamer")).toBeInTheDocument();
+        expect(screen.getByText("test_user")).toBeInTheDocument();
         expect(screen.getByText("good movie!")).toBeInTheDocument();
         expect(
             screen.getByText(new RegExp(formatDate(mockReview.date)))
@@ -49,7 +49,7 @@ describe("ReviewCard", () => {
     });
 
     it("shows delete button for user's own review", () => {
-        usernameVar("cosmic_dreamer");
+        usernameVar("test_user");
         renderComponent(mockReview);
         expect(
             screen.getByRole("button", { name: /delete/i })
