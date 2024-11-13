@@ -6,6 +6,7 @@ import _reviews from "./mock_reviews.json";
 import _production_companies from "./mock_production_companies.json";
 import _production_countries from "./mock_production_countries.json";
 import _spoken_languages from "./mock_spoken_languages.json";
+import _review from "./mock_review.json";
 
 export const all_genres: string[] = _genres;
 export const all_keywords: string[] = _keywords;
@@ -35,3 +36,12 @@ export const all_reviews: Review[] = _reviews.map((review) => {
         comment: review.comment ?? "",
     };
 });
+
+export const mock_review: Review = {
+    ..._review,
+    date: new Date(_review.date),
+    movie: {
+        ..._review.movie,
+        release_date: new Date(_review.movie.release_date),
+    },
+};
