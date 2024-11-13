@@ -1,13 +1,14 @@
 import { Review } from "@/types/__generated__/types";
 import { all_reviews } from "./mock/util";
 import { usernameVar } from "@/utils/cache";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ReviewCard from "@/components/ReviewCard";
 import { MockedProvider } from "@apollo/client/testing";
 import { MemoryRouter } from "react-router-dom";
 import { formatDate } from "@/utils/formatUtil";
 import { DELETE_REVIEW } from "@/api/queries";
+import userEvent from "@testing-library/user-event";
 
 const mockReview: Review = all_reviews[0];
 
@@ -88,16 +89,14 @@ describe("ReviewCard", () => {
         renderComponent(mockReview);
 
         const deleteButton = screen.getByRole("button", { name: /delete/i });
-        fireEvent.click(deleteButton);
+        await userEvent.click(deleteButton);
         //AlertDialog opens
         expect(
-            await screen.findByText(
-                "Are you sure you want to delete this review?"
-            )
+            screen.getByText("Are you sure you want to delete this review?")
         ).toBeInTheDocument();
 
         const continuButton = screen.getByRole("button", { name: /continue/i });
-        fireEvent.click(continuButton);
+        await userEvent.click(continuButton);
         //AlertDialog closes
         expect(
             screen.queryByText("Are you sure you want to delete this review?")

@@ -1,7 +1,6 @@
 import { GET_LATEST_REVIEWS } from "@/api/queries";
 import { all_reviews } from "./mock/util";
 import "@testing-library/jest-dom";
-import { usernameVar } from "@/utils/cache";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import ActivityPage from "@/pages/ActivityPage";
@@ -69,10 +68,6 @@ describe("ActivityPage", () => {
             </MockedProvider>
         );
     };
-
-    afterAll(() => {
-        usernameVar("Guest");
-    });
 
     it("displays 'No reviews have been added yet' on empty reviews", async () => {
         renderComponent(mockLatestReviewsEmpty);
