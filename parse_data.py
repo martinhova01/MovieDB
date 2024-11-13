@@ -195,8 +195,7 @@ def fill_db(rows: int | None = None):
     print("Done removing inappropriate movies")
 
     print("Creating indexes...")
-    # These indexes are created to speed up search/filtering/sorting
-    MOVIES_COL.create_index([("title", pymongo.TEXT)])
+    # These indexes are created to speed up filtering/sorting
     MOVIES_COL.create_index("release_date")
     MOVIES_COL.create_index("runtime")
     MOVIES_COL.create_index("vote_average")

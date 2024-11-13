@@ -90,7 +90,7 @@ const createSearch = (search: string | undefined) => {
     if (search == undefined || search == "") {
         return {};
     }
-    return { $text: { $search: `\"${search}\"` } };
+    return { title: { $regex: search, $options: "i" } };
 };
 
 export const createFilterAndSearch = (
