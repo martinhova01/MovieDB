@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { MockedProvider } from "@apollo/client/testing";
+import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { GET_MOVIE } from "@/api/queries";
 import MovieDetailPage from "@/pages/MovieDetailPage";
@@ -22,8 +22,28 @@ const movieMock = [
     },
 ];
 
+const errorMock = [
+    {
+        request: {
+            query: GET_MOVIE,
+            variables: { movieId: 475557 },
+        },
+        error: new Error("Error fetching movie"),
+    },
+];
+
+const noMovieMock = [
+    {
+        request: {
+            query: GET_MOVIE,
+            variables: { movieId: 475557 },
+        },
+        result: { data: { movie: null } },
+    },
+];
+
 describe("MovieDetailPage", () => {
-    it("displays loading message initially", () => {
+    const renderComponent = (mocks: MockedResponse[] | undefined) => {
         const router = createMemoryRouter(
             [{ path: "/movie/:movieId", element: <MovieDetailPage /> }],
             {
@@ -32,55 +52,23 @@ describe("MovieDetailPage", () => {
         );
 
         render(
-            <MockedProvider mocks={movieMock} addTypename={false}>
+            <MockedProvider mocks={mocks} addTypename={false}>
                 <RouterProvider router={router} />
             </MockedProvider>
         );
-
+    };
+    it("displays loading message initially", () => {
+        renderComponent(movieMock);
         expect(screen.getByText("Loading...")).toBeInTheDocument();
     });
 
     it("displays movie details when data is successfully loaded", async () => {
-        const router = createMemoryRouter(
-            [{ path: "/movie/:movieId", element: <MovieDetailPage /> }],
-            {
-                initialEntries: ["/movie/475557"],
-            }
-        );
-
-        render(
-            <MockedProvider mocks={movieMock} addTypename={false}>
-                <RouterProvider router={router} />
-            </MockedProvider>
-        );
-
+        renderComponent(movieMock);
         expect(await screen.findByText("Joker")).toBeInTheDocument();
     });
 
     it("displays error message if there is a query error", async () => {
-        const errorMock = [
-            {
-                request: {
-                    query: GET_MOVIE,
-                    variables: { movieId: 475557 },
-                },
-                error: new Error("Error fetching movie"),
-            },
-        ];
-
-        const router = createMemoryRouter(
-            [{ path: "/movie/:movieId", element: <MovieDetailPage /> }],
-            {
-                initialEntries: ["/movie/475557"],
-            }
-        );
-
-        render(
-            <MockedProvider mocks={errorMock} addTypename={false}>
-                <RouterProvider router={router} />
-            </MockedProvider>
-        );
-
+        renderComponent(errorMock);
         expect(
             await screen.findByText("Something went wrong!")
         ).toBeInTheDocument();
@@ -90,29 +78,7 @@ describe("MovieDetailPage", () => {
     });
 
     it("displays 'Could not find movie!' message if movie is not found", async () => {
-        const noMovieMock = [
-            {
-                request: {
-                    query: GET_MOVIE,
-                    variables: { movieId: 475557 },
-                },
-                result: { data: { movie: null } },
-            },
-        ];
-
-        const router = createMemoryRouter(
-            [{ path: "/movie/:movieId", element: <MovieDetailPage /> }],
-            {
-                initialEntries: ["/movie/475557"],
-            }
-        );
-
-        render(
-            <MockedProvider mocks={noMovieMock} addTypename={false}>
-                <RouterProvider router={router} />
-            </MockedProvider>
-        );
-
+        renderComponent(noMovieMock);
         expect(
             await screen.findByText("Could not find movie!")
         ).toBeInTheDocument();
