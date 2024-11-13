@@ -35,6 +35,7 @@ const MovieCard = ({ movie }: { movie: MoviePoster }) => {
                         value={movie.vote_average / 2}
                         variant="yellow"
                         totalstars={5}
+                        title={String((movie.vote_average / 2).toFixed(2))}
                     />
                 </CardContent>
             </Card>
