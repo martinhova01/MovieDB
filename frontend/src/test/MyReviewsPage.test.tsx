@@ -4,8 +4,9 @@ import "@testing-library/jest-dom";
 import { usernameVar } from "@/utils/cache";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import MyReviewsPage from "@/pages/MyReviewsPage";
+import { vi } from "vitest";
 
 const mockUserReviews = [
     {
@@ -54,6 +55,15 @@ const mockUserReviewsError = [
     },
 ];
 
+const mockNavigate = vi.fn();
+vi.mock("react-router-dom", async () => {
+    const actualModule = await vi.importActual("react-router-dom");
+    return {
+        ...actualModule,
+        useNavigate: () => mockNavigate,
+    };
+});
+
 describe("ActivityPage", () => {
     const renderComponent = (mocks: MockedResponse[] | undefined) => {
         const router = createMemoryRouter(
@@ -101,5 +111,12 @@ describe("ActivityPage", () => {
         await waitFor(() =>
             expect(screen.getAllByText("test_user")).toHaveLength(20)
         );
+    });
+
+    it("redirects to homepage on logout", async () => {
+        usernameVar("test_user");
+        renderComponent(mockUserReviews);
+        act(() => usernameVar("Guest"));
+        await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith("/"));
     });
 });
