@@ -22,5 +22,8 @@ export function validateSkipLimit(skip: number, limit: number) {
             "Skip must be an integer of size at least 0."
         );
     }
+    if (!Number.isInteger(skip) || !Number.isInteger(limit)) {
+        return createBadUserInputError("Skip and limit must be integers.");
+    }
     return null;
 }
