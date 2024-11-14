@@ -114,9 +114,18 @@ describe("ActivityPage", () => {
     });
 
     it("redirects to homepage on logout", async () => {
+        mockNavigate.mockClear();
         usernameVar("test_user");
         renderComponent(mockUserReviews);
         act(() => usernameVar("Guest"));
         await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith("/"));
+    });
+
+    it("does not redirect to homepage on user change", async () => {
+        mockNavigate.mockClear();
+        usernameVar("test_user");
+        renderComponent(mockUserReviews);
+        act(() => usernameVar("other_user"));
+        await waitFor(() => expect(mockNavigate).not.toHaveBeenCalled());
     });
 });
