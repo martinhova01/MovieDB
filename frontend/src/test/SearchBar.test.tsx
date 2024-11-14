@@ -9,9 +9,10 @@ vi.mock("@/utils/cache", () => ({
     searchVar: vi.fn(),
 }));
 
-describe("SearchBar Component", () => {
-    beforeEach(() => {
+describe("SearchBar", () => {
+    afterEach(() => {
         sessionStorage.clear();
+        vi.clearAllMocks();
     });
 
     it("renders the search input", () => {
@@ -57,8 +58,7 @@ describe("SearchBar Component", () => {
 
         render(<SearchBar />);
 
-        const input = screen.getByRole("searchbox");
-        expect(input).toHaveValue("Avatar");
+        expect(screen.getByRole("searchbox")).toHaveValue("Avatar");
     });
 
     it("clears search on empty input", async () => {

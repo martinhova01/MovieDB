@@ -3,37 +3,31 @@ import { MockedProvider } from "@apollo/client/testing";
 import { describe, it, expect, vi } from "vitest";
 import MovieList from "@/components/MovieList";
 import { GET_MOVIES } from "@/api/queries";
-import { FiltersInput } from "@/types/__generated__/types";
+import { FiltersInput, SortingType } from "@/types/__generated__/types";
 import { all_movies } from "./mock/util";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 import { defaultSortOption } from "@/utils/sortOptionUtil";
+import {
+    filtersVar,
+    searchVar,
+    sortOptionVar,
+    totalHitsVar,
+} from "@/utils/cache";
+import { useReactiveVar } from "@apollo/client";
 
 vi.mock("@/utils/cache", () => ({
-    filtersVar: "filtersVar",
-    sortOptionVar: "sortOptionVar",
-    searchVar: "searchVar",
-    totalHitsVar: "totalHitsVar",
+    filtersVar: vi.fn(),
+    searchVar: vi.fn(),
+    sortOptionVar: vi.fn(),
+    totalHitsVar: vi.fn(),
 }));
 
 vi.mock("@apollo/client", async () => {
-    const actual = await vi.importActual("@apollo/client");
+    const original = await vi.importActual("@apollo/client");
     return {
-        ...actual,
-        useReactiveVar: vi.fn((variable) => {
-            if (variable === "filtersVar")
-                return {
-                    Genre: [],
-                    Rating: [],
-                    Decade: [],
-                    Status: [],
-                    Runtime: [],
-                };
-            if (variable === "sortOptionVar") return defaultSortOption;
-            if (variable === "searchVar") return "";
-            if (variable === "totalHitsVar") return 50;
-            return null;
-        }),
+        ...original,
+        useReactiveVar: vi.fn(),
     };
 });
 
@@ -114,6 +108,24 @@ const emptyMock = [
 ];
 
 describe("MovieList", () => {
+    beforeEach(() => {
+        vi.mocked(filtersVar).mockReturnValue({
+            Genre: [],
+            Rating: [],
+            Decade: [],
+            Status: [],
+            Runtime: [],
+        });
+        vi.mocked(searchVar).mockReturnValue("");
+        vi.mocked(sortOptionVar).mockReturnValue(SortingType.MOST_POPULAR);
+        vi.mocked(totalHitsVar).mockReturnValue(50);
+        vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
+    });
+
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
     it("renders loading state initially", () => {
         render(
             <MockedProvider mocks={mockGetMoviesQuery} addTypename={false}>

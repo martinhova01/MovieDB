@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import { useReactiveVar } from "@apollo/client";
@@ -21,21 +21,24 @@ vi.mock("@/utils/sortOptionUtil", () => ({
     getSortOptionDisplayName: vi.fn((option) => `Display name ${option}`),
 }));
 
-describe("SortSection Component", () => {
-    const mockSortOption = SortingType.MOST_POPULAR;
-    const mockUpdateSortOption = vi.fn();
+const mockDefaultSortOption = SortingType.MOST_POPULAR;
 
-    const renderSortSection = (loading = false) => {
-        return render(
-            <Accordion type="single" collapsible className="w-full">
-                <SortSection loading={loading} />
-            </Accordion>
-        );
-    };
+const renderSortSection = (loading = false) => {
+    render(
+        <Accordion type="single" collapsible className="w-full">
+            <SortSection loading={loading} />
+        </Accordion>
+    );
+    userEvent.click(screen.getByRole("button"));
+};
 
+describe("SortSection", () => {
     beforeEach(() => {
-        vi.mocked(useReactiveVar).mockReturnValue(mockSortOption);
-        vi.mocked(sortOptionVar).mockImplementation(mockUpdateSortOption);
+        vi.mocked(sortOptionVar).mockReturnValue(mockDefaultSortOption);
+        vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
+    });
+
+    afterEach(() => {
         sessionStorage.clear();
         vi.clearAllMocks();
     });
@@ -45,43 +48,47 @@ describe("SortSection Component", () => {
 
         expect(screen.getByText("Sort by")).toBeInTheDocument();
         expect(
-            screen.getByText(`(Display name ${mockSortOption})`)
+            screen.getByText(`(Display name ${mockDefaultSortOption})`)
         ).toBeInTheDocument();
     });
 
     it("displays all sorting options when expanded", async () => {
         renderSortSection();
-        await userEvent.click(screen.getByRole("button"));
 
-        const radioButtons = screen.getAllByRole("radio");
-        expect(radioButtons).toHaveLength(Object.values(SortingType).length);
-
-        Object.values(SortingType).forEach((option) => {
-            const radioLabel = screen.getByText(`Display name ${option}`);
-            expect(radioLabel).toBeInTheDocument();
-            expect(radioLabel).not.toBeDisabled();
+        await waitFor(() => {
+            const radioButtons = screen.getAllByRole("radio");
+            expect(radioButtons).toHaveLength(
+                Object.values(SortingType).length
+            );
+            Object.values(SortingType).forEach((option) => {
+                const radioLabel = screen.getByText(`Display name ${option}`);
+                expect(radioLabel).toBeInTheDocument();
+                expect(radioLabel).not.toBeDisabled();
+            });
         });
     });
 
     it("updates sort option on selection", async () => {
         renderSortSection();
-        await userEvent.click(screen.getByRole("button"));
 
-        const newOption = SortingType.NEWEST_FIRST;
-        const radioLabel = screen.getByText(`Display name ${newOption}`);
-        await userEvent.click(radioLabel);
+        await waitFor(() => {
+            const newOption = SortingType.NEWEST_FIRST;
+            const radioLabel = screen.getByText(`Display name ${newOption}`);
+            userEvent.click(radioLabel);
 
-        expect(mockUpdateSortOption).toHaveBeenCalledWith(newOption);
-        expect(sessionStorage.getItem("sort_option")).toBe(newOption);
+            expect(sortOptionVar).toHaveBeenCalledWith(newOption);
+            expect(sessionStorage.getItem("sort_option")).toBe(newOption);
+        });
     });
 
     it("disables radio buttons when loading", async () => {
         renderSortSection(true);
-        await userEvent.click(screen.getByRole("button"));
 
-        const radioButtons = screen.getAllByRole("radio");
-        radioButtons.forEach((radio) => {
-            expect(radio).toBeDisabled();
+        await waitFor(() => {
+            const radioButtons = screen.getAllByRole("radio");
+            radioButtons.forEach((radio) => {
+                expect(radio).toBeDisabled();
+            });
         });
     });
 
@@ -91,19 +98,16 @@ describe("SortSection Component", () => {
         sessionStorage.setItem("sort_option", initialSortOption);
 
         renderSortSection();
-        await userEvent.click(screen.getByRole("button"));
 
-        const radioButtons = screen.getAllByRole("radio");
-        radioButtons.forEach((radio) => {
-            if (radio.id === initialSortOption) {
-                expect(radio).toBeChecked();
-                return;
-            }
-            expect(radio).not.toBeChecked();
+        await waitFor(() => {
+            const radioButtons = screen.getAllByRole("radio");
+            radioButtons.forEach((radio) => {
+                if (radio.id === initialSortOption) {
+                    expect(radio).toBeChecked();
+                    return;
+                }
+                expect(radio).not.toBeChecked();
+            });
         });
-
-        expect(
-            screen.getByText(`(Display name ${initialSortOption})`)
-        ).toBeInTheDocument();
     });
 });

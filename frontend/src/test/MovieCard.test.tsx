@@ -17,6 +17,10 @@ vi.mock("@/utils/imageUrl/imageUrl", () => ({
 const mockMovie = all_movies[18] as MoviePoster; // Joker
 
 describe("MovieCard", () => {
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
     it("renders movie card with correct link", () => {
         render(
             <MemoryRouter>
