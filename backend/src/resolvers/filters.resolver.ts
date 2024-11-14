@@ -19,7 +19,7 @@ export async function resolveFilters({
             genreStrings
                 .filter((genre) => genre != null)
                 .map(async (genre) => {
-                    if (appliedFilters.Genre.includes(genre)) {
+                    if (appliedFilters?.Genre.includes(genre)) {
                         return { name: genre, hits: hitsThisQuery };
                     }
 
