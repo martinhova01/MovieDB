@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { MockedProvider } from "@apollo/client/testing";
+import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { vi } from "vitest";
 import MovieList from "@/components/MovieList";
 import { GET_MOVIES } from "@/api/queries";
@@ -126,9 +126,9 @@ const emptyMock = [
 ];
 
 describe("MovieList", () => {
-    const renderMovieList = (mock: any) => {
+    const renderMovieList = (mocks: MockedResponse[] | undefined) => {
         render(
-            <MockedProvider mocks={mock} addTypename={false}>
+            <MockedProvider mocks={mocks} addTypename={false}>
                 <MemoryRouter>
                     <MovieList />
                 </MemoryRouter>

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { MockedProvider } from "@apollo/client/testing";
+import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import SortAndFilterPanel from "@/components/SortAndFilterPanel";
 import { GET_FILTERS } from "@/api/queries";
 import {
@@ -122,9 +122,11 @@ const errorMock = [
 ];
 
 describe("SortAndFilterPanel", () => {
-    const renderSortAndFilterPanel = async (mock: any) => {
+    const renderSortAndFilterPanel = async (
+        mocks: MockedResponse[] | undefined
+    ) => {
         render(
-            <MockedProvider mocks={mock} addTypename={false}>
+            <MockedProvider mocks={mocks} addTypename={false}>
                 <SortAndFilterPanel />
             </MockedProvider>
         );
