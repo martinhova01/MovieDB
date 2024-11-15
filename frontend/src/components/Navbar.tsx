@@ -20,7 +20,7 @@ const Navbar = () => {
         <header className="flex w-full items-center justify-between bg-gradient-to-r from-muted-foreground to-primary p-4">
             <nav className="flex items-center gap-10 text-background">
                 <Link to="/" className="flex flex-row gap-3 text-2xl font-bold">
-                    <img src={logo} alt="logo" className="h-8 w-8" />
+                    <img src={logo} alt="logo" className="h-8" />
                     MovieDB
                 </Link>
                 <ul className="hidden gap-4 text-lg sm:flex">

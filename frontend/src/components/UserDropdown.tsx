@@ -63,6 +63,7 @@ const UserDropdown = () => {
                 <Button
                     variant="outline"
                     className="flex items-center space-x-2"
+                    aria-label="user"
                 >
                     <User className="h-4 w-4" />
                     <span className="hidden truncate sm:flex sm:max-w-32">
