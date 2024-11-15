@@ -26,6 +26,7 @@ import { toast } from "sonner";
 const UserDropdown = () => {
     const username = useReactiveVar(usernameVar);
     const [newUsername, setNewUsername] = useState("");
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const handleUsernameChange = (e: React.FormEvent) => {
@@ -35,6 +36,7 @@ const UserDropdown = () => {
             localStorage.setItem("username", newUsername.trim());
             setNewUsername("");
             setIsDialogOpen(false);
+            setIsDropdownOpen(false);
             toast.success("Username changed successfully");
         }
     };
@@ -51,7 +53,7 @@ const UserDropdown = () => {
     };
 
     return (
-        <DropdownMenu>
+        <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
             <DropdownMenuTrigger asChild>
                 <Button
                     variant="outline"

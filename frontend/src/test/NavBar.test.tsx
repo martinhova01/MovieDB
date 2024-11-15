@@ -52,6 +52,7 @@ describe("Navbar", () => {
             "/myReviews"
         );
 
+        await userEvent.click(screen.getByText("TestUser"));
         await userEvent.click(screen.getByText("Sign out"));
         expect(screen.queryByText("My Reviews")).toBeNull();
     });

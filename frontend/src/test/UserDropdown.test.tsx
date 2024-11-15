@@ -45,8 +45,10 @@ describe("UserDropdown", () => {
         );
 
         expect(screen.queryByText("New username")).toBeNull(); // Should close dialog
-        expect(screen.getAllByText(newUsername)).toHaveLength(2); // In dropdown button and menu
+        expect(screen.queryByText("My Account")).toBeNull(); // Should close menu
+        expect(screen.getByText(newUsername)).toBeInTheDocument(); // In dropdown button
 
+        await userEvent.click(screen.getByText("TestUser"));
         await userEvent.click(screen.getByText("Sign out"));
         expect(screen.getByText("Guest")).toBeInTheDocument();
         expect(screen.queryByText("My Account")).toBeNull();
@@ -62,8 +64,10 @@ describe("UserDropdown", () => {
         await userEvent.type(input, `${newUsername}{enter}`);
 
         expect(screen.queryByText("New username")).toBeNull(); // Should close dialog
-        expect(screen.getAllByText(newUsername)).toHaveLength(2); // In dropdown button and menu
+        expect(screen.queryByText("My Account")).toBeNull(); // Should close menu
+        expect(screen.getByText(newUsername)).toBeInTheDocument(); // In dropdown button
 
+        await userEvent.click(screen.getByText("TestUser"));
         await userEvent.click(screen.getByText("Sign out"));
     });
 
