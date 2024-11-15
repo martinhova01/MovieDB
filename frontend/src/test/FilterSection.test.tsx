@@ -1,5 +1,5 @@
 import { vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import FilterSection from "@/components/FilterSection";
 import { FiltersInput } from "@/types/__generated__/types";
 import { Accordion } from "@/shadcn/components/ui/accordion";
@@ -26,26 +26,22 @@ const defaultProps = {
     loading: false,
 };
 
-const renderFilterSection = (props: {
-    category: keyof FiltersInput;
-    all_filters: { name: string; hits: number }[];
-    applied_filters: string[];
-    updateFilters: (category: keyof FiltersInput, filter: string) => void;
-    loading: boolean;
-}) => {
-    render(
-        <Accordion type="single" collapsible className="w-full">
-            <FilterSection {...props} />
-        </Accordion>
-    );
-
-    userEvent.click(screen.getByRole("button"));
-};
-
 describe("FilterSection", () => {
-    afterEach(() => {
-        vi.clearAllMocks();
-    });
+    const renderFilterSection = async (props: {
+        category: keyof FiltersInput;
+        all_filters: { name: string; hits: number }[];
+        applied_filters: string[];
+        updateFilters: (category: keyof FiltersInput, filter: string) => void;
+        loading: boolean;
+    }) => {
+        render(
+            <Accordion type="single" collapsible className="w-full">
+                <FilterSection {...props} />
+            </Accordion>
+        );
+
+        await userEvent.click(screen.getByRole("button"));
+    };
 
     it("renders the category name correctly", () => {
         renderFilterSection(defaultProps);
@@ -63,76 +59,62 @@ describe("FilterSection", () => {
     });
 
     it("only renders filters with hits greater than 0", async () => {
-        renderFilterSection(defaultProps);
+        await renderFilterSection(defaultProps);
 
-        await waitFor(() => {
-            expect(screen.getByText("Action")).toBeInTheDocument();
-            expect(screen.getByText("Comedy")).toBeInTheDocument();
-            expect(screen.getByText("Drama")).toBeInTheDocument();
-            expect(screen.getByText("Thriller")).toBeInTheDocument();
-            expect(
-                screen.queryByText("Science Fiction")
-            ).not.toBeInTheDocument();
-        });
+        expect(screen.getByText("Action")).toBeInTheDocument();
+        expect(screen.getByText("Comedy")).toBeInTheDocument();
+        expect(screen.getByText("Drama")).toBeInTheDocument();
+        expect(screen.getByText("Thriller")).toBeInTheDocument();
+        expect(screen.queryByText("Science Fiction")).not.toBeInTheDocument();
     });
 
     it("shows the correct number of hits for each filter", async () => {
-        renderFilterSection(defaultProps);
+        await renderFilterSection(defaultProps);
 
-        await waitFor(() => {
-            expect(screen.getByText("(150)")).toBeInTheDocument();
-            expect(screen.getByText("(100)")).toBeInTheDocument();
-            expect(screen.getByText("(120)")).toBeInTheDocument();
-            expect(screen.getByText("(90)")).toBeInTheDocument();
-        });
+        expect(screen.getByText("(150)")).toBeInTheDocument();
+        expect(screen.getByText("(100)")).toBeInTheDocument();
+        expect(screen.getByText("(120)")).toBeInTheDocument();
+        expect(screen.getByText("(90)")).toBeInTheDocument();
     });
 
     it("checks the checkbox only for applied filters", async () => {
-        renderFilterSection(defaultProps);
+        await renderFilterSection(defaultProps);
 
-        await waitFor(() => {
-            const checkboxes = screen.getAllByRole("checkbox");
-            checkboxes.forEach((checkbox) => {
-                if (checkbox.id === "Action") {
-                    expect(checkbox).toBeChecked();
-                    return;
-                }
-                expect(checkbox).not.toBeChecked();
-            });
+        const checkboxes = screen.getAllByRole("checkbox");
+        checkboxes.forEach((checkbox) => {
+            if (checkbox.id === "Action") {
+                expect(checkbox).toBeChecked();
+                return;
+            }
+            expect(checkbox).not.toBeChecked();
         });
     });
 
     it("calls updateFilters with correct arguments when checkbox is clicked", async () => {
-        renderFilterSection(defaultProps);
+        await renderFilterSection(defaultProps);
 
-        await waitFor(() => {
-            const comedyCheckbox = screen.getByRole("checkbox", {
-                name: /Comedy/,
-            });
-            userEvent.click(comedyCheckbox);
-            expect(mockUpdateFilters).toHaveBeenCalledWith("Genre", "Comedy");
+        const comedyCheckbox = screen.getByRole("checkbox", {
+            name: /Comedy/,
         });
+        await userEvent.click(comedyCheckbox);
+        expect(mockUpdateFilters).toHaveBeenCalledWith("Genre", "Comedy");
     });
 
     it("disables checkboxes when loading is true", async () => {
-        renderFilterSection({ ...defaultProps, loading: true });
+        await renderFilterSection({ ...defaultProps, loading: true });
 
-        await waitFor(() => {
-            const checkboxes = screen.getAllByRole("checkbox");
-            checkboxes.forEach((checkbox) => {
-                expect(checkbox).toBeDisabled();
-            });
+        const checkboxes = screen.getAllByRole("checkbox");
+        checkboxes.forEach((checkbox) => {
+            expect(checkbox).toBeDisabled();
         });
     });
 
     it("enables checkboxes when loading is false", async () => {
-        renderFilterSection(defaultProps);
+        await renderFilterSection(defaultProps);
 
-        await waitFor(() => {
-            const checkboxes = screen.getAllByRole("checkbox");
-            checkboxes.forEach((checkbox) => {
-                expect(checkbox).not.toBeDisabled();
-            });
+        const checkboxes = screen.getAllByRole("checkbox");
+        checkboxes.forEach((checkbox) => {
+            expect(checkbox).not.toBeDisabled();
         });
     });
 });

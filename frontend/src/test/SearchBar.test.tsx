@@ -12,7 +12,6 @@ vi.mock("@/utils/cache", () => ({
 describe("SearchBar", () => {
     afterEach(() => {
         sessionStorage.clear();
-        vi.clearAllMocks();
     });
 
     it("renders the search input", () => {

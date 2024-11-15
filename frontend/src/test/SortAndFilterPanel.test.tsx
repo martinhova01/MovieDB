@@ -29,6 +29,24 @@ vi.mock("@apollo/client", async () => {
     };
 });
 
+vi.mock("@/utils/formatUtil", () => ({
+    formatNumber: vi.fn((num: number) => num.toString()),
+}));
+
+vi.mock("../components/SortSection", () => ({
+    default: vi.fn(({ loading }: { loading: boolean }) => (
+        <div data-testid="sort-section">
+            <span>Loading: {loading.toString()}</span>
+        </div>
+    )),
+}));
+
+vi.mock("../components/Loader", () => ({
+    default: vi.fn(({ children }) => (
+        <div data-testid="loader">{children}</div>
+    )),
+}));
+
 const mockGetFiltersQuery = [
     {
         request: {
@@ -104,6 +122,18 @@ const errorMock = [
 ];
 
 describe("SortAndFilterPanel", () => {
+    const renderSortAndFilterPanel = async (mock: any) => {
+        render(
+            <MockedProvider mocks={mock} addTypename={false}>
+                <SortAndFilterPanel />
+            </MockedProvider>
+        );
+
+        await userEvent.click(
+            screen.getByRole("button", { name: /Sort & Filter/i })
+        );
+    };
+
     beforeEach(() => {
         vi.mocked(filtersVar).mockReturnValue({
             Genre: [],
@@ -129,35 +159,14 @@ describe("SortAndFilterPanel", () => {
                 <SortAndFilterPanel />
             </MockedProvider>
         );
+
         expect(
             screen.getByRole("button", { name: /Sort & Filter/i })
         ).toBeInTheDocument();
     });
 
-    /*
-    it("opens the panel and displays loading state", async () => {
-        render(
-            <MockedProvider mocks={mockGetFiltersQuery} addTypename={false}>
-                <SortAndFilterPanel />
-            </MockedProvider>
-        );
-
-        userEvent.click(screen.getByRole("button", { name: /Sort & Filter/i }));
-
-        expect(screen.getByText("Updating filters...")).toBeInTheDocument();
-    });
-    */
-
     it("displays filter sections and Clear All button", async () => {
-        render(
-            <MockedProvider mocks={mockGetFiltersQuery} addTypename={false}>
-                <SortAndFilterPanel />
-            </MockedProvider>
-        );
-
-        await userEvent.click(
-            screen.getByRole("button", { name: /Sort & Filter/i })
-        );
+        await renderSortAndFilterPanel(mockGetFiltersQuery);
 
         expect(screen.getByText(/Genre/i)).toBeInTheDocument();
         expect(screen.getByText(/Rating/i)).toBeInTheDocument();
@@ -169,24 +178,27 @@ describe("SortAndFilterPanel", () => {
     });
 
     it("adds filter when an option is clicked", async () => {
-        render(
-            <MockedProvider mocks={mockGetFiltersQuery} addTypename={false}>
-                <SortAndFilterPanel />
-            </MockedProvider>
-        );
-
-        await userEvent.click(
-            screen.getByRole("button", { name: /Sort & Filter/i })
-        );
+        await renderSortAndFilterPanel(mockGetFiltersQuery);
 
         await userEvent.click(screen.getByRole("button", { name: /Genre/i }));
 
         await userEvent.click(
             screen.getByRole("checkbox", { name: /Action/i })
         );
-        expect(filtersVar).toHaveBeenCalledWith(
-            expect.objectContaining({
-                Genre: expect.arrayContaining(["Action"]),
+        expect(filtersVar).toHaveBeenCalledWith({
+            Genre: ["Action"],
+            Rating: [],
+            Decade: [],
+            Status: [],
+            Runtime: [],
+        });
+        expect(sessionStorage.getItem("filters")).toBe(
+            JSON.stringify({
+                Genre: ["Action"],
+                Rating: [],
+                Decade: [],
+                Status: [],
+                Runtime: [],
             })
         );
     });
@@ -200,15 +212,7 @@ describe("SortAndFilterPanel", () => {
             Runtime: ["1 - 2 hours"],
         });
 
-        render(
-            <MockedProvider mocks={mockGetFiltersQuery} addTypename={false}>
-                <SortAndFilterPanel />
-            </MockedProvider>
-        );
-
-        await userEvent.click(
-            screen.getByRole("button", { name: /Sort & Filter/i })
-        );
+        await renderSortAndFilterPanel(mockGetFiltersQuery);
 
         await userEvent.click(screen.getByRole("button", { name: /Genre/i }));
 
@@ -216,9 +220,20 @@ describe("SortAndFilterPanel", () => {
             screen.getByRole("checkbox", { name: /Action/i })
         );
 
-        expect(filtersVar).toHaveBeenCalledWith(
-            expect.objectContaining({
-                Genre: expect.not.arrayContaining(["Action"]),
+        expect(filtersVar).toHaveBeenCalledWith({
+            Genre: [],
+            Rating: ["5"],
+            Decade: ["2010s"],
+            Status: ["Released"],
+            Runtime: ["1 - 2 hours"],
+        });
+        expect(sessionStorage.getItem("filters")).toBe(
+            JSON.stringify({
+                Genre: [],
+                Rating: ["5"],
+                Decade: ["2010s"],
+                Status: ["Released"],
+                Runtime: ["1 - 2 hours"],
             })
         );
     });
@@ -232,15 +247,7 @@ describe("SortAndFilterPanel", () => {
             Runtime: ["1 - 2 hours"],
         });
 
-        render(
-            <MockedProvider mocks={mockGetFiltersQuery} addTypename={false}>
-                <SortAndFilterPanel />
-            </MockedProvider>
-        );
-
-        await userEvent.click(
-            screen.getByRole("button", { name: /Sort & Filter/i })
-        );
+        await renderSortAndFilterPanel(mockGetFiltersQuery);
 
         await userEvent.click(screen.getByText(/Clear All/i));
 
@@ -252,18 +259,22 @@ describe("SortAndFilterPanel", () => {
             Runtime: [],
         });
         expect(sortOptionVar).toHaveBeenCalledWith(SortingType.MOST_POPULAR);
+        expect(sessionStorage.getItem("filters")).toBe(
+            JSON.stringify({
+                Genre: [],
+                Rating: [],
+                Decade: [],
+                Status: [],
+                Runtime: [],
+            })
+        );
+        expect(sessionStorage.getItem("sort_option")).toBe(
+            SortingType.MOST_POPULAR
+        );
     });
 
     it("displays an error message if query fails", async () => {
-        render(
-            <MockedProvider mocks={errorMock} addTypename={false}>
-                <SortAndFilterPanel />
-            </MockedProvider>
-        );
-
-        await userEvent.click(
-            screen.getByRole("button", { name: /Sort & Filter/i })
-        );
+        await renderSortAndFilterPanel(errorMock);
 
         expect(screen.getByText(/Something went wrong!/i)).toBeInTheDocument();
         expect(screen.getByText(/Try to refresh/i)).toBeInTheDocument();

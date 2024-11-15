@@ -95,20 +95,12 @@ const MovieList = () => {
             <ul className="flex flex-wrap justify-center">
                 {loading
                     ? Array.from({ length: LIMIT }, (_, i) => i).map((i) => (
-                          <li
-                              key={i}
-                              className={listClass}
-                              data-testid="movie-card-skeleton"
-                          >
+                          <li key={i} className={listClass}>
                               <MovieCardSkeleton />
                           </li>
                       ))
                     : movies?.map((movie) => (
-                          <li
-                              key={movie._id}
-                              className={listClass}
-                              data-testid="movie-card"
-                          >
+                          <li key={movie._id} className={listClass}>
                               <MovieCard movie={movie} />
                           </li>
                       ))}

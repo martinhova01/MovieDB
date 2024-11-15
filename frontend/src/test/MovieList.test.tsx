@@ -1,13 +1,12 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing";
-import { describe, it, expect, vi } from "vitest";
+import { vi } from "vitest";
 import MovieList from "@/components/MovieList";
 import { GET_MOVIES } from "@/api/queries";
 import { FiltersInput, SortingType } from "@/types/__generated__/types";
 import { all_movies } from "./mock/util";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
-import { defaultSortOption } from "@/utils/sortOptionUtil";
 import {
     filtersVar,
     searchVar,
@@ -15,6 +14,10 @@ import {
     totalHitsVar,
 } from "@/utils/cache";
 import { useReactiveVar } from "@apollo/client";
+
+vi.mock("@/utils/formatUtil", () => ({
+    formatNumber: (n: number) => n.toLocaleString("no-NO"),
+}));
 
 vi.mock("@/utils/cache", () => ({
     filtersVar: vi.fn(),
@@ -31,7 +34,22 @@ vi.mock("@apollo/client", async () => {
     };
 });
 
+vi.mock("../components/MovieCard", () => ({
+    default: vi.fn(({ movie }: { movie: { title: string } }) => (
+        <div data-testid="movie-card">{movie.title}</div>
+    )),
+}));
+
+vi.mock("../components/MovieCardSkeleton", () => ({
+    default: vi.fn(() => <div data-testid="movie-card-skeleton" />),
+}));
+
+vi.mock("../components/Loader", () => ({
+    default: vi.fn(() => <div data-testid="loader" />),
+}));
+
 const mockMovies = all_movies.slice(0, 20);
+const mockDefaultSortOption = SortingType.MOST_POPULAR;
 
 const mockGetMoviesQuery = [
     {
@@ -47,7 +65,7 @@ const mockGetMoviesQuery = [
                     Status: [],
                     Runtime: [],
                 } as FiltersInput,
-                sortOption: defaultSortOption,
+                sortOption: mockDefaultSortOption,
                 search: "",
             },
         },
@@ -73,7 +91,7 @@ const errorMock = [
                     Status: [],
                     Runtime: [],
                 } as FiltersInput,
-                sortOption: defaultSortOption,
+                sortOption: mockDefaultSortOption,
                 search: "",
             },
         },
@@ -95,7 +113,7 @@ const emptyMock = [
                     Status: [],
                     Runtime: [],
                 } as FiltersInput,
-                sortOption: defaultSortOption,
+                sortOption: mockDefaultSortOption,
                 search: "",
             },
         },
@@ -108,6 +126,16 @@ const emptyMock = [
 ];
 
 describe("MovieList", () => {
+    const renderMovieList = (mock: any) => {
+        render(
+            <MockedProvider mocks={mock} addTypename={false}>
+                <MemoryRouter>
+                    <MovieList />
+                </MemoryRouter>
+            </MockedProvider>
+        );
+    };
+
     beforeEach(() => {
         vi.mocked(filtersVar).mockReturnValue({
             Genre: [],
@@ -117,7 +145,7 @@ describe("MovieList", () => {
             Runtime: [],
         });
         vi.mocked(searchVar).mockReturnValue("");
-        vi.mocked(sortOptionVar).mockReturnValue(SortingType.MOST_POPULAR);
+        vi.mocked(sortOptionVar).mockReturnValue(mockDefaultSortOption);
         vi.mocked(totalHitsVar).mockReturnValue(50);
         vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
     });
@@ -127,60 +155,38 @@ describe("MovieList", () => {
     });
 
     it("renders loading state initially", () => {
-        render(
-            <MockedProvider mocks={mockGetMoviesQuery} addTypename={false}>
-                <MemoryRouter>
-                    <MovieList />
-                </MemoryRouter>
-            </MockedProvider>
-        );
+        renderMovieList(mockGetMoviesQuery);
 
         expect(screen.getAllByTestId("movie-card-skeleton")).toHaveLength(20);
     });
 
     it("renders movies after loading", async () => {
-        render(
-            <MockedProvider mocks={mockGetMoviesQuery} addTypename={false}>
-                <MemoryRouter>
-                    <MovieList />
-                </MemoryRouter>
-            </MockedProvider>
-        );
+        renderMovieList(mockGetMoviesQuery);
 
         await waitFor(() => {
             expect(screen.getByText("Total Hits: 50")).toBeInTheDocument();
-            expect(screen.getAllByTestId("movie-card")).toHaveLength(20);
+            expect(screen.getAllByTestId("movie-card")).toHaveLength(
+                mockMovies.length
+            );
             mockMovies.map((movie) =>
-                expect(screen.getByAltText(movie.title)).toBeInTheDocument()
+                expect(screen.getByText(movie.title)).toBeInTheDocument()
             );
         });
     });
 
     it("shows error message when query fails", async () => {
-        render(
-            <MockedProvider mocks={errorMock} addTypename={false}>
-                <MemoryRouter>
-                    <MovieList />
-                </MemoryRouter>
-            </MockedProvider>
-        );
+        renderMovieList(errorMock);
 
         await waitFor(() => {
             expect(
                 screen.getByText("Something went wrong!")
             ).toBeInTheDocument();
-            expect(screen.getByText("Try to refresh")).toBeInTheDocument;
+            expect(screen.getByText("Try to refresh")).toBeInTheDocument();
         });
     });
 
     it("shows no movies found message when results are empty", async () => {
-        render(
-            <MockedProvider mocks={emptyMock} addTypename={false}>
-                <MemoryRouter>
-                    <MovieList />
-                </MemoryRouter>
-            </MockedProvider>
-        );
+        renderMovieList(emptyMock);
 
         await waitFor(() => {
             expect(screen.getByText("No movies found")).toBeInTheDocument();

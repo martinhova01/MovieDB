@@ -17,16 +17,20 @@ vi.mock("@/utils/imageUrl/imageUrl", () => ({
 const mockMovie = all_movies[18] as MoviePoster; // Joker
 
 describe("MovieCard", () => {
-    afterEach(() => {
-        vi.clearAllMocks();
-    });
-
-    it("renders movie card with correct link", () => {
+    const renderMovieCard = () => {
         render(
             <MemoryRouter>
                 <MovieCard movie={mockMovie} />
             </MemoryRouter>
         );
+    };
+
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
+    it("renders movie card with correct link", () => {
+        renderMovieCard();
 
         expect(screen.getByRole("link")).toHaveAttribute(
             "href",
@@ -37,11 +41,7 @@ describe("MovieCard", () => {
     it("renders movie poster with correct attributes", () => {
         vi.mocked(getImageUrl).mockReturnValue("mocked-image-url");
 
-        render(
-            <MemoryRouter>
-                <MovieCard movie={mockMovie} />
-            </MemoryRouter>
-        );
+        renderMovieCard();
 
         const image = screen.getByRole("img");
         expect(image).toHaveAttribute("src", "mocked-image-url");
@@ -66,11 +66,7 @@ describe("MovieCard", () => {
     });
 
     it("renders rating component with correct value", () => {
-        render(
-            <MemoryRouter>
-                <MovieCard movie={mockMovie} />
-            </MemoryRouter>
-        );
+        renderMovieCard();
 
         expect(screen.getByTitle("4.08")).toBeInTheDocument();
     });
