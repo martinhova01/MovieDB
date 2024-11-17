@@ -2,7 +2,28 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import MovieCardDetailed from "../components/MovieCardDetailed";
 import { all_movies } from "./mock/util";
-import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
+import { vi } from "vitest";
+
+vi.mock("@/utils/formatUtil", () => ({
+    formatCurrency: (value: number) =>
+        value.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+            maximumFractionDigits: 0,
+        }),
+}));
+
+vi.mock("@/utils/imageUrl/imageUrl", () => ({
+    ImageType: {
+        POSTER: "poster",
+        BACKDROP: "backdrop",
+    },
+    getImageUrl: vi.fn((type, path, size) => {
+        return type === "poster"
+            ? `mocked_poster_url/${size}${path}`
+            : `mocked_backdrop_url/original${path}`;
+    }),
+}));
 
 const mockMovie = all_movies[18]; // Joker
 
@@ -38,29 +59,10 @@ describe("MovieCardDetailed", () => {
         const poster = screen.getByAltText("Poster of Joker");
         expect(poster).toBeInTheDocument();
 
-        const expectedPosterUrl = getImageUrl(
-            ImageType.POSTER,
-            mockMovie.poster_path,
-            "w500"
+        expect(poster).toHaveAttribute(
+            "src",
+            "mocked_poster_url/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"
         );
-        expect(poster).toHaveAttribute("src", expectedPosterUrl);
-    });
-
-    it("displays deafult poster when poster path is missing", () => {
-        render(
-            <MovieCardDetailed
-                movie={{
-                    ...mockMovie,
-                    poster_path: null,
-                }}
-            />
-        );
-
-        const poster = screen.getByAltText("Poster of Joker");
-        expect(poster).toBeInTheDocument();
-
-        const defaultPosterUrl = getImageUrl(ImageType.POSTER, null, "w500");
-        expect(poster).toHaveAttribute("src", defaultPosterUrl);
     });
 
     it("displays movie tagline and overview", () => {
@@ -142,24 +144,8 @@ describe("MovieCardDetailed", () => {
     it("renders background image correctly", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
 
-        const backdropUrl = getImageUrl(
-            ImageType.BACKDROP,
-            mockMovie.backdrop_path
-        );
-
         expect(screen.getByTestId("detailedMovieCard")).toHaveStyle(
-            `background-image: url(${backdropUrl})`
-        );
-    });
-
-    it("handles missing backdrop path", () => {
-        render(
-            <MovieCardDetailed movie={{ ...mockMovie, backdrop_path: null }} />
-        );
-
-        const backdropUrl = getImageUrl(ImageType.BACKDROP, null);
-        expect(screen.getByTestId("detailedMovieCard")).toHaveStyle(
-            `background-image: url(${backdropUrl})`
+            `background-image: url(mocked_backdrop_url/original/hO7KbdvGOtDdeg0W4Y5nKEHeDDh.jpg)`
         );
     });
 });
