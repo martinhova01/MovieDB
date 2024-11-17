@@ -240,7 +240,7 @@ describe("SortAndFilterPanel", () => {
         );
     });
 
-    it("clears all filters when Clear All button is clicked", async () => {
+    it("clears all filters and resets sortOption when Clear All button is clicked", async () => {
         vi.mocked(filtersVar).mockReturnValue({
             Genre: ["Action"],
             Rating: ["5"],
