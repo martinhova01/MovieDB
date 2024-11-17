@@ -1,9 +1,10 @@
 import { defineConfig } from "cypress";
+import { configurePlugin } from "cypress-mongodb";
 
 export default defineConfig({
     e2e: {
-        setupNodeEvents(on, config) {
-            // implement node event listeners here
+        async setupNodeEvents(on, config) {
+            configurePlugin(on);
         },
         baseUrl: "http://localhost:5173/project2",
         specPattern: "src/test/cypress/e2e/**/*.cy.ts",
