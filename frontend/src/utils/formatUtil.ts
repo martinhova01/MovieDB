@@ -11,3 +11,11 @@ export const formatDate = (date: Date) => {
 export const formatNumber = (n: number) => {
     return n.toLocaleString("no-NO");
 };
+
+export const formatCurrency = (value: number) => {
+    return value.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0,
+    });
+};

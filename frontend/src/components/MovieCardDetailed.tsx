@@ -9,18 +9,11 @@ import { Button } from "../shadcn/components/ui/button";
 import Ratings from "../shadcn/components/ui/rating";
 import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 import { Movie } from "@/types/__generated__/types";
+import { formatCurrency } from "@/utils/formatUtil";
 
 interface MovieCardDetailedProps {
     movie: Movie;
 }
-
-const formatCurrency = (value: number) => {
-    return value.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
-        maximumFractionDigits: 0,
-    });
-};
 
 const getMovieDetailsList = (movie: Movie) => [
     {
