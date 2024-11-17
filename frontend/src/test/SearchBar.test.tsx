@@ -12,6 +12,7 @@ vi.mock("@/utils/cache", () => ({
 describe("SearchBar", () => {
     afterEach(() => {
         sessionStorage.clear();
+        vi.clearAllMocks();
     });
 
     it("renders the search input", () => {
@@ -72,5 +73,14 @@ describe("SearchBar", () => {
 
         expect(searchVar).toHaveBeenCalledWith("");
         expect(sessionStorage.getItem("search")).toBe("");
+    });
+
+    it("does not trigger search when Enter is pressed with an empty input", async () => {
+        render(<SearchBar />);
+
+        const input = screen.getByRole("searchbox");
+        await userEvent.type(input, "{enter}");
+
+        expect(searchVar).not.toHaveBeenCalled();
     });
 });
