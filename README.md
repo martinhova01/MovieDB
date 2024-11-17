@@ -16,7 +16,7 @@ The following commands can be run in the `T26-Project-2/frontend` directory:
   - `npm run prettier:fix` to fix formatting
 - `npm run lint` to check for linting errors
   - `npm run lint:fix` to fix auto fixable linting errors
-- `npm test` to run all tests
+- `npm test` to run all frontend tests
   - `npm run coverage` to generate a test coverage report at `frontend/coverage/index.html`
 - `npm run build` to build the project
   - it will be built in the `dist` folder
@@ -38,6 +38,8 @@ The following commands can be run in the `T26-Project-2/backend` directory:
   - `npm run prettier:fix` to fix formatting
 - `npm run lint` to check for linting errors
   - `npm run lint:fix` to fix auto fixable linting errors
+- `npm test` to run all backend tests
+  - `npm run coverage` to generate a test coverage report at `backend/coverage/index.html`
 - `npm run build` to build the project
 - `npm run start` to start the server
 
