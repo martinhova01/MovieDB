@@ -11,13 +11,15 @@
         "test": "vitest",
         "coverage": "vitest --coverage",
         "prettier": "prettier --check .",
-        "prettier:fix": "prettier --write ."
+        "prettier:fix": "prettier --write .",
+        "e2e:server": "node dist/e2e.js"
     },
     "dependencies": {
         "@apollo/server": "^4.11.0",
         "graphql": "^16.9.0",
         "graphql-depth-limit": "^1.1.0",
         "graphql-scalars": "^1.23.0",
+        "mongodb-memory-server": "^10.1.2",
         "mongoose": "^8.7.1"
     },
     "devDependencies": {

@@ -11,7 +11,7 @@ import {
     expect,
     it,
 } from "vitest";
-import { createApolloServer } from "../index";
+import { createApolloServer } from "../server";
 import MovieModel from "../models/movie.model";
 import ReviewModel from "../models/review.model";
 import { SortingType } from "../utils/sortUtils";
