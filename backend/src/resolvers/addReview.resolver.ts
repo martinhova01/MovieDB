@@ -2,7 +2,11 @@ import { GraphQLError } from "graphql";
 import mongoose from "mongoose";
 import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
-import { createBadUserInputError } from "../utils/graphqlErrorUtils.js";
+import {
+    createBadUserInputError,
+    validateReview,
+    validateUsername,
+} from "../utils/graphqlErrorUtils.js";
 
 export interface ResolveAddReviewInterface {
     movie_id: number;
@@ -22,6 +26,10 @@ export async function resolveAddReview({
             "Rating must be an integer between 1 and 5."
         );
     }
+
+    const validationError =
+        validateReview(comment) ?? validateUsername(username);
+    if (validationError != null) return validationError;
 
     const movie = await MovieModel.findById(movie_id);
     if (movie == null) {

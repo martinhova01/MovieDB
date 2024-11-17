@@ -18,6 +18,7 @@ import {
 } from "@/shadcn/components/ui/dropdown-menu";
 import { Input } from "@/shadcn/components/ui/input";
 import { Label } from "@/shadcn/components/ui/label";
+import { validateUsername } from "@/utils/userInputValidation";
 import { useReactiveVar } from "@apollo/client";
 import { Edit, LogOut, User } from "lucide-react";
 import { useState } from "react";
@@ -31,9 +32,13 @@ const UserDropdown = () => {
 
     const handleUsernameChange = (e: React.FormEvent) => {
         e.preventDefault();
-        if (newUsername.trim()) {
-            usernameVar(newUsername.trim());
-            localStorage.setItem("username", newUsername.trim());
+
+        const trimmedUsername = newUsername.trim();
+        if (!validateUsername(trimmedUsername)) return;
+
+        if (trimmedUsername) {
+            usernameVar(trimmedUsername);
+            localStorage.setItem("username", trimmedUsername);
             setNewUsername("");
             setIsDialogOpen(false);
             setIsDropdownOpen(false);

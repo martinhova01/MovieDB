@@ -46,6 +46,7 @@ const SearchBar: React.FC = () => {
                 onKeyDown={handleKeyDown}
                 ref={searchInputRef}
                 aria-label="Search for movies"
+                maxLength={100}
             />
         </section>
     );

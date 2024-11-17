@@ -27,3 +27,29 @@ export function validateSkipLimit(skip: number, limit: number) {
     }
     return null;
 }
+
+export function validateUsername(username: string) {
+    const usernameMinLength = 3;
+    const usernameMaxLength = 20;
+    if (username.length < usernameMinLength) {
+        return createBadUserInputError(
+            `Username must be at least ${usernameMinLength} characters long.`
+        );
+    }
+    if (username.length > 20) {
+        return createBadUserInputError(
+            `Username must be at most ${usernameMaxLength} characters long.`
+        );
+    }
+    return null;
+}
+
+export function validateReview(comment: string) {
+    const reviewMaxLength = 1500;
+    if (comment.trim().length > reviewMaxLength) {
+        return createBadUserInputError(
+            `Review must be at most ${reviewMaxLength} characters.`
+        );
+    }
+    return null;
+}

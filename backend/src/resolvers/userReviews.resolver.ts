@@ -1,6 +1,9 @@
 import MovieModel from "../models/movie.model.js";
 import ReviewModel from "../models/review.model.js";
-import { validateSkipLimit } from "../utils/graphqlErrorUtils.js";
+import {
+    validateSkipLimit,
+    validateUsername,
+} from "../utils/graphqlErrorUtils.js";
 
 export interface ResolveUserReviewsInterface {
     username: string;
@@ -13,7 +16,8 @@ export async function resolveUserReviews({
     skip = 0,
     limit = 10,
 }: ResolveUserReviewsInterface) {
-    const validationError = validateSkipLimit(skip, limit);
+    const validationError =
+        validateSkipLimit(skip, limit) ?? validateUsername(username);
     if (validationError != null) {
         return validationError;
     }

@@ -10,6 +10,7 @@ import { Movie } from "@/types/__generated__/types";
 import { ADD_REVIEW } from "@/api/queries";
 import Loader from "./Loader";
 import ReviewCard from "./ReviewCard";
+import { validateReview, validateUsername } from "@/utils/userInputValidation";
 
 interface MovieReviewsProps {
     movie: Movie;
@@ -50,6 +51,8 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
 
     const handleSubmitReview = (e?: React.FormEvent) => {
         e?.preventDefault();
+
+        if (!validateReview(comment) || !validateUsername(username)) return;
 
         addReview({
             variables: {

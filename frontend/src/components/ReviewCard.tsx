@@ -178,7 +178,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                         totalstars={5}
                     />
                     {review.comment && (
-                        <p className="mt-2 text-sm sm:text-base">
+                        <p className="mt-2 break-words text-sm sm:text-base">
                             {review.comment}
                         </p>
                     )}
