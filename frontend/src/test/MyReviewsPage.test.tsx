@@ -2,7 +2,7 @@ import { GET_USER_REVIEWS } from "@/api/queries";
 import { all_reviews } from "./mock/util";
 import "@testing-library/jest-dom";
 import { usernameVar } from "@/utils/cache";
-import { createMemoryRouter, RouterProvider } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import MyReviewsPage from "@/pages/MyReviewsPage";
@@ -66,16 +66,11 @@ vi.mock("react-router-dom", async () => {
 
 describe("ActivityPage", () => {
     const renderComponent = (mocks: MockedResponse[] | undefined) => {
-        const router = createMemoryRouter(
-            [{ path: "/myReviews", element: <MyReviewsPage /> }],
-            {
-                initialEntries: ["/myReviews"],
-            }
-        );
-
         return render(
             <MockedProvider mocks={mocks} addTypename={false}>
-                <RouterProvider router={router} />
+                <MemoryRouter>
+                    <MyReviewsPage />
+                </MemoryRouter>
             </MockedProvider>
         );
     };

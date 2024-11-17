@@ -1,10 +1,10 @@
 import { GET_LATEST_REVIEWS } from "@/api/queries";
 import { all_reviews } from "./mock/util";
 import "@testing-library/jest-dom";
-import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import ActivityPage from "@/pages/ActivityPage";
 import { render, screen, waitFor } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 
 const mockLatestReviewsEmpty = [
     {
@@ -55,16 +55,11 @@ const mockLatestReviewsError = [
 
 describe("ActivityPage", () => {
     const renderComponent = (mocks: MockedResponse[] | undefined) => {
-        const router = createMemoryRouter(
-            [{ path: "/activity", element: <ActivityPage /> }],
-            {
-                initialEntries: ["/activity"],
-            }
-        );
-
         return render(
             <MockedProvider mocks={mocks} addTypename={false}>
-                <RouterProvider router={router} />
+                <MemoryRouter>
+                    <ActivityPage />
+                </MemoryRouter>
             </MockedProvider>
         );
     };
