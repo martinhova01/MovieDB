@@ -118,6 +118,22 @@ We initially had over 700.000 movies in our database, but we later found that mo
 
 We use caching in order to reduce the number of queries to the backend and improve performance. This way we avoid fetching the same data multiple times. When it comes to the caching of reviews, we had to find a balance between having up-to-date data and minimizing the number of queries. We found that the best solution was to have the user refresh in order to be sure of having the latest updates. This allows us to update the cache manually when adding/deleting a review, reducing the number of queries considerably while still feeling intuitive for the user.
 
+### Accessibility
+
+We’ve put a lot of effort into making sure our application is accessible for everyone. Accessibility is a core part of what makes a good user experience, so here are some of the steps we've taken to make our app more inclusive:
+
+- **Semantic HTML**: We use the right HTML tags to ensure that screen readers can easily interpret and present the content to users who rely on them.
+- **ARIA Attributes**: We've added `aria-label` to give elements clear, descriptive names and used `aria-role` to specify roles when they’re not obvious from the element type.
+- **Image Descriptions**: All images come with `alt` text. This way, if an image doesn’t load for any reason, the description still provides the necessary context for what was supposed to be there.
+- **Keyboard Navigation**: The whole app is built to be navigable using only a keyboard, which is how some users prefer or need to interact with websites.
+- **Color Contrast**: We’ve checked that all text and interactive elements have enough contrast with their backgrounds to be easily readable, especially for users with visual impairments.
+
+To catch any accessibility issues, we’ve been using `Google Lighthouse`, a built-in browser tool, to analyze accessibility as well as performance, best practices, and Search Engine Optimization (SEO). Here’s an example of a Lighthouse report for the homepage’s initial load:
+
+![Lighthouse report](docs/image.png)
+
+*Note: This test was run with the backend on a local server, so the performance results might not be fully accurate.*
+
 ### Note
 
 At the moment we perform several queries in order to maintain concistency with regards to the reviews. As this is not the final deliverable we have not yet had time to optimize this. However, this is something we are aware of and in the process of fixing for the final deliverable.
