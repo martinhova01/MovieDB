@@ -110,7 +110,7 @@ describe("MovieReviews", () => {
             </MockedProvider>
         );
 
-        const ratingStars = screen.getAllByRole("input");
+        const ratingStars = screen.getAllByRole("radio");
         await userEvent.click(ratingStars[4]);
 
         expect(
@@ -125,7 +125,7 @@ describe("MovieReviews", () => {
             </MockedProvider>
         );
 
-        const ratingStars = screen.getAllByRole("input");
+        const ratingStars = screen.getAllByRole("radio");
         await userEvent.click(ratingStars[4]);
         await userEvent.type(
             screen.getByPlaceholderText("Write your review (optional)"),
@@ -150,7 +150,7 @@ describe("MovieReviews", () => {
             </MockedProvider>
         );
 
-        const ratingStars = screen.getAllByRole("input");
+        const ratingStars = screen.getAllByRole("radio");
         await userEvent.click(ratingStars[4]);
         await userEvent.type(
             screen.getByPlaceholderText("Write your review (optional)"),
