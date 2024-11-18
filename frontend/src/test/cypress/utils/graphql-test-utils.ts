@@ -1,8 +1,14 @@
 import { CyHttpMessages } from "cypress/types/net-stubbing";
 
+interface GraphQLRequestBody {
+    operationName: string;
+    query: string;
+    variables: Record<string, unknown>;
+}
+
 // Utility to match GraphQL mutation based on the operation name
 export const hasOperationName = (
-    req: CyHttpMessages.IncomingHttpRequest<any, any>,
+    req: CyHttpMessages.IncomingHttpRequest<GraphQLRequestBody, unknown>,
     operationName: string
 ) => {
     const { body } = req;
@@ -14,7 +20,7 @@ export const hasOperationName = (
 
 // Alias query if operationName matches
 export const aliasQuery = (
-    req: CyHttpMessages.IncomingHttpRequest<any, any>,
+    req: CyHttpMessages.IncomingHttpRequest<GraphQLRequestBody, unknown>,
     operationName: string
 ) => {
     if (hasOperationName(req, operationName)) {
@@ -24,7 +30,7 @@ export const aliasQuery = (
 
 // Alias mutation if operationName matches
 export const aliasMutation = (
-    req: CyHttpMessages.IncomingHttpRequest<any, any>,
+    req: CyHttpMessages.IncomingHttpRequest<GraphQLRequestBody, unknown>,
     operationName: string
 ) => {
     if (hasOperationName(req, operationName)) {
