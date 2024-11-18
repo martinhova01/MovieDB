@@ -22,13 +22,19 @@ describe(
          *
          * @param responseMovies movies from query response
          */
-        const checkMoviePosters = (responseMovies: MoviePoster[]) => {
-            cy.get('a[href*="movie"] img').then(($posters) => {
-                const movieTitles = Cypress._.map($posters, "title");
-                expect(movieTitles).to.deep.equal(
-                    responseMovies.map((movie) => movie.title)
-                );
-            });
+        const checkMoviePosters = (
+            responseMovies: MoviePoster[],
+            length = 20,
+            slice = 0
+        ) => {
+            cy.get('a[href*="movie"] img')
+                .should("have.length", length)
+                .then(($posters) => {
+                    const movieTitles = Cypress._.map($posters, "title");
+                    expect(movieTitles.slice(slice)).to.deep.equal(
+                        responseMovies.map((movie) => movie.title)
+                    );
+                });
         };
 
         const emptyVariables = {
@@ -75,7 +81,10 @@ describe(
                     ...emptyVariables,
                     search: "the",
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    15
+                );
             });
 
             cy.get("#searchbar").type(" nun");
@@ -85,7 +94,10 @@ describe(
                     ...emptyVariables,
                     search: "the nun",
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    2
+                );
             });
 
             // Check that we get the same initial movies when clearing search bar (cached result)
@@ -224,7 +236,10 @@ describe(
                         Rating: ["3"],
                     },
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    1
+                );
             });
 
             // Check that we get the same movies when unapplying filters (cached result)
@@ -251,9 +266,7 @@ describe(
             cy.visit("/");
 
             // Wait for the initial GetMovies query to complete
-            cy.wait("@gqlGetMoviesQuery").then(({ request }) => {
-                expect(request.body.variables).to.deep.equal(emptyVariables);
-            });
+            cy.wait("@gqlGetMoviesQuery");
 
             cy.get("button").contains("Sort & Filter").click();
             cy.contains("Sort by").click();
@@ -278,7 +291,10 @@ describe(
                     },
                     sortOption: SortingType.BEST_RATED,
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    18
+                );
             });
 
             cy.contains("Runtime").click();
@@ -293,7 +309,10 @@ describe(
                     },
                     sortOption: SortingType.BEST_RATED,
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    6
+                );
             });
 
             cy.contains("Close").click();
@@ -309,7 +328,10 @@ describe(
                     sortOption: SortingType.BEST_RATED,
                     search: "mario",
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    1
+                );
             });
         });
 
@@ -322,9 +344,7 @@ describe(
             cy.visit("/");
 
             // Wait for the initial GetMovies query to complete
-            cy.wait("@gqlGetMoviesQuery").then(({ request }) => {
-                expect(request.body.variables).to.deep.equal(emptyVariables);
-            });
+            cy.wait("@gqlGetMoviesQuery");
 
             cy.get("#searchbar").type("the");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
@@ -332,7 +352,10 @@ describe(
                     ...emptyVariables,
                     search: "the",
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    15
+                );
             });
 
             cy.get("button").contains("Sort & Filter").click();
@@ -347,7 +370,10 @@ describe(
                     },
                     search: "the",
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    6
+                );
             });
 
             cy.contains("Sort by").click();
@@ -362,7 +388,10 @@ describe(
                     sortOption: SortingType.SHORTEST_RUNTIME,
                     search: "the",
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    6
+                );
             });
 
             cy.contains("Rating").click();
@@ -377,9 +406,8 @@ describe(
                     sortOption: SortingType.SHORTEST_RUNTIME,
                     search: "the",
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
                 const filterMovies = response.body.data.movies as MoviePoster[];
-                checkMoviePosters(filterMovies);
+                checkMoviePosters(filterMovies, 14);
                 cy.wrap(filterMovies).as("filterMovies");
             });
 
@@ -392,7 +420,7 @@ describe(
             cy.contains("MovieDB").click();
             cy.url().should("not.include", "movie");
             cy.get<MoviePoster[]>("@filterMovies").then((filterMovies) => {
-                checkMoviePosters(filterMovies);
+                checkMoviePosters(filterMovies, 14);
             });
 
             cy.get("#searchbar").should("have.value", "the");
@@ -409,10 +437,9 @@ describe(
             cy.get("#3").should("have.attr", "data-state", "checked");
         });
 
-        it("handles clear all", () => {
+        it("handles clear all correctly", () => {
             cy.intercept("POST", "http://localhost:3001/", (req) => {
                 aliasQuery(req, "GetMovies");
-                aliasQuery(req, "GetMovie");
             });
 
             cy.visit("/");
@@ -491,7 +518,7 @@ describe(
             cy.get("#Thriller").should("have.attr", "data-state", "unchecked");
         });
 
-        it("handles clear all with search", () => {
+        it("handles clear all with search correctly", () => {
             cy.intercept("POST", "http://localhost:3001/", (req) => {
                 aliasQuery(req, "GetMovies");
                 aliasQuery(req, "GetMovie");
@@ -500,9 +527,7 @@ describe(
             cy.visit("/");
 
             // Wait for the initial GetMovies query to complete
-            cy.wait("@gqlGetMoviesQuery").then(({ request }) => {
-                expect(request.body.variables).to.deep.equal(emptyVariables);
-            });
+            cy.wait("@gqlGetMoviesQuery");
 
             cy.get("#searchbar").type("the");
             cy.get("#searchbar").should("have.value", "the");
@@ -512,7 +537,7 @@ describe(
                     search: "the",
                 });
                 const searchMovies = response.body.data.movies as MoviePoster[];
-                checkMoviePosters(searchMovies);
+                checkMoviePosters(searchMovies, 15);
                 cy.wrap(searchMovies).as("searchMovies");
             });
 
@@ -530,7 +555,10 @@ describe(
                     sortOption: SortingType.SHORTEST_RUNTIME,
                     search: "the",
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    15
+                );
             });
 
             cy.contains("Status").click();
@@ -546,7 +574,10 @@ describe(
                     sortOption: SortingType.SHORTEST_RUNTIME,
                     search: "the",
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    14
+                );
             });
 
             cy.contains("Genre").click();
@@ -563,13 +594,16 @@ describe(
                     sortOption: SortingType.SHORTEST_RUNTIME,
                     search: "the",
                 });
-                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+                checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    6
+                );
             });
 
             // Checks that "Clear All" resets everyting
             cy.contains("Clear All").click();
             cy.get<MoviePoster[]>("@searchMovies").then((searchMovies) => {
-                checkMoviePosters(searchMovies);
+                checkMoviePosters(searchMovies, 15);
             });
 
             cy.contains("Sort by").click();
@@ -585,6 +619,123 @@ describe(
 
             cy.contains("Close").click();
             cy.get("#searchbar").should("have.value", "the");
+        });
+
+        it("handles loading more correctly", () => {
+            cy.intercept("POST", "http://localhost:3001/", (req) => {
+                aliasQuery(req, "GetMovies");
+            });
+
+            cy.visit("/");
+
+            // Wait for the initial GetMovies query to complete
+            cy.wait("@gqlGetMoviesQuery");
+            cy.get('a[href*="movie"] img').should("have.length", 20);
+
+            cy.scrollTo("bottom");
+            cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
+                expect(request.body.variables).to.deep.equal({
+                    ...emptyVariables,
+                    skip: 20,
+                });
+
+                const responseMovies = response.body.data
+                    .movies as MoviePoster[];
+
+                // Check that new page is placed correctly in the list
+                checkMoviePosters(responseMovies, 40, 20);
+            });
+
+            cy.scrollTo("bottom");
+            cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
+                expect(request.body.variables).to.deep.equal({
+                    ...emptyVariables,
+                    skip: 40,
+                });
+
+                const responseMovies = response.body.data
+                    .movies as MoviePoster[];
+
+                // Check that new page is placed correctly in the list
+                checkMoviePosters(responseMovies, 50, 40);
+            });
+        });
+
+        it("handles loading more correctly when filtering", () => {
+            cy.intercept("POST", "http://localhost:3001/", (req) => {
+                aliasQuery(req, "GetMovies");
+                aliasQuery(req, "GetMovie");
+            });
+
+            cy.visit("/");
+
+            // Wait for the initial GetMovies query to complete
+            cy.wait("@gqlGetMoviesQuery");
+            cy.get('a[href*="movie"] img').should("have.length", 20);
+
+            cy.scrollTo("bottom");
+            cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
+                expect(request.body.variables).to.deep.equal({
+                    ...emptyVariables,
+                    skip: 20,
+                });
+                const responseMovies = response.body.data
+                    .movies as MoviePoster[];
+
+                // Check that new page is placed correctly in the list
+                checkMoviePosters(responseMovies, 40, 20);
+                cy.wrap(responseMovies).as("initialLoadMoreMovies");
+            });
+
+            cy.get("button").contains("Sort & Filter").click();
+            cy.contains("Sort by").click();
+            cy.contains("Oldest first").click();
+            cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
+                expect(request.body.variables).to.deep.equal({
+                    ...emptyVariables,
+                    sortOption: SortingType.OLDEST_FIRST,
+                });
+                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+            });
+
+            cy.contains("Rating").click();
+            cy.get("#4").click();
+            cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
+                expect(request.body.variables).to.deep.equal({
+                    ...emptyVariables,
+                    filters: {
+                        ...emptyVariables.filters,
+                        Rating: ["4"],
+                    },
+                    sortOption: SortingType.OLDEST_FIRST,
+                });
+                checkMoviePosters(response.body.data.movies as MoviePoster[]);
+            });
+
+            cy.scrollTo("bottom");
+            cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
+                expect(request.body.variables).to.deep.equal({
+                    ...emptyVariables,
+                    skip: 20,
+                    filters: {
+                        ...emptyVariables.filters,
+                        Rating: ["4"],
+                    },
+                    sortOption: SortingType.OLDEST_FIRST,
+                });
+                const responseMovies = response.body.data
+                    .movies as MoviePoster[];
+
+                // Check that new page is placed correctly in the list
+                checkMoviePosters(responseMovies, 26, 20);
+            });
+
+            cy.contains("Clear All").click();
+            cy.get<MoviePoster[]>("@initialLoadMoreMovies").then(
+                (initialLoadMoreMovies) => {
+                    checkMoviePosters(initialLoadMoreMovies, 40, 20);
+                }
+            );
         });
     }
 );
