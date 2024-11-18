@@ -47,6 +47,7 @@ const SortSection: React.FC<SortSectionInterface> = ({ loading }) => {
                                     value={option}
                                     id={option}
                                     disabled={loading}
+                                    aria-label={option}
                                 />
                                 <Label
                                     htmlFor={option}

@@ -53,6 +53,7 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
                                         onCheckedChange={() =>
                                             updateFilters(category, filter.name)
                                         }
+                                        aria-label={filter.name}
                                     />
                                     <label
                                         htmlFor={filter.name}
