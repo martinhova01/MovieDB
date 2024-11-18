@@ -2,7 +2,10 @@ import "./setup.server.ts";
 
 import { GraphQLError } from "graphql";
 import { describe, expect, it } from "vitest";
-import { resolveMovies } from "../resolvers/movies.resolver.js";
+import {
+    resolveMovies,
+    ResolveMoviesInterface,
+} from "../resolvers/movies.resolver.js";
 import { SortingType } from "../utils/sortUtils.ts";
 
 describe("resolveMovies", () => {
@@ -122,7 +125,7 @@ describe("resolveMovies", () => {
         }
     });
 
-    it("should correctly slice movies when using skip and limit", async () => {
+    it("should correctly slice movies for pagination when using skip and limit", async () => {
         const allMovies = await resolveMovies({
             skip: 0,
             limit: 50,
@@ -160,5 +163,67 @@ describe("resolveMovies", () => {
                 allMoviesIdTitle.slice(i, i + 10)
             );
         }
+    });
+
+    it("should correctly slice movies for pagination when using skip and limit with filters", async () => {
+        const moviesData = [
+            { _id: 447277, title: "The Little Mermaid" },
+            { _id: 335977, title: "Indiana Jones and the Dial of Destiny" },
+            { _id: 298618, title: "The Flash" },
+            { _id: 667538, title: "Transformers: Rise of the Beasts" },
+            { _id: 447365, title: "Guardians of the Galaxy Vol. 3" },
+            { _id: 569094, title: "Spider-Man: Across the Spider-Verse" },
+        ];
+        const options: ResolveMoviesInterface = {
+            skip: 0,
+            limit: 100,
+            search: "the",
+            filters: {
+                Genre: ["Adventure"],
+                Rating: ["3", "4"],
+                Decade: ["2020s"],
+                Status: ["Released"],
+                Runtime: ["2 - 3 hours"],
+            },
+            sortOption: SortingType.WORST_RATED,
+        };
+        const allMovies = await resolveMovies(options);
+
+        expect(allMovies).not.toBeInstanceOf(GraphQLError);
+        if (allMovies instanceof GraphQLError) return;
+
+        const count = moviesData.length;
+        expect(allMovies).toHaveLength(count);
+
+        const allMoviesIdTitle = allMovies.map((movie) => {
+            return {
+                _id: movie._id,
+                title: movie.title,
+            };
+        });
+
+        const slicedMovies: typeof allMoviesIdTitle = [];
+
+        for (let i = 0; i < count; i += 2) {
+            const movies = await resolveMovies({
+                ...options,
+                skip: i,
+                limit: 2,
+            });
+
+            expect(movies).not.toBeInstanceOf(GraphQLError);
+            if (movies instanceof GraphQLError) return;
+
+            const moviesIdTitle = movies.map((movie) => {
+                return {
+                    _id: movie._id,
+                    title: movie.title,
+                };
+            });
+
+            slicedMovies.push(...moviesIdTitle);
+        }
+
+        expect(slicedMovies).toMatchObject(allMoviesIdTitle);
     });
 });
