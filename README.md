@@ -56,6 +56,19 @@ Navigate to the `~T26-Project-2/backend` directory
   - `pm2 restart <id>` to restart the process (use the id from `pm2 list`)
   - `pm2 stop <id>` to stop the process (use the id from `pm2 list`)
 
+### Running E2E tests
+
+In `T26-Project-2/backend`:
+
+- `npm run build` to build the project
+- `npm run e2e:server` to start the test server
+
+In `T26-Project-2/frontend`:
+
+- `npm run dev` to start the development server
+- `npm run e2e:chrome` to run the e2e tests (in another terminal)
+- `npm run cy:open` to use the cypress app (provides visualization)
+
 ### Setting up the database / backend for the first time
 
 #### NB: This is already done, so you don't need to do this
@@ -117,6 +130,10 @@ We initially had over 700.000 movies in our database, but we later found that mo
 ### Caching
 
 We use caching in order to reduce the number of queries to the backend and improve performance. This way we avoid fetching the same data multiple times. When it comes to the caching of reviews, we had to find a balance between having up-to-date data and minimizing the number of queries. We found that the best solution was to have the user refresh in order to be sure of having the latest updates. This allows us to update the cache manually when adding/deleting a review, reducing the number of queries considerably while still feeling intuitive for the user.
+
+### Testing
+
+We have made end-to-end tests using Cypress, as it's known to work well for e2e testing of web applications. Here we have sequences of actions with varying length and complexity that imitate real user behavior. We've tried to be thorough, covering edge cases we know can be sources to issues. As an example, we test that reviews are updated correctly in the cache by submitting/deleting a review, then visiting the Activity page and My Reviews page, before returning to the initial movie. For search, sorting and filtering, we've already tested the API responses in the backend tests. Therefore, we focused mainly on checking that requests had the correct variables and that the response data was rendered correctly. Still, we test that search, sorting, filtering and paging work well together through several different action sequences. Due to variations in loading time as a result of for example network congestion, there is a small possibility that tests can fail. However, as we use wait() to handle this problem, this is a rare occurrence. Still, it's worth a mention.
 
 ### Accessibility
 
