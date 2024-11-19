@@ -1,6 +1,5 @@
 import { Review } from "../../../types/__generated__/types";
 import { aliasMutation, aliasQuery } from "../utils/graphql-test-utils";
-import { seedDatabase } from "../utils/seedDatabase";
 
 describe(
     "Reviews",
@@ -13,74 +12,8 @@ describe(
         },
     },
     () => {
-        const changeUsername = (prevUsername: string, newUsername: string) => {
-            cy.contains("button", prevUsername).click();
-            cy.contains("Change username").click();
-            cy.get("#new-username").type(newUsername);
-            cy.contains("button", "Change username").click();
-            cy.contains("Username changed successfully").should("be.visible");
-        };
-
-        const submitReview = (
-            movieId: number,
-            username: string,
-            rating: number,
-            comment: string
-        ) => {
-            cy.get('[role="input"]')
-                .eq(rating - 1)
-                .click();
-            cy.get("#review-comment").type(comment);
-            cy.contains("button", "Submit Review").click();
-            cy.wait("@gqlAddReviewMutation").then(({ request, response }) => {
-                expect(request.body.variables).to.deep.equal({
-                    movieId: movieId,
-                    username: username,
-                    rating: rating,
-                    comment: comment,
-                });
-                cy.wrap(response.body.data.addReview).should("exist");
-            });
-            cy.contains("Review added successfully").should("be.visible");
-            cy.get("#review-comment").should("be.empty");
-            cy.contains(comment).should("be.visible");
-        };
-
-        const deleteFirstReview = (comment: string, reviewId: string) => {
-            cy.contains("Delete").click();
-            cy.contains("Are you sure you want to delete this review?").should(
-                "be.visible"
-            );
-            cy.contains("button", "Continue").click();
-            cy.wait("@gqlDeleteReviewMutation").then(
-                ({ request, response }) => {
-                    expect(request.body.variables).to.deep.equal({
-                        id: reviewId,
-                    });
-                    cy.wrap(response.body.data.deleteReview).should("exist");
-                }
-            );
-            cy.contains("Review has been deleted").should("be.visible");
-            cy.contains(comment).should("not.exist");
-        };
-
-        const checkReviewCards = (
-            responseMovies: Review[],
-            length = 20,
-            slice = 0
-        ) => {
-            cy.get('a[href*="movie"] img')
-                .should("have.length", length)
-                .then(($reviewCard) => {
-                    const movieTitles = Cypress._.map($reviewCard, "title");
-                    expect(movieTitles.slice(slice)).to.deep.equal(
-                        responseMovies.map((review) => review.movie.title)
-                    );
-                });
-        };
-
         beforeEach(() => {
-            seedDatabase();
+            cy.seedDatabase();
             cy.intercept("POST", "http://localhost:3001/", (req) => {
                 aliasMutation(req, "AddReview");
                 aliasMutation(req, "DeleteReview");
@@ -89,7 +22,7 @@ describe(
         });
 
         it("adds review properly", () => {
-            changeUsername("Guest", "testuser");
+            cy.changeUsername("Guest", "testuser");
 
             // Go to movie
             cy.get('a[href*="movie/565770"]').click();
@@ -97,7 +30,7 @@ describe(
             cy.contains("Submit review").should("be.visible");
 
             // Submit review
-            submitReview(565770, "testuser", 3, "This is a great movie!");
+            cy.submitReview(565770, "testuser", 3, "This is a great movie!");
 
             // Go out of movie and then back in, to check cache was updated
             cy.contains("MovieDB").click();
@@ -108,7 +41,7 @@ describe(
         });
 
         it("removes delete option when changing username or signing out", () => {
-            changeUsername("Guest", "testuser2");
+            cy.changeUsername("Guest", "testuser2");
 
             // Go to movie
             cy.get('a[href*="movie/565770"]').click();
@@ -116,7 +49,7 @@ describe(
             cy.contains("Delete").should("be.visible");
 
             // Change username
-            changeUsername("testuser2", "nottestuser2");
+            cy.changeUsername("testuser2", "nottestuser2");
             cy.contains("Delete").should("not.exist");
 
             // Sign out
@@ -132,7 +65,7 @@ describe(
             cy.contains("Delete").should("not.exist"); // Guest users can't delete
 
             // Sign in
-            changeUsername("Guest", "testuser2");
+            cy.changeUsername("Guest", "testuser2");
             cy.contains("Delete").should("be.visible");
 
             // Click delete movie, but cancel
@@ -145,7 +78,7 @@ describe(
             cy.contains("Delete").should("be.visible");
 
             // Delete movie
-            deleteFirstReview("It's quite good", "6736255c9c33bb841a3fee9a");
+            cy.deleteFirstReview("It's quite good", "6736255c9c33bb841a3fee9a");
 
             // Go out of movie and then back in, to check cache was updated
             cy.contains("MovieDB").click();
@@ -158,7 +91,7 @@ describe(
                 aliasQuery(req, "GetLatestReviews");
                 aliasQuery(req, "GetUserReviews");
             });
-            changeUsername("Guest", "testuser1");
+            cy.changeUsername("Guest", "testuser1");
 
             // Visit pages so we have data in cache
             cy.contains("Activity").click();
@@ -168,7 +101,7 @@ describe(
                         skip: 0,
                         limit: 20,
                     });
-                    checkReviewCards(
+                    cy.checkReviewCards(
                         response.body.data.latestReviews as Review[],
                         20
                     );
@@ -183,7 +116,10 @@ describe(
                     limit: 20,
                     username: "testuser1",
                 });
-                checkReviewCards(response.body.data.userReviews as Review[], 3);
+                cy.checkReviewCards(
+                    response.body.data.userReviews as Review[],
+                    3
+                );
             });
             cy.contains("This is a great movie!").should("not.exist");
 
@@ -193,7 +129,7 @@ describe(
             cy.get('a[href*="movie/565770"]').click();
 
             // Submit review
-            submitReview(565770, "testuser1", 3, "This is a great movie!");
+            cy.submitReview(565770, "testuser1", 3, "This is a great movie!");
 
             // Go to Activity page to see that it's updated
             cy.contains("Activity").click();
@@ -208,7 +144,7 @@ describe(
         });
 
         it("updates ActivityPage and MyReviewsPage when deleting a review", () => {
-            changeUsername("Guest", "testuser2");
+            cy.changeUsername("Guest", "testuser2");
 
             // Visit pages so we have data in cache
             cy.contains("Activity").click();
@@ -224,14 +160,14 @@ describe(
             cy.contains("Delete").should("be.visible");
 
             // Delete review
-            deleteFirstReview("It's quite good", "6736255c9c33bb841a3fee9a");
+            cy.deleteFirstReview("It's quite good", "6736255c9c33bb841a3fee9a");
 
             // Go to Activity page to see that it's updated
             cy.contains("Activity").click();
             cy.url().should("include", "activity");
             cy.contains("It's quite good").should("not.exist");
 
-            // Go to My Reviews pate to see that it's updated
+            // Go to My Reviews page to see that it's updated
             cy.contains("My Reviews").click();
             cy.url().should("include", "myReviews");
             cy.contains("It's quite good").should("not.exist");
@@ -246,7 +182,7 @@ describe(
         });
 
         it("handles username changes in MyReviewsPage", () => {
-            changeUsername("Guest", "testuser1");
+            cy.changeUsername("Guest", "testuser1");
 
             // Go to My Reviews page
             cy.contains("My Reviews").click();
@@ -258,7 +194,7 @@ describe(
             cy.contains("This is going to be quite good.").should("be.visible");
 
             // Change username (reviews should be updated)
-            changeUsername("testuser1", "testuser2");
+            cy.changeUsername("testuser1", "testuser2");
             cy.contains("Best movie ever made!").should("not.exist");
             cy.contains(
                 "Great movie, but I can't talk about it. You know the rule."
@@ -275,7 +211,7 @@ describe(
         });
 
         it("handles deletion in Activity page", () => {
-            changeUsername("Guest", "testuser2");
+            cy.changeUsername("Guest", "testuser2");
 
             // Visit Movie page and My Reviews so that we have data in cache
             cy.get('a[href*="movie"]').first().click();
@@ -290,7 +226,7 @@ describe(
             cy.contains("Delete").should("be.visible");
 
             // Delete review
-            deleteFirstReview("It's quite good", "6736255c9c33bb841a3fee9a");
+            cy.deleteFirstReview("It's quite good", "6736255c9c33bb841a3fee9a");
 
             // Go back to My Reviews page (should be updated)
             cy.contains("My Reviews").click();
@@ -307,7 +243,7 @@ describe(
         });
 
         it("handles deletion in My Reviews page", () => {
-            changeUsername("Guest", "testuser2");
+            cy.changeUsername("Guest", "testuser2");
 
             // Visit Movie page and Activity page so that we have data in cache
             cy.get('a[href*="movie/565770"]').click();
@@ -322,7 +258,7 @@ describe(
             cy.contains("Delete").should("be.visible");
 
             // Delete review
-            deleteFirstReview("It's quite good", "6736255c9c33bb841a3fee9a");
+            cy.deleteFirstReview("It's quite good", "6736255c9c33bb841a3fee9a");
 
             // Visit Activity page (should be updated)
             cy.contains("Activity").click();
@@ -343,7 +279,7 @@ describe(
                 aliasQuery(req, "GetLatestReviews");
                 aliasQuery(req, "GetUserReviews");
             });
-            changeUsername("Guest", "testuser3");
+            cy.changeUsername("Guest", "testuser3");
 
             // Go to My Activity page
             cy.contains("Activity").click();
@@ -358,7 +294,7 @@ describe(
                         skip: 20,
                         limit: 20,
                     });
-                    checkReviewCards(
+                    cy.checkReviewCards(
                         response.body.data.latestReviews as Review[],
                         25,
                         20
@@ -379,7 +315,7 @@ describe(
                     limit: 20,
                     username: "testuser3",
                 });
-                checkReviewCards(
+                cy.checkReviewCards(
                     response.body.data.userReviews as Review[],
                     21,
                     20
@@ -387,11 +323,11 @@ describe(
             });
 
             // Change to another username
-            changeUsername("testuser3", "testuser1");
+            cy.changeUsername("testuser3", "testuser1");
             cy.get('a[href*="movie"]').should("have.length", 3);
 
             // Delete review
-            deleteFirstReview(
+            cy.deleteFirstReview(
                 "This is going to be quite good.",
                 "673627c79c33bb841a3fef74"
             );

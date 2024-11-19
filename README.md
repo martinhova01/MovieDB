@@ -66,8 +66,8 @@ In `T26-Project-2/backend`:
 In `T26-Project-2/frontend`:
 
 - `npm run dev` to start the development server
-- `npm run e2e:chrome` to run the e2e tests (in another terminal)
-- `npm run cy:open` to use the cypress app (provides visualization)
+- `npm run e2e` to run the e2e tests (in another terminal)
+- `npm run cy:open` to use the cypress app (provides visualization (optional))
 
 ### Setting up the database / backend for the first time
 
