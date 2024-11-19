@@ -70,15 +70,23 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                         {movie.title}
                     </CardTitle>
                     <p className="text-sm">
-                        {[
-                            releaseYear,
-                            `${runtimeHours}h ${runtimeMinutes}m`,
-                            movie.genres.length
-                                ? movie.genres.join(", ")
-                                : null,
-                        ]
-                            .filter(Boolean)
-                            .join(" • ")}
+                        <time
+                            dateTime={movie.release_date
+                                .getFullYear()
+                                .toString()}
+                        >
+                            {releaseYear}
+                        </time>
+                        {" • "}
+                        <time dateTime={`PT${runtimeHours}H${runtimeMinutes}M`}>
+                            {runtimeHours}h {runtimeMinutes}m
+                        </time>
+                        {movie.genres.length != 0 && (
+                            <>
+                                {" • "}
+                                <span>{movie.genres.join(", ")}</span>
+                            </>
+                        )}
                     </p>
                     <Ratings
                         value={movie.vote_average / 2}

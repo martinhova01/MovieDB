@@ -62,7 +62,8 @@ describe("MovieCard", () => {
             </MemoryRouter>
         );
 
-        expect(screen.getByText("2019 • 2h 2m")).toBeInTheDocument();
+        expect(screen.getByText("2019")).toBeInTheDocument();
+        expect(screen.getByText("2h 2m")).toBeInTheDocument();
     });
 
     it("renders rating component with correct value", () => {

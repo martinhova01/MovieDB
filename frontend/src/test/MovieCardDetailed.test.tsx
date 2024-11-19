@@ -31,9 +31,9 @@ describe("MovieCardDetailed", () => {
     it("displays movie title, release year, runtime and genres", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
         expect(screen.getByText("Joker")).toBeInTheDocument();
-        expect(
-            screen.getByText("2019 • 2h 2m • Crime, Thriller, Drama")
-        ).toBeInTheDocument();
+        expect(screen.getByText("2019")).toBeInTheDocument();
+        expect(screen.getByText("2h 2m")).toBeInTheDocument();
+        expect(screen.getByText("Crime, Thriller, Drama")).toBeInTheDocument();
     });
 
     it("does not display genres if there are none", () => {
@@ -45,7 +45,11 @@ describe("MovieCardDetailed", () => {
                 }}
             />
         );
-        expect(screen.getByText("2019 • 2h 2m")).toBeInTheDocument();
+        expect(screen.getByText("2019")).toBeInTheDocument();
+        expect(screen.getByText("2h 2m")).toBeInTheDocument();
+        expect(
+            screen.queryByText("Crime, Thriller, Drama")
+        ).not.toBeInTheDocument();
     });
 
     it("displays movie rating", () => {

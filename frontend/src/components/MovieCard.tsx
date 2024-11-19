@@ -10,6 +10,8 @@ import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }: { movie: MoviePoster }) => {
+    const runtimeHours = Math.floor(movie.runtime / 60);
+    const runtimeMinutes = movie.runtime % 60;
     return (
         <Link to={`/movie/${movie._id}`}>
             <Card className="m-0 shadow-lg hover:cursor-pointer hover:shadow-slate-600">
@@ -27,8 +29,17 @@ const MovieCard = ({ movie }: { movie: MoviePoster }) => {
                 </CardHeader>
                 <CardContent className="px-2 pb-2">
                     <CardDescription className="text-center">
-                        {movie.release_date.getFullYear()} •{" "}
-                        {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m
+                        <time
+                            dateTime={movie.release_date
+                                .getFullYear()
+                                .toString()}
+                        >
+                            {movie.release_date.getFullYear()}
+                        </time>
+                        {" • "}
+                        <time dateTime={`PT${runtimeHours}H${runtimeMinutes}M`}>
+                            {runtimeHours}h {runtimeMinutes}m
+                        </time>
                     </CardDescription>
                     <Ratings
                         className="flex justify-around"

@@ -168,7 +168,10 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                         <h2 className="text-lg font-bold sm:text-xl">
                             {review.username}
                         </h2>
-                        <time className="text-xs opacity-60 sm:text-sm">
+                        <time
+                            className="text-xs opacity-60 sm:text-sm"
+                            dateTime={review.date.toISOString()}
+                        >
                             {formatDate(review.date)}
                         </time>
                     </section>
