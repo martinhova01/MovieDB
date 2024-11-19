@@ -19,6 +19,9 @@ const Navbar = () => {
     return (
         <header className="flex w-full items-center justify-between bg-gradient-to-r from-muted-foreground to-primary p-4">
             <nav className="flex items-center gap-10 text-background">
+                <a href="#main-content" className="sr-only focus:not-sr-only">
+                    Skip to main content
+                </a>
                 <Link to="/" className="flex flex-row gap-3 text-2xl font-bold">
                     <img src={logo} alt="logo" className="h-8" />
                     MovieDB
