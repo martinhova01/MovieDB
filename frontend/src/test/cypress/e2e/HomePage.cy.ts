@@ -32,7 +32,6 @@ describe(
             cy.intercept("POST", "http://localhost:3001/", (req) => {
                 aliasQuery(req, "GetMovies");
                 aliasQuery(req, "GetMovie");
-                aliasQuery(req, "GetFilters");
             });
             cy.visit("/");
         });
@@ -104,7 +103,7 @@ describe(
                 "checked"
             );
 
-            cy.contains("Best rated").click();
+            cy.get("#BEST_RATED").should("be.enabled").click();
             cy.get("#BEST_RATED").should("have.attr", "data-state", "checked");
             cy.get("#MOST_POPULAR").should(
                 "have.attr",
@@ -122,7 +121,7 @@ describe(
                 );
             });
 
-            cy.contains("Newest first").click();
+            cy.get("#NEWEST_FIRST").should("be.enabled").click();
             cy.get("#NEWEST_FIRST").should(
                 "have.attr",
                 "data-state",
@@ -145,7 +144,7 @@ describe(
             });
 
             // Check that we get the same initial movies when resetting sortOption (cached result)
-            cy.contains("Most popular").click();
+            cy.get("#MOST_POPULAR").should("be.enabled").click();
             cy.get("#MOST_POPULAR").should(
                 "have.attr",
                 "data-state",
@@ -175,7 +174,7 @@ describe(
 
             cy.get("button").contains("Sort & Filter").click();
             cy.contains("Rating").click();
-            cy.get("#3").click();
+            cy.get("#3").should("be.enabled").click();
             cy.get("#3").should("have.attr", "data-state", "checked");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
@@ -192,7 +191,7 @@ describe(
             });
 
             cy.contains("Decade").click();
-            cy.contains("2010s").click();
+            cy.get("#2010s").should("be.enabled").click();
             cy.get("#2010s").should("have.attr", "data-state", "checked");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
@@ -210,14 +209,14 @@ describe(
             });
 
             // Check that we get the same movies when unapplying filters (cached result)
-            cy.contains("2010s").click();
+            cy.get("#2010s").should("be.enabled").click();
             cy.get("#2010s").should("have.attr", "data-state", "unchecked");
             cy.get<MoviePoster[]>("@filterMovies").then((filterMovies) => {
                 cy.checkMoviePosters(filterMovies);
             });
 
             cy.contains("Rating").click();
-            cy.get("#3").click();
+            cy.get("#3").should("be.enabled").click();
             cy.get("#3").should("have.attr", "data-state", "unchecked");
             cy.get('a[href*="movie"]').should("have.length", 20);
             cy.get<MoviePoster[]>("@initialMovies").then((initialMovies) => {
@@ -231,7 +230,7 @@ describe(
 
             cy.get("button").contains("Sort & Filter").click();
             cy.contains("Sort by").click();
-            cy.contains("Best rated").click();
+            cy.get("#BEST_RATED").should("be.enabled").click();
 
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
@@ -244,7 +243,7 @@ describe(
             });
 
             cy.contains("Genre").click();
-            cy.contains("Adventure").click();
+            cy.get("#Adventure").should("be.enabled").click();
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
@@ -261,24 +260,22 @@ describe(
             });
 
             cy.contains("Runtime").click();
-            cy.contains("1 - 2 hours").click();
-            cy.wait(["@gqlGetFiltersQuery", "@gqlGetMoviesQuery"]).spread(
-                (_, moviesQuery) => {
-                    expect(moviesQuery.request.body.variables).to.deep.equal({
-                        ...emptyVariables,
-                        filters: {
-                            ...emptyVariables.filters,
-                            Genre: ["Adventure"],
-                            Runtime: ["1 - 2 hours"],
-                        },
-                        sortOption: SortingType.BEST_RATED,
-                    });
-                    cy.checkMoviePosters(
-                        moviesQuery.response.body.data.movies as MoviePoster[],
-                        6
-                    );
-                }
-            );
+            cy.get('[id="1 - 2 hours"]').should("be.enabled").click();
+            cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
+                expect(request.body.variables).to.deep.equal({
+                    ...emptyVariables,
+                    filters: {
+                        ...emptyVariables.filters,
+                        Genre: ["Adventure"],
+                        Runtime: ["1 - 2 hours"],
+                    },
+                    sortOption: SortingType.BEST_RATED,
+                });
+                cy.checkMoviePosters(
+                    response.body.data.movies as MoviePoster[],
+                    6
+                );
+            });
 
             cy.contains("Close").click();
             cy.get("#searchbar").type("mario");
@@ -318,7 +315,7 @@ describe(
 
             cy.get("button").contains("Sort & Filter").click();
             cy.contains("Rating").click();
-            cy.get("#4").click();
+            cy.get("#4").should("be.enabled").click();
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
@@ -335,7 +332,7 @@ describe(
             });
 
             cy.contains("Sort by").click();
-            cy.contains("Shortest runtime").click();
+            cy.get("#SHORTEST_RUNTIME").should("be.enabled").click();
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
@@ -353,24 +350,21 @@ describe(
             });
 
             cy.contains("Rating").click();
-            cy.get("#3").click();
-            cy.wait(["@gqlGetFiltersQuery", "@gqlGetMoviesQuery"]).spread(
-                (_, moviesQuery) => {
-                    expect(moviesQuery.request.body.variables).to.deep.equal({
-                        ...emptyVariables,
-                        filters: {
-                            ...emptyVariables.filters,
-                            Rating: ["4", "3"],
-                        },
-                        sortOption: SortingType.SHORTEST_RUNTIME,
-                        search: "the",
-                    });
-                    const filterMovies = moviesQuery.response.body.data
-                        .movies as MoviePoster[];
-                    cy.checkMoviePosters(filterMovies, 14);
-                    cy.wrap(filterMovies).as("filterMovies");
-                }
-            );
+            cy.get("#3").should("be.enabled").click();
+            cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
+                expect(request.body.variables).to.deep.equal({
+                    ...emptyVariables,
+                    filters: {
+                        ...emptyVariables.filters,
+                        Rating: ["4", "3"],
+                    },
+                    sortOption: SortingType.SHORTEST_RUNTIME,
+                    search: "the",
+                });
+                const filterMovies = response.body.data.movies as MoviePoster[];
+                cy.checkMoviePosters(filterMovies, 14);
+                cy.wrap(filterMovies).as("filterMovies");
+            });
 
             // Visit movie page and go back, everything should still be the same
             cy.contains("Close").click();
@@ -410,7 +404,7 @@ describe(
 
             cy.get("button").contains("Sort & Filter").click();
             cy.contains("Sort by").click();
-            cy.contains("Shortest runtime").click();
+            cy.get("#SHORTEST_RUNTIME").should("be.enabled").click();
             cy.get("#SHORTEST_RUNTIME").should(
                 "have.attr",
                 "data-state",
@@ -427,7 +421,7 @@ describe(
             });
 
             cy.contains("Status").click();
-            cy.contains("Released").click();
+            cy.get("#Released").should("be.enabled").click();
             cy.get("#Released").should("have.attr", "data-state", "checked");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
@@ -444,7 +438,7 @@ describe(
             });
 
             cy.contains("Genre").click();
-            cy.contains("Thriller").click();
+            cy.get("#Thriller").should("be.enabled").click();
             cy.get("#Thriller").should("have.attr", "data-state", "checked");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
@@ -497,7 +491,7 @@ describe(
 
             cy.get("button").contains("Sort & Filter").click();
             cy.contains("Sort by").click();
-            cy.contains("Shortest runtime").click();
+            cy.get("#SHORTEST_RUNTIME").should("be.enabled").click();
             cy.get("#SHORTEST_RUNTIME").should(
                 "have.attr",
                 "data-state",
@@ -516,7 +510,7 @@ describe(
             });
 
             cy.contains("Status").click();
-            cy.contains("Released").click();
+            cy.get("#Released").should("be.enabled").click();
             cy.get("#Released").should("have.attr", "data-state", "checked");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
@@ -535,7 +529,7 @@ describe(
             });
 
             cy.contains("Genre").click();
-            cy.contains("Thriller").click();
+            cy.get("#Thriller").should("be.enabled").click();
             cy.get("#Thriller").should("have.attr", "data-state", "checked");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
@@ -630,7 +624,7 @@ describe(
 
             cy.get("button").contains("Sort & Filter").click();
             cy.contains("Sort by").click();
-            cy.contains("Oldest first").click();
+            cy.get("#OLDEST_FIRST").should("be.enabled").click();
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
@@ -642,7 +636,7 @@ describe(
             });
 
             cy.contains("Rating").click();
-            cy.get("#4").click();
+            cy.get("#4").should("be.enabled").click();
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
