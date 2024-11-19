@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
     createBadUserInputError,
+    validateReview,
     validateSkipLimit,
+    validateUsername,
 } from "../utils/graphqlErrorUtils";
 import { GraphQLError } from "graphql";
 
@@ -91,6 +93,67 @@ describe("validateSkipLimit", () => {
             expect(error).not.toBeNull();
             expect(error).toBeInstanceOf(GraphQLError);
             expect(error!.message).toBe("Skip and limit must be integers.");
+        }
+    });
+});
+
+describe("validateUsername", () => {
+    it("returns a GraphQLError when username is too short", () => {
+        const args = ["", "a", "ab"];
+        for (const username of args) {
+            const error = validateUsername(username);
+
+            expect(error).not.toBeNull();
+            expect(error).toBeInstanceOf(GraphQLError);
+            expect(error!.message).toBe(
+                "Username must be at least 3 characters long."
+            );
+        }
+    });
+
+    it("returns a GraphQLError when username is too long", () => {
+        const args = ["a".repeat(21), "a".repeat(30), "a".repeat(50)];
+        for (const username of args) {
+            const error = validateUsername(username);
+
+            expect(error).not.toBeNull();
+            expect(error).toBeInstanceOf(GraphQLError);
+            expect(error!.message).toBe(
+                "Username must be at most 20 characters long."
+            );
+        }
+    });
+
+    it("returns null when username is legal length", () => {
+        const args = ["abc", "a".repeat(20), "a".repeat(10)];
+        for (const username of args) {
+            const error = validateUsername(username);
+
+            expect(error).toBeNull();
+        }
+    });
+});
+
+describe("validateReview", () => {
+    it("returns a GraphQLError when review is too long", () => {
+        const args = ["a".repeat(1501), "a".repeat(2000), "a".repeat(3000)];
+        for (const review of args) {
+            const error = validateReview(review);
+
+            expect(error).not.toBeNull();
+            expect(error).toBeInstanceOf(GraphQLError);
+            expect(error!.message).toBe(
+                "Review must be at most 1500 characters."
+            );
+        }
+    });
+
+    it("returns null when review is legal length", () => {
+        const args = ["", "a".repeat(1500), "a".repeat(1000)];
+        for (const review of args) {
+            const error = validateReview(review);
+
+            expect(error).toBeNull();
         }
     });
 });
