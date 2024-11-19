@@ -90,7 +90,11 @@
             "exhilarated",
             "joyful"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c5010594632f6e941211b"
+            }
+        ]
     },
     {
         "_id": 968051,
@@ -182,7 +186,11 @@
             "oceans",
             "shark cage"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c502a594632f6e9412122"
+            }
+        ]
     },
     {
         "_id": 762430,
@@ -223,7 +231,11 @@
             "phone call",
             "berlin"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c504e594632f6e9412129"
+            }
+        ]
     },
     {
         "_id": 1008042,
@@ -284,7 +296,11 @@
             "teenager",
             "modern australia"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c5057594632f6e941212f"
+            }
+        ]
     },
     {
         "_id": 385687,
@@ -326,7 +342,11 @@
             "cliffhanger",
             "cars"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c5077594632f6e9412136"
+            }
+        ]
     },
     {
         "_id": 678512,
@@ -363,7 +383,11 @@
             "children in danger",
             "colombia"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c508f594632f6e941213c"
+            }
+        ]
     },
     {
         "_id": 346698,
@@ -413,7 +437,11 @@
             "barbie",
             "secret world"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c50a9594632f6e9412142"
+            }
+        ]
     },
     {
         "_id": 976573,
@@ -450,7 +478,11 @@
             "city",
             "hopeful"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c50b9594632f6e9412148"
+            }
+        ]
     },
     {
         "_id": 1002338,
@@ -479,7 +511,11 @@
         "production_countries": ["Germany", "Iceland"],
         "spoken_languages": ["English", "Icelandic"],
         "keywords": ["based on novel or book"],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c50ec594632f6e941214e"
+            }
+        ]
     },
     {
         "_id": 820609,
@@ -522,7 +558,11 @@
             "reclusive",
             "aliens"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c510c594632f6e9412154"
+            }
+        ]
     },
     {
         "_id": 951491,
@@ -572,7 +612,11 @@
             "death game",
             "requel"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c5126594632f6e941215a"
+            }
+        ]
     },
     {
         "_id": 1076364,
@@ -630,7 +674,11 @@
         "production_countries": ["Nigeria"],
         "spoken_languages": ["English"],
         "keywords": ["revenge thriller", "nollywood"],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c514c594632f6e9412161"
+            }
+        ]
     },
     {
         "_id": 852436,
@@ -659,7 +707,11 @@
         "production_countries": ["France", "Switzerland"],
         "spoken_languages": ["French"],
         "keywords": [],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c5176594632f6e9412167"
+            }
+        ]
     },
     {
         "_id": 717930,
@@ -696,7 +748,11 @@
         ],
         "spoken_languages": ["English"],
         "keywords": ["cia", "undercover agent", "behind enemy lines"],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c5197594632f6e941216d"
+            }
+        ]
     },
     {
         "_id": 744278,
@@ -731,7 +787,11 @@
             "criminal gang",
             "poor"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c51aa594632f6e9412173"
+            }
+        ]
     },
     {
         "_id": 667538,
@@ -778,7 +838,11 @@
             "brother brother relationship",
             "transformers"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c51ca594632f6e9412179"
+            }
+        ]
     },
     {
         "_id": 790493,
@@ -960,7 +1024,11 @@
             "interdimensional travel",
             "defying fate"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c51ed594632f6e9412180"
+            }
+        ]
     },
     {
         "_id": 670292,
@@ -1005,7 +1073,11 @@
             "war against machines",
             "ai"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c521c594632f6e9412186"
+            }
+        ]
     },
     {
         "_id": 614930,
@@ -1092,7 +1164,11 @@
         "production_countries": ["United States of America"],
         "spoken_languages": ["English"],
         "keywords": ["sequel", "nuclear bomb", "cargo ship", "ring"],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c5280594632f6e941218f"
+            }
+        ]
     },
     {
         "_id": 603692,
@@ -1153,7 +1229,11 @@
             "suspenseful",
             "intense"
         ],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c529c594632f6e9412194"
+            }
+        ]
     },
     {
         "_id": 298618,
@@ -1570,7 +1650,11 @@
         "production_countries": ["Italy", "United States of America"],
         "spoken_languages": ["English", "Italian"],
         "keywords": ["italy", "vigilante justice", "italian mafia"],
-        "reviews": []
+        "reviews": [
+            {
+                "$oid": "673c52f6594632f6e941219c"
+            }
+        ]
     },
     {
         "_id": 439079,

@@ -53,16 +53,14 @@ describe(
 
         beforeEach(() => {
             seedDatabase();
-        });
-
-        it("searches correctly", () => {
             cy.intercept("POST", "http://localhost:3001/", (req) => {
                 aliasQuery(req, "GetMovies");
                 aliasQuery(req, "GetMovie");
             });
-
             cy.visit("/");
+        });
 
+        it("searches correctly", () => {
             // Wait for the initial GetMovies query to complete
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal(emptyVariables);
@@ -110,12 +108,6 @@ describe(
         });
 
         it("sorts correctly", () => {
-            cy.intercept("POST", "http://localhost:3001/", (req) => {
-                aliasQuery(req, "GetMovies");
-            });
-
-            cy.visit("/");
-
             // Wait for the initial GetMovies query to complete
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal(emptyVariables);
@@ -189,12 +181,6 @@ describe(
         });
 
         it("filters correctly", () => {
-            cy.intercept("POST", "http://localhost:3001/", (req) => {
-                aliasQuery(req, "GetMovies");
-            });
-
-            cy.visit("/");
-
             // Wait for the initial GetMovies query to complete
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal(emptyVariables);
@@ -259,12 +245,6 @@ describe(
         });
 
         it("handles filtering, sorting and search combined", () => {
-            cy.intercept("POST", "http://localhost:3001/", (req) => {
-                aliasQuery(req, "GetMovies");
-            });
-
-            cy.visit("/");
-
             // Wait for the initial GetMovies query to complete
             cy.wait("@gqlGetMoviesQuery");
 
@@ -336,13 +316,6 @@ describe(
         });
 
         it("handles filtering, sorting and search combined and remembers when returning to page", () => {
-            cy.intercept("POST", "http://localhost:3001/", (req) => {
-                aliasQuery(req, "GetMovies");
-                aliasQuery(req, "GetMovie");
-            });
-
-            cy.visit("/");
-
             // Wait for the initial GetMovies query to complete
             cy.wait("@gqlGetMoviesQuery");
 
@@ -438,12 +411,6 @@ describe(
         });
 
         it("handles clear all correctly", () => {
-            cy.intercept("POST", "http://localhost:3001/", (req) => {
-                aliasQuery(req, "GetMovies");
-            });
-
-            cy.visit("/");
-
             // Wait for the initial GetMovies query to complete
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal(emptyVariables);
@@ -519,13 +486,6 @@ describe(
         });
 
         it("handles clear all with search correctly", () => {
-            cy.intercept("POST", "http://localhost:3001/", (req) => {
-                aliasQuery(req, "GetMovies");
-                aliasQuery(req, "GetMovie");
-            });
-
-            cy.visit("/");
-
             // Wait for the initial GetMovies query to complete
             cy.wait("@gqlGetMoviesQuery");
 
@@ -622,17 +582,11 @@ describe(
         });
 
         it("handles loading more correctly", () => {
-            cy.intercept("POST", "http://localhost:3001/", (req) => {
-                aliasQuery(req, "GetMovies");
-            });
-
-            cy.visit("/");
-
             // Wait for the initial GetMovies query to complete
             cy.wait("@gqlGetMoviesQuery");
             cy.get('a[href*="movie"] img').should("have.length", 20);
 
-            cy.scrollTo("bottom");
+            cy.get('a[href*="movie"] img').last().scrollIntoView();
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
@@ -646,7 +600,7 @@ describe(
                 checkMoviePosters(responseMovies, 40, 20);
             });
 
-            cy.scrollTo("bottom");
+            cy.get('a[href*="movie"] img').last().scrollIntoView();
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
@@ -662,18 +616,11 @@ describe(
         });
 
         it("handles loading more correctly when filtering", () => {
-            cy.intercept("POST", "http://localhost:3001/", (req) => {
-                aliasQuery(req, "GetMovies");
-                aliasQuery(req, "GetMovie");
-            });
-
-            cy.visit("/");
-
             // Wait for the initial GetMovies query to complete
             cy.wait("@gqlGetMoviesQuery");
             cy.get('a[href*="movie"] img').should("have.length", 20);
 
-            cy.scrollTo("bottom");
+            cy.get('a[href*="movie"] img').last().scrollIntoView();
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
@@ -712,7 +659,7 @@ describe(
                 checkMoviePosters(response.body.data.movies as MoviePoster[]);
             });
 
-            cy.scrollTo("bottom");
+            cy.get('a[href*="movie"] img').last().scrollIntoView();
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
