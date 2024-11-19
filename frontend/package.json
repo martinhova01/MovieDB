@@ -15,7 +15,7 @@
         "preview": "vite preview",
         "generate": "graphql-codegen && prettier --write src/types/__generated__",
         "cy:open": "cypress open",
-        "e2e:chrome": "cypress run --browser chrome"
+        "e2e": "cypress run"
     },
     "dependencies": {
         "@apollo/client": "^3.11.8",

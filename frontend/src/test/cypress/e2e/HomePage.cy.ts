@@ -56,6 +56,7 @@ describe(
             cy.intercept("POST", "http://localhost:3001/", (req) => {
                 aliasQuery(req, "GetMovies");
                 aliasQuery(req, "GetMovie");
+                aliasQuery(req, "GetFilters");
             });
             cy.visit("/");
         });
@@ -279,8 +280,8 @@ describe(
 
             cy.contains("Runtime").click();
             cy.contains("1 - 2 hours").click();
-            cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
-                expect(request.body.variables).to.deep.equal({
+            cy.wait(['@gqlGetFiltersQuery', '@gqlGetMoviesQuery']).spread((_, moviesQuery) => {
+                expect(moviesQuery.request.body.variables).to.deep.equal({
                     ...emptyVariables,
                     filters: {
                         ...emptyVariables.filters,
@@ -290,7 +291,7 @@ describe(
                     sortOption: SortingType.BEST_RATED,
                 });
                 checkMoviePosters(
-                    response.body.data.movies as MoviePoster[],
+                    moviesQuery.response.body.data.movies as MoviePoster[],
                     6
                 );
             });
@@ -369,8 +370,8 @@ describe(
 
             cy.contains("Rating").click();
             cy.get("#3").click();
-            cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
-                expect(request.body.variables).to.deep.equal({
+            cy.wait(['@gqlGetFiltersQuery', '@gqlGetMoviesQuery']).spread((_, moviesQuery) => {
+                expect(moviesQuery.request.body.variables).to.deep.equal({
                     ...emptyVariables,
                     filters: {
                         ...emptyVariables.filters,
@@ -379,7 +380,7 @@ describe(
                     sortOption: SortingType.SHORTEST_RUNTIME,
                     search: "the",
                 });
-                const filterMovies = response.body.data.movies as MoviePoster[];
+                const filterMovies = moviesQuery.response.body.data.movies as MoviePoster[];
                 checkMoviePosters(filterMovies, 14);
                 cy.wrap(filterMovies).as("filterMovies");
             });
