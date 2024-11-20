@@ -114,7 +114,10 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                                         size="sm"
                                         className="absolute right-4 top-4 h-8 px-2"
                                     >
-                                        <Trash2 className="h-4 w-4 sm:hidden" />
+                                        <Trash2
+                                            aria-label="delete review"
+                                            className="h-4 w-4 sm:hidden"
+                                        />
                                         <span className="hidden sm:inline">
                                             Delete
                                         </span>

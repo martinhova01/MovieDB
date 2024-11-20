@@ -19,7 +19,10 @@ const Navbar = () => {
     return (
         <header className="flex w-full items-center justify-between bg-gradient-to-r from-muted-foreground to-primary p-4">
             <nav className="flex items-center gap-10 text-background">
-                <a href="#main-content" className="sr-only focus:not-sr-only">
+                <a
+                    href="#main-content"
+                    className="sr-only max-w-10 text-xs focus:not-sr-only sm:max-w-max sm:text-sm"
+                >
                     Skip to main content
                 </a>
                 <Link to="/" className="flex flex-row gap-3 text-2xl font-bold">

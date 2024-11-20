@@ -83,7 +83,7 @@ const MyReviewsPage = () => {
     }
 
     return (
-        <main className="mx-auto mt-8 max-w-6xl px-4 pb-4">
+        <main id="main-content" className="mx-auto mt-8 max-w-6xl px-4 pb-4">
             <h1 className="mb-6 text-center text-3xl font-bold">My Reviews</h1>
             <InfiniteScroll
                 loadMore={handleLoadMore}

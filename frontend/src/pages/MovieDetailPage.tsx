@@ -51,7 +51,7 @@ function MovieDetailPage() {
     }
 
     return (
-        <main className="pb-2">
+        <main id="main-content" className="pb-2">
             <MovieCardDetailed movie={movie} />
             <MovieReviews movie={movie} />
         </main>

@@ -86,7 +86,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
     return (
         <Card className="m-4">
             <section className="m-4 mb-6">
-                <h3 className="mb-4 text-2xl font-bold">Submit review</h3>
+                <h1 className="mb-4 text-2xl font-bold">Submit review</h1>
                 <form onSubmit={handleSubmitReview} className="space-y-4">
                     <Ratings
                         value={rating}
@@ -115,7 +115,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
             </section>
             <section className="m-4 space-y-4">
                 {movie.reviews.length > 0 && (
-                    <h3 className="mb-4 text-2xl font-bold">Reviews</h3>
+                    <h1 className="mb-4 text-2xl font-bold">Reviews</h1>
                 )}
                 <ul className="space-y-6">
                     {movie.reviews.map((review) => (
