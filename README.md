@@ -122,7 +122,7 @@ We use caching in order to reduce the number of queries to the backend and impro
 
 We’ve put a lot of effort into making sure our application is accessible for everyone. Accessibility is a core part of what makes a good user experience, so here are some of the steps we've taken to make our app more inclusive:
 
-- **Semantic HTML**: We use the right HTML tags to ensure that screen readers can easily interpret and present the content to users who rely on them.
+- **Semantic HTML**: We use the right HTML tags to ensure that screen readers can easily interpret and present the content to users who rely on them. The few places `<div>`-tags have been used, this has been a deliberate choice, as no other element carried the appropriate semantic meaning.
 - **ARIA Attributes**: We've added `aria-label` to give elements clear, descriptive names and used `aria-role` to specify roles when they’re not obvious from the element type.
 - **Image Descriptions**: All images come with `alt` text. This way, if an image doesn’t load for any reason, the description still provides the necessary context for what was supposed to be there.
 - **Keyboard Navigation**: The whole app is built to be navigable using only a keyboard, which is how some users prefer or need to interact with websites.

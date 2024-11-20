@@ -168,9 +168,9 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                 )}
                 <section className={showPoster ? "min-h-[12rem]" : ""}>
                     <section className="mb-2 pr-16">
-                        <h2 className="text-lg font-bold sm:text-xl">
+                        <p className="text-lg font-bold sm:text-xl">
                             {review.username}
-                        </h2>
+                        </p>
                         <time
                             className="text-xs opacity-60 sm:text-sm"
                             dateTime={review.date.toISOString()}
