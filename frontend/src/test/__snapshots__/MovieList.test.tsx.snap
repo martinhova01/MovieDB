@@ -1,0 +1,394 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MovieList > matches snapshot after loading 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="px-3 py-1 text-center text-lg font-bold"
+    >
+      Total Hits: 50
+    </p>
+    <ul
+      class="flex flex-wrap justify-center"
+    >
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Inception
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Interstellar
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          The Dark Knight
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Avatar
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          The Avengers
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Deadpool
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Avengers: Infinity War
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Fight Club
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Guardians of the Galaxy
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Pulp Fiction
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Forrest Gump
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Harry Potter and the Philosopher's Stone
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Iron Man
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Django Unchained
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          The Shawshank Redemption
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Avengers: Endgame
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          The Matrix
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Titanic
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          Joker
+        </div>
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card"
+        >
+          The Lord of the Rings: The Fellowship of the Ring
+        </div>
+      </li>
+    </ul>
+    <div
+      data-testid="loader"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`MovieList > matches snapshot on error 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-2 w-dvw text-center"
+  >
+    <h1
+      class="text-2xl"
+    >
+      Something went wrong!
+    </h1>
+    <p
+      class="text-primary"
+    >
+      Try to refresh
+    </p>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`MovieList > matches snapshot when loading 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="px-3 py-1 text-center text-lg font-bold"
+    >
+      Total Hits: 50
+    </p>
+    <ul
+      class="flex flex-wrap justify-center"
+    >
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+      <li
+        class="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
+      >
+        <div
+          data-testid="movie-card-skeleton"
+        />
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`MovieList > matches snapshot with no movies found 1`] = `
+<DocumentFragment>
+  <section
+    class="text-center"
+  >
+    <h1
+      class="text-2xl"
+    >
+      No movies found
+    </h1>
+    <p
+      class="text-primary"
+    >
+      Please refine your search
+    </p>
+  </section>
+</DocumentFragment>
+`;

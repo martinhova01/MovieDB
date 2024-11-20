@@ -29,6 +29,15 @@ describe("MovieCard", () => {
         vi.clearAllMocks();
     });
 
+    it("matches snapshot", () => {
+        const { asFragment } = render(
+            <MemoryRouter>
+                <MovieCard movie={mockMovie} />
+            </MemoryRouter>
+        );
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("renders movie card with correct link", () => {
         renderMovieCard();
 

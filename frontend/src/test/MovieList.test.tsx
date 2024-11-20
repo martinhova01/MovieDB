@@ -127,7 +127,7 @@ const emptyMock = [
 
 describe("MovieList", () => {
     const renderMovieList = (mocks: MockedResponse[] | undefined) => {
-        render(
+        return render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <MemoryRouter>
                     <MovieList />
@@ -152,6 +152,29 @@ describe("MovieList", () => {
 
     afterEach(() => {
         vi.clearAllMocks();
+    });
+
+    it("matches snapshot when loading", () => {
+        const { asFragment } = renderMovieList(mockGetMoviesQuery);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot after loading", async () => {
+        const { asFragment } = renderMovieList(mockGetMoviesQuery);
+        await screen.findAllByTestId("movie-card");
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot on error", async () => {
+        const { asFragment } = renderMovieList(errorMock);
+        await screen.findByText("Something went wrong!");
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot with no movies found", async () => {
+        const { asFragment } = renderMovieList(emptyMock);
+        await screen.findByText("No movies found");
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders loading state initially", () => {
