@@ -155,6 +155,16 @@ describe("SortAndFilterPanel", () => {
         sessionStorage.clear();
     });
 
+    it("matches snapshot", async () => {
+        const { asFragment } = render(
+            <MockedProvider mocks={mockGetFiltersQuery} addTypename={false}>
+                <SortAndFilterPanel />
+            </MockedProvider>
+        );
+
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("renders Sort & Filter button", () => {
         render(
             <MockedProvider mocks={mockGetFiltersQuery} addTypename={false}>

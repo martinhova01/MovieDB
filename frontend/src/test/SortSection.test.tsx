@@ -43,6 +43,25 @@ describe("SortSection", () => {
         vi.clearAllMocks();
     });
 
+    it("matches snapshot when collapsed", async () => {
+        const { asFragment } = render(
+            <Accordion type="single" collapsible className="w-full">
+                <SortSection loading={false} />
+            </Accordion>
+        );
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot when open", async () => {
+        const { asFragment } = render(
+            <Accordion type="single" collapsible className="w-full">
+                <SortSection loading={false} />
+            </Accordion>
+        );
+        await userEvent.click(screen.getByRole("button"));
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("renders with correct default sort option", () => {
         renderSortSection();
 
