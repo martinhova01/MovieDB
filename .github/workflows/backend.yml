@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: [self-hosted, AVX]
     defaults:
       run:
         working-directory: ./backend
@@ -33,9 +33,8 @@ jobs:
       - name: 💁 Formatting
         run: npm run prettier
 
-      # No tests for the backend (yet)
-      #   - name: ✅ Testing
-      #     run: npm test
+      - name: ✅ Testing
+        run: npm test
 
       - name: 🏗️ Building
         run: npm run build

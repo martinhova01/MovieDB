@@ -1,4 +1,17 @@
 export type Filters = {
+    Genre: Filter[];
+    Rating: Filter[];
+    Decade: Filter[];
+    Status: Filter[];
+    Runtime: Filter[];
+};
+
+export type Filter = {
+    name: string;
+    hits: number;
+};
+
+export type FiltersInput = {
     Genre: string[];
     Rating: string[];
     Decade: string[];
@@ -29,19 +42,10 @@ const createFilterForRating = (selectedRatings: string[]) => {
 };
 
 const createFilterForReleaseYear = (selectedDecades: string[]) => {
-    if (selectedDecades.length) {
-        const yearFilters = selectedDecades.map((decade) => {
-            const startYear = parseInt(decade.slice(0, 4));
-            return {
-                release_date: {
-                    $gte: new Date(`${startYear}-01-01`),
-                    $lt: new Date(`${startYear + 10}-01-01`),
-                },
-            };
-        });
-        return { $or: yearFilters };
-    }
-    return {};
+    const decades: number[] = selectedDecades.map((d) =>
+        parseInt(d.slice(0, 4))
+    );
+    return selectedDecades.length ? { decade: { $in: decades } } : {};
 };
 
 const createFilterForStatus = (selectedStatuses: string[]) => {
@@ -69,7 +73,10 @@ const createFilterForRuntime = (selectedRuntimes: string[]) => {
     return {};
 };
 
-export const createFilters = (filters: Filters) => {
+const createFilters = (filters: FiltersInput | undefined) => {
+    if (filters == undefined) {
+        return [];
+    }
     return [
         createFilterForGenres(filters.Genre),
         createFilterForRating(filters.Rating),
@@ -77,4 +84,30 @@ export const createFilters = (filters: Filters) => {
         createFilterForStatus(filters.Status),
         createFilterForRuntime(filters.Runtime),
     ].filter((condition) => Object.keys(condition).length > 0);
+};
+
+const createSearch = (search: string | undefined) => {
+    if (search == undefined || search == "") {
+        return {};
+    }
+    return { title: { $regex: search, $options: "i" } };
+};
+
+export const createFilterAndSearch = (
+    filters: FiltersInput | undefined,
+    search: string | undefined
+) => {
+    return {
+        $and: [...createFilters(filters), createSearch(search)],
+    };
+};
+
+export const exportedForTesting = {
+    createFilterForGenres,
+    createFilterForRating,
+    createFilterForReleaseYear,
+    createFilterForStatus,
+    createFilterForRuntime,
+    createFilters,
+    createSearch,
 };

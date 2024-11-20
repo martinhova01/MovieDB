@@ -9,10 +9,44 @@ import { Button } from "../shadcn/components/ui/button";
 import Ratings from "../shadcn/components/ui/rating";
 import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
 import { Movie } from "@/types/__generated__/types";
+import { formatCurrency } from "@/utils/formatUtil";
 
 interface MovieCardDetailedProps {
     movie: Movie;
 }
+
+const getMovieDetailsList = (movie: Movie) => [
+    {
+        label: "Status",
+        value: movie.status,
+    },
+    {
+        label: "Budget",
+        value: movie.budget ? `${formatCurrency(movie.budget)}` : "N/A",
+    },
+    {
+        label: "Revenue",
+        value: movie.revenue ? `${formatCurrency(movie.revenue)}` : "N/A",
+    },
+    {
+        label: "Production Companies",
+        value: movie.production_companies.length
+            ? movie.production_companies.join(", ")
+            : "N/A",
+    },
+    {
+        label: "Production Countries",
+        value: movie.production_countries.length
+            ? movie.production_countries.join(", ")
+            : "N/A",
+    },
+    {
+        label: "Spoken Languages",
+        value: movie.spoken_languages.length
+            ? movie.spoken_languages.join(", ")
+            : "N/A",
+    },
+];
 
 const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
     const releaseYear = movie.release_date.getFullYear();
@@ -25,6 +59,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
             style={{
                 backgroundImage: `url(${getImageUrl(ImageType.BACKDROP, movie.backdrop_path)})`,
             }}
+            data-testid="detailedMovieCard"
         >
             {movie.backdrop_path && (
                 <div className="absolute inset-0 bg-black opacity-85" />
@@ -35,8 +70,23 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                         {movie.title}
                     </CardTitle>
                     <p className="text-sm">
-                        {releaseYear} • {runtimeHours}h {runtimeMinutes}m •{" "}
-                        {movie.genres.join(", ")}
+                        <time
+                            dateTime={movie.release_date
+                                .getFullYear()
+                                .toString()}
+                        >
+                            {releaseYear}
+                        </time>
+                        {" • "}
+                        <time dateTime={`PT${runtimeHours}H${runtimeMinutes}M`}>
+                            {runtimeHours}h {runtimeMinutes}m
+                        </time>
+                        {movie.genres.length != 0 && (
+                            <>
+                                {" • "}
+                                <span>{movie.genres.join(", ")}</span>
+                            </>
+                        )}
                     </p>
                     <Ratings
                         value={movie.vote_average / 2}
@@ -46,7 +96,6 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                         title={String((movie.vote_average / 2).toFixed(2))}
                     />
                 </CardHeader>
-
                 <section className="flex h-full flex-col md:flex-row">
                     <figure className="mb-6 w-full max-w-72 flex-shrink-0 md:mb-0 md:mr-6">
                         <img
@@ -68,26 +117,12 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                         )}
                         <p className="mb-4 text-lg">{movie.overview}</p>
                         <ul className="mb-6 flex flex-col gap-2">
-                            <li>
-                                <strong>Revenue:</strong> $
-                                {movie.revenue.toLocaleString()}
-                            </li>
-                            <li>
-                                <strong>Budget:</strong> $
-                                {movie.budget?.toLocaleString() ?? "N/A"}
-                            </li>
-                            <li>
-                                <strong>Production Companies:</strong>{" "}
-                                {movie.production_companies.join(", ")}
-                            </li>
-                            <li>
-                                <strong>Production Countries:</strong>{" "}
-                                {movie.production_countries.join(", ")}
-                            </li>
-                            <li>
-                                <strong>Spoken Languages:</strong>{" "}
-                                {movie.spoken_languages.join(", ")}
-                            </li>
+                            {getMovieDetailsList(movie).map((item, index) => (
+                                <li key={index}>
+                                    <strong>{item.label}: </strong>
+                                    {item.value}
+                                </li>
+                            ))}
                         </ul>
                         {movie.homepage && (
                             <Button asChild>

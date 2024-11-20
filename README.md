@@ -16,7 +16,7 @@ The following commands can be run in the `T26-Project-2/frontend` directory:
   - `npm run prettier:fix` to fix formatting
 - `npm run lint` to check for linting errors
   - `npm run lint:fix` to fix auto fixable linting errors
-- `npm test` to run all tests
+- `npm test` to run all frontend tests
   - `npm run coverage` to generate a test coverage report at `frontend/coverage/index.html`
 - `npm run build` to build the project
   - it will be built in the `dist` folder
@@ -38,6 +38,8 @@ The following commands can be run in the `T26-Project-2/backend` directory:
   - `npm run prettier:fix` to fix formatting
 - `npm run lint` to check for linting errors
   - `npm run lint:fix` to fix auto fixable linting errors
+- `npm test` to run all backend tests
+  - `npm run coverage` to generate a test coverage report at `backend/coverage/index.html`
 - `npm run build` to build the project
 - `npm run start` to start the server
 
@@ -53,6 +55,19 @@ Navigate to the `~T26-Project-2/backend` directory
   - `pm2 list` to see the status of the process
   - `pm2 restart <id>` to restart the process (use the id from `pm2 list`)
   - `pm2 stop <id>` to stop the process (use the id from `pm2 list`)
+
+### Running E2E tests
+
+In `T26-Project-2/backend`:
+
+- `npm run build` to build the project
+- `npm run e2e:server` to start the test server
+
+In `T26-Project-2/frontend`:
+
+- `npm run dev` to start the development server
+- `npm run e2e` to run the e2e tests (in another terminal)
+- `npm run cy:open` to use the cypress app (provides visualization (optional))
 
 ### Setting up the database / backend for the first time
 
@@ -108,8 +123,42 @@ LocalStorage is used to remember the username of the logged in user, so that the
 
 For the backend, we use `Apollo Server` with `MongoDB` as our database. We believe that `MongoDB` works well in combination with GraphQL because it allows us to store data in a similar format to the GraphQL types. This minimizes the work required for processing data before inserting it into the database and after retrieving data from the database.
 
-Our sorting, filtering and search logic is in the backend so that we can use the whole dataset. Here we use indexes in order to improve performance. For search, we only match on full words/phrases, not partial match. There are two reasons for this. The first and most important one is that this allows us to use a text index for titles, which improves performance. The second reason is that we thought partial match could become too vague with such a large dataset, as many movie titles would be substrings of others. 
+Our sorting, filtering and search logic is in the backend so that we can use the whole dataset. Here we use indexes in order to improve performance. While we initially used a text index for titles, we later opted for regex search to allow for partial match. We found that this led to a much better user experience, with minimal impact on performance.
 
-### Note
+We initially had over 700.000 movies in our database, but we later found that most movies were inappropriate or just joke entries. Therefore, we decided to remove many movies based on some criteria. If certain fields are null for example, it doesn't make sense to have the entries: title, release_date, overview, and runtime all have to have a value. Other criteria get rid of a lot of the inappropriate movies: adult = false, imdb_id != null. Then, we only kept the top 10.000 most popular movies. This ensures that we have as many known movies as possible while avoiding most of the inappropriate/irrelevant movies that haven't been filtered out already.
 
-At the moment we perform several queries in order to maintain concistency with regards to the reviews. As this is not the final deliverable we have not yet had time to optimize this. However, this is something we are aware of and in the process of fixing for the final deliverable. 
+### Caching
+
+We use caching in order to reduce the number of queries to the backend and improve performance. This way we avoid fetching the same data multiple times. When it comes to the caching of reviews, we had to find a balance between having up-to-date data and minimizing the number of queries. We found that the best solution was to have the user refresh in order to be sure of having the latest updates. This allows us to update the cache manually when adding/deleting a review, reducing the number of queries considerably while still feeling intuitive for the user.
+
+### Testing
+
+#### Component tests
+
+For our frontend components, we've set up tests using `vitest` to make sure each component works as expected. We've focused on testing the specific functionality of each component, keeping things isolated by using mocking. This includes mocking API responses, functions, and even other components when needed. This way, we can test components without worrying about external dependencies and ensure they handle different scenarios properly.
+
+#### API tests
+
+For the backend, we've written tests using `vitest`. To not pollute our production database every time we test, and to simplify integration into our CI pipeline, we use `mongodb-memory-server` as the database for these tests. This allows us to run tests in an isolated and consistent environment. It also allows anyone to run our tests, without downloading MongoDB and filling it with data first.
+
+Our tests cover each resolver and utility function in isolation, ensuring the backend behaves as expected. We also test each resolver with actual HTTP requests, and for these complex results, we rely on snapshots to verify that the output remains consistent across runs. This approach helps us maintain accuracy and reliability throughout our testing process.
+
+#### End-to-end tests
+
+We have made end-to-end tests using `Cypress`, as it's known to work well for e2e testing of web applications. When running the end-to-end tests we use `mongodb-memory-server`, as with the API tests, for the same reasons mentioned earlier. For the tests we have sequences of actions with varying length and complexity that imitate real user behavior. We've tried to be thorough, covering edge cases we know can be sources to issues. As an example, we test that reviews are updated correctly in the cache by submitting/deleting a review, then visiting the Activity page and My Reviews page, before returning to the initial movie. For search, sorting and filtering, we've already tested the API responses in the backend tests. Therefore, we focused mainly on checking that requests had the correct variables and that the response data was rendered correctly. Still, we test that search, sorting, filtering and paging work well together through several different action sequences. Due to variations in loading time as a result of for example network congestion, there is a small possibility that tests can fail. However, as we use wait() to handle this problem, this is a rare occurrence. Still, it's worth a mention.
+
+### Accessibility
+
+We've put a lot of effort into making sure our application is accessible for everyone. Accessibility is a core part of what makes a good user experience, so here are some of the steps we've taken to make our app more inclusive:
+
+- **Semantic HTML**: We use the right HTML tags to ensure that screen readers can easily interpret and present the content to users who rely on them. The few places `<div>`-tags have been used, this has been a deliberate choice, as no other element carried the appropriate semantic meaning.
+- **ARIA Attributes**: We've added `aria-label` to give elements clear, descriptive names and used `aria-role` to specify roles when they're not obvious from the element type.
+- **Image Descriptions**: All images come with `alt` text. This way, if an image doesn't load for any reason, the description still provides the necessary context for what was supposed to be there.
+- **Keyboard Navigation**: The whole app is built to be navigable using only a keyboard, which is how some users prefer or need to interact with websites.
+- **Color Contrast**: We've checked that all text and interactive elements have enough contrast with their backgrounds to be easily readable, especially for users with visual impairments.
+
+To catch any accessibility issues, we've been using `Google Lighthouse`, a built-in browser tool, to analyze accessibility as well as performance, best practices, and Search Engine Optimization (SEO). Here's an example of a Lighthouse report for the homepage's initial load:
+
+![Lighthouse report](docs/image.png)
+
+*Note: This test was run with the backend on a local server, so the performance results might not be fully accurate.*

@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import NavbarOverlay from "./NavbarOverlay";
 import UserDropdown from "./UserDropdown";
-import { usernameVar } from "@/utils/cache";
 import { useReactiveVar } from "@apollo/client";
+import { usernameVar } from "@/utils/cache";
 
 export type NavbarProps = { name: string; href: string }[];
 
@@ -19,8 +19,14 @@ const Navbar = () => {
     return (
         <header className="flex w-full items-center justify-between bg-gradient-to-r from-muted-foreground to-primary p-4">
             <nav className="flex items-center gap-10 text-background">
+                <a
+                    href="#main-content"
+                    className="sr-only left-0 top-0 bg-primary font-bold focus:not-sr-only focus:absolute focus:m-2 focus:p-2"
+                >
+                    Skip to main content
+                </a>
                 <Link to="/" className="flex flex-row gap-3 text-2xl font-bold">
-                    <img src={logo} alt="logo" className="h-8 w-8" />
+                    <img src={logo} alt="logo" className="h-8" />
                     MovieDB
                 </Link>
                 <ul className="hidden gap-4 text-lg sm:flex">

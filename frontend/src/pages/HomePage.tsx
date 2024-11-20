@@ -4,13 +4,13 @@ import SearchBar from "../components/SearchBar";
 
 function HomePage() {
     return (
-        <main>
+        <>
             <section className="flex flex-row gap-2 p-4">
                 <SortAndFilterPanel />
                 <SearchBar />
             </section>
             <MovieList />
-        </main>
+        </>
     );
 }
 

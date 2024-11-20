@@ -1,20 +1,8 @@
-import { ApolloServer } from "@apollo/server";
-import { startStandaloneServer } from "@apollo/server/standalone";
-import depthLimit from "graphql-depth-limit";
-import connectToDatabase from "./db/database.js";
-import resolvers from "./resolvers/resolvers.js";
-import { typeDefs } from "./schemas/schema.js";
+import { createApolloServer } from "./server.js";
 
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    validationRules: [depthLimit(2)],
+createApolloServer(
+    { port: 3001 },
+    "mongodb://localhost:27017/T26-Project-2"
+).then(({ url }) => {
+    console.log(`🚀 Server ready at: ${url}`);
 });
-
-await connectToDatabase();
-
-const { url } = await startStandaloneServer(server, {
-    listen: { port: 3001 },
-});
-
-console.log(`🚀 Server ready at: ${url}`);

@@ -44,6 +44,14 @@ const Ratings = ({ ...props }: RatingsProps) => {
         ...extraProps
     } = props;
 
+    const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+        if (asInput && e.key === " ") {
+            // " " is the encoding for spacebar
+            e.preventDefault();
+            onValueChange && onValueChange(index + 1);
+        }
+    };
+
     const ratings = value;
 
     const fullStars = Math.floor(ratings);
@@ -62,7 +70,11 @@ const Ratings = ({ ...props }: RatingsProps) => {
         ) : null;
 
     return (
-        <div className={cn("flex items-center gap-2")} {...extraProps}>
+        <div
+            className={cn("flex items-center gap-2")}
+            role={asInput ? "radiogroup" : undefined}
+            {...extraProps}
+        >
             {[...Array(fullStars)].map((_, i) =>
                 React.cloneElement(Icon, {
                     key: i,
@@ -72,8 +84,14 @@ const Ratings = ({ ...props }: RatingsProps) => {
                         ratingVariants[variant].star,
                         asInput ? "cursor-pointer" : ""
                     ),
-                    role: asInput ? "input" : undefined,
+                    role: asInput ? "radio" : undefined,
+                    "aria-checked": asInput ? i + 1 === value : undefined,
+                    "aria-label": asInput ? `${i + 1} star` : undefined,
+                    tabIndex: asInput ? 0 : -1,
                     onClick: () => onValueChange && onValueChange(i + 1),
+                    onKeyDown: asInput
+                        ? (e: React.KeyboardEvent) => handleKeyDown(e, i)
+                        : undefined,
                 })
             )}
             {partialStar}
@@ -86,7 +104,22 @@ const Ratings = ({ ...props }: RatingsProps) => {
                             ratingVariants[variant].emptyStar,
                             asInput ? "cursor-pointer" : ""
                         ),
-                        role: asInput ? "input" : undefined,
+                        role: asInput ? "radio" : undefined,
+                        "aria-checked": asInput
+                            ? fullStars + i + 1 + (partialStar ? 1 : 0) ===
+                              value
+                            : undefined,
+                        tabIndex: asInput ? 0 : -1,
+                        onKeyDown: asInput
+                            ? (e: React.KeyboardEvent) =>
+                                  handleKeyDown(
+                                      e,
+                                      fullStars + i + (partialStar ? 1 : 0)
+                                  )
+                            : undefined,
+                        "aria-label": asInput
+                            ? `${fullStars + i + 1 + (partialStar ? 1 : 0)} star`
+                            : undefined,
                         onClick: () =>
                             onValueChange &&
                             onValueChange(

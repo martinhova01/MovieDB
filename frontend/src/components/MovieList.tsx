@@ -1,24 +1,32 @@
 import { MoviePoster } from "@/types/movieTypes";
 import MovieCard from "./MovieCard";
-import { Button } from "@/shadcn/components/ui/button";
+import InfiniteScroll from "react-infinite-scroller";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { useMemo, useState } from "react";
-import { filtersVar, searchVar, sortOptionVar } from "@/utils/cache";
-import { FiltersInput } from "@/types/__generated__/types";
+import { formatNumber } from "@/utils/formatUtil";
+import {
+    filtersVar,
+    searchVar,
+    sortOptionVar,
+    totalHitsVar,
+} from "@/utils/cache";
 import { GET_MOVIES } from "@/api/queries";
+import Loader from "./Loader";
+import MovieCardSkeleton from "./MovieCardSkeleton";
 
 const MovieList = () => {
     const [isMoreMovies, setIsMoreMovies] = useState<boolean>(false);
     const filters = useReactiveVar(filtersVar);
     const sortOption = useReactiveVar(sortOptionVar);
     const search = useReactiveVar(searchVar);
+    const totalHits = useReactiveVar(totalHitsVar);
     const LIMIT = 20;
 
     const { data, loading, error, fetchMore } = useQuery(GET_MOVIES, {
         variables: {
             skip: 0,
             limit: LIMIT,
-            filters: filters as FiltersInput,
+            filters: filters,
             sortOption: sortOption,
             search: search,
         },
@@ -45,15 +53,7 @@ const MovieList = () => {
         );
     };
 
-    if (loading) {
-        return (
-            <section className="mt-2 w-dvw text-center">
-                <h1 className="text-2xl">Loading...</h1>
-            </section>
-        );
-    }
-
-    if (error || !movies) {
+    if (error || (!loading && !movies)) {
         return (
             <section className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">Something went wrong!</h1>
@@ -62,7 +62,7 @@ const MovieList = () => {
         );
     }
 
-    if (movies.length === 0) {
+    if (!loading && movies?.length === 0) {
         return (
             <section className="text-center">
                 <h1 className="text-2xl">No movies found</h1>
@@ -71,26 +71,41 @@ const MovieList = () => {
         );
     }
 
+    const listClass = "m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]";
+
     return (
-        <>
+        <InfiniteScroll
+            loadMore={handleLoadMore}
+            hasMore={isMoreMovies}
+            initialLoad={false}
+            threshold={100}
+            loader={
+                <Loader
+                    key={-1}
+                    aria-label="Loading more movies..."
+                    className="text-center"
+                >
+                    <p className="text-2xl">Loading...</p>
+                </Loader>
+            }
+        >
+            <p className="px-3 py-1 text-center text-lg font-bold">
+                Total Hits: {formatNumber(totalHits)}
+            </p>
             <ul className="flex flex-wrap justify-center">
-                {movies.map((movie) => (
-                    <li
-                        key={movie._id}
-                        className="m-2 w-[45%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[13%]"
-                    >
-                        <MovieCard movie={movie} />
-                    </li>
-                ))}
+                {loading
+                    ? Array.from({ length: LIMIT }, (_, i) => i).map((i) => (
+                          <li key={i} className={listClass}>
+                              <MovieCardSkeleton />
+                          </li>
+                      ))
+                    : movies?.map((movie) => (
+                          <li key={movie._id} className={listClass}>
+                              <MovieCard movie={movie} />
+                          </li>
+                      ))}
             </ul>
-            {isMoreMovies && (
-                <div className="flex justify-center">
-                    <Button size="lg" className="m-10" onClick={handleLoadMore}>
-                        Load More
-                    </Button>
-                </div>
-            )}
-        </>
+        </InfiniteScroll>
     );
 };
 

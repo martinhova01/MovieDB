@@ -1,0 +1,274 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`resolvers > correctly handles deleteReview resolver 1`] = `
+{
+  "deleteReview": {
+    "_id": "673625f49c33bb841a3fef05",
+    "comment": "Great movie, but I can't talk about it. You know the rule.",
+    "date": "2024-11-14T16:31:48.039Z",
+    "movie": {
+      "_id": 550,
+      "title": "Fight Club",
+      "vote_average": 8.438,
+      "vote_count": 27238,
+    },
+    "rating": 5,
+    "username": "testuser1",
+  },
+}
+`;
+
+exports[`resolvers > correctly handles filters resolver 1`] = `
+{
+  "filters": {
+    "Decade": [
+      {
+        "hits": 5,
+        "name": "2020s",
+      },
+      {
+        "hits": 1,
+        "name": "2010s",
+      },
+      {
+        "hits": 0,
+        "name": "1990s",
+      },
+    ],
+    "Genre": [
+      {
+        "hits": 4,
+        "name": "Action",
+      },
+      {
+        "hits": 0,
+        "name": "Adventure",
+      },
+      {
+        "hits": 0,
+        "name": "Animation",
+      },
+      {
+        "hits": 0,
+        "name": "Comedy",
+      },
+      {
+        "hits": 1,
+        "name": "Crime",
+      },
+      {
+        "hits": 0,
+        "name": "Drama",
+      },
+      {
+        "hits": 0,
+        "name": "Family",
+      },
+      {
+        "hits": 0,
+        "name": "Fantasy",
+      },
+      {
+        "hits": 0,
+        "name": "History",
+      },
+      {
+        "hits": 2,
+        "name": "Horror",
+      },
+      {
+        "hits": 3,
+        "name": "Mystery",
+      },
+      {
+        "hits": 0,
+        "name": "Romance",
+      },
+      {
+        "hits": 1,
+        "name": "Science Fiction",
+      },
+      {
+        "hits": 6,
+        "name": "Thriller",
+      },
+      {
+        "hits": 0,
+        "name": "War",
+      },
+    ],
+    "Rating": [
+      {
+        "hits": 0,
+        "name": "5",
+      },
+      {
+        "hits": 2,
+        "name": "4",
+      },
+      {
+        "hits": 4,
+        "name": "3",
+      },
+      {
+        "hits": 0,
+        "name": "2",
+      },
+      {
+        "hits": 0,
+        "name": "1",
+      },
+      {
+        "hits": 0,
+        "name": "0",
+      },
+    ],
+    "Runtime": [
+      {
+        "hits": 0,
+        "name": "Less than 1 hour",
+      },
+      {
+        "hits": 4,
+        "name": "1 - 2 hours",
+      },
+      {
+        "hits": 2,
+        "name": "2 - 3 hours",
+      },
+      {
+        "hits": 0,
+        "name": "3 hours or more",
+      },
+    ],
+    "Status": [
+      {
+        "hits": 6,
+        "name": "Released",
+      },
+      {
+        "hits": 0,
+        "name": "In Production",
+      },
+      {
+        "hits": 0,
+        "name": "Post Production",
+      },
+      {
+        "hits": 0,
+        "name": "Planned",
+      },
+    ],
+  },
+}
+`;
+
+exports[`resolvers > correctly handles latestReviews resolver 1`] = `
+{
+  "latestReviews": [
+    {
+      "_id": "673627c79c33bb841a3fef74",
+      "comment": "This is going to be quite good.",
+      "date": "2024-11-14T16:39:35.185Z",
+      "movie": {
+        "_id": 83533,
+        "poster_path": "/eZXoA5BjUxm1fdAKb3lPvbDY2L8.jpg",
+        "title": "Avatar 3",
+      },
+      "rating": 3,
+      "username": "testuser1",
+    },
+    {
+      "_id": "673625f49c33bb841a3fef05",
+      "comment": "Great movie, but I can't talk about it. You know the rule.",
+      "date": "2024-11-14T16:31:48.039Z",
+      "movie": {
+        "_id": 550,
+        "poster_path": "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
+        "title": "Fight Club",
+      },
+      "rating": 5,
+      "username": "testuser1",
+    },
+  ],
+}
+`;
+
+exports[`resolvers > correctly handles movie resolver 1`] = `
+{
+  "movie": {
+    "_id": 157336,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Science Fiction",
+    ],
+    "reviews": [
+      {
+        "_id": "6736255c9c33bb841a3fee9a",
+        "comment": "It's quite good",
+        "date": "2024-11-14T16:29:16.190Z",
+        "rating": 4,
+        "username": "testuser2",
+      },
+      {
+        "_id": "6736254b9c33bb841a3fee95",
+        "comment": "Best movie ever made!",
+        "date": "2024-11-14T16:28:59.076Z",
+        "rating": 5,
+        "username": "testuser1",
+      },
+    ],
+    "title": "Interstellar",
+  },
+}
+`;
+
+exports[`resolvers > correctly handles movies resolver 1`] = `
+{
+  "movies": [
+    {
+      "_id": 565770,
+      "poster_path": "/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg",
+      "release_date": "2023-08-16T00:00:00.000Z",
+      "runtime": 128,
+      "title": "Blue Beetle",
+      "vote_average": 7.139,
+    },
+    {
+      "_id": 980489,
+      "poster_path": "/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg",
+      "release_date": "2023-08-09T00:00:00.000Z",
+      "runtime": 135,
+      "title": "Gran Turismo",
+      "vote_average": 8.064965909090908,
+    },
+    {
+      "_id": 968051,
+      "poster_path": "/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg",
+      "release_date": "2023-09-06T00:00:00.000Z",
+      "runtime": 110,
+      "title": "The Nun II",
+      "vote_average": 6.551426630434783,
+    },
+  ],
+}
+`;
+
+exports[`resolvers > correctly handles userReviews resolver 1`] = `
+{
+  "userReviews": [
+    {
+      "_id": "6736255c9c33bb841a3fee9a",
+      "comment": "It's quite good",
+      "date": "2024-11-14T16:29:16.190Z",
+      "movie": {
+        "_id": 157336,
+        "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+        "title": "Interstellar",
+      },
+      "rating": 4,
+    },
+  ],
+}
+`;

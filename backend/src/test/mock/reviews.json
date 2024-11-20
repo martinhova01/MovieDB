@@ -1,0 +1,54 @@
+[
+    {
+        "_id": {
+            "$oid": "6736254b9c33bb841a3fee95"
+        },
+        "movie": 157336,
+        "username": "testuser1",
+        "rating": 5,
+        "comment": "Best movie ever made!",
+        "date": {
+            "$date": "2024-11-14T16:28:59.076Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "6736255c9c33bb841a3fee9a"
+        },
+        "movie": 157336,
+        "username": "testuser2",
+        "rating": 4,
+        "comment": "It's quite good",
+        "date": {
+            "$date": "2024-11-14T16:29:16.190Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673625f49c33bb841a3fef05"
+        },
+        "movie": 550,
+        "username": "testuser1",
+        "rating": 5,
+        "comment": "Great movie, but I can't talk about it. You know the rule.",
+        "date": {
+            "$date": "2024-11-14T16:31:48.039Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673627c79c33bb841a3fef74"
+        },
+        "movie": 83533,
+        "username": "testuser1",
+        "rating": 3,
+        "comment": "This is going to be quite good.",
+        "date": {
+            "$date": "2024-11-14T16:39:35.185Z"
+        },
+        "__v": 0
+    }
+]

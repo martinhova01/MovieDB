@@ -70,11 +70,17 @@ export type Review = {
 
 export type Filters = {
     __typename?: "Filters";
-    Genre: Array<Scalars["String"]["output"]>;
-    Rating: Array<Scalars["String"]["output"]>;
-    Decade: Array<Scalars["String"]["output"]>;
-    Status: Array<Scalars["String"]["output"]>;
-    Runtime: Array<Scalars["String"]["output"]>;
+    Genre: Array<Filter>;
+    Rating: Array<Filter>;
+    Decade: Array<Filter>;
+    Status: Array<Filter>;
+    Runtime: Array<Filter>;
+};
+
+export type Filter = {
+    __typename?: "Filter";
+    name: Scalars["String"]["output"];
+    hits: Scalars["Int"]["output"];
 };
 
 export type FiltersInput = {
@@ -116,6 +122,11 @@ export type QuerymoviesArgs = {
     search?: InputMaybe<Scalars["String"]["input"]>;
 };
 
+export type QueryfiltersArgs = {
+    appliedFilters?: InputMaybe<FiltersInput>;
+    search?: InputMaybe<Scalars["String"]["input"]>;
+};
+
 export type QuerylatestReviewsArgs = {
     skip?: InputMaybe<Scalars["Int"]["input"]>;
     limit?: InputMaybe<Scalars["Int"]["input"]>;
@@ -129,8 +140,8 @@ export type QueryuserReviewsArgs = {
 
 export type Mutation = {
     __typename?: "Mutation";
-    addReview: Movie;
-    deleteReview: Movie;
+    addReview: Review;
+    deleteReview: Review;
 };
 
 export type MutationaddReviewArgs = {
@@ -207,17 +218,20 @@ export type GetMovieQuery = {
     } | null;
 };
 
-export type GetFiltersQueryVariables = Exact<{ [key: string]: never }>;
+export type GetFiltersQueryVariables = Exact<{
+    appliedFilters?: InputMaybe<FiltersInput>;
+    search?: InputMaybe<Scalars["String"]["input"]>;
+}>;
 
 export type GetFiltersQuery = {
     __typename?: "Query";
     filters: {
         __typename?: "Filters";
-        Genre: Array<string>;
-        Rating: Array<string>;
-        Decade: Array<string>;
-        Status: Array<string>;
-        Runtime: Array<string>;
+        Genre: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Rating: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Decade: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Status: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Runtime: Array<{ __typename?: "Filter"; name: string; hits: number }>;
     };
 };
 
@@ -277,18 +291,18 @@ export type AddReviewMutationVariables = Exact<{
 export type AddReviewMutation = {
     __typename?: "Mutation";
     addReview: {
-        __typename?: "Movie";
-        _id: number;
-        vote_average: number;
-        vote_count: number;
-        reviews: Array<{
-            __typename?: "Review";
-            _id: string;
-            username: string;
-            rating: number;
-            comment: string;
-            date: Date;
-        }>;
+        __typename?: "Review";
+        _id: string;
+        username: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            vote_average: number;
+            vote_count: number;
+        };
     };
 };
 
@@ -299,17 +313,17 @@ export type DeleteReviewMutationVariables = Exact<{
 export type DeleteReviewMutation = {
     __typename?: "Mutation";
     deleteReview: {
-        __typename?: "Movie";
-        _id: number;
-        vote_average: number;
-        vote_count: number;
-        reviews: Array<{
-            __typename?: "Review";
-            _id: string;
-            username: string;
-            rating: number;
-            comment: string;
-            date: Date;
-        }>;
+        __typename?: "Review";
+        _id: string;
+        username: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            vote_average: number;
+            vote_count: number;
+        };
     };
 };

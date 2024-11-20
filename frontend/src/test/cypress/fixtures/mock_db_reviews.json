@@ -1,0 +1,327 @@
+[
+    {
+        "_id": {
+            "$oid": "673c5010594632f6e941211b"
+        },
+        "movie": 980489,
+        "username": "testuser3",
+        "rating": 4,
+        "comment": "Cool",
+        "date": {
+            "$date": "2024-11-13T08:45:04.591Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c502a594632f6e9412122"
+        },
+        "movie": 615656,
+        "username": "testuser3",
+        "rating": 2,
+        "comment": "Meh, not for me",
+        "date": {
+            "$date": "2024-11-13T08:45:30.917Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c504e594632f6e9412129"
+        },
+        "movie": 762430,
+        "username": "testuser3",
+        "rating": 4,
+        "comment": "Better than I expected.",
+        "date": {
+            "$date": "2024-11-13T08:46:06.787Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c5057594632f6e941212f"
+        },
+        "movie": 1008042,
+        "username": "testuser3",
+        "rating": 3,
+        "comment": "Quite average",
+        "date": {
+            "$date": "2024-11-13T08:46:15.968Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c5077594632f6e9412136"
+        },
+        "movie": 385687,
+        "username": "testuser3",
+        "rating": 3,
+        "comment": "The old ones are better",
+        "date": {
+            "$date": "2024-11-13T08:46:47.760Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c508f594632f6e941213c"
+        },
+        "movie": 678512,
+        "username": "testuser3",
+        "rating": 4,
+        "comment": "Exciting movie!",
+        "date": {
+            "$date": "2024-11-13T08:47:11.144Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c50a9594632f6e9412142"
+        },
+        "movie": 346698,
+        "username": "testuser3",
+        "rating": 3,
+        "comment": "Don't think I was the target audience",
+        "date": {
+            "$date": "2024-11-13T08:47:37.505Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c50b9594632f6e9412148"
+        },
+        "movie": 976573,
+        "username": "testuser3",
+        "rating": 4,
+        "comment": "A great family film.",
+        "date": {
+            "$date": "2024-11-13T08:47:53.326Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c50ec594632f6e941214e"
+        },
+        "movie": 1002338,
+        "username": "testuser3",
+        "rating": 4,
+        "comment": "Visually stunning.",
+        "date": {
+            "$date": "2024-11-13T08:48:44.758Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c510c594632f6e9412154"
+        },
+        "movie": 820609,
+        "username": "testuser3",
+        "rating": 3,
+        "comment": "Could have been so much better.",
+        "date": {
+            "$date": "2024-11-13T08:49:16.855Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c5126594632f6e941215a"
+        },
+        "movie": 951491,
+        "username": "testuser3",
+        "rating": 3,
+        "comment": "Not my vibe.",
+        "date": {
+            "$date": "2024-11-13T08:49:42.793Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c514c594632f6e9412161"
+        },
+        "movie": 1172009,
+        "username": "testuser3",
+        "rating": 5,
+        "comment": "I really liked this movie!",
+        "date": {
+            "$date": "2024-11-13T08:50:20.129Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c5176594632f6e9412167"
+        },
+        "movie": 852436,
+        "username": "testuser3",
+        "rating": 4,
+        "comment": "Surprisingly good!",
+        "date": {
+            "$date": "2024-11-13T08:51:02.380Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c5197594632f6e941216d"
+        },
+        "movie": 717930,
+        "username": "testuser3",
+        "rating": 3,
+        "comment": "Didn't like the ending.",
+        "date": {
+            "$date": "2024-11-13T08:51:35.068Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c51aa594632f6e9412173"
+        },
+        "movie": 744278,
+        "username": "testuser3",
+        "rating": 1,
+        "comment": "This was really bad!",
+        "date": {
+            "$date": "2024-11-13T08:51:54.829Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c51ca594632f6e9412179"
+        },
+        "movie": 667538,
+        "username": "testuser3",
+        "rating": 3,
+        "comment": "Decent, but not memorable.",
+        "date": {
+            "$date": "2024-11-13T08:52:26.272Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c51ed594632f6e9412180"
+        },
+        "movie": 569094,
+        "username": "testuser3",
+        "rating": 5,
+        "comment": "Love the animation style!",
+        "date": {
+            "$date": "2024-11-13T08:53:01.134Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c521c594632f6e9412186"
+        },
+        "movie": 670292,
+        "username": "testuser3",
+        "rating": 3,
+        "comment": "It's ok i guess.",
+        "date": {
+            "$date": "2024-11-13T08:53:48.407Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c5280594632f6e941218f"
+        },
+        "movie": 299054,
+        "username": "testuser3",
+        "rating": 3,
+        "comment": "Not the movie for me!",
+        "date": {
+            "$date": "2024-11-13T08:55:28.022Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c529c594632f6e9412194"
+        },
+        "movie": 603692,
+        "username": "testuser3",
+        "rating": 4,
+        "comment": "I like the John Wick movies!",
+        "date": {
+            "$date": "2024-11-13T08:55:56.389Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673c52f6594632f6e941219c"
+        },
+        "movie": 926393,
+        "username": "testuser3",
+        "rating": 3,
+        "comment": "Nothing more than average.",
+        "date": {
+            "$date": "2024-11-13T08:57:26.664Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "6736254b9c33bb841a3fee95"
+        },
+        "movie": 157336,
+        "username": "testuser1",
+        "rating": 5,
+        "comment": "Best movie ever made!",
+        "date": {
+            "$date": "2024-11-14T16:28:59.076Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "6736255c9c33bb841a3fee9a"
+        },
+        "movie": 565770,
+        "username": "testuser2",
+        "rating": 4,
+        "comment": "It's quite good",
+        "date": {
+            "$date": "2024-11-14T16:29:16.190Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673625f49c33bb841a3fef05"
+        },
+        "movie": 550,
+        "username": "testuser1",
+        "rating": 5,
+        "comment": "Great movie, but I can't talk about it. You know the rule.",
+        "date": {
+            "$date": "2024-11-14T16:31:48.039Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "673627c79c33bb841a3fef74"
+        },
+        "movie": 83533,
+        "username": "testuser1",
+        "rating": 3,
+        "comment": "This is going to be quite good.",
+        "date": {
+            "$date": "2024-11-14T16:39:35.185Z"
+        },
+        "__v": 0
+    }
+]

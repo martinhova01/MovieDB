@@ -113,17 +113,20 @@ export type GetMovieQuery = {
     } | null;
 };
 
-export type GetFiltersQueryVariables = Exact<{ [key: string]: never }>;
+export type GetFiltersQueryVariables = Exact<{
+    appliedFilters?: InputMaybe<FiltersInput>;
+    search?: InputMaybe<Scalars["String"]["input"]>;
+}>;
 
 export type GetFiltersQuery = {
     __typename?: "Query";
     filters: {
         __typename?: "Filters";
-        Genre: Array<string>;
-        Rating: Array<string>;
-        Decade: Array<string>;
-        Status: Array<string>;
-        Runtime: Array<string>;
+        Genre: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Rating: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Decade: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Status: Array<{ __typename?: "Filter"; name: string; hits: number }>;
+        Runtime: Array<{ __typename?: "Filter"; name: string; hits: number }>;
     };
 };
 
@@ -183,18 +186,18 @@ export type AddReviewMutationVariables = Exact<{
 export type AddReviewMutation = {
     __typename?: "Mutation";
     addReview: {
-        __typename?: "Movie";
-        _id: number;
-        vote_average: number;
-        vote_count: number;
-        reviews: Array<{
-            __typename?: "Review";
-            _id: string;
-            username: string;
-            rating: number;
-            comment: string;
-            date: Date;
-        }>;
+        __typename?: "Review";
+        _id: string;
+        username: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            vote_average: number;
+            vote_count: number;
+        };
     };
 };
 
@@ -205,18 +208,18 @@ export type DeleteReviewMutationVariables = Exact<{
 export type DeleteReviewMutation = {
     __typename?: "Mutation";
     deleteReview: {
-        __typename?: "Movie";
-        _id: number;
-        vote_average: number;
-        vote_count: number;
-        reviews: Array<{
-            __typename?: "Review";
-            _id: string;
-            username: string;
-            rating: number;
-            comment: string;
-            date: Date;
-        }>;
+        __typename?: "Review";
+        _id: string;
+        username: string;
+        rating: number;
+        comment: string;
+        date: Date;
+        movie: {
+            __typename?: "Movie";
+            _id: number;
+            vote_average: number;
+            vote_count: number;
+        };
     };
 };
 
@@ -596,34 +599,174 @@ export const GetFiltersDocument = {
             kind: "OperationDefinition",
             operation: "query",
             name: { kind: "Name", value: "GetFilters" },
+            variableDefinitions: [
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "appliedFilters" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "FiltersInput" },
+                    },
+                },
+                {
+                    kind: "VariableDefinition",
+                    variable: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "search" },
+                    },
+                    type: {
+                        kind: "NamedType",
+                        name: { kind: "Name", value: "String" },
+                    },
+                },
+            ],
             selectionSet: {
                 kind: "SelectionSet",
                 selections: [
                     {
                         kind: "Field",
                         name: { kind: "Name", value: "filters" },
+                        arguments: [
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "appliedFilters" },
+                                value: {
+                                    kind: "Variable",
+                                    name: {
+                                        kind: "Name",
+                                        value: "appliedFilters",
+                                    },
+                                },
+                            },
+                            {
+                                kind: "Argument",
+                                name: { kind: "Name", value: "search" },
+                                value: {
+                                    kind: "Variable",
+                                    name: { kind: "Name", value: "search" },
+                                },
+                            },
+                        ],
                         selectionSet: {
                             kind: "SelectionSet",
                             selections: [
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "Genre" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "name",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "hits",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "Rating" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "name",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "hits",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "Decade" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "name",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "hits",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "Status" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "name",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "hits",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                                 {
                                     kind: "Field",
                                     name: { kind: "Name", value: "Runtime" },
+                                    selectionSet: {
+                                        kind: "SelectionSet",
+                                        selections: [
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "name",
+                                                },
+                                            },
+                                            {
+                                                kind: "Field",
+                                                name: {
+                                                    kind: "Name",
+                                                    value: "hits",
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                             ],
                         },
@@ -1000,18 +1143,7 @@ export const AddReviewDocument = {
                                 },
                                 {
                                     kind: "Field",
-                                    name: {
-                                        kind: "Name",
-                                        value: "vote_average",
-                                    },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "vote_count" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "reviews" },
+                                    name: { kind: "Name", value: "movie" },
                                     selectionSet: {
                                         kind: "SelectionSet",
                                         selections: [
@@ -1026,32 +1158,34 @@ export const AddReviewDocument = {
                                                 kind: "Field",
                                                 name: {
                                                     kind: "Name",
-                                                    value: "username",
+                                                    value: "vote_average",
                                                 },
                                             },
                                             {
                                                 kind: "Field",
                                                 name: {
                                                     kind: "Name",
-                                                    value: "rating",
-                                                },
-                                            },
-                                            {
-                                                kind: "Field",
-                                                name: {
-                                                    kind: "Name",
-                                                    value: "comment",
-                                                },
-                                            },
-                                            {
-                                                kind: "Field",
-                                                name: {
-                                                    kind: "Name",
-                                                    value: "date",
+                                                    value: "vote_count",
                                                 },
                                             },
                                         ],
                                     },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "username" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "rating" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "comment" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "date" },
                                 },
                             ],
                         },
@@ -1109,18 +1243,7 @@ export const DeleteReviewDocument = {
                                 },
                                 {
                                     kind: "Field",
-                                    name: {
-                                        kind: "Name",
-                                        value: "vote_average",
-                                    },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "vote_count" },
-                                },
-                                {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "reviews" },
+                                    name: { kind: "Name", value: "movie" },
                                     selectionSet: {
                                         kind: "SelectionSet",
                                         selections: [
@@ -1135,32 +1258,34 @@ export const DeleteReviewDocument = {
                                                 kind: "Field",
                                                 name: {
                                                     kind: "Name",
-                                                    value: "username",
+                                                    value: "vote_average",
                                                 },
                                             },
                                             {
                                                 kind: "Field",
                                                 name: {
                                                     kind: "Name",
-                                                    value: "rating",
-                                                },
-                                            },
-                                            {
-                                                kind: "Field",
-                                                name: {
-                                                    kind: "Name",
-                                                    value: "comment",
-                                                },
-                                            },
-                                            {
-                                                kind: "Field",
-                                                name: {
-                                                    kind: "Name",
-                                                    value: "date",
+                                                    value: "vote_count",
                                                 },
                                             },
                                         ],
                                     },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "username" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "rating" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "comment" },
+                                },
+                                {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "date" },
                                 },
                             ],
                         },

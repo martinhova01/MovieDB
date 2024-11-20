@@ -1,13 +1,14 @@
 import ReviewCard from "@/components/ReviewCard";
-import { Button } from "@/shadcn/components/ui/button";
+import InfiniteScroll from "react-infinite-scroller";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_LATEST_REVIEWS } from "../api/queries";
 import { Review } from "@/types/__generated__/types";
+import Loader from "../components/Loader";
 
 const ActivityPage = () => {
-    const [isMoreReviews, setIsMoreReviews] = useState<boolean>(true);
+    const [isMoreReviews, setIsMoreReviews] = useState<boolean>(false);
     const LIMIT = 20;
 
     const { data, loading, error, fetchMore } = useQuery(GET_LATEST_REVIEWS, {
@@ -43,7 +44,9 @@ const ActivityPage = () => {
     if (loading) {
         return (
             <section className="mt-6 w-dvw text-center">
-                <h1 className="text-2xl">Loading...</h1>
+                <Loader size="lg">
+                    <p className="text-2xl">Loading...</p>
+                </Loader>
             </section>
         );
     }
@@ -69,30 +72,34 @@ const ActivityPage = () => {
     }
 
     return (
-        <main className="mx-auto mt-8 max-w-6xl px-4 pb-4">
+        <section className="mx-auto mt-8 max-w-6xl px-4 pb-4">
             <h1 className="mb-6 text-center text-3xl font-bold">
                 Latest Activity
             </h1>
-            <ul className="space-y-6">
-                {latestReviews.map((review) => (
-                    <li key={review._id}>
-                        <ReviewCard review={review} />
-                    </li>
-                ))}
-            </ul>
-            {isMoreReviews && (
-                <div className="flex justify-center">
-                    <Button
-                        size="lg"
-                        className="m-10"
-                        onClick={handleLoadMore}
-                        disabled={loading}
+            <InfiniteScroll
+                loadMore={handleLoadMore}
+                hasMore={isMoreReviews}
+                initialLoad={false}
+                threshold={100}
+                loader={
+                    <Loader
+                        key={-1}
+                        aria-label="Loading more reviews..."
+                        className="text-center"
                     >
-                        {loading ? "Loading..." : "Load More"}
-                    </Button>
-                </div>
-            )}
-        </main>
+                        <p className="text-2xl">Loading...</p>
+                    </Loader>
+                }
+            >
+                <ul className="space-y-6">
+                    {latestReviews.map((review) => (
+                        <li key={review._id}>
+                            <ReviewCard review={review} />
+                        </li>
+                    ))}
+                </ul>
+            </InfiniteScroll>
+        </section>
     );
 };
 

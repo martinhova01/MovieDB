@@ -5,9 +5,10 @@
         "lib": ["es2020"],
         "target": "es2020",
         "module": "esnext",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "esModuleInterop": true,
         "types": ["node"]
     },
-    "include": ["src"]
+    "exclude": ["**/*.test.ts", "**/test/**"],
+    "include": ["src", "vitest.d.ts"]
 }

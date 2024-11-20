@@ -1,133 +1,278 @@
 [
     {
-        "_id": 1001,
-        "movieId": 157336,
-        "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-        "username": "cosmic_dreamer",
-        "rating": 5,
-        "comment": "Just finished watching Interstellar for the third time and I'm still discovering new layers to this masterpiece. The way Nolan weaves together the scientific concepts with raw human emotion is unprecedented. The scene where Cooper watches the messages from his children gets me every single time. Hans Zimmer's score elevates every moment to another dimension entirely. This isn't just sci-fi, it's a meditation on love, time, and humanity's place in the cosmos.",
-        "date": "2024-10-22T14:23:00Z"
-    },
-    {
-        "_id": 1002,
-        "movieId": 27205,
-        "poster_path": "/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
-        "username": "film_buff_alex",
-        "rating": 5,
-        "comment": "Inception remains a cinematic triumph. The layered dreams, the intricate plot, the visual effects that still hold up perfectly - it's a testament to what's possible in filmmaking.",
-        "date": "2024-10-21T18:45:00Z"
-    },
-    {
-        "_id": 1003,
-        "movieId": 155,
-        "poster_path": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-        "username": "gotham_knight",
-        "rating": 5,
-        "comment": "Heath Ledger's Joker is the greatest villain performance in cinema history. Period.",
-        "date": "2024-10-20T09:15:00Z"
-    },
-    {
-        "_id": 1004,
-        "movieId": 19995,
-        "poster_path": "/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
-        "username": "pandora_explorer",
+        "_id": "67345815fd0434382c87e27d",
+        "username": "test_user",
         "rating": 4,
-        "date": "2024-10-19T22:30:00Z"
+        "comment": "good movie!",
+        "date": "2024-11-13T19:41:09.625Z",
+        "movie": {
+            "_id": 157336,
+            "title": "Interstellar",
+            "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+        }
     },
     {
-        "_id": 1005,
-        "movieId": 24428,
-        "poster_path": "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
-        "username": "marvel_fan_2000",
+        "_id": "673483d83c02fa1849a60632",
+        "username": "test_user",
         "rating": 5,
-        "comment": "The battle of New York still gives me chills! Perfect combination of all our favorite heroes.",
-        "date": "2024-10-18T11:20:00Z"
+        "comment": "22",
+        "date": "2024-11-13T10:47:52.669Z",
+        "movie": {
+            "_id": 762430,
+            "title": "Retribution",
+            "poster_path": "/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
+        }
     },
     {
-        "_id": 1006,
-        "movieId": 293660,
-        "poster_path": "/zq8Cl3PNIDGU3iWNRoc5nEZ6pCe.jpg",
-        "username": "deadpool_lover",
+        "_id": "673483d63c02fa1849a6062d",
+        "username": "test_user",
         "rating": 5,
-        "comment": "Finally! A superhero movie that doesn't take itself too seriously. Ryan Reynolds was born to play this role.",
-        "date": "2024-10-17T15:40:00Z"
+        "comment": "21",
+        "date": "2024-11-13T10:47:50.993Z",
+        "movie": {
+            "_id": 762430,
+            "title": "Retribution",
+            "poster_path": "/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
+        }
     },
     {
-        "_id": 1007,
-        "movieId": 157336,
-        "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-        "username": "space_enthusiast",
+        "_id": "673483d43c02fa1849a60628",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "20",
+        "date": "2024-11-13T10:47:48.142Z",
+        "movie": {
+            "_id": 762430,
+            "title": "Retribution",
+            "poster_path": "/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
+        }
+    },
+    {
+        "_id": "673483d13c02fa1849a60623",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "19",
+        "date": "2024-11-13T10:47:45.616Z",
+        "movie": {
+            "_id": 762430,
+            "title": "Retribution",
+            "poster_path": "/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
+        }
+    },
+    {
+        "_id": "673483ce3c02fa1849a6061e",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "18",
+        "date": "2024-11-13T10:47:42.787Z",
+        "movie": {
+            "_id": 762430,
+            "title": "Retribution",
+            "poster_path": "/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
+        }
+    },
+    {
+        "_id": "673483c83c02fa1849a60618",
+        "username": "test_user",
+        "rating": 4,
+        "comment": "17",
+        "date": "2024-11-13T10:47:36.742Z",
+        "movie": {
+            "_id": 615656,
+            "title": "Meg 2: The Trench",
+            "poster_path": "/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
+        }
+    },
+    {
+        "_id": "673483c53c02fa1849a60613",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "16",
+        "date": "2024-11-13T10:47:33.128Z",
+        "movie": {
+            "_id": 615656,
+            "title": "Meg 2: The Trench",
+            "poster_path": "/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
+        }
+    },
+    {
+        "_id": "673483c23c02fa1849a6060e",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "15",
+        "date": "2024-11-13T10:47:30.993Z",
+        "movie": {
+            "_id": 615656,
+            "title": "Meg 2: The Trench",
+            "poster_path": "/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
+        }
+    },
+    {
+        "_id": "673483c03c02fa1849a60609",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "14",
+        "date": "2024-11-13T10:47:28.502Z",
+        "movie": {
+            "_id": 615656,
+            "title": "Meg 2: The Trench",
+            "poster_path": "/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
+        }
+    },
+    {
+        "_id": "673483ba3c02fa1849a60604",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "13",
+        "date": "2024-11-13T10:47:22.264Z",
+        "movie": {
+            "_id": 615656,
+            "title": "Meg 2: The Trench",
+            "poster_path": "/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
+        }
+    },
+    {
+        "_id": "673483b73c02fa1849a605ff",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "12",
+        "date": "2024-11-13T10:47:19.698Z",
+        "movie": {
+            "_id": 615656,
+            "title": "Meg 2: The Trench",
+            "poster_path": "/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
+        }
+    },
+    {
+        "_id": "673483b13c02fa1849a605f9",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "11",
+        "date": "2024-11-13T10:47:13.854Z",
+        "movie": {
+            "_id": 968051,
+            "title": "The Nun II",
+            "poster_path": "/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg"
+        }
+    },
+    {
+        "_id": "673483af3c02fa1849a605f4",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "10",
+        "date": "2024-11-13T10:47:11.616Z",
+        "movie": {
+            "_id": 968051,
+            "title": "The Nun II",
+            "poster_path": "/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg"
+        }
+    },
+    {
+        "_id": "673483ac3c02fa1849a605ef",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "9",
+        "date": "2024-11-13T10:47:08.469Z",
+        "movie": {
+            "_id": 968051,
+            "title": "The Nun II",
+            "poster_path": "/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg"
+        }
+    },
+    {
+        "_id": "673483aa3c02fa1849a605ea",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "8",
+        "date": "2024-11-13T10:47:06.416Z",
+        "movie": {
+            "_id": 968051,
+            "title": "The Nun II",
+            "poster_path": "/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg"
+        }
+    },
+    {
+        "_id": "673483a83c02fa1849a605e5",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "7",
+        "date": "2024-11-13T10:47:04.504Z",
+        "movie": {
+            "_id": 968051,
+            "title": "The Nun II",
+            "poster_path": "/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg"
+        }
+    },
+    {
+        "_id": "673483a33c02fa1849a605df",
+        "username": "test_user",
+        "rating": 5,
+        "comment": "6",
+        "date": "2024-11-13T10:46:59.266Z",
+        "movie": {
+            "_id": 980489,
+            "title": "Gran Turismo",
+            "poster_path": "/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg"
+        }
+    },
+    {
+        "_id": "673483a03c02fa1849a605da",
+        "username": "test_user",
+        "rating": 4,
+        "comment": "5",
+        "date": "2024-11-13T10:46:56.605Z",
+        "movie": {
+            "_id": 980489,
+            "title": "Gran Turismo",
+            "poster_path": "/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg"
+        }
+    },
+    {
+        "_id": "6734839d3c02fa1849a605d5",
+        "username": "test_user",
         "rating": 3,
-        "comment": "Visually stunning but the plot gets too convoluted in the third act.",
-        "date": "2024-10-15T20:10:00Z"
+        "comment": "4",
+        "date": "2024-11-13T10:46:53.588Z",
+        "movie": {
+            "_id": 980489,
+            "title": "Gran Turismo",
+            "poster_path": "/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg"
+        }
     },
     {
-        "_id": 1008,
-        "movieId": 27205,
-        "poster_path": "/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
-        "username": "dream_walker",
+        "_id": "6734839a3c02fa1849a605d0",
+        "username": "test_user",
         "rating": 4,
-        "date": "2024-10-14T13:25:00Z"
+        "comment": "3",
+        "date": "2024-11-13T10:46:50.668Z",
+        "movie": {
+            "_id": 980489,
+            "title": "Gran Turismo",
+            "poster_path": "/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg"
+        }
     },
     {
-        "_id": 1009,
-        "movieId": 155,
-        "poster_path": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-        "username": "cinema_critic",
-        "rating": 5,
-        "comment": "The Dark Knight transcends the superhero genre to become a compelling crime drama that explores the nature of chaos, order, and moral choices. Christopher Nolan's direction is impeccable, creating tension that never lets up. The interplay between Batman and Joker serves as a perfect metaphor for the eternal struggle between good and evil, order and chaos. Every scene with Heath Ledger is absolutely mesmerizing. This film redefined what superhero movies could be.",
-        "date": "2024-10-12T08:50:00Z"
-    },
-    {
-        "_id": 1010,
-        "movieId": 19995,
-        "poster_path": "/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
-        "username": "scifi_lover",
-        "rating": 5,
-        "comment": "Revolutionary visual effects that still hold up today. Cameron's world-building is unmatched.",
-        "date": "2024-10-10T19:15:00Z"
-    },
-    {
-        "_id": 1011,
-        "movieId": 24428,
-        "poster_path": "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
-        "username": "avengers_assemble",
-        "rating": 4,
-        "date": "2024-10-08T14:30:00Z"
-    },
-    {
-        "_id": 1012,
-        "movieId": 293660,
-        "poster_path": "/zq8Cl3PNIDGU3iWNRoc5nEZ6pCe.jpg",
-        "username": "honest_reviewer",
-        "rating": 2,
-        "comment": "Too much reliance on crude humor. The fourth wall breaking gets old quickly.",
-        "date": "2024-10-05T16:45:00Z"
-    },
-    {
-        "_id": 1013,
-        "movieId": 157336,
-        "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-        "username": "movie_buff_42",
-        "rating": 4,
-        "comment": "Beautiful cinematography and amazing sound design.",
-        "date": "2024-10-03T21:20:00Z"
-    },
-    {
-        "_id": 1014,
-        "movieId": 27205,
-        "poster_path": "/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
-        "username": "deep_thinker",
+        "_id": "673483943c02fa1849a605ca",
+        "username": "test_user",
         "rating": 3,
-        "comment": "Impressive but sometimes tries too hard to be clever.",
-        "date": "2024-10-01T10:05:00Z"
+        "comment": "2",
+        "date": "2024-11-13T10:46:44.978Z",
+        "movie": {
+            "_id": 565770,
+            "title": "Blue Beetle",
+            "poster_path": "/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg"
+        }
     },
     {
-        "_id": 1015,
-        "movieId": 155,
-        "poster_path": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-        "username": "bat_fan",
-        "rating": 5,
-        "date": "2024-09-29T17:40:00Z"
+        "_id": "673483933c02fa1849a605c5",
+        "username": "test_user",
+        "rating": 4,
+        "comment": "1",
+        "date": "2024-11-13T10:46:43.186Z",
+        "movie": {
+            "_id": 565770,
+            "title": "Blue Beetle",
+            "poster_path": "/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg"
+        }
     }
 ]

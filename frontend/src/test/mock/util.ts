@@ -25,13 +25,13 @@ export const all_movies: Movie[] = _movies.map((movie) => ({
 }));
 
 export const all_reviews: Review[] = _reviews.map((review) => {
-    const movie = all_movies.find((m) => m._id === review.movieId);
-    if (!movie) throw new Error(`Movie with ID ${review.movieId} not found`);
+    const movie = all_movies.find((m) => m._id === review.movie._id);
+    if (!movie) throw new Error(`Movie with ID ${review.movie._id} not found`);
     return {
         ...review,
         _id: review._id.toString(),
         date: new Date(review.date),
-        movie,
+        movie: { ...movie, reviews: [] },
         comment: review.comment ?? "",
     };
 });

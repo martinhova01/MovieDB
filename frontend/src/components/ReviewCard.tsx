@@ -2,8 +2,8 @@ import { Button } from "@/shadcn/components/ui/button";
 import { Card, CardContent } from "@/shadcn/components/ui/card";
 import Ratings from "@/shadcn/components/ui/rating";
 import { usernameVar } from "@/utils/cache";
-import { formatDate } from "@/utils/reviewUtil";
-import { useApolloClient, useMutation, useReactiveVar } from "@apollo/client";
+import { formatDate } from "@/utils/formatUtil";
+import { Reference, useMutation, useReactiveVar } from "@apollo/client";
 import { Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
@@ -17,80 +17,85 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/shadcn/components/ui/alert-dialog";
-import {
-    DELETE_REVIEW,
-    GET_LATEST_REVIEWS,
-    GET_USER_REVIEWS,
-} from "../api/queries";
+import { DELETE_REVIEW } from "../api/queries";
 import { Review } from "@/types/__generated__/types";
 import { getImageUrl, ImageType } from "@/utils/imageUrl/imageUrl";
+import Loader from "./Loader";
+import { toast } from "sonner";
 
 interface ReviewCardProps {
     review: Review;
     showPoster?: boolean;
-    onDelete?: (review: Review) => void;
 }
 
 const ReviewCard: React.FC<ReviewCardProps> = ({
     review,
     showPoster = true,
-    onDelete,
 }) => {
     const username = useReactiveVar(usernameVar);
-    const client = useApolloClient();
 
-    const [deleteReview, { loading, error: deleteReviewError }] = useMutation(
-        DELETE_REVIEW,
-        {
-            update(cache, { data }) {
-                if (!data?.deleteReview) return;
-                cache.modify({
-                    id: data.deleteReview._id.toString(),
-                    fields: {
-                        reviews() {
-                            return data.deleteReview.reviews;
-                        },
+    const [deleteReview, { loading }] = useMutation(DELETE_REVIEW, {
+        update(cache, { data }) {
+            if (!data?.deleteReview) return;
+            const deletedRef: string = `Review:${data.deleteReview._id}`;
+            cache.modify({
+                id: `Movie:${data.deleteReview.movie._id}`,
+                fields: {
+                    reviews(existingReviewRefs = []) {
+                        return existingReviewRefs.filter(
+                            (reviewRef: Reference) =>
+                                reviewRef.__ref != deletedRef
+                        );
                     },
-                });
-            },
-        }
-    );
+                },
+            });
+            cache.modify({
+                fields: {
+                    latestReviews(existingReviewRefs = []) {
+                        return existingReviewRefs.filter(
+                            (reviewRef: Reference) =>
+                                reviewRef.__ref != deletedRef
+                        );
+                    },
+                    userReviews(existingReviewRefs = [], { storeFieldName }) {
+                        if (!storeFieldName.includes(username)) {
+                            return existingReviewRefs;
+                        }
+                        return existingReviewRefs.filter(
+                            (reviewRef: Reference) =>
+                                reviewRef.__ref != deletedRef
+                        );
+                    },
+                },
+            });
+            cache.evict({ id: deletedRef });
+        },
+    });
 
-    const handleDeleteReview = async (review: Review) => {
-        const response = await deleteReview({
+    const handleDeleteReview = (review: Review) => {
+        deleteReview({
             variables: {
                 id: review._id,
             },
-            refetchQueries: [
-                {
-                    query: GET_LATEST_REVIEWS,
-                    variables: { skip: 0, limit: 20 },
-                },
-                {
-                    query: GET_USER_REVIEWS,
-                    variables: { username: username, skip: 0, limit: 20 },
-                },
-            ],
-        });
-
-        if (response.data?.deleteReview) {
-            onDelete?.(review);
-            client.cache.gc();
-        }
+        })
+            .then((response) => {
+                if (response.data?.deleteReview) {
+                    toast.success("Review has been deleted");
+                }
+            })
+            .catch((error) => {
+                toast.error("Failed to delete review", {
+                    action: {
+                        label: "Retry",
+                        onClick: () => handleDeleteReview(review),
+                    },
+                    description:
+                        error instanceof Error
+                            ? error.message
+                            : "An error occurred",
+                });
+            });
     };
-
-    if (deleteReviewError) {
-        return (
-            <div className="flex h-full items-center justify-center">
-                <section className="text-center">
-                    <h1 className="text-2xl">
-                        Something went wrong when deleting the review!
-                    </h1>
-                    <p className="text-primary">Try to refresh</p>
-                </section>
-            </div>
-        );
-    }
 
     return (
         <Card>
@@ -99,15 +104,25 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                     username === review.username && (
                         <AlertDialog>
                             <AlertDialogTrigger asChild>
-                                <Button
-                                    size="sm"
-                                    className="absolute right-4 top-4 h-8 px-2"
-                                >
-                                    <Trash2 className="h-4 w-4 sm:hidden" />
-                                    <span className="hidden sm:inline">
-                                        {loading ? "Deleting..." : "Delete"}
-                                    </span>
-                                </Button>
+                                {loading ? (
+                                    <Loader
+                                        size="sm"
+                                        className="absolute right-4 top-4 m-0 h-8 px-2"
+                                    />
+                                ) : (
+                                    <Button
+                                        size="sm"
+                                        className="absolute right-4 top-4 h-8 px-2"
+                                    >
+                                        <Trash2
+                                            aria-label="delete review"
+                                            className="h-4 w-4 sm:hidden"
+                                        />
+                                        <span className="hidden sm:inline">
+                                            Delete
+                                        </span>
+                                    </Button>
+                                )}
                             </AlertDialogTrigger>
 
                             <AlertDialogContent>
@@ -153,10 +168,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                 )}
                 <section className={showPoster ? "min-h-[12rem]" : ""}>
                     <section className="mb-2 pr-16">
-                        <h4 className="text-lg font-bold sm:text-xl">
+                        <p className="text-lg font-bold sm:text-xl">
                             {review.username}
-                        </h4>
-                        <time className="text-xs text-gray-500 sm:text-sm">
+                        </p>
+                        <time
+                            className="text-xs opacity-60 sm:text-sm"
+                            dateTime={review.date.toISOString()}
+                        >
                             {formatDate(review.date)}
                         </time>
                     </section>
@@ -166,7 +184,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                         totalstars={5}
                     />
                     {review.comment && (
-                        <p className="mt-2 text-sm sm:text-base">
+                        <p className="mt-2 break-words text-sm sm:text-base">
                             {review.comment}
                         </p>
                     )}

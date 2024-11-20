@@ -1,0 +1,1288 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`resolveFilters > should return correct filters when all filters applied 1`] = `
+{
+  "Decade": [
+    {
+      "hits": 5,
+      "name": "2020s",
+    },
+    {
+      "hits": 0,
+      "name": "2010s",
+    },
+    {
+      "hits": 0,
+      "name": "1990s",
+    },
+  ],
+  "Genre": [
+    {
+      "hits": 5,
+      "name": "Action",
+    },
+    {
+      "hits": 5,
+      "name": "Adventure",
+    },
+    {
+      "hits": 1,
+      "name": "Animation",
+    },
+    {
+      "hits": 0,
+      "name": "Comedy",
+    },
+    {
+      "hits": 0,
+      "name": "Crime",
+    },
+    {
+      "hits": 0,
+      "name": "Drama",
+    },
+    {
+      "hits": 0,
+      "name": "Family",
+    },
+    {
+      "hits": 0,
+      "name": "Fantasy",
+    },
+    {
+      "hits": 0,
+      "name": "History",
+    },
+    {
+      "hits": 0,
+      "name": "Horror",
+    },
+    {
+      "hits": 0,
+      "name": "Mystery",
+    },
+    {
+      "hits": 0,
+      "name": "Romance",
+    },
+    {
+      "hits": 3,
+      "name": "Science Fiction",
+    },
+    {
+      "hits": 0,
+      "name": "Thriller",
+    },
+    {
+      "hits": 0,
+      "name": "War",
+    },
+  ],
+  "Rating": [
+    {
+      "hits": 0,
+      "name": "5",
+    },
+    {
+      "hits": 3,
+      "name": "4",
+    },
+    {
+      "hits": 2,
+      "name": "3",
+    },
+    {
+      "hits": 0,
+      "name": "2",
+    },
+    {
+      "hits": 0,
+      "name": "1",
+    },
+    {
+      "hits": 0,
+      "name": "0",
+    },
+  ],
+  "Runtime": [
+    {
+      "hits": 0,
+      "name": "Less than 1 hour",
+    },
+    {
+      "hits": 0,
+      "name": "1 - 2 hours",
+    },
+    {
+      "hits": 5,
+      "name": "2 - 3 hours",
+    },
+    {
+      "hits": 0,
+      "name": "3 hours or more",
+    },
+  ],
+  "Status": [
+    {
+      "hits": 5,
+      "name": "Released",
+    },
+    {
+      "hits": 0,
+      "name": "In Production",
+    },
+    {
+      "hits": 1,
+      "name": "Post Production",
+    },
+    {
+      "hits": 0,
+      "name": "Planned",
+    },
+  ],
+}
+`;
+
+exports[`resolveFilters > should return correct filters when decade applied 1`] = `
+{
+  "Decade": [
+    {
+      "hits": 47,
+      "name": "2020s",
+    },
+    {
+      "hits": 2,
+      "name": "2010s",
+    },
+    {
+      "hits": 1,
+      "name": "1990s",
+    },
+  ],
+  "Genre": [
+    {
+      "hits": 0,
+      "name": "Action",
+    },
+    {
+      "hits": 1,
+      "name": "Adventure",
+    },
+    {
+      "hits": 0,
+      "name": "Animation",
+    },
+    {
+      "hits": 0,
+      "name": "Comedy",
+    },
+    {
+      "hits": 0,
+      "name": "Crime",
+    },
+    {
+      "hits": 1,
+      "name": "Drama",
+    },
+    {
+      "hits": 0,
+      "name": "Family",
+    },
+    {
+      "hits": 0,
+      "name": "Fantasy",
+    },
+    {
+      "hits": 0,
+      "name": "History",
+    },
+    {
+      "hits": 1,
+      "name": "Horror",
+    },
+    {
+      "hits": 1,
+      "name": "Mystery",
+    },
+    {
+      "hits": 0,
+      "name": "Romance",
+    },
+    {
+      "hits": 1,
+      "name": "Science Fiction",
+    },
+    {
+      "hits": 1,
+      "name": "Thriller",
+    },
+    {
+      "hits": 0,
+      "name": "War",
+    },
+  ],
+  "Rating": [
+    {
+      "hits": 1,
+      "name": "5",
+    },
+    {
+      "hits": 0,
+      "name": "4",
+    },
+    {
+      "hits": 1,
+      "name": "3",
+    },
+    {
+      "hits": 0,
+      "name": "2",
+    },
+    {
+      "hits": 0,
+      "name": "1",
+    },
+    {
+      "hits": 0,
+      "name": "0",
+    },
+  ],
+  "Runtime": [
+    {
+      "hits": 0,
+      "name": "Less than 1 hour",
+    },
+    {
+      "hits": 1,
+      "name": "1 - 2 hours",
+    },
+    {
+      "hits": 1,
+      "name": "2 - 3 hours",
+    },
+    {
+      "hits": 0,
+      "name": "3 hours or more",
+    },
+  ],
+  "Status": [
+    {
+      "hits": 2,
+      "name": "Released",
+    },
+    {
+      "hits": 0,
+      "name": "In Production",
+    },
+    {
+      "hits": 0,
+      "name": "Post Production",
+    },
+    {
+      "hits": 0,
+      "name": "Planned",
+    },
+  ],
+}
+`;
+
+exports[`resolveFilters > should return correct filters when genre applied 1`] = `
+{
+  "Decade": [
+    {
+      "hits": 12,
+      "name": "2020s",
+    },
+    {
+      "hits": 0,
+      "name": "2010s",
+    },
+    {
+      "hits": 0,
+      "name": "1990s",
+    },
+  ],
+  "Genre": [
+    {
+      "hits": 12,
+      "name": "Action",
+    },
+    {
+      "hits": 12,
+      "name": "Adventure",
+    },
+    {
+      "hits": 1,
+      "name": "Animation",
+    },
+    {
+      "hits": 1,
+      "name": "Comedy",
+    },
+    {
+      "hits": 0,
+      "name": "Crime",
+    },
+    {
+      "hits": 2,
+      "name": "Drama",
+    },
+    {
+      "hits": 1,
+      "name": "Family",
+    },
+    {
+      "hits": 1,
+      "name": "Fantasy",
+    },
+    {
+      "hits": 0,
+      "name": "History",
+    },
+    {
+      "hits": 0,
+      "name": "Horror",
+    },
+    {
+      "hits": 0,
+      "name": "Mystery",
+    },
+    {
+      "hits": 0,
+      "name": "Romance",
+    },
+    {
+      "hits": 6,
+      "name": "Science Fiction",
+    },
+    {
+      "hits": 1,
+      "name": "Thriller",
+    },
+    {
+      "hits": 0,
+      "name": "War",
+    },
+  ],
+  "Rating": [
+    {
+      "hits": 0,
+      "name": "5",
+    },
+    {
+      "hits": 5,
+      "name": "4",
+    },
+    {
+      "hits": 6,
+      "name": "3",
+    },
+    {
+      "hits": 0,
+      "name": "2",
+    },
+    {
+      "hits": 0,
+      "name": "1",
+    },
+    {
+      "hits": 1,
+      "name": "0",
+    },
+  ],
+  "Runtime": [
+    {
+      "hits": 1,
+      "name": "Less than 1 hour",
+    },
+    {
+      "hits": 3,
+      "name": "1 - 2 hours",
+    },
+    {
+      "hits": 8,
+      "name": "2 - 3 hours",
+    },
+    {
+      "hits": 0,
+      "name": "3 hours or more",
+    },
+  ],
+  "Status": [
+    {
+      "hits": 10,
+      "name": "Released",
+    },
+    {
+      "hits": 0,
+      "name": "In Production",
+    },
+    {
+      "hits": 2,
+      "name": "Post Production",
+    },
+    {
+      "hits": 0,
+      "name": "Planned",
+    },
+  ],
+}
+`;
+
+exports[`resolveFilters > should return correct filters when no filters specified 1`] = `
+{
+  "Decade": [
+    {
+      "hits": 47,
+      "name": "2020s",
+    },
+    {
+      "hits": 2,
+      "name": "2010s",
+    },
+    {
+      "hits": 1,
+      "name": "1990s",
+    },
+  ],
+  "Genre": [
+    {
+      "hits": 29,
+      "name": "Action",
+    },
+    {
+      "hits": 18,
+      "name": "Adventure",
+    },
+    {
+      "hits": 7,
+      "name": "Animation",
+    },
+    {
+      "hits": 8,
+      "name": "Comedy",
+    },
+    {
+      "hits": 7,
+      "name": "Crime",
+    },
+    {
+      "hits": 9,
+      "name": "Drama",
+    },
+    {
+      "hits": 7,
+      "name": "Family",
+    },
+    {
+      "hits": 7,
+      "name": "Fantasy",
+    },
+    {
+      "hits": 2,
+      "name": "History",
+    },
+    {
+      "hits": 8,
+      "name": "Horror",
+    },
+    {
+      "hits": 6,
+      "name": "Mystery",
+    },
+    {
+      "hits": 4,
+      "name": "Romance",
+    },
+    {
+      "hits": 11,
+      "name": "Science Fiction",
+    },
+    {
+      "hits": 21,
+      "name": "Thriller",
+    },
+    {
+      "hits": 1,
+      "name": "War",
+    },
+  ],
+  "Rating": [
+    {
+      "hits": 1,
+      "name": "5",
+    },
+    {
+      "hits": 26,
+      "name": "4",
+    },
+    {
+      "hits": 22,
+      "name": "3",
+    },
+    {
+      "hits": 0,
+      "name": "2",
+    },
+    {
+      "hits": 0,
+      "name": "1",
+    },
+    {
+      "hits": 1,
+      "name": "0",
+    },
+  ],
+  "Runtime": [
+    {
+      "hits": 2,
+      "name": "Less than 1 hour",
+    },
+    {
+      "hits": 29,
+      "name": "1 - 2 hours",
+    },
+    {
+      "hits": 18,
+      "name": "2 - 3 hours",
+    },
+    {
+      "hits": 1,
+      "name": "3 hours or more",
+    },
+  ],
+  "Status": [
+    {
+      "hits": 48,
+      "name": "Released",
+    },
+    {
+      "hits": 0,
+      "name": "In Production",
+    },
+    {
+      "hits": 2,
+      "name": "Post Production",
+    },
+    {
+      "hits": 0,
+      "name": "Planned",
+    },
+  ],
+}
+`;
+
+exports[`resolveFilters > should return correct filters when nothing applied 1`] = `
+{
+  "Decade": [
+    {
+      "hits": 47,
+      "name": "2020s",
+    },
+    {
+      "hits": 2,
+      "name": "2010s",
+    },
+    {
+      "hits": 1,
+      "name": "1990s",
+    },
+  ],
+  "Genre": [
+    {
+      "hits": 29,
+      "name": "Action",
+    },
+    {
+      "hits": 18,
+      "name": "Adventure",
+    },
+    {
+      "hits": 7,
+      "name": "Animation",
+    },
+    {
+      "hits": 8,
+      "name": "Comedy",
+    },
+    {
+      "hits": 7,
+      "name": "Crime",
+    },
+    {
+      "hits": 9,
+      "name": "Drama",
+    },
+    {
+      "hits": 7,
+      "name": "Family",
+    },
+    {
+      "hits": 7,
+      "name": "Fantasy",
+    },
+    {
+      "hits": 2,
+      "name": "History",
+    },
+    {
+      "hits": 8,
+      "name": "Horror",
+    },
+    {
+      "hits": 6,
+      "name": "Mystery",
+    },
+    {
+      "hits": 4,
+      "name": "Romance",
+    },
+    {
+      "hits": 11,
+      "name": "Science Fiction",
+    },
+    {
+      "hits": 21,
+      "name": "Thriller",
+    },
+    {
+      "hits": 1,
+      "name": "War",
+    },
+  ],
+  "Rating": [
+    {
+      "hits": 1,
+      "name": "5",
+    },
+    {
+      "hits": 26,
+      "name": "4",
+    },
+    {
+      "hits": 22,
+      "name": "3",
+    },
+    {
+      "hits": 0,
+      "name": "2",
+    },
+    {
+      "hits": 0,
+      "name": "1",
+    },
+    {
+      "hits": 1,
+      "name": "0",
+    },
+  ],
+  "Runtime": [
+    {
+      "hits": 2,
+      "name": "Less than 1 hour",
+    },
+    {
+      "hits": 29,
+      "name": "1 - 2 hours",
+    },
+    {
+      "hits": 18,
+      "name": "2 - 3 hours",
+    },
+    {
+      "hits": 1,
+      "name": "3 hours or more",
+    },
+  ],
+  "Status": [
+    {
+      "hits": 48,
+      "name": "Released",
+    },
+    {
+      "hits": 0,
+      "name": "In Production",
+    },
+    {
+      "hits": 2,
+      "name": "Post Production",
+    },
+    {
+      "hits": 0,
+      "name": "Planned",
+    },
+  ],
+}
+`;
+
+exports[`resolveFilters > should return correct filters when rating applied 1`] = `
+{
+  "Decade": [
+    {
+      "hits": 22,
+      "name": "2020s",
+    },
+    {
+      "hits": 1,
+      "name": "2010s",
+    },
+    {
+      "hits": 0,
+      "name": "1990s",
+    },
+  ],
+  "Genre": [
+    {
+      "hits": 17,
+      "name": "Action",
+    },
+    {
+      "hits": 8,
+      "name": "Adventure",
+    },
+    {
+      "hits": 0,
+      "name": "Animation",
+    },
+    {
+      "hits": 1,
+      "name": "Comedy",
+    },
+    {
+      "hits": 4,
+      "name": "Crime",
+    },
+    {
+      "hits": 3,
+      "name": "Drama",
+    },
+    {
+      "hits": 2,
+      "name": "Family",
+    },
+    {
+      "hits": 2,
+      "name": "Fantasy",
+    },
+    {
+      "hits": 1,
+      "name": "History",
+    },
+    {
+      "hits": 5,
+      "name": "Horror",
+    },
+    {
+      "hits": 4,
+      "name": "Mystery",
+    },
+    {
+      "hits": 2,
+      "name": "Romance",
+    },
+    {
+      "hits": 6,
+      "name": "Science Fiction",
+    },
+    {
+      "hits": 12,
+      "name": "Thriller",
+    },
+    {
+      "hits": 0,
+      "name": "War",
+    },
+  ],
+  "Rating": [
+    {
+      "hits": 1,
+      "name": "5",
+    },
+    {
+      "hits": 26,
+      "name": "4",
+    },
+    {
+      "hits": 22,
+      "name": "3",
+    },
+    {
+      "hits": 0,
+      "name": "2",
+    },
+    {
+      "hits": 0,
+      "name": "1",
+    },
+    {
+      "hits": 1,
+      "name": "0",
+    },
+  ],
+  "Runtime": [
+    {
+      "hits": 1,
+      "name": "Less than 1 hour",
+    },
+    {
+      "hits": 17,
+      "name": "1 - 2 hours",
+    },
+    {
+      "hits": 5,
+      "name": "2 - 3 hours",
+    },
+    {
+      "hits": 0,
+      "name": "3 hours or more",
+    },
+  ],
+  "Status": [
+    {
+      "hits": 21,
+      "name": "Released",
+    },
+    {
+      "hits": 0,
+      "name": "In Production",
+    },
+    {
+      "hits": 2,
+      "name": "Post Production",
+    },
+    {
+      "hits": 0,
+      "name": "Planned",
+    },
+  ],
+}
+`;
+
+exports[`resolveFilters > should return correct filters when runtime applied 1`] = `
+{
+  "Decade": [
+    {
+      "hits": 18,
+      "name": "2020s",
+    },
+    {
+      "hits": 1,
+      "name": "2010s",
+    },
+    {
+      "hits": 1,
+      "name": "1990s",
+    },
+  ],
+  "Genre": [
+    {
+      "hits": 16,
+      "name": "Action",
+    },
+    {
+      "hits": 12,
+      "name": "Adventure",
+    },
+    {
+      "hits": 2,
+      "name": "Animation",
+    },
+    {
+      "hits": 0,
+      "name": "Comedy",
+    },
+    {
+      "hits": 2,
+      "name": "Crime",
+    },
+    {
+      "hits": 5,
+      "name": "Drama",
+    },
+    {
+      "hits": 2,
+      "name": "Family",
+    },
+    {
+      "hits": 2,
+      "name": "Fantasy",
+    },
+    {
+      "hits": 0,
+      "name": "History",
+    },
+    {
+      "hits": 0,
+      "name": "Horror",
+    },
+    {
+      "hits": 1,
+      "name": "Mystery",
+    },
+    {
+      "hits": 1,
+      "name": "Romance",
+    },
+    {
+      "hits": 7,
+      "name": "Science Fiction",
+    },
+    {
+      "hits": 6,
+      "name": "Thriller",
+    },
+    {
+      "hits": 0,
+      "name": "War",
+    },
+  ],
+  "Rating": [
+    {
+      "hits": 1,
+      "name": "5",
+    },
+    {
+      "hits": 13,
+      "name": "4",
+    },
+    {
+      "hits": 6,
+      "name": "3",
+    },
+    {
+      "hits": 0,
+      "name": "2",
+    },
+    {
+      "hits": 0,
+      "name": "1",
+    },
+    {
+      "hits": 0,
+      "name": "0",
+    },
+  ],
+  "Runtime": [
+    {
+      "hits": 2,
+      "name": "Less than 1 hour",
+    },
+    {
+      "hits": 29,
+      "name": "1 - 2 hours",
+    },
+    {
+      "hits": 18,
+      "name": "2 - 3 hours",
+    },
+    {
+      "hits": 1,
+      "name": "3 hours or more",
+    },
+  ],
+  "Status": [
+    {
+      "hits": 19,
+      "name": "Released",
+    },
+    {
+      "hits": 0,
+      "name": "In Production",
+    },
+    {
+      "hits": 1,
+      "name": "Post Production",
+    },
+    {
+      "hits": 0,
+      "name": "Planned",
+    },
+  ],
+}
+`;
+
+exports[`resolveFilters > should return correct filters when search applied 1`] = `
+{
+  "Decade": [
+    {
+      "hits": 0,
+      "name": "2020s",
+    },
+    {
+      "hits": 1,
+      "name": "2010s",
+    },
+    {
+      "hits": 0,
+      "name": "1990s",
+    },
+  ],
+  "Genre": [
+    {
+      "hits": 0,
+      "name": "Action",
+    },
+    {
+      "hits": 1,
+      "name": "Adventure",
+    },
+    {
+      "hits": 0,
+      "name": "Animation",
+    },
+    {
+      "hits": 0,
+      "name": "Comedy",
+    },
+    {
+      "hits": 0,
+      "name": "Crime",
+    },
+    {
+      "hits": 1,
+      "name": "Drama",
+    },
+    {
+      "hits": 0,
+      "name": "Family",
+    },
+    {
+      "hits": 0,
+      "name": "Fantasy",
+    },
+    {
+      "hits": 0,
+      "name": "History",
+    },
+    {
+      "hits": 0,
+      "name": "Horror",
+    },
+    {
+      "hits": 0,
+      "name": "Mystery",
+    },
+    {
+      "hits": 0,
+      "name": "Romance",
+    },
+    {
+      "hits": 1,
+      "name": "Science Fiction",
+    },
+    {
+      "hits": 0,
+      "name": "Thriller",
+    },
+    {
+      "hits": 0,
+      "name": "War",
+    },
+  ],
+  "Rating": [
+    {
+      "hits": 1,
+      "name": "5",
+    },
+    {
+      "hits": 0,
+      "name": "4",
+    },
+    {
+      "hits": 0,
+      "name": "3",
+    },
+    {
+      "hits": 0,
+      "name": "2",
+    },
+    {
+      "hits": 0,
+      "name": "1",
+    },
+    {
+      "hits": 0,
+      "name": "0",
+    },
+  ],
+  "Runtime": [
+    {
+      "hits": 0,
+      "name": "Less than 1 hour",
+    },
+    {
+      "hits": 0,
+      "name": "1 - 2 hours",
+    },
+    {
+      "hits": 1,
+      "name": "2 - 3 hours",
+    },
+    {
+      "hits": 0,
+      "name": "3 hours or more",
+    },
+  ],
+  "Status": [
+    {
+      "hits": 1,
+      "name": "Released",
+    },
+    {
+      "hits": 0,
+      "name": "In Production",
+    },
+    {
+      "hits": 0,
+      "name": "Post Production",
+    },
+    {
+      "hits": 0,
+      "name": "Planned",
+    },
+  ],
+}
+`;
+
+exports[`resolveFilters > should return correct filters when status applied 1`] = `
+{
+  "Decade": [
+    {
+      "hits": 2,
+      "name": "2020s",
+    },
+    {
+      "hits": 0,
+      "name": "2010s",
+    },
+    {
+      "hits": 0,
+      "name": "1990s",
+    },
+  ],
+  "Genre": [
+    {
+      "hits": 2,
+      "name": "Action",
+    },
+    {
+      "hits": 2,
+      "name": "Adventure",
+    },
+    {
+      "hits": 0,
+      "name": "Animation",
+    },
+    {
+      "hits": 0,
+      "name": "Comedy",
+    },
+    {
+      "hits": 0,
+      "name": "Crime",
+    },
+    {
+      "hits": 0,
+      "name": "Drama",
+    },
+    {
+      "hits": 0,
+      "name": "Family",
+    },
+    {
+      "hits": 0,
+      "name": "Fantasy",
+    },
+    {
+      "hits": 0,
+      "name": "History",
+    },
+    {
+      "hits": 0,
+      "name": "Horror",
+    },
+    {
+      "hits": 0,
+      "name": "Mystery",
+    },
+    {
+      "hits": 0,
+      "name": "Romance",
+    },
+    {
+      "hits": 2,
+      "name": "Science Fiction",
+    },
+    {
+      "hits": 0,
+      "name": "Thriller",
+    },
+    {
+      "hits": 0,
+      "name": "War",
+    },
+  ],
+  "Rating": [
+    {
+      "hits": 0,
+      "name": "5",
+    },
+    {
+      "hits": 0,
+      "name": "4",
+    },
+    {
+      "hits": 1,
+      "name": "3",
+    },
+    {
+      "hits": 0,
+      "name": "2",
+    },
+    {
+      "hits": 0,
+      "name": "1",
+    },
+    {
+      "hits": 1,
+      "name": "0",
+    },
+  ],
+  "Runtime": [
+    {
+      "hits": 1,
+      "name": "Less than 1 hour",
+    },
+    {
+      "hits": 1,
+      "name": "1 - 2 hours",
+    },
+    {
+      "hits": 0,
+      "name": "2 - 3 hours",
+    },
+    {
+      "hits": 0,
+      "name": "3 hours or more",
+    },
+  ],
+  "Status": [
+    {
+      "hits": 48,
+      "name": "Released",
+    },
+    {
+      "hits": 0,
+      "name": "In Production",
+    },
+    {
+      "hits": 2,
+      "name": "Post Production",
+    },
+    {
+      "hits": 0,
+      "name": "Planned",
+    },
+  ],
+}
+`;

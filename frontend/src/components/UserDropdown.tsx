@@ -18,28 +18,38 @@ import {
 } from "@/shadcn/components/ui/dropdown-menu";
 import { Input } from "@/shadcn/components/ui/input";
 import { Label } from "@/shadcn/components/ui/label";
+import { validateUsername } from "@/utils/userInputValidation";
 import { useReactiveVar } from "@apollo/client";
 import { Edit, LogOut, User } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const UserDropdown = () => {
     const username = useReactiveVar(usernameVar);
     const [newUsername, setNewUsername] = useState("");
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const handleUsernameChange = (e: React.FormEvent) => {
         e.preventDefault();
-        if (newUsername.trim()) {
-            usernameVar(newUsername.trim());
-            localStorage.setItem("username", newUsername.trim());
+
+        const trimmedUsername = newUsername.trim();
+        if (!validateUsername(trimmedUsername)) return;
+
+        if (trimmedUsername) {
+            usernameVar(trimmedUsername);
+            localStorage.setItem("username", trimmedUsername);
             setNewUsername("");
             setIsDialogOpen(false);
+            setIsDropdownOpen(false);
+            toast.success("Username changed successfully");
         }
     };
 
     const handleSignOut = () => {
         localStorage.removeItem("username");
         usernameVar("Guest");
+        toast.success("Signed out successfully");
     };
 
     const handleDialogOpenChange = (open: boolean) => {
@@ -48,11 +58,12 @@ const UserDropdown = () => {
     };
 
     return (
-        <DropdownMenu>
+        <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
             <DropdownMenuTrigger asChild>
                 <Button
                     variant="outline"
                     className="flex items-center space-x-2"
+                    aria-label="user"
                 >
                     <User className="h-4 w-4" />
                     <span className="hidden truncate sm:flex sm:max-w-32">
@@ -97,6 +108,7 @@ const UserDropdown = () => {
                                     onChange={(e) =>
                                         setNewUsername(e.target.value)
                                     }
+                                    maxLength={20}
                                 />
                             </div>
                             <Button type="submit">Change username</Button>

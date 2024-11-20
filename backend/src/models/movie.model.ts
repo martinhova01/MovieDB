@@ -19,6 +19,7 @@ const MovieSchema = new mongoose.Schema({
     popularity: Number,
     poster_path: String,
     tagline: String,
+    decade: Number,
     genres: [String],
     production_companies: [String],
     production_countries: [String],

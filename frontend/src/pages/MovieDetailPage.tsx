@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { Movie } from "@/types/__generated__/types";
 import { GET_MOVIE } from "@/api/queries";
 import { useMemo } from "react";
+import Loader from "../components/Loader";
 
 function MovieDetailPage() {
     const { movieId } = useParams<{ movieId: string }>();
@@ -19,39 +20,41 @@ function MovieDetailPage() {
 
     if (error) {
         return (
-            <main className="mt-2 w-dvw text-center">
+            <section className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">Something went wrong!</h1>
                 <Link to="/" className="text-primary hover:underline">
                     Return to home page
                 </Link>
-            </main>
+            </section>
         );
     }
 
     if (loading) {
         return (
-            <main className="mt-2 w-dvw text-center">
-                <h1 className="text-2xl">Loading...</h1>
-            </main>
+            <section className="mt-2 w-dvw text-center">
+                <Loader size="lg">
+                    <p className="text-2xl">Loading...</p>
+                </Loader>
+            </section>
         );
     }
 
     if (!movie) {
         return (
-            <main className="mt-2 w-dvw text-center">
+            <section className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">Could not find movie!</h1>
                 <Link to="/" className="text-primary hover:underline">
                     Return to home page
                 </Link>
-            </main>
+            </section>
         );
     }
 
     return (
-        <main className="pb-2">
+        <section className="pb-2">
             <MovieCardDetailed movie={movie} />
             <MovieReviews movie={movie} />
-        </main>
+        </section>
     );
 }
 

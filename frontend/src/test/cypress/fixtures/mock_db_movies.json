@@ -1,0 +1,2221 @@
+[
+    {
+        "_id": 565770,
+        "title": "Blue Beetle",
+        "vote_average": 7.139,
+        "vote_count": 1023,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-08-16T00:00:00Z"
+        },
+        "revenue": 124818235,
+        "runtime": 128,
+        "backdrop_path": "/1syW9SNna38rSl9fnXwc9fP7POW.jpg",
+        "budget": 120000000,
+        "homepage": "https://www.dc.com/bluebeetle",
+        "imdb_id": "tt9362930",
+        "original_language": "en",
+        "original_title": "Blue Beetle",
+        "overview": "Recent college grad Jaime Reyes returns home full of aspirations for his future, only to find that home is not quite as he left it. As he searches to find his purpose in the world, fate intervenes when Jaime unexpectedly finds himself in possession of an ancient relic of alien biotechnology: the Scarab.",
+        "popularity": 2994.357,
+        "poster_path": "/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg",
+        "tagline": "Jaime Reyes is a superhero whether he likes it or not.",
+        "decade": 2020,
+        "genres": ["Action", "Science Fiction", "Adventure"],
+        "production_companies": [
+            "Warner Bros. Pictures",
+            "The Safran Company",
+            "DC Films"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Portuguese", "Spanish"],
+        "keywords": [
+            "armor",
+            "superhero",
+            "family relationships",
+            "family",
+            "high tech",
+            "job hunting",
+            "mexican american",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "immigrant family",
+            "college graduate",
+            "dc extended universe (dceu)",
+            "alien technology",
+            "brother sister relationship",
+            "latino"
+        ],
+        "reviews": [
+            {
+                "$oid": "6736255c9c33bb841a3fee9a"
+            }
+        ]
+    },
+    {
+        "_id": 980489,
+        "title": "Gran Turismo",
+        "vote_average": 8.064965909090908,
+        "vote_count": 704,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-08-09T00:00:00Z"
+        },
+        "revenue": 114800000,
+        "runtime": 135,
+        "backdrop_path": "/xFYpUmB01nswPgbzi8EOCT1ZYFu.jpg",
+        "budget": 60000000,
+        "homepage": "https://www.granturismo.movie",
+        "imdb_id": "tt4495098",
+        "original_language": "en",
+        "original_title": "Gran Turismo",
+        "overview": "The ultimate wish-fulfillment tale of a teenage Gran Turismo player whose gaming skills won him a series of Nissan competitions to become an actual professional racecar driver.",
+        "popularity": 2680.593,
+        "poster_path": "/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg",
+        "tagline": "From gamer to racer.",
+        "decade": 2020,
+        "genres": ["Action", "Drama", "Adventure"],
+        "production_companies": [
+            "PlayStation Productions",
+            "2.0 Entertainment",
+            "Columbia Pictures"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "German", "Japanese"],
+        "keywords": [
+            "based on true story",
+            "racing",
+            "based on video game",
+            "duringcreditsstinger",
+            "exhilarated",
+            "joyful"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c5010594632f6e941211b"
+            }
+        ]
+    },
+    {
+        "_id": 968051,
+        "title": "The Nun II",
+        "vote_average": 6.551426630434783,
+        "vote_count": 368,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-06T00:00:00Z"
+        },
+        "revenue": 231200000,
+        "runtime": 110,
+        "backdrop_path": "/53z2fXEKfnNg2uSOPss2unPBGX1.jpg",
+        "budget": 38500000,
+        "homepage": "https://www.warnerbros.com/movies/nun2",
+        "imdb_id": "tt10160976",
+        "original_language": "en",
+        "original_title": "The Nun II",
+        "overview": "In 1956 France, a priest is violently murdered, and Sister Irene begins to investigate. She once again comes face-to-face with a powerful evil.",
+        "popularity": 1692.778,
+        "poster_path": "/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg",
+        "tagline": "Confess your sins.",
+        "decade": 2020,
+        "genres": ["Horror", "Mystery", "Thriller"],
+        "production_companies": [
+            "New Line Cinema",
+            "Atomic Monster",
+            "The Safran Company"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "French"],
+        "keywords": [
+            "france",
+            "bullying",
+            "sequel",
+            "religion",
+            "demon",
+            "gothic horror",
+            "demonic possession",
+            "praying",
+            "duringcreditsstinger",
+            "1950s",
+            "demonic",
+            "girls' school",
+            "convent",
+            "the conjuring universe"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 615656,
+        "title": "Meg 2: The Trench",
+        "vote_average": 6.912,
+        "vote_count": 2034,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-08-02T00:00:00Z"
+        },
+        "revenue": 384056482,
+        "runtime": 116,
+        "backdrop_path": "/5mzr6JZbrqnqD8rCEvPhuCE5Fw2.jpg",
+        "budget": 129000000,
+        "homepage": "https://www.themeg.movie",
+        "imdb_id": "tt9224104",
+        "original_language": "en",
+        "original_title": "Meg 2: The Trench",
+        "overview": "An exploratory dive into the deepest depths of the ocean of a daring research team spirals into chaos when a malevolent mining operation threatens their mission and forces them into a high-stakes battle for survival.",
+        "popularity": 1567.273,
+        "poster_path": "/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg",
+        "tagline": "Back for seconds.",
+        "decade": 2020,
+        "genres": ["Action", "Science Fiction", "Horror"],
+        "production_companies": [
+            "Apelles Entertainment",
+            "Warner Bros. Pictures",
+            "di Bonaventura Pictures",
+            "CMC Pictures",
+            "DF Pictures",
+            "Onaroll Productions"
+        ],
+        "production_countries": ["China", "United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "based on novel or book",
+            "sequel",
+            "shark",
+            "kaiju",
+            "civil action",
+            "oceans",
+            "shark cage"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c502a594632f6e9412122"
+            }
+        ]
+    },
+    {
+        "_id": 762430,
+        "title": "Retribution",
+        "vote_average": 6.816,
+        "vote_count": 258,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-08-23T00:00:00Z"
+        },
+        "revenue": 12905464,
+        "runtime": 91,
+        "backdrop_path": "/iiXliCeykkzmJ0Eg9RYJ7F2CWSz.jpg",
+        "budget": 20000000,
+        "homepage": "https://iiil.io/jCT7",
+        "imdb_id": "tt6906292",
+        "original_language": "en",
+        "original_title": "Retribution",
+        "overview": "When a mysterious caller puts a bomb under his car seat, Matt Turner begins a high-speed chase across the city to complete a specific series of tasks. With his kids trapped in the back seat and a bomb that will explode if they get out of the car, a normal commute becomes a twisted game of life or death as Matt follows the stranger's increasingly dangerous instructions in a race against time to save his family.",
+        "popularity": 1547.22,
+        "poster_path": "/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg",
+        "tagline": "All roads lead to the truth.",
+        "decade": 2020,
+        "genres": ["Action", "Mystery", "Thriller", "Crime"],
+        "production_companies": [
+            "StudioCanal",
+            "The Picture Company",
+            "Ombra Films"
+        ],
+        "production_countries": ["France", "United States of America"],
+        "spoken_languages": ["English", "German"],
+        "keywords": [
+            "assassination",
+            "bomb",
+            "remake",
+            "divorce",
+            "duringcreditsstinger",
+            "phone call",
+            "berlin"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c504e594632f6e9412129"
+            }
+        ]
+    },
+    {
+        "_id": 1008042,
+        "title": "Talk to Me",
+        "vote_average": 7.214,
+        "vote_count": 973,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-07-26T00:00:00Z"
+        },
+        "revenue": 72600000,
+        "runtime": 95,
+        "backdrop_path": "/iIvQnZyzgx9TkbrOgcXx0p7aLiq.jpg",
+        "budget": 4500000,
+        "homepage": "https://umbrellaent.com.au/movie/talk-to-me",
+        "imdb_id": "tt10638522",
+        "original_language": "en",
+        "original_title": "Talk to Me",
+        "overview": "When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.",
+        "popularity": 1458.514,
+        "poster_path": "/kdPMUMJzyYAc4roD52qavX0nLIC.jpg",
+        "tagline": "You call. They'll answer.",
+        "decade": 2020,
+        "genres": ["Horror", "Thriller"],
+        "production_companies": [
+            "Causeway Films",
+            "Metrol Technology",
+            "Screen Australia",
+            "South Australian Film Corporation",
+            "Bankside Films",
+            "Head Gear Films",
+            "Adelaide Film Festival Investment Fund"
+        ],
+        "production_countries": ["Australia", "United Kingdom"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "suicide",
+            "trauma",
+            "possession",
+            "female friendship",
+            "addiction",
+            "grief",
+            "female protagonist",
+            "death of mother",
+            "self mutilation",
+            "mental health",
+            "dead parent",
+            "social media",
+            "peer pressure",
+            "disembodied hand",
+            "generation z",
+            "self-harm",
+            "supernatural horror",
+            "cautionary tale",
+            "adelaide australia",
+            "body horror",
+            "graphic violence",
+            "teenager",
+            "modern australia"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c5057594632f6e941212f"
+            }
+        ]
+    },
+    {
+        "_id": 385687,
+        "title": "Fast X",
+        "vote_average": 7.265,
+        "vote_count": 3881,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-05-17T00:00:00Z"
+        },
+        "revenue": 704709660,
+        "runtime": 142,
+        "backdrop_path": "/4XM8DUTQb3lhLemJC51Jx4a2EuA.jpg",
+        "budget": 340000000,
+        "homepage": "https://fastxmovie.com",
+        "imdb_id": "tt5433140",
+        "original_language": "en",
+        "original_title": "Fast X",
+        "overview": "Over many missions and against impossible odds, Dom Toretto and his family have outsmarted, out-nerved and outdriven every foe in their path. Now, they confront the most lethal opponent they've ever faced: A terrifying threat emerging from the shadows of the past who's fueled by blood revenge, and who is determined to shatter this family and destroy everything—and everyone—that Dom loves, forever.",
+        "popularity": 1175.267,
+        "poster_path": "/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
+        "tagline": "The end of the road begins.",
+        "decade": 2020,
+        "genres": ["Action", "Crime", "Thriller"],
+        "production_companies": [
+            "Universal Pictures",
+            "Original Film",
+            "One Race",
+            "Perfect Storm Entertainment"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "sequel",
+            "revenge",
+            "betrayal",
+            "racing",
+            "family",
+            "cliffhanger",
+            "cars"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c5077594632f6e9412136"
+            }
+        ]
+    },
+    {
+        "_id": 678512,
+        "title": "Sound of Freedom",
+        "vote_average": 7.973,
+        "vote_count": 503,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-07-03T00:00:00Z"
+        },
+        "revenue": 212587173,
+        "runtime": 131,
+        "backdrop_path": "/eMPxmNvJjxVZIQWI2t1VmNC5IuR.jpg",
+        "budget": 15000000,
+        "homepage": "https://www.soundoffreedommovie.com/",
+        "imdb_id": "tt7599146",
+        "original_language": "en",
+        "original_title": "Sound of Freedom",
+        "overview": "The story of Tim Ballard, a former US government agent, who quits his job in order to devote his life to rescuing children from global sex traffickers.",
+        "popularity": 1111.036,
+        "poster_path": "/kSf9svfL2WrKeuK8W08xeR5lTn8.jpg",
+        "tagline": "Fight for the light. Silence the darkness.",
+        "decade": 2020,
+        "genres": ["Action", "Drama"],
+        "production_companies": ["Santa Fe Films"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Spanish"],
+        "keywords": [
+            "kidnapping",
+            "human trafficking",
+            "based on true story",
+            "child kidnapping",
+            "lost children",
+            "children in danger",
+            "colombia"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c508f594632f6e941213c"
+            }
+        ]
+    },
+    {
+        "_id": 346698,
+        "title": "Barbie",
+        "vote_average": 7.279,
+        "vote_count": 5074,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-07-19T00:00:00Z"
+        },
+        "revenue": 1428545028,
+        "runtime": 114,
+        "backdrop_path": "/ctMserH8g2SeOAnCw5gFjdQF8mo.jpg",
+        "budget": 145000000,
+        "homepage": "https://www.barbie-themovie.com",
+        "imdb_id": "tt1517268",
+        "original_language": "en",
+        "original_title": "Barbie",
+        "overview": "Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the joys and perils of living among humans.",
+        "popularity": 1069.34,
+        "poster_path": "/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
+        "tagline": "She's everything. He's just Ken.",
+        "decade": 2020,
+        "genres": ["Comedy", "Adventure", "Fantasy"],
+        "production_companies": [
+            "LuckyChap Entertainment",
+            "Heyday Films",
+            "NB/GG Pictures",
+            "Mattel"
+        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "feminism",
+            "satire",
+            "patriarchy",
+            "based on toy",
+            "female protagonist",
+            "doll",
+            "submissive",
+            "fantasy world",
+            "motherhood",
+            "existentialism",
+            "woman director",
+            "mother daughter relationship",
+            "gender discrimination",
+            "barbie",
+            "secret world"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c50a9594632f6e9412142"
+            }
+        ]
+    },
+    {
+        "_id": 976573,
+        "title": "Elemental",
+        "vote_average": 7.757,
+        "vote_count": 2467,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-06-14T00:00:00Z"
+        },
+        "revenue": 486797988,
+        "runtime": 102,
+        "backdrop_path": "/4fLZUr1e65hKPPVw0R3PmKFKxj1.jpg",
+        "budget": 200000000,
+        "homepage": "https://movies.disney.com/elemental",
+        "imdb_id": "tt15789038",
+        "original_language": "en",
+        "original_title": "Elemental",
+        "overview": "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.",
+        "popularity": 1008.942,
+        "poster_path": "/4Y1WNkd88JXmGfhtWR7dmDAo1T2.jpg",
+        "tagline": "Opposites react.",
+        "decade": 2020,
+        "genres": ["Animation", "Comedy", "Family", "Fantasy", "Romance"],
+        "production_companies": ["Walt Disney Pictures", "Pixar"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "fire",
+            "computer animation",
+            "duringcreditsstinger",
+            "elements",
+            "water",
+            "city",
+            "hopeful"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c50b9594632f6e9412148"
+            }
+        ]
+    },
+    {
+        "_id": 1002338,
+        "title": "Operation Napoleon",
+        "vote_average": 7.04,
+        "vote_count": 25,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-01-26T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 112,
+        "backdrop_path": "/oghHR3X0hIcvs7xqyoFjA0GAZWn.jpg",
+        "budget": 0,
+        "homepage": null,
+        "imdb_id": "tt15485390",
+        "original_language": "is",
+        "original_title": "Napóleonsskjölin",
+        "overview": "A modern-day lawyer is sucked into an international conspiracy after being accused of a murder she didn't commit. Her only chance of freedom lies in uncovering the secret of an old German WWII aeroplane, long buried deep beneath the ice, before the CIA.",
+        "popularity": 982.611,
+        "poster_path": "/j2Or0w69bpPXrmkE0hpTzw6hzsr.jpg",
+        "tagline": "A dark secret hides beneath the ice.",
+        "decade": 2020,
+        "genres": ["Thriller"],
+        "production_companies": ["Sagafilm", "Splendid Film"],
+        "production_countries": ["Germany", "Iceland"],
+        "spoken_languages": ["English", "Icelandic"],
+        "keywords": ["based on novel or book"],
+        "reviews": [
+            {
+                "$oid": "673c50ec594632f6e941214e"
+            }
+        ]
+    },
+    {
+        "_id": 820609,
+        "title": "No One Will Save You",
+        "vote_average": 6.897,
+        "vote_count": 345,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-22T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 93,
+        "backdrop_path": "/zYlgqIpqJ1VAbvFhRhktAzIybVs.jpg",
+        "budget": 22800000,
+        "homepage": "https://www.20thcenturystudios.com/movies/no-one-will-save-you",
+        "imdb_id": "tt14509110",
+        "original_language": "en",
+        "original_title": "No One Will Save You",
+        "overview": "An exiled anxiety-ridden homebody must battle an alien who's found its way into her home.",
+        "popularity": 961.212,
+        "poster_path": "/ehGIDAMaYy6Eg0o8ga0oqflDjqW.jpg",
+        "tagline": "A home invasion no one saw coming.",
+        "decade": 2020,
+        "genres": ["Horror", "Science Fiction", "Thriller"],
+        "production_companies": [
+            "20th Century Studios",
+            "Star Thrower Entertainment"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "isolation",
+            "trauma",
+            "grief",
+            "female protagonist",
+            "home invasion",
+            "guilt",
+            "death of mother",
+            "alien attack",
+            "reclusive",
+            "aliens"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c510c594632f6e9412154"
+            }
+        ]
+    },
+    {
+        "_id": 951491,
+        "title": "Saw X",
+        "vote_average": 7.321,
+        "vote_count": 56,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-26T00:00:00Z"
+        },
+        "revenue": 29300000,
+        "runtime": 118,
+        "backdrop_path": "/9b3uxqcjkmay20EBZZj1KVow0r5.jpg",
+        "budget": 13000000,
+        "homepage": "https://www.saw.movie",
+        "imdb_id": "tt21807222",
+        "original_language": "en",
+        "original_title": "Saw X",
+        "overview": "Between the events of 'Saw' and 'Saw II', a sick and desperate John Kramer travels to Mexico for a risky and experimental medical procedure in hopes of a miracle cure for his cancer, only to discover the entire operation is a scam to defraud the most vulnerable. Armed with a newfound purpose, the infamous serial killer returns to his work, turning the tables on the con artists in his signature visceral way through devious, deranged, and ingenious traps.",
+        "popularity": 949.967,
+        "poster_path": "/aQPeznSu7XDTrrdCtT5eLiu52Yu.jpg",
+        "tagline": "Witness the return of Jigsaw.",
+        "decade": 2020,
+        "genres": ["Crime", "Horror", "Thriller"],
+        "production_companies": ["Twisted Pictures", "Lionsgate"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Spanish"],
+        "keywords": [
+            "mexico city",
+            "mexico",
+            "sadism",
+            "riddle",
+            "gore",
+            "sequel",
+            "con artist",
+            "cancer",
+            "scam",
+            "serial killer",
+            "torture",
+            "drugs",
+            "survival horror",
+            "duringcreditsstinger",
+            "franchise",
+            "jigsaw",
+            "méxico",
+            "saw",
+            "death game",
+            "requel"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c5126594632f6e941215a"
+            }
+        ]
+    },
+    {
+        "_id": 1076364,
+        "title": "Carl's Date",
+        "vote_average": 7.831,
+        "vote_count": 201,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-06-15T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 9,
+        "backdrop_path": "/iOJX54nVAsnPawagFiWXKv1Y6sB.jpg",
+        "budget": 0,
+        "homepage": null,
+        "imdb_id": "tt26736061",
+        "original_language": "en",
+        "original_title": "Carl's Date",
+        "overview": "Carl Fredricksen reluctantly agrees to go on a date with a lady friend—but admittedly has no idea how dating works these days. Ever the helpful friend, Dug steps in to calm Carl's pre-date jitters and offer some tried-and-true tips for making friends—if you're a dog.",
+        "popularity": 819.429,
+        "poster_path": "/y8NtM6q3PzntqyNRNw6wgicwRYl.jpg",
+        "tagline": "New adventure. Same wingman.",
+        "decade": 2020,
+        "genres": ["Animation", "Adventure", "Family"],
+        "production_companies": ["Pixar"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": ["date", "love", "dog", "short film"],
+        "reviews": []
+    },
+    {
+        "_id": 1172009,
+        "title": "The Black Book",
+        "vote_average": 7.667,
+        "vote_count": 21,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-22T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 124,
+        "backdrop_path": "/9WxqnP9c29wXd03sALSpxpTx8fk.jpg",
+        "budget": 1000000,
+        "homepage": "https://www.netflix.com/title/81698992",
+        "imdb_id": "tt24083908",
+        "original_language": "en",
+        "original_title": "The Black Book",
+        "overview": "After his son is wrongly accused of kidnapping, a deacon who has just lost his wife takes matters into his own hands and fights a crooked police gang to clear him.",
+        "popularity": 810.288,
+        "poster_path": "/kn28W24slBLyGr8ZIZnxNE5YZrY.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Mystery", "Thriller", "Action"],
+        "production_companies": ["Anakle Films"],
+        "production_countries": ["Nigeria"],
+        "spoken_languages": ["English"],
+        "keywords": ["revenge thriller", "nollywood"],
+        "reviews": [
+            {
+                "$oid": "673c514c594632f6e9412161"
+            }
+        ]
+    },
+    {
+        "_id": 852436,
+        "title": "Let Her Kill You",
+        "vote_average": 6.917,
+        "vote_count": 54,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-03-08T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 94,
+        "backdrop_path": "/5xUJBgds96m6Xi2EtUpSzbw24D7.jpg",
+        "budget": 3200000,
+        "homepage": null,
+        "imdb_id": "tt18160646",
+        "original_language": "fr",
+        "original_title": "Seule : Les dossiers Silvercloud",
+        "overview": "Alone in the mountains of Switzerland, Anne discovers that her isolated chalet is on surveillance and has been bugged. Caught up by her former life as an intelligence secret agent and an affair with her handler, Anne can only count on herself to get out alive.",
+        "popularity": 780.608,
+        "poster_path": "/qx81rP4b4UFcxjabCqfe79F24Z0.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Thriller", "Mystery"],
+        "production_companies": ["Sombrero Films", "Vega Film"],
+        "production_countries": ["France", "Switzerland"],
+        "spoken_languages": ["French"],
+        "keywords": [],
+        "reviews": [
+            {
+                "$oid": "673c5176594632f6e9412167"
+            }
+        ]
+    },
+    {
+        "_id": 717930,
+        "title": "Kandahar",
+        "vote_average": 6.866,
+        "vote_count": 575,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-05-25T00:00:00Z"
+        },
+        "revenue": 3000000,
+        "runtime": 119,
+        "backdrop_path": "/c6Splshb8lb2Q9OvUfhpqXl7uP0.jpg",
+        "budget": 0,
+        "homepage": "https://www.openroadfilms.com/movies/kandahar",
+        "imdb_id": "tt5761544",
+        "original_language": "en",
+        "original_title": "Kandahar",
+        "overview": "After his mission is exposed, an undercover CIA operative stuck deep in hostile territory in Afghanistan must fight his way out, alongside his Afghan translator, to an extraction point in Kandahar, all whilst avoiding elite enemy forces and foreign spies tasked with hunting them down.",
+        "popularity": 708.536,
+        "poster_path": "/lCanGgsqF4xD2WA5NF8PWeT3IXd.jpg",
+        "tagline": "The only thing more dangerous than the mission is the escape.",
+        "decade": 2020,
+        "genres": ["Action", "Thriller"],
+        "production_companies": [
+            "Thunder Road",
+            "G-BASE",
+            "MBC Studios",
+            "Capstone Pictures"
+        ],
+        "production_countries": [
+            "United Arab Emirates",
+            "United States of America"
+        ],
+        "spoken_languages": ["English"],
+        "keywords": ["cia", "undercover agent", "behind enemy lines"],
+        "reviews": [
+            {
+                "$oid": "673c5197594632f6e941216d"
+            }
+        ]
+    },
+    {
+        "_id": 744278,
+        "title": "Mondocane",
+        "vote_average": 6.43,
+        "vote_count": 115,
+        "status": "Released",
+        "release_date": {
+            "$date": "2021-09-03T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 117,
+        "backdrop_path": "/uAAAzo9efEZJJPtj4iNwFvrRaki.jpg",
+        "budget": 0,
+        "homepage": null,
+        "imdb_id": "tt13113298",
+        "original_language": "it",
+        "original_title": "Mondocane",
+        "overview": "In the near future, the southern Italian city of Taranto is surrounded by barbed wire that no one, not even the police, dares to cross. The poorest are left fighting for survival, while gangs compete for the territory. Two thirteen-year-old orphans who grew up together, dream of joining one of the gangs.",
+        "popularity": 640.979,
+        "poster_path": "/gOuJBz9u1YVWwvx12lJX56yUT6I.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Action", "Crime", "Science Fiction", "Drama"],
+        "production_companies": ["Groenlandia", "RAI"],
+        "production_countries": ["Italy"],
+        "spoken_languages": ["Italian"],
+        "keywords": [
+            "gang leader",
+            "survival",
+            "gang",
+            "criminal gang",
+            "poor"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c51aa594632f6e9412173"
+            }
+        ]
+    },
+    {
+        "_id": 667538,
+        "title": "Transformers: Rise of the Beasts",
+        "vote_average": 7.492,
+        "vote_count": 3270,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-06-06T00:00:00Z"
+        },
+        "revenue": 429800000,
+        "runtime": 127,
+        "backdrop_path": "/2vFuG6bWGyQUzYS9d69E5l85nIz.jpg",
+        "budget": 195000000,
+        "homepage": "https://www.transformersmovie.com",
+        "imdb_id": "tt5090568",
+        "original_language": "en",
+        "original_title": "Transformers: Rise of the Beasts",
+        "overview": "When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth.",
+        "popularity": 616.74,
+        "poster_path": "/gPbM0MK8CP8A174rmUwGsADNYKD.jpg",
+        "tagline": "Unite or fall.",
+        "decade": 2020,
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "production_companies": [
+            "Skydance",
+            "Paramount",
+            "di Bonaventura Pictures",
+            "Bay Films",
+            "New Republic Pictures",
+            "Tom DeSanto/Don Murphy Production",
+            "Hasbro"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["Quechua", "Spanish", "English"],
+        "keywords": [
+            "peru",
+            "alien",
+            "end of the world",
+            "based on toy",
+            "robot",
+            "duringcreditsstinger",
+            "1990s",
+            "brother brother relationship",
+            "transformers"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c51ca594632f6e9412179"
+            }
+        ]
+    },
+    {
+        "_id": 790493,
+        "title": "Spy Kids: Armageddon",
+        "vote_average": 6.588,
+        "vote_count": 51,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-22T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 98,
+        "backdrop_path": "/6fKEw0I2FTD5FLOQ5q7L1tqf876.jpg",
+        "budget": 0,
+        "homepage": "https://www.netflix.com/title/81588091",
+        "imdb_id": "tt13978520",
+        "original_language": "en",
+        "original_title": "Spy Kids: Armageddon",
+        "overview": "When the children of the world’s greatest secret agents unwittingly help a powerful game developer unleash a computer virus that gives him control of all technology, they must become spies themselves to save their parents and the world.",
+        "popularity": 613.403,
+        "poster_path": "/vd8YdaH7dzeIMGTNwQinlSiA1gV.jpg",
+        "tagline": "Meet the next generation.",
+        "decade": 2020,
+        "genres": ["Family", "Comedy", "Action", "Adventure"],
+        "production_companies": [
+            "Skydance",
+            "Spyglass Media Group",
+            "Double R Productions"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "video game",
+            "technology",
+            "spy",
+            "games",
+            "secret agent",
+            "game",
+            "virus",
+            "game developer",
+            "heroes",
+            "kids",
+            "fantasy",
+            "save the world"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 335977,
+        "title": "Indiana Jones and the Dial of Destiny",
+        "vote_average": 6.679,
+        "vote_count": 1748,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-06-28T00:00:00Z"
+        },
+        "revenue": 382891104,
+        "runtime": 155,
+        "backdrop_path": "/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg",
+        "budget": 294700000,
+        "homepage": "https://movies.disney.com/indiana-jones-and-the-dial-of-destiny",
+        "imdb_id": "tt1462764",
+        "original_language": "en",
+        "original_title": "Indiana Jones and the Dial of Destiny",
+        "overview": "Finding himself in a new era, and approaching retirement, Indy wrestles with fitting into a world that seems to have outgrown him. But as the tentacles of an all-too-familiar evil return in the form of an old rival, Indy must don his hat and pick up his whip once more to make sure an ancient and powerful artifact doesn't fall into the wrong hands.",
+        "popularity": 579.252,
+        "poster_path": "/Af4bXE63pVsb2FtbW8uYIyPBadD.jpg",
+        "tagline": "A legend will face his destiny.",
+        "decade": 2020,
+        "genres": ["Adventure", "Action"],
+        "production_companies": ["Lucasfilm Ltd."],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "treasure hunt",
+            "ancient rome",
+            "sequel",
+            "flashback",
+            "knife fight",
+            "archaeologist",
+            "adventurer",
+            "1960s",
+            "nazi germany",
+            "action adventure",
+            "suspenseful"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 1126577,
+        "title": "Til Death Do Us Part",
+        "vote_average": 6.2,
+        "vote_count": 29,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-08-03T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 109,
+        "backdrop_path": "/ffQAbMDcME2IFmdnzCrbDjEupM.jpg",
+        "budget": 0,
+        "homepage": null,
+        "imdb_id": "tt27047448",
+        "original_language": "en",
+        "original_title": "Til Death Do Us Part",
+        "overview": "After bailing on her wedding, a former bride-to-be must fight off her ex-groom and seven angry killer groomsmen in order to survive the night.",
+        "popularity": 548.12,
+        "poster_path": "/2JSsduIaJzlScVunHCc6KYBIOjY.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Horror", "Thriller", "Action"],
+        "production_companies": [
+            "Born to Burn Films",
+            "BondIt Media Capital",
+            "Buffalo 8",
+            "Status Media & Entertainment"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [],
+        "reviews": []
+    },
+    {
+        "_id": 569094,
+        "title": "Spider-Man: Across the Spider-Verse",
+        "vote_average": 8.442,
+        "vote_count": 4394,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-05-31T00:00:00Z"
+        },
+        "revenue": 683241751,
+        "runtime": 140,
+        "backdrop_path": "/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg",
+        "budget": 100000000,
+        "homepage": "https://www.acrossthespiderverse.movie",
+        "imdb_id": "tt9362722",
+        "original_language": "en",
+        "original_title": "Spider-Man: Across the Spider-Verse",
+        "overview": "After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse’s very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.",
+        "popularity": 512.336,
+        "poster_path": "/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+        "tagline": "It's how you wear the mask that matters.",
+        "decade": 2020,
+        "genres": ["Animation", "Action", "Adventure"],
+        "production_companies": [
+            "Columbia Pictures",
+            "Sony Pictures Animation",
+            "Lord Miller",
+            "Pascal Pictures",
+            "Arad Productions"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Hindi", "Italian", "Spanish"],
+        "keywords": [
+            "new york city",
+            "sacrifice",
+            "superhero",
+            "comic book",
+            "based on comic",
+            "sequel",
+            "romance",
+            "alternate dimension",
+            "india",
+            "alternate version",
+            "super power",
+            "brooklyn",
+            "new york city",
+            "superhero team",
+            "spider bite",
+            "super villain",
+            "cliffhanger",
+            "teen superhero",
+            "chelsea",
+            "alternate universe",
+            "teen romance",
+            "female superhero",
+            "slow burn romance",
+            "interdimensional travel",
+            "defying fate"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c51ed594632f6e9412180"
+            }
+        ]
+    },
+    {
+        "_id": 670292,
+        "title": "The Creator",
+        "vote_average": 7.5,
+        "vote_count": 107,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-27T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 134,
+        "backdrop_path": "/iQcCAm8hKWZyUntqrvzyEGtXyJl.jpg",
+        "budget": 80000000,
+        "homepage": "https://www.20thcenturystudios.com/movies/the-creator",
+        "imdb_id": "tt11858890",
+        "original_language": "en",
+        "original_title": "The Creator",
+        "overview": "Amid a future war between the human race and the forces of artificial intelligence, a hardened ex-special forces agent grieving the disappearance of his wife, is recruited to hunt down and kill the Creator, the elusive architect of advanced AI who has developed a mysterious weapon with the power to end the war—and mankind itself.",
+        "popularity": 496.806,
+        "poster_path": "/vBZ0qvaRxqEhZwl6LWmruJqWE8Z.jpg",
+        "tagline": "This is a fight for our very existence.",
+        "decade": 2020,
+        "genres": ["Science Fiction", "Action", "Thriller"],
+        "production_companies": [
+            "New Regency Pictures",
+            "Entertainment One",
+            "Regency Enterprises",
+            "Bad Dreams"
+        ],
+        "production_countries": ["Canada", "United States of America"],
+        "spoken_languages": ["English", "Japanese", "Thai", "Vietnamese"],
+        "keywords": [
+            "artificial intelligence (a.i.)",
+            "asia",
+            "distant future",
+            "space station",
+            "child",
+            "ex special forces",
+            "missing wife",
+            "robots",
+            "war against machines",
+            "ai"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c521c594632f6e9412186"
+            }
+        ]
+    },
+    {
+        "_id": 614930,
+        "title": "Teenage Mutant Ninja Turtles: Mutant Mayhem",
+        "vote_average": 7.328,
+        "vote_count": 652,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-07-31T00:00:00Z"
+        },
+        "revenue": 172000000,
+        "runtime": 100,
+        "backdrop_path": "/w2nFc2Rsm93PDkvjY4LTn17ePO0.jpg",
+        "budget": 70000000,
+        "homepage": "https://www.teenagemutantninjaturtlesmovie.com",
+        "imdb_id": "tt8589698",
+        "original_language": "en",
+        "original_title": "Teenage Mutant Ninja Turtles: Mutant Mayhem",
+        "overview": "After years of being sheltered from the human world, the Turtle brothers set out to win the hearts of New Yorkers and be accepted as normal teenagers through heroic acts. Their new friend April O'Neil helps them take on a mysterious crime syndicate, but they soon get in over their heads when an army of mutants is unleashed upon them.",
+        "popularity": 484.876,
+        "poster_path": "/ueO9MYIOHO7M1PiMUeX74uf8fB9.jpg",
+        "tagline": "Heroes aren't born. They're mutated.",
+        "decade": 2020,
+        "genres": ["Animation", "Comedy", "Action"],
+        "production_companies": [
+            "Paramount",
+            "Nickelodeon Movies",
+            "Point Grey Pictures",
+            "Mikros Animation",
+            "Cinesite Animation"
+        ],
+        "production_countries": [
+            "Canada",
+            "France",
+            "United States of America"
+        ],
+        "spoken_languages": ["English", "Mandarin"],
+        "keywords": [
+            "new york city",
+            "sibling relationship",
+            "skateboarding",
+            "crime fighter",
+            "superhero",
+            "turtle",
+            "ninja",
+            "nostalgic",
+            "duringcreditsstinger",
+            "teenage mutant ninja turtles",
+            "aspiring journalist",
+            "anthropomorphic animal",
+            "excited",
+            "exhilarated"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 299054,
+        "title": "Expend4bles",
+        "vote_average": 6.685,
+        "vote_count": 81,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-15T00:00:00Z"
+        },
+        "revenue": 15000000,
+        "runtime": 103,
+        "backdrop_path": "/rMvPXy8PUjj1o8o1pzgQbdNCsvj.jpg",
+        "budget": 100000000,
+        "homepage": "https://expendables.movie/",
+        "imdb_id": "tt3291150",
+        "original_language": "en",
+        "original_title": "Expend4bles",
+        "overview": "Armed with every weapon they can get their hands on and the skills to use them, The Expendables are the world’s last line of defense and the team that gets called when all other options are off the table. But new team members with new styles and tactics are going to give “new blood” a whole new meaning.",
+        "popularity": 484.627,
+        "poster_path": "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+        "tagline": "They'll die when they're dead.",
+        "decade": 2020,
+        "genres": ["Action", "Adventure", "Thriller"],
+        "production_companies": [
+            "Millennium Media",
+            "Campbell Grobman Films",
+            "Lionsgate"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": ["sequel", "nuclear bomb", "cargo ship", "ring"],
+        "reviews": [
+            {
+                "$oid": "673c5280594632f6e941218f"
+            }
+        ]
+    },
+    {
+        "_id": 603692,
+        "title": "John Wick: Chapter 4",
+        "vote_average": 7.814,
+        "vote_count": 4639,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-03-22T00:00:00Z"
+        },
+        "revenue": 426978565,
+        "runtime": 170,
+        "backdrop_path": "/i3OTGmLNOZIo4SRQLVfLjeWegB6.jpg",
+        "budget": 90000000,
+        "homepage": "https://johnwick.movie",
+        "imdb_id": "tt10366206",
+        "original_language": "en",
+        "original_title": "John Wick: Chapter 4",
+        "overview": "With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
+        "popularity": 482.538,
+        "poster_path": "/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
+        "tagline": "No way back, one way out.",
+        "decade": 2020,
+        "genres": ["Action", "Thriller", "Crime"],
+        "production_companies": [
+            "Thunder Road",
+            "87Eleven",
+            "Summit Entertainment",
+            "Studio Babelsberg"
+        ],
+        "production_countries": ["Germany", "United States of America"],
+        "spoken_languages": [
+            "Arabic",
+            "Cantonese",
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Latin",
+            "Russian",
+            "Spanish"
+        ],
+        "keywords": [
+            "new york city",
+            "martial arts",
+            "hitman",
+            "sequel",
+            "organized crime",
+            "osaka",
+            "japan",
+            "blindness",
+            "aftercreditsstinger",
+            "hunted",
+            "consequences",
+            "professional assassin",
+            "neo-noir",
+            "berlin",
+            "suspenseful",
+            "intense"
+        ],
+        "reviews": [
+            {
+                "$oid": "673c529c594632f6e9412194"
+            }
+        ]
+    },
+    {
+        "_id": 298618,
+        "title": "The Flash",
+        "vote_average": 6.898,
+        "vote_count": 2959,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-06-13T00:00:00Z"
+        },
+        "revenue": 268375616,
+        "runtime": 144,
+        "backdrop_path": "/yF1eOkaYvwiORauRCPWznV9xVvi.jpg",
+        "budget": 300000000,
+        "homepage": "https://www.dc.com/theflash",
+        "imdb_id": "tt0439572",
+        "original_language": "en",
+        "original_title": "The Flash",
+        "overview": "When his attempt to save his family inadvertently alters the future, Barry Allen becomes trapped in a reality in which General Zod has returned and there are no Super Heroes to turn to. In order to save the world that he is in and return to the future that he knows, Barry's only hope is to race for his life. But will making the ultimate sacrifice be enough to reset the universe?",
+        "popularity": 480.393,
+        "poster_path": "/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg",
+        "tagline": "Worlds collide.",
+        "decade": 2020,
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "production_companies": [
+            "Warner Bros. Pictures",
+            "Double Dream",
+            "The Disco Factory",
+            "DC Films"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Spanish", "Russian"],
+        "keywords": [
+            "hero",
+            "secret identity",
+            "superhero",
+            "based on comic",
+            "superhuman",
+            "super power",
+            "aftercreditsstinger",
+            "butterfly effect",
+            "dc extended universe (dceu)",
+            "superhuman abilities",
+            "loss of mother",
+            "absurd"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 820525,
+        "title": "After Everything",
+        "vote_average": 6.768,
+        "vote_count": 69,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-13T00:00:00Z"
+        },
+        "revenue": 3280152,
+        "runtime": 93,
+        "backdrop_path": "/jkKVLzLWjSvTnc84VzeljhSy6j8.jpg",
+        "budget": 14000000,
+        "homepage": null,
+        "imdb_id": "tt15334488",
+        "original_language": "en",
+        "original_title": "After Everything",
+        "overview": "Besieged by writer’s block and the crushing breakup with Tessa, Hardin travels to Portugal in search of a woman he wronged in the past – and to find himself. Hoping to win back Tessa, he realizes he needs to change his ways before he can make the ultimate commitment.",
+        "popularity": 474.472,
+        "poster_path": "/gZLGCibvFY4zmt8sWUZcbBTHRtk.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Romance", "Drama"],
+        "production_companies": ["Voltage Pictures", "Wattpad"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Portuguese"],
+        "keywords": [
+            "lisbon",
+            "portugal",
+            "writer's block",
+            "sequel",
+            "love",
+            "wedding",
+            "social media",
+            "troubled past",
+            "dysfunctional relationship",
+            "based on young adult novel",
+            "fanfic"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 872585,
+        "title": "Oppenheimer",
+        "vote_average": 8.256,
+        "vote_count": 3766,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-07-19T00:00:00Z"
+        },
+        "revenue": 933700000,
+        "runtime": 181,
+        "backdrop_path": "/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg",
+        "budget": 100000000,
+        "homepage": "http://www.oppenheimermovie.com",
+        "imdb_id": "tt15398776",
+        "original_language": "en",
+        "original_title": "Oppenheimer",
+        "overview": "The story of J. Robert Oppenheimer’s role in the development of the atomic bomb during World War II.",
+        "popularity": 463.384,
+        "poster_path": "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+        "tagline": "The world forever changes.",
+        "decade": 2020,
+        "genres": ["Drama", "History"],
+        "production_companies": [
+            "Syncopy",
+            "Universal Pictures",
+            "Atlas Entertainment"
+        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["Dutch", "English"],
+        "keywords": [
+            "husband wife relationship",
+            "based on novel or book",
+            "atomic bomb",
+            "patriotism",
+            "new mexico",
+            "world war ii",
+            "atomic bomb test",
+            "physics",
+            "biography",
+            "based on true story",
+            "interrogation",
+            "guilt",
+            "historical event",
+            "nuclear weapons",
+            "communism",
+            "red scare",
+            "mccarthyism",
+            "top secret project",
+            "moral dilemma",
+            "usa politics",
+            "1940s",
+            "antisemitism",
+            "20th century",
+            "manhattan project",
+            "los alamos"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 1152797,
+        "title": "Freestyle",
+        "vote_average": 6.736,
+        "vote_count": 36,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-13T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 88,
+        "backdrop_path": "/xsnpgM2Si1hG7daLP1XE7uAfKKH.jpg",
+        "budget": 0,
+        "homepage": "http://www.netflix.com/title/81498379",
+        "imdb_id": "tt28366647",
+        "original_language": "pl",
+        "original_title": "Freestyle",
+        "overview": "Trying to check out a recording from his debut album, a street rapper and his friend run into trouble when a major drug deal turns into a total disaster for them.",
+        "popularity": 444.5,
+        "poster_path": "/hNPJzlPlIVgTAjb2Mgqwl1QqydK.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Crime", "Action", "Thriller"],
+        "production_companies": ["Aurum Film"],
+        "production_countries": ["Poland"],
+        "spoken_languages": ["Polish"],
+        "keywords": ["drug trafficking"],
+        "reviews": []
+    },
+    {
+        "_id": 912908,
+        "title": "Strays",
+        "vote_average": 7.531,
+        "vote_count": 389,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-08-17T00:00:00Z"
+        },
+        "revenue": 32000000,
+        "runtime": 93,
+        "backdrop_path": "/1HzL603WOer58xtnrRYdSIL5K04.jpg",
+        "budget": 46000000,
+        "homepage": "https://www.uphe.com/movies/strays-2023",
+        "imdb_id": "tt15153532",
+        "original_language": "en",
+        "original_title": "Strays",
+        "overview": "When Reggie is abandoned on the mean city streets by his lowlife owner, Doug, Reggie is certain that his beloved owner would never leave him on purpose. But once Reggie falls in with Bug, a fast-talking, foul-mouthed stray who loves his freedom and believes that owners are for suckers, Reggie finally realizes he was in a toxic relationship and begins to see Doug for the heartless sleazeball that he is.",
+        "popularity": 419.527,
+        "poster_path": "/n1hqbSCtyBAxaXEl1Dj3ipXJAJG.jpg",
+        "tagline": "Go fetch yourself.",
+        "decade": 2020,
+        "genres": ["Comedy", "Adventure"],
+        "production_companies": [
+            "Universal Pictures",
+            "PictureStart",
+            "Lord Miller",
+            "Gloria Sanchez Productions",
+            "Rabbit Hole Productions",
+            "dentsu"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "talking dog",
+            "magic mushroom",
+            "crude humor",
+            "male masturbation",
+            "duringcreditsstinger",
+            "animal liberation",
+            "self-liberation",
+            "abandonment",
+            "abandoned puppy",
+            "toxic relationship",
+            "talking animal"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 1146348,
+        "title": "Scooby-Doo! And Krypto, Too!",
+        "vote_average": 7.778,
+        "vote_count": 18,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-26T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 79,
+        "backdrop_path": "/8UjwvrxTpsD46cDQklDdU14RQYB.jpg",
+        "budget": 0,
+        "homepage": "https://www.warnerbros.com/movies/scooby-doo-krypto-too",
+        "imdb_id": "tt28508231",
+        "original_language": "en",
+        "original_title": "Scooby-Doo! And Krypto, Too!",
+        "overview": "When the Justice League goes missing and villains overrun Metropolis, there's only one team that can solve this mystery: Scooby-Doo and the gang! But wait, there's a new dog in town – Krypto – Superman's Superdog with Super Powers. Mystery Inc. will need all the help it can get when phantoms menace the Justice League's headquarters.",
+        "popularity": 411.09,
+        "poster_path": "/ntMOnvlYYnio7Fx3xqBu9B1Sz7f.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Animation", "Family", "Mystery", "Fantasy", "Comedy"],
+        "production_companies": ["Warner Bros. Animation"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": ["superhero", "villain", "talking dog", "team up"],
+        "reviews": []
+    },
+    {
+        "_id": 502356,
+        "title": "The Super Mario Bros. Movie",
+        "vote_average": 7.775,
+        "vote_count": 6743,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-04-05T00:00:00Z"
+        },
+        "revenue": 1355725263,
+        "runtime": 93,
+        "backdrop_path": "/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg",
+        "budget": 100000000,
+        "homepage": "https://www.thesupermariobros.movie",
+        "imdb_id": "tt6718170",
+        "original_language": "en",
+        "original_title": "The Super Mario Bros. Movie",
+        "overview": "While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.",
+        "popularity": 410.411,
+        "poster_path": "/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
+        "tagline": "Not all heroes wear capes. Some wear overalls.",
+        "decade": 2020,
+        "genres": ["Animation", "Family", "Adventure", "Fantasy", "Comedy"],
+        "production_companies": [
+            "Universal Pictures",
+            "Illumination",
+            "Nintendo"
+        ],
+        "production_countries": ["Japan", "United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "gorilla",
+            "plumber",
+            "anthropomorphism",
+            "magic mushroom",
+            "based on video game",
+            "toad",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "damsel in distress",
+            "piano",
+            "brother brother relationship",
+            "illumination",
+            "evil king",
+            "cliché"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 575264,
+        "title": "Mission: Impossible - Dead Reckoning Part One",
+        "vote_average": 7.74,
+        "vote_count": 1171,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-07-08T00:00:00Z"
+        },
+        "revenue": 563148955,
+        "runtime": 164,
+        "backdrop_path": "/TFTfzrkX8L7bAKUcch6qLmjpLu.jpg",
+        "budget": 291000000,
+        "homepage": "https://www.missionimpossible.com",
+        "imdb_id": "tt9603212",
+        "original_language": "en",
+        "original_title": "Mission: Impossible - Dead Reckoning Part One",
+        "overview": "Ethan Hunt and his IMF team embark on their most dangerous mission yet: To track down a terrifying new weapon that threatens all of humanity before it falls into the wrong hands. With control of the future and the world's fate at stake and dark forces from Ethan's past closing in, a deadly race around the globe begins. Confronted by a mysterious, all-powerful enemy, Ethan must consider that nothing can matter more than his mission—not even the lives of those he cares about most.",
+        "popularity": 401.083,
+        "poster_path": "/NNxYkU70HPurnNCSiCjYAmacwm.jpg",
+        "tagline": "We all share the same fate.",
+        "decade": 2020,
+        "genres": ["Action", "Thriller"],
+        "production_companies": ["Paramount", "Skydance", "TC Productions"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["French", "English", "Italian", "Russian"],
+        "keywords": [
+            "race against time",
+            "mission",
+            "rome",
+            "italy",
+            "chase",
+            "secret mission",
+            "secret agent",
+            "sequel",
+            "intelligence agency",
+            "rogue agent",
+            "based on tv series",
+            "secret government agency",
+            "serious",
+            "northern norway",
+            "exhilarated"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 1010581,
+        "title": "My Fault",
+        "vote_average": 8.106,
+        "vote_count": 1738,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-06-08T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 117,
+        "backdrop_path": "/lntyt4OVDbcxA1l7LtwITbrD3FI.jpg",
+        "budget": 0,
+        "homepage": null,
+        "imdb_id": "tt21909764",
+        "original_language": "es",
+        "original_title": "Culpa mía",
+        "overview": "Noah must leave her city, boyfriend, and friends to move into William Leister's mansion, the flashy and wealthy husband of her mother Rafaela. As a proud and independent 17 year old, Noah resists living in a mansion surrounded by luxury. However, it is there where she meets Nick, her new stepbrother, and the clash of their strong personalities becomes evident from the very beginning.",
+        "popularity": 361.025,
+        "poster_path": "/w46Vw536HwNnEzOa7J24YH9DPRS.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Drama", "Romance"],
+        "production_companies": ["Pokeepsie Films", "Amazon Studios"],
+        "production_countries": ["Spain"],
+        "spoken_languages": ["Spanish"],
+        "keywords": [
+            "stepbrother",
+            "female protagonist",
+            "stepsister",
+            "rise",
+            "enemies to lovers",
+            "passion and romance",
+            "car"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 926393,
+        "title": "The Equalizer 3",
+        "vote_average": 6.914,
+        "vote_count": 251,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-08-30T00:00:00Z"
+        },
+        "revenue": 158300000,
+        "runtime": 109,
+        "backdrop_path": "/h0nmmdFAdBjQttN8Y0q825MWzZp.jpg",
+        "budget": 70000000,
+        "homepage": "https://www.equalizer.movie",
+        "imdb_id": "tt17024450",
+        "original_language": "en",
+        "original_title": "The Equalizer 3",
+        "overview": "Robert McCall finds himself at home in Southern Italy but he discovers his friends are under the control of local crime bosses. As events turn deadly, McCall knows what he has to do: become his friends' protector by taking on the mafia.",
+        "popularity": 359.237,
+        "poster_path": "/b0Ej6fnXAP8fK75hlyi2jKqdhHz.jpg",
+        "tagline": "Justice knows no borders.",
+        "decade": 2020,
+        "genres": ["Action", "Thriller", "Crime"],
+        "production_companies": [
+            "Escape Artists",
+            "Columbia Pictures",
+            "Eagle Pictures",
+            "ZHIV Productions"
+        ],
+        "production_countries": ["Italy", "United States of America"],
+        "spoken_languages": ["English", "Italian"],
+        "keywords": ["italy", "vigilante justice", "italian mafia"],
+        "reviews": [
+            {
+                "$oid": "673c52f6594632f6e941219c"
+            }
+        ]
+    },
+    {
+        "_id": 439079,
+        "title": "The Nun",
+        "vote_average": 5.9,
+        "vote_count": 6076,
+        "status": "Released",
+        "release_date": {
+            "$date": "2018-09-05T00:00:00Z"
+        },
+        "revenue": 365582797,
+        "runtime": 96,
+        "backdrop_path": "/fgsHxz21B27hOOqQBiw9L6yWcM7.jpg",
+        "budget": 22000000,
+        "homepage": "http://www.thenunmovie.com/",
+        "imdb_id": "tt5814060",
+        "original_language": "en",
+        "original_title": "The Nun",
+        "overview": "A priest with a haunted past and a novice on the threshold of her final vows are sent by the Vatican to investigate the death of a young nun in Romania and confront a malevolent force in the form of a demonic nun.",
+        "popularity": 357.731,
+        "poster_path": "/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg",
+        "tagline": "Pray For Forgiveness",
+        "decade": 2010,
+        "genres": ["Horror", "Mystery", "Thriller"],
+        "production_companies": [
+            "New Line Cinema",
+            "Atomic Monster",
+            "The Safran Company"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English", "Romanian", "French", "Latin"],
+        "keywords": [
+            "rome",
+            "italy",
+            "nun",
+            "supernatural",
+            "exorcism",
+            "father",
+            "priest",
+            "spirit",
+            "demon",
+            "spin off",
+            "evil nun",
+            "demonic possession",
+            "romania",
+            "murder mystery",
+            "ancient evil",
+            "the conjuring universe"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 447277,
+        "title": "The Little Mermaid",
+        "vote_average": 6.536,
+        "vote_count": 2148,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-05-18T00:00:00Z"
+        },
+        "revenue": 569244557,
+        "runtime": 135,
+        "backdrop_path": "/7VEUOEfRzzrQfWddlIyLUKvh6Nf.jpg",
+        "budget": 250000000,
+        "homepage": "https://movies.disney.com/the-little-mermaid-2023",
+        "imdb_id": "tt5971474",
+        "original_language": "en",
+        "original_title": "The Little Mermaid",
+        "overview": "The youngest of King Triton’s daughters, and the most defiant, Ariel longs to find out more about the world beyond the sea, and while visiting the surface, falls for the dashing Prince Eric. With mermaids forbidden to interact with humans, Ariel makes a deal with the evil sea witch, Ursula, which gives her a chance to experience life on land, but ultimately places her life – and her father’s crown – in jeopardy.",
+        "popularity": 353.543,
+        "poster_path": "/ym1dxyOk4jFcSl4Q2zmRrA5BEEN.jpg",
+        "tagline": "Watch and you'll see, some day I'll be, part of your world!",
+        "decade": 2020,
+        "genres": ["Adventure", "Family", "Fantasy", "Romance"],
+        "production_companies": [
+            "Walt Disney Pictures",
+            "Lucamar Productions",
+            "Marc Platt Productions"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "mermaid",
+            "musical",
+            "based on fairy tale",
+            "live action remake",
+            "amused"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 734253,
+        "title": "Adipurush",
+        "vote_average": 5.491,
+        "vote_count": 53,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-06-16T00:00:00Z"
+        },
+        "revenue": 43000000,
+        "runtime": 179,
+        "backdrop_path": "/2QL5j6mB4ZpyBcVr0WO9H9MQGBu.jpg",
+        "budget": 63000000,
+        "homepage": null,
+        "imdb_id": "tt12915716",
+        "original_language": "hi",
+        "original_title": "आदिपुरुष",
+        "overview": "7000 years ago, Ayodhya's Prince Raghava and Prince Sesh along with the Mighty Vanar Warriors travels to the island of Lanka with an aim to rescue Raghava's wife Janaki, who has been abducted by Lankesh, the king of Lanka.",
+        "popularity": 349.287,
+        "poster_path": "/1H2xEZOixs0z0JKwyjANZiKNNVJ.jpg",
+        "tagline": "Celebrating Victory Of Good Over Evil",
+        "decade": 2020,
+        "genres": ["Action", "Adventure", "Drama", "Fantasy"],
+        "production_companies": [
+            "Retrophiles",
+            "T-Series",
+            "AA Films",
+            "UV Creations",
+            "People Media Factory"
+        ],
+        "production_countries": ["India"],
+        "spoken_languages": ["Hindi"],
+        "keywords": [
+            "ramayana",
+            "based on myths",
+            "legends or folklore",
+            "cgi-live action hybrid"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 1032666,
+        "title": "Bunker",
+        "vote_average": 7.583,
+        "vote_count": 12,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-09-14T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 109,
+        "backdrop_path": "/xfa49EDtKvs2yC9l4xroKtKlrcc.jpg",
+        "budget": 2500000,
+        "homepage": null,
+        "imdb_id": "tt8010064",
+        "original_language": "en",
+        "original_title": "Bunker",
+        "overview": "Trapped in a bunker during World War I, a group of soldiers are faced with an ungodly presence that slowly turns them against each other.",
+        "popularity": 339.829,
+        "poster_path": "/jOA7chFPVzSyPp2DaRg8hqA1BHr.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Horror", "Thriller", "War"],
+        "production_companies": [],
+        "production_countries": [],
+        "spoken_languages": ["English"],
+        "keywords": [],
+        "reviews": []
+    },
+    {
+        "_id": 724209,
+        "title": "Heart of Stone",
+        "vote_average": 6.901,
+        "vote_count": 1166,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-08-09T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 124,
+        "backdrop_path": "/xVMtv55caCEvBaV83DofmuZybmI.jpg",
+        "budget": 0,
+        "homepage": "https://www.netflix.com/title/81416533",
+        "imdb_id": "tt13603966",
+        "original_language": "en",
+        "original_title": "Heart of Stone",
+        "overview": "An intelligence operative for a shadowy global peacekeeping agency races to stop a hacker from stealing its most valuable — and dangerous — weapon.",
+        "popularity": 336.927,
+        "poster_path": "/vB8o2p4ETnrfiWEgVxHmHWP9yRl.jpg",
+        "tagline": "Defy the odds",
+        "decade": 2020,
+        "genres": ["Thriller", "Action"],
+        "production_companies": [
+            "Skydance",
+            "Pilot Wave Motion Pictures",
+            "Mockingbird Pictures"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "mission",
+            "saving the world",
+            "undercover agent",
+            "undercover",
+            "espionage",
+            "spy",
+            "secret agent",
+            "mi6",
+            "british spy",
+            "female spy"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 1085218,
+        "title": "Darkland: The Return",
+        "vote_average": 6.766,
+        "vote_count": 216,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-04-13T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 110,
+        "backdrop_path": "/e8FyMnifoN5BMuRFE97fS1lJZ6S.jpg",
+        "budget": 0,
+        "homepage": null,
+        "imdb_id": "tt20204996",
+        "original_language": "da",
+        "original_title": "Underverden 2",
+        "overview": "Seven years ago, Zaid went to war against the Copenhagen underworld to avenge his dead brother. His identity as a respected doctor of cardiology and life as a family man is but a fading dream, and in prison Zaid suffers the loss of his son Noah, whom he barely knows. When a police agent approaches Zaid and offers him a deal to be released in exchange for infiltrating the Copenhagen underworld, he sees his chance to reclaim the remnants of the family life he left behind. But everything has a price, and Zaid realizes that he has now seriously endangered his son's life. After all, once you become part of the underworld, is there any way out?",
+        "popularity": 324.959,
+        "poster_path": "/c8B4DsVcFVDLVmbpHMHU3RjLNAV.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Action", "Thriller"],
+        "production_companies": ["Profile Pictures"],
+        "production_countries": ["Denmark"],
+        "spoken_languages": ["Danish", "Arabic"],
+        "keywords": ["vigilante"],
+        "reviews": []
+    },
+    {
+        "_id": 1049951,
+        "title": "Viking: Bloodlust",
+        "vote_average": 6.933,
+        "vote_count": 52,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-04-21T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 82,
+        "backdrop_path": "/vMJb1D40wQNbTveNVFpNbo12faA.jpg",
+        "budget": 0,
+        "homepage": null,
+        "imdb_id": "tt21923640",
+        "original_language": "en",
+        "original_title": "Viking: Bloodlust",
+        "overview": "A band of vikings are on the run from a blood thirsty group of Berserkers who want to fight to the death.",
+        "popularity": 324.115,
+        "poster_path": "/xveBJmViwHdgjH3UQQmImkHOW7B.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Action", "History"],
+        "production_companies": ["ChampDog Films"],
+        "production_countries": ["United Kingdom"],
+        "spoken_languages": ["English"],
+        "keywords": ["viking"],
+        "reviews": []
+    },
+    {
+        "_id": 1040148,
+        "title": "Ruby Gillman, Teenage Kraken",
+        "vote_average": 7.474,
+        "vote_count": 677,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-06-28T00:00:00Z"
+        },
+        "revenue": 43716515,
+        "runtime": 91,
+        "backdrop_path": "/f7UI3dYpr7ZUHGo0iIr1Qvy1VPe.jpg",
+        "budget": 70000000,
+        "homepage": "https://www.teenagekrakenmovie.com",
+        "imdb_id": "tt27155038",
+        "original_language": "en",
+        "original_title": "Ruby Gillman, Teenage Kraken",
+        "overview": "Ruby Gillman, a sweet and awkward high school student, discovers she's a direct descendant of the warrior kraken queens. The kraken are sworn to protect the oceans of the world against the vain, power-hungry mermaids. Destined to inherit the throne from her commanding grandmother, Ruby must use her newfound powers to protect those she loves most.",
+        "popularity": 321.777,
+        "poster_path": "/kgrLpJcLBbyhWIkK7fx1fM4iSvf.jpg",
+        "tagline": "Discover the hero just beneath the surface.",
+        "decade": 2020,
+        "genres": ["Animation", "Family", "Fantasy", "Comedy"],
+        "production_companies": [
+            "Universal Pictures",
+            "DreamWorks Animation",
+            "dentsu"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "high school",
+            "ocean",
+            "boat",
+            "transformation",
+            "fisherman",
+            "mermaid",
+            "coming of age",
+            "prom",
+            "female protagonist",
+            "kraken",
+            "female villain",
+            "coastal town",
+            "fitting in",
+            "trident",
+            "3d animation",
+            "teenager",
+            "animation"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 447365,
+        "title": "Guardians of the Galaxy Vol. 3",
+        "vote_average": 8.023,
+        "vote_count": 4941,
+        "status": "Released",
+        "release_date": {
+            "$date": "2023-05-03T00:00:00Z"
+        },
+        "revenue": 845430302,
+        "runtime": 150,
+        "backdrop_path": "/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg",
+        "budget": 250000000,
+        "homepage": "https://www.marvel.com/movies/guardians-of-the-galaxy-volume-3",
+        "imdb_id": "tt6791350",
+        "original_language": "en",
+        "original_title": "Guardians of the Galaxy Vol. 3",
+        "overview": "Peter Quill, still reeling from the loss of Gamora, must rally his team around him to defend the universe along with protecting one of their own. A mission that, if not completed successfully, could quite possibly lead to the end of the Guardians as we know them.",
+        "popularity": 318.516,
+        "poster_path": "/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
+        "tagline": "Once more with feeling.",
+        "decade": 2020,
+        "genres": ["Science Fiction", "Adventure", "Action"],
+        "production_companies": ["Marvel Studios", "Kevin Feige Productions"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "hero",
+            "superhero",
+            "mad scientist",
+            "based on comic",
+            "sequel",
+            "superhero team",
+            "space opera",
+            "raccoon",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "cosmic",
+            "outer space",
+            "chosen family"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 609681,
+        "title": "The Marvels",
+        "vote_average": 0,
+        "vote_count": 0,
+        "status": "Post Production",
+        "release_date": {
+            "$date": "2023-11-08T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 105,
+        "backdrop_path": "/jB48R2vubdLDXmDAbxM1yD9hNCk.jpg",
+        "budget": 274800000,
+        "homepage": "https://www.marvel.com/movies/the-marvels",
+        "imdb_id": "tt10676048",
+        "original_language": "en",
+        "original_title": "The Marvels",
+        "overview": "Carol Danvers, aka Captain Marvel, has reclaimed her identity from the tyrannical Kree and taken revenge on the Supreme Intelligence. But unintended consequences see Carol shouldering the burden of a destabilized universe. When her duties send her to an anomalous wormhole linked to a Kree revolutionary, her powers become entangled with that of Jersey City super-fan Kamala Khan, aka Ms. Marvel, and Carol’s estranged niece, now S.A.B.E.R. astronaut Captain Monica Rambeau. Together, this unlikely trio must team up and learn to work in concert to save the universe.",
+        "popularity": 60.454,
+        "poster_path": "/8j7Qnegy40bscZUx2zJohkonaty.jpg",
+        "tagline": "Higher. Further. Faster. Together.",
+        "decade": 2020,
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "production_companies": ["Marvel Studios", "Kevin Feige Productions"],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "hero",
+            "superhero",
+            "space travel",
+            "based on comic",
+            "sequel",
+            "teenage girl",
+            "aftercreditsstinger",
+            "duringcreditsstinger",
+            "marvel cinematic universe (mcu)",
+            "space adventure",
+            "cheerful",
+            "demeaning",
+            "enchant",
+            "excited",
+            "hopeful"
+        ],
+        "reviews": []
+    },
+    {
+        "_id": 157336,
+        "title": "Interstellar",
+        "vote_average": 9,
+        "vote_count": 2,
+        "status": "Released",
+        "release_date": {
+            "$date": "2014-11-05T00:00:00Z"
+        },
+        "revenue": 701729206,
+        "runtime": 169,
+        "backdrop_path": "/pbrkL804c8yAv3zBZR4QPEafpAR.jpg",
+        "budget": 165000000,
+        "homepage": "http://www.interstellarmovie.net/",
+        "imdb_id": "tt0816692",
+        "original_language": "en",
+        "original_title": "Interstellar",
+        "overview": "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+        "popularity": 140.241,
+        "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+        "tagline": "Mankind was born on Earth. It was never meant to die here.",
+        "decade": 2010,
+        "genres": ["Adventure", "Drama", "Science Fiction"],
+        "production_companies": [
+            "Legendary Pictures",
+            "Syncopy",
+            "Lynda Obst Productions"
+        ],
+        "production_countries": ["United Kingdom", "United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "rescue",
+            "future",
+            "spacecraft",
+            "race against time",
+            "artificial intelligence (a.i.)",
+            "nasa",
+            "time warp",
+            "dystopia",
+            "expedition",
+            "space travel",
+            "wormhole",
+            "famine",
+            "black hole",
+            "quantum mechanics",
+            "family relationships",
+            "space",
+            "robot",
+            "astronaut",
+            "scientist",
+            "single father",
+            "farmer",
+            "space station",
+            "curious",
+            "space adventure",
+            "time paradox",
+            "thoughtful",
+            "time-manipulation",
+            "father daughter relationship",
+            "2060s",
+            "cornfield",
+            "time manipulation",
+            "complicated"
+        ],
+        "reviews": [
+            {
+                "$oid": "6736254b9c33bb841a3fee95"
+            }
+        ]
+    },
+    {
+        "_id": 550,
+        "title": "Fight Club",
+        "vote_average": 8.438057344249055,
+        "vote_count": 27239,
+        "status": "Released",
+        "release_date": {
+            "$date": "1999-10-15T00:00:00Z"
+        },
+        "revenue": 100853753,
+        "runtime": 139,
+        "backdrop_path": "/hZkgoQYus5vegHoetLkCJzb17zJ.jpg",
+        "budget": 63000000,
+        "homepage": "http://www.foxmovies.com/movies/fight-club",
+        "imdb_id": "tt0137523",
+        "original_language": "en",
+        "original_title": "Fight Club",
+        "overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+        "popularity": 69.498,
+        "poster_path": "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
+        "tagline": "Mischief. Mayhem. Soap.",
+        "decade": 1990,
+        "genres": ["Drama"],
+        "production_companies": [
+            "Regency Enterprises",
+            "Fox 2000 Pictures",
+            "Taurus Film",
+            "Atman Entertainment",
+            "Knickerbocker Films",
+            "The Linson Company",
+            "20th Century Fox"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": [
+            "dual identity",
+            "rage and hate",
+            "based on novel or book",
+            "nihilism",
+            "fight",
+            "support group",
+            "dystopia",
+            "insomnia",
+            "alter ego",
+            "breaking the fourth wall",
+            "split personality",
+            "quitting a job",
+            "dissociative identity disorder",
+            "self destructiveness"
+        ],
+        "reviews": [
+            {
+                "$oid": "673625f49c33bb841a3fef05"
+            }
+        ]
+    },
+    {
+        "_id": 83533,
+        "title": "Avatar 3",
+        "vote_average": 6,
+        "vote_count": 1,
+        "status": "Post Production",
+        "release_date": {
+            "$date": "2025-12-17T00:00:00Z"
+        },
+        "revenue": 0,
+        "runtime": 0,
+        "backdrop_path": null,
+        "budget": 500000000,
+        "homepage": "https://www.avatar.com/movies",
+        "imdb_id": "tt1757678",
+        "original_language": "en",
+        "original_title": "Avatar 3",
+        "overview": "The third entry in the Avatar franchise.",
+        "popularity": 14.635,
+        "poster_path": "/eZXoA5BjUxm1fdAKb3lPvbDY2L8.jpg",
+        "tagline": null,
+        "decade": 2020,
+        "genres": ["Action", "Science Fiction", "Adventure"],
+        "production_companies": [
+            "Lightstorm Entertainment",
+            "20th Century Studios"
+        ],
+        "production_countries": ["United States of America"],
+        "spoken_languages": ["English"],
+        "keywords": ["sequel"],
+        "reviews": [
+            {
+                "$oid": "673627c79c33bb841a3fef74"
+            }
+        ]
+    }
+]

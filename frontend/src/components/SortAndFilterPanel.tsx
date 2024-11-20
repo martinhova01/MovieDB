@@ -2,7 +2,6 @@ import { Button } from "../shadcn/components/ui/button";
 import { Accordion } from "../shadcn/components/ui/accordion";
 import {
     Sheet,
-    SheetClose,
     SheetContent,
     SheetDescription,
     SheetFooter,
@@ -13,31 +12,71 @@ import {
 import { SlidersHorizontal } from "lucide-react";
 import FilterSection from "./FilterSection";
 import SortSection from "./SortSection";
-import { filtersVar, sortOptionVar } from "@/utils/cache";
+import {
+    filtersVar,
+    searchVar,
+    sortOptionVar,
+    totalHitsVar,
+} from "@/utils/cache";
 import { useQuery, useReactiveVar } from "@apollo/client";
-import { Filters } from "@/types/__generated__/types";
+import { Filter, Filters, FiltersInput } from "@/types/__generated__/types";
 import { GET_FILTERS } from "@/api/queries";
 import { defaultSortOption } from "@/utils/sortOptionUtil";
+import Loader from "./Loader";
+import { useState } from "react";
 
 const SortAndFilterPanel: React.FC = () => {
     const filters = useReactiveVar(filtersVar);
+    const search = useReactiveVar(searchVar);
+    const [fetchedFilters, setFetchedFilters] = useState<Filters>({
+        Genre: [],
+        Rating: [],
+        Decade: [],
+        Status: [],
+        Runtime: [],
+    });
 
-    const { data, loading, error } = useQuery(GET_FILTERS);
+    const { loading, error } = useQuery(GET_FILTERS, {
+        variables: {
+            appliedFilters: filters,
+            search: search,
+        },
+        onCompleted: (data) => {
+            let totalHits: number;
+            if (filtersVar().Status.length == 0) {
+                totalHits = data.filters.Status.map(
+                    (s: Filter) => s.hits
+                ).reduce((acc, curr) => acc + curr, 0);
+            } else {
+                totalHits = data.filters.Status.filter((s: Filter) =>
+                    filtersVar().Status.includes(s.name)
+                )
+                    .map((s: Filter) => s.hits)
+                    .reduce((acc, curr) => acc + curr, 0);
+            }
+            totalHitsVar(totalHits);
 
-    const updateFilters = (category: keyof Filters, filter: string) => {
+            setFetchedFilters(data.filters);
+        },
+    });
+
+    const updateFilters = (category: keyof FiltersInput, filter: string) => {
         let newFilters: string[] = [...(filters[category] || [])];
         if (newFilters.includes(filter)) {
             newFilters = newFilters.filter((e) => e != filter);
         } else {
             newFilters.push(filter);
         }
-        const updatedFilters: Filters = { ...filters, [category]: newFilters };
+        const updatedFilters: FiltersInput = {
+            ...filters,
+            [category]: newFilters,
+        };
         sessionStorage.setItem("filters", JSON.stringify(updatedFilters));
         filtersVar(updatedFilters);
     };
 
     const clearAll = () => {
-        const emptyFilters: Filters = {
+        const emptyFilters: FiltersInput = {
             Genre: [],
             Rating: [],
             Decade: [],
@@ -52,26 +91,25 @@ const SortAndFilterPanel: React.FC = () => {
     };
 
     const renderFilterSections = () => {
-        return Object.entries(data?.filters as Filters).map(
-            ([category, filter_list]) => {
-                if (category === "__typename") {
-                    return null;
-                }
-                const all_filters = filter_list as string[];
-                const applied_filters = filters[category as keyof Filters] as
-                    | string[]
-                    | undefined;
-                return (
-                    <FilterSection
-                        key={category}
-                        category={category as keyof Filters}
-                        all_filters={all_filters}
-                        applied_filters={applied_filters ?? []}
-                        updateFilters={updateFilters}
-                    />
-                );
+        return Object.entries(fetchedFilters).map(([category, filter_list]) => {
+            if (category === "__typename" || filter_list === "Filters") {
+                return null;
             }
-        );
+            const all_filters = filter_list as Filter[];
+            const applied_filters = filters[category as keyof FiltersInput] as
+                | string[]
+                | undefined;
+            return (
+                <FilterSection
+                    key={category}
+                    category={category as keyof FiltersInput}
+                    all_filters={all_filters}
+                    applied_filters={applied_filters ?? []}
+                    updateFilters={updateFilters}
+                    loading={loading}
+                />
+            );
+        });
     };
 
     return (
@@ -91,34 +129,29 @@ const SortAndFilterPanel: React.FC = () => {
                         Use the tools below to refine your results
                     </SheetDescription>
                 </SheetHeader>
-                {loading && (
-                    <section className="text-center">
-                        <p>Loading...</p>
-                    </section>
-                )}
-                {error && (
+
+                {error ? (
                     <section className="text-center">
                         <p>Something went wrong!</p>
                         <p className="text-primary">Try to refresh</p>
                     </section>
-                )}
-                {!loading && !error && data?.filters && (
+                ) : (
                     <section>
                         <Accordion type="single" collapsible className="w-full">
-                            <SortSection />
+                            <SortSection loading={loading} />
                             {renderFilterSections()}
                         </Accordion>
                         <SheetFooter className="mt-5">
                             <Button type="reset" onClick={clearAll}>
                                 Clear All
                             </Button>
-                            <SheetClose asChild>
-                                <Button type="submit" className="mb-2">
-                                    Apply
-                                </Button>
-                            </SheetClose>
                         </SheetFooter>
                     </section>
+                )}
+                {loading && (
+                    <Loader size="sm">
+                        <p>Updating filters...</p>
+                    </Loader>
                 )}
             </SheetContent>
         </Sheet>

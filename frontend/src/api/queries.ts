@@ -63,13 +63,34 @@ export const GET_MOVIE = gql(`
 `);
 
 export const GET_FILTERS = gql(`
-    query GetFilters {
-        filters {
-            Genre
-            Rating
-            Decade
-            Status
-            Runtime
+    query GetFilters(
+        $appliedFilters: FiltersInput
+        $search: String
+    ) {
+        filters(
+            appliedFilters: $appliedFilters
+            search: $search
+        ) {
+            Genre {
+                name
+                hits
+            }
+            Rating {
+                name
+                hits
+            }
+            Decade {
+                name
+                hits
+            }
+            Status {
+                name
+                hits
+            }
+            Runtime {
+                name
+                hits
+            }
         }
     }
 `);
@@ -135,15 +156,15 @@ export const ADD_REVIEW = gql(`
             comment: $comment
         ) {
             _id
-            vote_average
-            vote_count
-            reviews {
+            movie {
                 _id
-                username
-                rating
-                comment
-                date
+                vote_average
+                vote_count
             }
+            username
+            rating
+            comment
+            date
         }
     }
 `);
@@ -152,15 +173,15 @@ export const DELETE_REVIEW = gql(`
     mutation DeleteReview($id: ID!) {
         deleteReview(_id: $id) {
             _id
-            vote_average
-            vote_count
-            reviews {
+            movie {
                 _id
-                username
-                rating
-                comment
-                date
+                vote_average
+                vote_count
             }
+            username
+            rating
+            comment
+            date
         }
     }
 `);

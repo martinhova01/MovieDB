@@ -68,6 +68,7 @@ def get_all_movies(df: pd.DataFrame):
             "popularity",
             "poster_path",
             "tagline",
+            "decade",
         ]:
             movie_data[col] = movie_row[col] if not pd.isnull(movie_row[col]) else None
 
@@ -103,6 +104,7 @@ def load_movie_data(rows: int | None = None) -> pd.DataFrame:
     df = df[~df["adult"]]
     df.rename({"id": "_id"}, axis=1, inplace=True)
     df.drop_duplicates(subset=["_id"], inplace=True)
+    df["decade"] = (df["release_date"].astype(str).str[:4].astype(int) // 10) * 10
     if rows is not None:
         df = df.head(rows)
     print("Done reading CSV")
@@ -132,7 +134,7 @@ def load_movie_data_chunks(rows: int | None = None, chunksize: int = 1000):
     with pd.read_csv(in_file_name, chunksize=chunksize) as reader:
         for chunk in reader:
             chunk.dropna(
-                subset=["id", "title", "release_date", "overview", "runtime"],
+                subset=["id", "title", "release_date", "overview", "runtime", "imdb_id"],
                 inplace=True,
             )  # Drop rows with missing values in these columns, as they are required
             chunk = chunk[~chunk["adult"]]
@@ -141,6 +143,7 @@ def load_movie_data_chunks(rows: int | None = None, chunksize: int = 1000):
             chunk["release_date"] = pd.to_datetime(
                 chunk["release_date"], errors="coerce"
             )
+            chunk["decade"] = (chunk["release_date"].dt.year // 10) * 10
             chunk["revenue"] = chunk["revenue"].astype(float)
 
             if rows is not None and yielded_movie_count + chunk.shape[0] > rows:
@@ -181,25 +184,27 @@ def fill_db(rows: int | None = None):
             pbar.update(chunk.shape[0])
 
     print("Done inserting movies")
+
+    print("Removing inappropriate movies...")
+    MOVIES_COL.create_index([("popularity", pymongo.DESCENDING)])
+    top_movies = (
+        MOVIES_COL.find().sort("popularity", pymongo.DESCENDING).skip(9999).limit(1)
+    )
+    popularity_threshold = top_movies[0]["popularity"]
+    MOVIES_COL.delete_many({"popularity": {"$lt": popularity_threshold}})
+    print("Done removing inappropriate movies")
+
     print("Creating indexes...")
-    # These indexes are created to speed up search/filtering/sorting
-    MOVIES_COL.create_index([("title", pymongo.TEXT)])
+    # These indexes are created to speed up filtering/sorting
     MOVIES_COL.create_index("release_date")
     MOVIES_COL.create_index("runtime")
     MOVIES_COL.create_index("vote_average")
-    MOVIES_COL.create_index("vote_count")
     MOVIES_COL.create_index("status")
-    MOVIES_COL.create_index("popularity")
 
     # These indexes are created to speed up filtering/sorting and to retrieve unique values
     MOVIES_COL.create_index("genres")
     MOVIES_COL.create_index("spoken_languages")
-
-    # These indexes are not created, since we do not need to know the unique values
-    # But they can be created easily later if needed
-    # MOVIES_COL.create_index("production_companies")
-    # MOVIES_COL.create_index("production_countries")
-    # MOVIES_COL.create_index("keywords")
+    MOVIES_COL.create_index("decade")
 
     REVIEWS_COL.create_index("username")
     REVIEWS_COL.create_index("date")
