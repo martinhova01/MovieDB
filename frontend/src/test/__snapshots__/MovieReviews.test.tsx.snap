@@ -217,9 +217,9 @@ exports[`MovieReviews > matches snapshot 1`] = `
                   </p>
                   <time
                     class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-20T20:09:08.540Z"
+                    datetime="2024-01-01T12:00:00.000Z"
                   >
-                    November 20, 2024 at 09:09 PM
+                    January 1, 2024 at 01:00 PM
                   </time>
                 </section>
                 <div

@@ -8,6 +8,8 @@ import { Review } from "@/types/__generated__/types";
 import { usernameVar } from "@/utils/cache";
 import { all_movies } from "./mock/util";
 
+const mockDate = new Date("2024-01-01T12:00:00Z");
+
 const mockMovie = {
     ...all_movies[18],
     reviews: [
@@ -16,7 +18,7 @@ const mockMovie = {
             username: "testuser",
             rating: 4,
             comment: "Great movie!",
-            date: new Date(),
+            date: mockDate,
         },
     ] as Review[],
 };
@@ -38,7 +40,7 @@ const mockAddReviewMutation = {
                 username: "testuser",
                 rating: 5,
                 comment: "Excellent movie!",
-                date: new Date(),
+                date: mockDate,
                 movie: {
                     _id: 475557,
                     vote_average: 4.5,
