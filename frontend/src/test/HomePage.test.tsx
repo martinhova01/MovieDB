@@ -15,6 +15,13 @@ vi.mock("../components/MovieList", () => ({
     default: vi.fn(() => <div data-testid="movie-list" />),
 }));
 
+describe("HomePage Snapshots", () => {
+    it("matches snapshot", () => {
+        const { asFragment } = render(<HomePage />);
+        expect(asFragment()).toMatchSnapshot();
+    });
+});
+
 describe("HomePage", () => {
     it("renders SortAndFilterPanel, SearchBar, and MovieList", () => {
         render(<HomePage />);

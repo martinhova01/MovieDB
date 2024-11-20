@@ -64,17 +64,50 @@ vi.mock("react-router-dom", async () => {
     };
 });
 
-describe("ActivityPage", () => {
-    const renderComponent = (mocks: MockedResponse[] | undefined) => {
-        return render(
-            <MockedProvider mocks={mocks} addTypename={false}>
-                <MemoryRouter>
-                    <MyReviewsPage />
-                </MemoryRouter>
-            </MockedProvider>
-        );
-    };
+const renderComponent = (mocks: MockedResponse[] | undefined) => {
+    return render(
+        <MockedProvider mocks={mocks} addTypename={false}>
+            <MemoryRouter>
+                <MyReviewsPage />
+            </MemoryRouter>
+        </MockedProvider>
+    );
+};
 
+describe("MyReviewsPage Snapshots", () => {
+    afterAll(() => {
+        usernameVar("Guest");
+    });
+
+    it("matches snapshot when loading", () => {
+        usernameVar("test_user");
+        const { asFragment } = renderComponent(mockUserReviews);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot when user reviews are loaded", async () => {
+        usernameVar("test_user");
+        const { asFragment } = renderComponent(mockUserReviews);
+        await screen.findByText("My Reviews");
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot when user has no reviews", async () => {
+        usernameVar("other_user");
+        const { asFragment } = renderComponent(mockUserReviews);
+        await screen.findByText("You have not added any reviews yet");
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot on error", async () => {
+        usernameVar("test_user");
+        const { asFragment } = renderComponent(mockUserReviewsError);
+        await screen.findByText("Something went wrong!");
+        expect(asFragment()).toMatchSnapshot();
+    });
+});
+
+describe("ActivityPage", () => {
     afterAll(() => {
         usernameVar("Guest");
     });

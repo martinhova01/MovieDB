@@ -53,17 +53,42 @@ const mockLatestReviewsError = [
     },
 ];
 
-describe("ActivityPage", () => {
-    const renderComponent = (mocks: MockedResponse[] | undefined) => {
-        return render(
-            <MockedProvider mocks={mocks} addTypename={false}>
-                <MemoryRouter>
-                    <ActivityPage />
-                </MemoryRouter>
-            </MockedProvider>
-        );
-    };
+const renderComponent = (mocks: MockedResponse[] | undefined) => {
+    return render(
+        <MockedProvider mocks={mocks} addTypename={false}>
+            <MemoryRouter>
+                <ActivityPage />
+            </MemoryRouter>
+        </MockedProvider>
+    );
+};
 
+describe("ActivityPage Snapshots", () => {
+    it("matches snapshot when loading", () => {
+        const { asFragment } = renderComponent(mockLatestReviewsEmpty);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot when latest reviews are loaded", async () => {
+        const { asFragment } = renderComponent(mockLatestReviews);
+        await screen.findByText("Latest Activity");
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot when no reviews are available", async () => {
+        const { asFragment } = renderComponent(mockLatestReviewsEmpty);
+        await screen.findByText("No reviews have been added yet");
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot when there is an error", async () => {
+        const { asFragment } = renderComponent(mockLatestReviewsError);
+        await screen.findByText("Something went wrong!");
+        expect(asFragment()).toMatchSnapshot();
+    });
+});
+
+describe("ActivityPage", () => {
     it("displays 'No reviews have been added yet' on empty reviews", async () => {
         renderComponent(mockLatestReviewsEmpty);
         await waitFor(() =>

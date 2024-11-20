@@ -1,0 +1,458 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MovieDetailPage Snapshots > matches snapshot on error 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-2 w-dvw text-center"
+  >
+    <h1
+      class="text-2xl"
+    >
+      Something went wrong!
+    </h1>
+    <a
+      class="text-primary hover:underline"
+      href="/"
+    >
+      Return to home page
+    </a>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`MovieDetailPage Snapshots > matches snapshot when data is loaded 1`] = `
+<DocumentFragment>
+  <section
+    class="pb-2"
+  >
+    <div
+      class="rounded-lg border bg-card text-card-foreground relative m-4 overflow-hidden bg-cover bg-center shadow-lg"
+      data-testid="detailedMovieCard"
+      style="background-image: url(https://image.tmdb.org/t/p/original/hO7KbdvGOtDdeg0W4Y5nKEHeDDh.jpg);"
+    >
+      <div
+        class="absolute inset-0 bg-black opacity-85"
+      />
+      <div
+        class="relative h-full p-6 text-white"
+      >
+        <div
+          class="flex flex-col space-y-1.5 mb-4 p-0"
+        >
+          <h1
+            class="tracking-tight text-5xl font-bold"
+          >
+            Joker
+          </h1>
+          <p
+            class="text-sm"
+          >
+            <time
+              datetime="2019"
+            >
+              2019
+            </time>
+             • 
+            <time
+              datetime="PT2H2M"
+            >
+              2h 2m
+            </time>
+             • 
+            <span>
+              Crime, Thriller, Drama
+            </span>
+          </p>
+          <div
+            class="flex items-center gap-2"
+            title="4.08"
+          >
+            <svg
+              class="lucide lucide-star fill-current text-yellow-500"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="-1"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              class="lucide lucide-star fill-current text-yellow-500"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="-1"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              class="lucide lucide-star fill-current text-yellow-500"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="-1"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              class="lucide lucide-star fill-current text-yellow-500"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="-1"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <div
+              class="relative inline-block"
+            >
+              <svg
+                class="lucide lucide-star fill-transparent text-yellow-500"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                />
+              </svg>
+              <div
+                style="position: absolute; top: 0px; overflow: hidden; width: 8.399999999999963%;"
+              >
+                <svg
+                  class="lucide lucide-star fill-current text-yellow-500"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section
+          class="flex h-full flex-col md:flex-row"
+        >
+          <figure
+            class="mb-6 w-full max-w-72 flex-shrink-0 md:mb-0 md:mr-6"
+          >
+            <img
+              alt="Poster of Joker"
+              class="rounded-lg"
+              src="https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"
+              title="Joker"
+            />
+          </figure>
+          <section
+            class="flex-grow"
+          >
+            <p
+              class="mb-2 text-xl italic text-gray-300"
+            >
+              Put on a happy face.
+            </p>
+            <p
+              class="mb-4 text-lg"
+            >
+              During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.
+            </p>
+            <ul
+              class="mb-6 flex flex-col gap-2"
+            >
+              <li>
+                <strong>
+                  Status: 
+                </strong>
+                Released
+              </li>
+              <li>
+                <strong>
+                  Budget: 
+                </strong>
+                $55,000,000
+              </li>
+              <li>
+                <strong>
+                  Revenue: 
+                </strong>
+                $1,074,458,282
+              </li>
+              <li>
+                <strong>
+                  Production Companies: 
+                </strong>
+                Warner Bros. Pictures, Joint Effort, Village Roadshow Pictures, Bron Studios, DC Films
+              </li>
+              <li>
+                <strong>
+                  Production Countries: 
+                </strong>
+                Canada, United States of America
+              </li>
+              <li>
+                <strong>
+                  Spoken Languages: 
+                </strong>
+                English
+              </li>
+            </ul>
+            <a
+              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+              href="http://www.jokermovie.net/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Visit Homepage
+            </a>
+          </section>
+        </section>
+      </div>
+    </div>
+    <div
+      class="rounded-lg border bg-card text-card-foreground shadow-sm m-4"
+    >
+      <section
+        class="m-4 mb-6"
+      >
+        <h2
+          class="mb-4 text-2xl font-bold"
+        >
+          Submit review
+        </h2>
+        <form
+          class="space-y-4"
+        >
+          <div
+            class="flex items-center gap-2"
+            role="radiogroup"
+          >
+            <svg
+              aria-checked="false"
+              aria-label="1 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="2 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="3 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="4 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="5 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+          </div>
+          <textarea
+            class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            id="review-comment"
+            maxlength="1500"
+            name="comment"
+            placeholder="Write your review (optional)"
+          />
+          <button
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+            disabled=""
+            type="submit"
+          >
+            Submit Review
+          </button>
+        </form>
+      </section>
+      <section
+        class="m-4 space-y-4"
+      >
+        <ul
+          class="space-y-6"
+        />
+      </section>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`MovieDetailPage Snapshots > matches snapshot when loading 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-2 w-dvw text-center"
+  >
+    <div
+      aria-live="polite"
+      class="m-2 flex flex-col items-center justify-center gap-2"
+      role="status"
+    >
+      <svg
+        class="animate-spin h-16 w-16 stroke-primary"
+        viewBox="0 0 800 800"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="400"
+          cy="400"
+          fill="none"
+          r="350"
+          stroke-dasharray="1648,550"
+          stroke-linecap="round"
+          stroke-width="64"
+        />
+      </svg>
+      <p
+        class="text-2xl"
+      >
+        Loading...
+      </p>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`MovieDetailPage Snapshots > matches snapshot when no movie is found 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-2 w-dvw text-center"
+  >
+    <h1
+      class="text-2xl"
+    >
+      Could not find movie!
+    </h1>
+    <a
+      class="text-primary hover:underline"
+      href="/"
+    >
+      Return to home page
+    </a>
+  </section>
+</DocumentFragment>
+`;
