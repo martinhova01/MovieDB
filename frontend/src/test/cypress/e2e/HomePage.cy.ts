@@ -278,6 +278,7 @@ describe(
             });
 
             cy.contains("Close").click();
+            cy.contains("Sort by").should("not.be.visible");
             cy.get("#searchbar").type("mario");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
@@ -368,6 +369,7 @@ describe(
 
             // Visit movie page and go back, everything should still be the same
             cy.contains("Close").click();
+            cy.contains("Sort by").should("not.be.visible");
             cy.get('a[href*="movie"]').first().click();
             cy.url().should("include", "movie");
             cy.wait("@gqlGetMovieQuery");
@@ -566,6 +568,7 @@ describe(
             cy.get("#Thriller").should("have.attr", "data-state", "unchecked");
 
             cy.contains("Close").click();
+            cy.contains("Sort by").should("not.be.visible");
             cy.get("#searchbar").should("have.value", "the");
         });
 

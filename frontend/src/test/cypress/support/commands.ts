@@ -57,9 +57,7 @@ Cypress.Commands.add(
 Cypress.Commands.add(
     "submitReview",
     (movieId: number, username: string, rating: number, comment: string) => {
-        cy.get('[role="input"]')
-            .eq(rating - 1)
-            .click();
+        cy.get(`[aria-label="${rating} star"]`).click();
         cy.get("#review-comment").type(comment);
         cy.contains("button", "Submit Review").click();
         cy.wait("@gqlAddReviewMutation").then(({ request, response }) => {
