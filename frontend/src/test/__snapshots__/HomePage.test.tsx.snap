@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`HomePage Snapshots > matches snapshot 1`] = `
+exports[`HomePage > matches snapshot 1`] = `
 <DocumentFragment>
   <section
     class="flex flex-row gap-2 p-4"

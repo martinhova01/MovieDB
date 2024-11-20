@@ -42,22 +42,22 @@ const noMovieMock = [
     },
 ];
 
-const renderComponent = (mocks: MockedResponse[] | undefined) => {
-    const router = createMemoryRouter(
-        [{ path: "/movie/:movieId", element: <MovieDetailPage /> }],
-        {
-            initialEntries: ["/movie/475557"],
-        }
-    );
+describe("MovieDetailPage", () => {
+    const renderComponent = (mocks: MockedResponse[] | undefined) => {
+        const router = createMemoryRouter(
+            [{ path: "/movie/:movieId", element: <MovieDetailPage /> }],
+            {
+                initialEntries: ["/movie/475557"],
+            }
+        );
 
-    return render(
-        <MockedProvider mocks={mocks} addTypename={false}>
-            <RouterProvider router={router} />
-        </MockedProvider>
-    );
-};
+        return render(
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <RouterProvider router={router} />
+            </MockedProvider>
+        );
+    };
 
-describe("MovieDetailPage Snapshots", () => {
     it("matches snapshot when loading", () => {
         const { asFragment } = renderComponent(movieMock);
         expect(asFragment()).toMatchSnapshot();
@@ -80,9 +80,7 @@ describe("MovieDetailPage Snapshots", () => {
         await screen.findByText("Something went wrong!");
         expect(asFragment()).toMatchSnapshot();
     });
-});
 
-describe("MovieDetailPage", () => {
     it("displays loading message initially", () => {
         renderComponent(movieMock);
         expect(screen.getByText("Loading...")).toBeInTheDocument();

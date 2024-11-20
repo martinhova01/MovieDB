@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ActivityPage Snapshots > matches snapshot when latest reviews are loaded 1`] = `
+exports[`ActivityPage > matches snapshot when latest reviews are loaded 1`] = `
 <DocumentFragment>
   <section
     class="mx-auto mt-8 max-w-6xl px-4 pb-4"
@@ -2707,7 +2707,7 @@ exports[`ActivityPage Snapshots > matches snapshot when latest reviews are loade
 </DocumentFragment>
 `;
 
-exports[`ActivityPage Snapshots > matches snapshot when loading 1`] = `
+exports[`ActivityPage > matches snapshot when loading 1`] = `
 <DocumentFragment>
   <section
     class="mt-6 w-dvw text-center"
@@ -2742,7 +2742,7 @@ exports[`ActivityPage Snapshots > matches snapshot when loading 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ActivityPage Snapshots > matches snapshot when no reviews are available 1`] = `
+exports[`ActivityPage > matches snapshot when no reviews are available 1`] = `
 <DocumentFragment>
   <section
     class="mt-6 text-center"
@@ -2762,7 +2762,7 @@ exports[`ActivityPage Snapshots > matches snapshot when no reviews are available
 </DocumentFragment>
 `;
 
-exports[`ActivityPage Snapshots > matches snapshot when there is an error 1`] = `
+exports[`ActivityPage > matches snapshot when there is an error 1`] = `
 <DocumentFragment>
   <section
     class="mt-6 w-dvw text-center"

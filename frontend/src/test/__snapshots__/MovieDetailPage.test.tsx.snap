@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MovieDetailPage Snapshots > matches snapshot on error 1`] = `
+exports[`MovieDetailPage > matches snapshot on error 1`] = `
 <DocumentFragment>
   <section
     class="mt-2 w-dvw text-center"
@@ -20,7 +20,7 @@ exports[`MovieDetailPage Snapshots > matches snapshot on error 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MovieDetailPage Snapshots > matches snapshot when data is loaded 1`] = `
+exports[`MovieDetailPage > matches snapshot when data is loaded 1`] = `
 <DocumentFragment>
   <section
     class="pb-2"
@@ -402,7 +402,7 @@ exports[`MovieDetailPage Snapshots > matches snapshot when data is loaded 1`] = 
 </DocumentFragment>
 `;
 
-exports[`MovieDetailPage Snapshots > matches snapshot when loading 1`] = `
+exports[`MovieDetailPage > matches snapshot when loading 1`] = `
 <DocumentFragment>
   <section
     class="mt-2 w-dvw text-center"
@@ -437,7 +437,7 @@ exports[`MovieDetailPage Snapshots > matches snapshot when loading 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MovieDetailPage Snapshots > matches snapshot when no movie is found 1`] = `
+exports[`MovieDetailPage > matches snapshot when no movie is found 1`] = `
 <DocumentFragment>
   <section
     class="mt-2 w-dvw text-center"

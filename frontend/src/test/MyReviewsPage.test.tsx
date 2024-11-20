@@ -64,17 +64,17 @@ vi.mock("react-router-dom", async () => {
     };
 });
 
-const renderComponent = (mocks: MockedResponse[] | undefined) => {
-    return render(
-        <MockedProvider mocks={mocks} addTypename={false}>
-            <MemoryRouter>
-                <MyReviewsPage />
-            </MemoryRouter>
-        </MockedProvider>
-    );
-};
+describe("ActivityPage", () => {
+    const renderComponent = (mocks: MockedResponse[] | undefined) => {
+        return render(
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <MemoryRouter>
+                    <MyReviewsPage />
+                </MemoryRouter>
+            </MockedProvider>
+        );
+    };
 
-describe("MyReviewsPage Snapshots", () => {
     afterAll(() => {
         usernameVar("Guest");
     });
@@ -104,12 +104,6 @@ describe("MyReviewsPage Snapshots", () => {
         const { asFragment } = renderComponent(mockUserReviewsError);
         await screen.findByText("Something went wrong!");
         expect(asFragment()).toMatchSnapshot();
-    });
-});
-
-describe("ActivityPage", () => {
-    afterAll(() => {
-        usernameVar("Guest");
     });
 
     it("displays 'You have not added any reviews yet' on empty reviews", async () => {
