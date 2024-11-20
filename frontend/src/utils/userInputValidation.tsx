@@ -4,7 +4,7 @@ import { toast } from "sonner";
  *  Returns true if the username is valid, false otherwise.
  *  A valid username must be between 3 and 20 characters long.
  *
- * Displays a toast error if the username is too short or too long.
+ *  Displays a toast error if the username is too short or too long.
  */
 export function validateUsername(username: string) {
     const usernameMinLength = 3;
@@ -38,13 +38,7 @@ export function validateReview(comment: string) {
 
     if (comment.trim().length > reviewMaxLength) {
         toast.error("Review is too long", {
-            description: (
-                <p>
-                    Review must be at most {reviewMaxLength} characters.
-                    <br />
-                    Current length: {comment.trim().length}.
-                </p>
-            ),
+            description: `Review must be at most ${reviewMaxLength} characters.`,
         });
         return false;
     }

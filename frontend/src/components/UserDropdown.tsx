@@ -107,6 +107,7 @@ const UserDropdown = () => {
                                     onChange={(e) =>
                                         setNewUsername(e.target.value)
                                     }
+                                    maxLength={20}
                                 />
                             </div>
                             <Button type="submit">Change username</Button>

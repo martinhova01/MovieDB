@@ -102,6 +102,7 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         placeholder="Write your review (optional)"
+                        maxLength={1500}
                     />
                     <Button type="submit" disabled={rating === 0 || loading}>
                         {loading ? (
