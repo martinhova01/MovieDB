@@ -574,7 +574,7 @@ describe(
             cy.wait("@gqlGetMoviesQuery");
             cy.get('a[href*="movie"] img').should("have.length", 20);
 
-            cy.get('a[href*="movie"] img').last().scrollIntoView();
+            cy.window().scrollTo("bottom");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
@@ -588,7 +588,7 @@ describe(
                 cy.checkMoviePosters(responseMovies, 40, 20);
             });
 
-            cy.get('a[href*="movie"] img').last().scrollIntoView();
+            cy.window().scrollTo("bottom");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
@@ -608,7 +608,7 @@ describe(
             cy.wait("@gqlGetMoviesQuery");
             cy.get('a[href*="movie"] img').should("have.length", 20);
 
-            cy.get('a[href*="movie"] img').last().scrollIntoView();
+            cy.window().scrollTo("bottom");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,
@@ -651,7 +651,7 @@ describe(
                 );
             });
 
-            cy.get('a[href*="movie"] img').last().scrollIntoView();
+            cy.window().scrollTo("bottom");
             cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     ...emptyVariables,

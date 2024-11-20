@@ -287,7 +287,7 @@ describe(
             cy.wait("@gqlGetLatestReviewsQuery");
             cy.get('a[href*="movie"]').should("have.length", 20);
 
-            cy.get('a[href*="movie"]').last().scrollIntoView();
+            cy.window().scrollTo("bottom");
             cy.wait("@gqlGetLatestReviewsQuery").then(
                 ({ request, response }) => {
                     expect(request.body.variables).to.deep.equal({
@@ -308,7 +308,7 @@ describe(
             cy.wait("@gqlGetUserReviewsQuery");
             cy.get('a[href*="movie"]').should("have.length", 20);
 
-            cy.get('a[href*="movie"]').last().scrollIntoView();
+            cy.window().scrollTo("bottom");
             cy.wait("@gqlGetUserReviewsQuery").then(({ request, response }) => {
                 expect(request.body.variables).to.deep.equal({
                     skip: 20,
