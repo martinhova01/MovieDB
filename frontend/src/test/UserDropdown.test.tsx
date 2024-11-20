@@ -4,6 +4,11 @@ import userEvent from "@testing-library/user-event";
 import UserDropdown from "@/components/UserDropdown";
 
 describe("UserDropdown", () => {
+    it("matches snapshot", () => {
+        const { asFragment } = render(<UserDropdown />);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("successfully renders UserDropdown", async () => {
         render(<UserDropdown />);
         expect(screen.getByText("Guest")).toBeInTheDocument();

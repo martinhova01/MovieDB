@@ -5,6 +5,15 @@ import userEvent from "@testing-library/user-event";
 import Navbar from "@/components/Navbar";
 
 describe("Navbar", () => {
+    it("matches snapshot for default Navbar", () => {
+        const { asFragment } = render(
+            <MemoryRouter>
+                <Navbar />
+            </MemoryRouter>
+        );
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("successfully renders Navbar", async () => {
         render(
             <MemoryRouter>
