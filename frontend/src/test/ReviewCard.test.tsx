@@ -45,6 +45,16 @@ describe("ReviewCard", () => {
         usernameVar("Guest");
     });
 
+    it("matches snapshot for review card without poster", () => {
+        const { asFragment } = renderComponent(mockReview);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot for review card with poster", () => {
+        const { asFragment } = renderComponent(mockReview, true);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("displays username, data and comment", async () => {
         renderComponent(mockReview);
         expect(screen.getByText("test_user")).toBeInTheDocument();

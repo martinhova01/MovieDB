@@ -75,6 +75,15 @@ describe("MovieReviews", () => {
         usernameVar("Guest");
     });
 
+    it("matches snapshot", () => {
+        const { asFragment } = render(
+            <MockedProvider mocks={[]} addTypename={false}>
+                <MovieReviews movie={mockMovie} />
+            </MockedProvider>
+        );
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("renders existing reviews", async () => {
         render(
             <MockedProvider mocks={[]} addTypename={false}>
