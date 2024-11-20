@@ -150,7 +150,3 @@ To catch any accessibility issues, we’ve been using `Google Lighthouse`, a bui
 ![Lighthouse report](docs/image.png)
 
 *Note: This test was run with the backend on a local server, so the performance results might not be fully accurate.*
-
-### Note
-
-At the moment we perform several queries in order to maintain concistency with regards to the reviews. As this is not the final deliverable we have not yet had time to optimize this. However, this is something we are aware of and in the process of fixing for the final deliverable.
