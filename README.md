@@ -133,19 +133,31 @@ We use caching in order to reduce the number of queries to the backend and impro
 
 ### Testing
 
-We have made end-to-end tests using `Cypress`, as it's known to work well for e2e testing of web applications. When running the end-to-end tests we use `mongodb-memory-server`. This provides a portable database and ensures we don't pollute the main database during testing. For the tests we have sequences of actions with varying length and complexity that imitate real user behavior. We've tried to be thorough, covering edge cases we know can be sources to issues. As an example, we test that reviews are updated correctly in the cache by submitting/deleting a review, then visiting the Activity page and My Reviews page, before returning to the initial movie. For search, sorting and filtering, we've already tested the API responses in the backend tests. Therefore, we focused mainly on checking that requests had the correct variables and that the response data was rendered correctly. Still, we test that search, sorting, filtering and paging work well together through several different action sequences. Due to variations in loading time as a result of for example network congestion, there is a small possibility that tests can fail. However, as we use wait() to handle this problem, this is a rare occurrence. Still, it's worth a mention.
+#### Component tests
+
+For our frontend components, we've set up tests using `vitest` to make sure each component works as expected. We've focused on testing the specific functionality of each component, keeping things isolated by using mocking. This includes mocking API responses, functions, and even other components when needed. This way, we can test components without worrying about external dependencies and ensure they handle different scenarios properly.
+
+#### API tests
+
+For the backend, we've written tests using `vitest`. To not pollute our production database every time we test, and to simplify integration into our CI pipeline, we use `mongodb-memory-server` as the database for these tests. This allows us to run tests in an isolated and consistent environment. It also allows anyone to run our tests, without downloading MongoDB and filling it with data first.
+
+Our tests cover each resolver and utility function in isolation, ensuring the backend behaves as expected. We also test each resolver with actual HTTP requests, and for these complex results, we rely on snapshots to verify that the output remains consistent across runs. This approach helps us maintain accuracy and reliability throughout our testing process.
+
+#### End-to-end tests
+
+We have made end-to-end tests using `Cypress`, as it's known to work well for e2e testing of web applications. When running the end-to-end tests we use `mongodb-memory-server`, as with the API tests, for the same reasons mentioned earlier. For the tests we have sequences of actions with varying length and complexity that imitate real user behavior. We've tried to be thorough, covering edge cases we know can be sources to issues. As an example, we test that reviews are updated correctly in the cache by submitting/deleting a review, then visiting the Activity page and My Reviews page, before returning to the initial movie. For search, sorting and filtering, we've already tested the API responses in the backend tests. Therefore, we focused mainly on checking that requests had the correct variables and that the response data was rendered correctly. Still, we test that search, sorting, filtering and paging work well together through several different action sequences. Due to variations in loading time as a result of for example network congestion, there is a small possibility that tests can fail. However, as we use wait() to handle this problem, this is a rare occurrence. Still, it's worth a mention.
 
 ### Accessibility
 
-We’ve put a lot of effort into making sure our application is accessible for everyone. Accessibility is a core part of what makes a good user experience, so here are some of the steps we've taken to make our app more inclusive:
+We've put a lot of effort into making sure our application is accessible for everyone. Accessibility is a core part of what makes a good user experience, so here are some of the steps we've taken to make our app more inclusive:
 
 - **Semantic HTML**: We use the right HTML tags to ensure that screen readers can easily interpret and present the content to users who rely on them. The few places `<div>`-tags have been used, this has been a deliberate choice, as no other element carried the appropriate semantic meaning.
-- **ARIA Attributes**: We've added `aria-label` to give elements clear, descriptive names and used `aria-role` to specify roles when they’re not obvious from the element type.
-- **Image Descriptions**: All images come with `alt` text. This way, if an image doesn’t load for any reason, the description still provides the necessary context for what was supposed to be there.
+- **ARIA Attributes**: We've added `aria-label` to give elements clear, descriptive names and used `aria-role` to specify roles when they're not obvious from the element type.
+- **Image Descriptions**: All images come with `alt` text. This way, if an image doesn't load for any reason, the description still provides the necessary context for what was supposed to be there.
 - **Keyboard Navigation**: The whole app is built to be navigable using only a keyboard, which is how some users prefer or need to interact with websites.
-- **Color Contrast**: We’ve checked that all text and interactive elements have enough contrast with their backgrounds to be easily readable, especially for users with visual impairments.
+- **Color Contrast**: We've checked that all text and interactive elements have enough contrast with their backgrounds to be easily readable, especially for users with visual impairments.
 
-To catch any accessibility issues, we’ve been using `Google Lighthouse`, a built-in browser tool, to analyze accessibility as well as performance, best practices, and Search Engine Optimization (SEO). Here’s an example of a Lighthouse report for the homepage’s initial load:
+To catch any accessibility issues, we've been using `Google Lighthouse`, a built-in browser tool, to analyze accessibility as well as performance, best practices, and Search Engine Optimization (SEO). Here's an example of a Lighthouse report for the homepage's initial load:
 
 ![Lighthouse report](docs/image.png)
 
