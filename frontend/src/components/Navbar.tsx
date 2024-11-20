@@ -21,7 +21,7 @@ const Navbar = () => {
             <nav className="flex items-center gap-10 text-background">
                 <a
                     href="#main-content"
-                    className="sr-only max-w-10 text-xs focus:not-sr-only sm:max-w-max sm:text-sm"
+                    className="sr-only left-0 top-0 bg-primary font-bold focus:not-sr-only focus:absolute focus:m-2 focus:p-2"
                 >
                     Skip to main content
                 </a>

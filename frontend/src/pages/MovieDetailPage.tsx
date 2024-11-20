@@ -20,41 +20,41 @@ function MovieDetailPage() {
 
     if (error) {
         return (
-            <main className="mt-2 w-dvw text-center">
+            <section className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">Something went wrong!</h1>
                 <Link to="/" className="text-primary hover:underline">
                     Return to home page
                 </Link>
-            </main>
+            </section>
         );
     }
 
     if (loading) {
         return (
-            <main className="mt-2 w-dvw text-center">
+            <section className="mt-2 w-dvw text-center">
                 <Loader size="lg">
                     <p className="text-2xl">Loading...</p>
                 </Loader>
-            </main>
+            </section>
         );
     }
 
     if (!movie) {
         return (
-            <main className="mt-2 w-dvw text-center">
+            <section className="mt-2 w-dvw text-center">
                 <h1 className="text-2xl">Could not find movie!</h1>
                 <Link to="/" className="text-primary hover:underline">
                     Return to home page
                 </Link>
-            </main>
+            </section>
         );
     }
 
     return (
-        <main id="main-content" className="pb-2">
+        <section className="pb-2">
             <MovieCardDetailed movie={movie} />
             <MovieReviews movie={movie} />
-        </main>
+        </section>
     );
 }
 

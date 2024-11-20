@@ -13,7 +13,9 @@ const routerConfig: RouteObject[] = [
         element: (
             <>
                 <Navbar />
-                <Outlet />
+                <main id="main-content" tabIndex={-1}>
+                    <Outlet />
+                </main>
                 <Toaster position="bottom-right" />
             </>
         ),

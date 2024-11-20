@@ -72,7 +72,7 @@ const ActivityPage = () => {
     }
 
     return (
-        <main id="main-content" className="mx-auto mt-8 max-w-6xl px-4 pb-4">
+        <section className="mx-auto mt-8 max-w-6xl px-4 pb-4">
             <h1 className="mb-6 text-center text-3xl font-bold">
                 Latest Activity
             </h1>
@@ -99,7 +99,7 @@ const ActivityPage = () => {
                     ))}
                 </ul>
             </InfiniteScroll>
-        </main>
+        </section>
     );
 };
 
