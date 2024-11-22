@@ -1,6 +1,7 @@
 import { Button } from "@/shadcn/components/ui/button";
 import {
     Sheet,
+    SheetClose,
     SheetContent,
     SheetDescription,
     SheetTitle,
@@ -26,12 +27,14 @@ const NavbarOverlay = ({ links }: { links: NavbarProps }) => {
                     <ul className="flex flex-col space-y-4">
                         {links.map((link) => (
                             <li key={link.name}>
-                                <Link
-                                    to={link.href}
-                                    className="text-foreground transition-colors hover:text-primary"
-                                >
-                                    {link.name}
-                                </Link>
+                                <SheetClose asChild>
+                                    <Link
+                                        to={link.href}
+                                        className="text-foreground transition-colors hover:text-primary"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </SheetClose>
                                 <hr />
                             </li>
                         ))}
