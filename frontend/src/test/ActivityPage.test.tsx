@@ -5,6 +5,15 @@ import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import ActivityPage from "@/pages/ActivityPage";
 import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { vi } from "vitest";
+
+vi.mock("../components/ReviewCard", () => ({
+    default: vi.fn(() => <div data-testid="review-card" />),
+}));
+
+vi.mock("../components/Loader", () => ({
+    default: vi.fn(() => <div data-testid="loader" />),
+}));
 
 const mockLatestReviewsEmpty = [
     {
@@ -107,9 +116,8 @@ describe("ActivityPage", () => {
 
     it("renders 20 reviews", async () => {
         renderComponent(mockLatestReviews);
-        //All reviews have username 'test_user'
         await waitFor(() =>
-            expect(screen.getAllByText("test_user")).toHaveLength(20)
+            expect(screen.getAllByTestId("review-card")).toHaveLength(20)
         );
     });
 });
