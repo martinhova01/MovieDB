@@ -5,6 +5,21 @@ import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { GET_MOVIE } from "@/api/queries";
 import MovieDetailPage from "@/pages/MovieDetailPage";
 import { all_movies } from "./mock/util";
+import { vi } from "vitest";
+
+vi.mock("../components/MovieCardDetailed", () => ({
+    default: vi.fn(({ movie }: { movie: { title: string } }) => (
+        <div data-testid="movie-card-detailed">{movie.title}</div>
+    )),
+}));
+
+vi.mock("../components/MovieReviews", () => ({
+    default: vi.fn(() => <div data-testid="movie-reviews" />),
+}));
+
+vi.mock("../components/Loader", () => ({
+    default: vi.fn(() => <div data-testid="loader" />),
+}));
 
 const movieMock = [
     {
@@ -83,12 +98,14 @@ describe("MovieDetailPage", () => {
 
     it("displays loading message initially", () => {
         renderComponent(movieMock);
-        expect(screen.getByText("Loading...")).toBeInTheDocument();
+        expect(screen.getByTestId("loader")).toBeInTheDocument();
     });
 
     it("displays movie details when data is successfully loaded", async () => {
         renderComponent(movieMock);
-        expect(await screen.findByText("Joker")).toBeInTheDocument();
+        expect(
+            await screen.findByTestId("movie-card-detailed")
+        ).toHaveTextContent("Joker");
     });
 
     it("displays error message if there is a query error", async () => {
