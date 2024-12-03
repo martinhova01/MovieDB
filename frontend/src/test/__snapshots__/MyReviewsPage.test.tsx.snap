@@ -25,31 +25,8 @@ exports[`ActivityPage > matches snapshot when loading 1`] = `
     class="mt-6 w-dvw text-center"
   >
     <div
-      aria-live="polite"
-      class="m-2 flex flex-col items-center justify-center gap-2"
-      role="status"
-    >
-      <svg
-        class="animate-spin h-16 w-16 stroke-primary"
-        viewBox="0 0 800 800"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle
-          cx="400"
-          cy="400"
-          fill="none"
-          r="350"
-          stroke-dasharray="1648,550"
-          stroke-linecap="round"
-          stroke-width="64"
-        />
-      </svg>
-      <p
-        class="text-2xl"
-      >
-        Loading...
-      </p>
-    </div>
+      data-testid="loader"
+    />
   </section>
 </DocumentFragment>
 `;
@@ -90,3672 +67,428 @@ exports[`ActivityPage > matches snapshot when user reviews are loaded 1`] = `
       >
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r0:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/157336"
-              >
-                <img
-                  alt="Interstellar poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
-                  title="Interstellar"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T19:41:09.625Z"
-                  >
-                    November 13, 2024 at 08:41 PM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star text-yellow-200"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  good movie!
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              4
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              good movie!
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r3:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/762430"
-              >
-                <img
-                  alt="Retribution poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
-                  title="Retribution"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:52.669Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  22
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              22
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r6:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/762430"
-              >
-                <img
-                  alt="Retribution poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
-                  title="Retribution"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:50.993Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  21
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              21
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r9:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/762430"
-              >
-                <img
-                  alt="Retribution poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
-                  title="Retribution"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:48.142Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  20
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              20
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:rc:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/762430"
-              >
-                <img
-                  alt="Retribution poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
-                  title="Retribution"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:45.616Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  19
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              19
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:rf:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/762430"
-              >
-                <img
-                  alt="Retribution poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
-                  title="Retribution"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:42.787Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  18
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              18
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:ri:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/615656"
-              >
-                <img
-                  alt="Meg 2: The Trench poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
-                  title="Meg 2: The Trench"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:36.742Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star text-yellow-200"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  17
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              4
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              17
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:rl:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/615656"
-              >
-                <img
-                  alt="Meg 2: The Trench poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
-                  title="Meg 2: The Trench"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:33.128Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  16
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              16
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:ro:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/615656"
-              >
-                <img
-                  alt="Meg 2: The Trench poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
-                  title="Meg 2: The Trench"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:30.993Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  15
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              15
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:rr:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/615656"
-              >
-                <img
-                  alt="Meg 2: The Trench poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
-                  title="Meg 2: The Trench"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:28.502Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  14
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              14
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:ru:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/615656"
-              >
-                <img
-                  alt="Meg 2: The Trench poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
-                  title="Meg 2: The Trench"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:22.264Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  13
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              13
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r11:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/615656"
-              >
-                <img
-                  alt="Meg 2: The Trench poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
-                  title="Meg 2: The Trench"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:19.698Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  12
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              12
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r14:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/968051"
-              >
-                <img
-                  alt="The Nun II poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg"
-                  title="The Nun II"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:13.854Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  11
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              11
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r17:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/968051"
-              >
-                <img
-                  alt="The Nun II poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg"
-                  title="The Nun II"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:11.616Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  10
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              10
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r1a:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/968051"
-              >
-                <img
-                  alt="The Nun II poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg"
-                  title="The Nun II"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:08.469Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  9
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              9
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r1d:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/968051"
-              >
-                <img
-                  alt="The Nun II poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg"
-                  title="The Nun II"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:06.416Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  8
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              8
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r1g:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/968051"
-              >
-                <img
-                  alt="The Nun II poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/c9kVD7W8CT5xe4O3hQ7bFWwk68U.jpg"
-                  title="The Nun II"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:47:04.504Z"
-                  >
-                    November 13, 2024 at 11:47 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  7
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              7
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r1j:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/980489"
-              >
-                <img
-                  alt="Gran Turismo poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg"
-                  title="Gran Turismo"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:46:59.266Z"
-                  >
-                    November 13, 2024 at 11:46 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  6
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              5
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              6
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r1m:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/980489"
-              >
-                <img
-                  alt="Gran Turismo poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg"
-                  title="Gran Turismo"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:46:56.605Z"
-                  >
-                    November 13, 2024 at 11:46 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star text-yellow-200"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  5
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              4
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              5
+            </span>
           </div>
         </li>
         <li>
           <div
-            class="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-testid="review-card"
           >
-            <div
-              class="relative p-4"
+            <span
+              data-testid="review-username"
             >
-              <button
-                aria-controls="radix-:r1p:"
-                aria-expanded="false"
-                aria-haspopup="dialog"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md absolute right-4 top-4 h-8 px-2"
-                data-state="closed"
-                type="button"
-              >
-                <svg
-                  aria-label="delete review"
-                  class="lucide lucide-trash2 h-4 w-4 sm:hidden"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6h18"
-                  />
-                  <path
-                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-                  />
-                  <path
-                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                  />
-                  <line
-                    x1="10"
-                    x2="10"
-                    y1="11"
-                    y2="17"
-                  />
-                  <line
-                    x1="14"
-                    x2="14"
-                    y1="11"
-                    y2="17"
-                  />
-                </svg>
-                <span
-                  class="hidden sm:inline"
-                >
-                  Delete
-                </span>
-              </button>
-              <a
-                href="/movie/980489"
-              >
-                <img
-                  alt="Gran Turismo poster"
-                  class="float-left mb-2 mr-6 h-48 w-32 rounded-lg object-cover"
-                  src="https://image.tmdb.org/t/p/w342/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg"
-                  title="Gran Turismo"
-                />
-              </a>
-              <section
-                class="min-h-[12rem]"
-              >
-                <section
-                  class="mb-2 pr-16"
-                >
-                  <p
-                    class="text-lg font-bold sm:text-xl"
-                  >
-                    test_user
-                  </p>
-                  <time
-                    class="text-xs opacity-60 sm:text-sm"
-                    datetime="2024-11-13T10:46:53.588Z"
-                  >
-                    November 13, 2024 at 11:46 AM
-                  </time>
-                </section>
-                <div
-                  class="flex items-center gap-2"
-                >
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star fill-current text-yellow-500"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star text-yellow-200"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                  <svg
-                    class="lucide lucide-star text-yellow-200"
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    tabindex="-1"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="mt-2 break-words text-sm sm:text-base"
-                >
-                  4
-                </p>
-              </section>
-            </div>
+              test_user
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              3
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              4
+            </span>
           </div>
         </li>
       </ul>
       <div
-        aria-label="Loading more reviews..."
-        aria-live="polite"
-        class="m-2 flex flex-col items-center justify-center gap-2 text-center"
-        role="status"
-      >
-        <svg
-          class="animate-spin h-12 w-12 stroke-primary"
-          viewBox="0 0 800 800"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            cx="400"
-            cy="400"
-            fill="none"
-            r="350"
-            stroke-dasharray="1648,550"
-            stroke-linecap="round"
-            stroke-width="64"
-          />
-        </svg>
-        <p
-          class="text-2xl"
-        >
-          Loading...
-        </p>
-      </div>
+        data-testid="loader"
+      />
     </div>
   </section>
 </DocumentFragment>
