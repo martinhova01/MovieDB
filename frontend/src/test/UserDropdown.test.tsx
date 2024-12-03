@@ -2,8 +2,22 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import UserDropdown from "@/components/UserDropdown";
+import { vi } from "vitest";
+import { validateUsername } from "@/utils/userInputValidation";
+
+vi.mock("@/utils/userInputValidation", () => ({
+    validateUsername: vi.fn(),
+}));
 
 describe("UserDropdown", () => {
+    beforeEach(() => {
+        vi.mocked(validateUsername).mockReturnValue(true);
+    });
+
+    afterEach(() => {
+        localStorage.clear();
+    });
+
     it("matches snapshot", () => {
         const { asFragment } = render(<UserDropdown />);
         expect(asFragment()).toMatchSnapshot();
@@ -77,6 +91,7 @@ describe("UserDropdown", () => {
     });
 
     it("successfully handles empty string as new username", async () => {
+        vi.mocked(validateUsername).mockReturnValue(false);
         render(<UserDropdown />);
         await userEvent.click(screen.getByText("Guest"));
         await userEvent.click(screen.getByText("Change username"));
