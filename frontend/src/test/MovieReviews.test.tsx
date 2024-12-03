@@ -7,6 +7,40 @@ import { ADD_REVIEW } from "@/api/queries";
 import { Review } from "@/types/__generated__/types";
 import { usernameVar } from "@/utils/cache";
 import { all_movies } from "./mock/util";
+import { vi } from "vitest";
+import { useReactiveVar } from "@apollo/client";
+import { validateReview, validateUsername } from "@/utils/userInputValidation";
+
+vi.mock("../components/ReviewCard", () => ({
+    default: vi.fn(({ review }: { review: Review }) => (
+        <div data-testid="review-card">
+            <span data-testid="review-username">{review.username}</span>
+            <span data-testid="review-rating">{review.rating}</span>
+            <span data-testid="review-comment">{review.comment}</span>
+        </div>
+    )),
+}));
+
+vi.mock("../components/Loader", () => ({
+    default: vi.fn(() => <div data-testid="loader" />),
+}));
+
+vi.mock("@/utils/userInputValidation", () => ({
+    validateReview: vi.fn(),
+    validateUsername: vi.fn(),
+}));
+
+vi.mock("@/utils/cache", () => ({
+    usernameVar: vi.fn(),
+}));
+
+vi.mock("@apollo/client", async () => {
+    const original = await vi.importActual("@apollo/client");
+    return {
+        ...original,
+        useReactiveVar: vi.fn(),
+    };
+});
 
 const mockDate = new Date("2024-01-01T12:00:00Z");
 
@@ -70,11 +104,14 @@ const mockNullAddReviewMutation = {
 
 describe("MovieReviews", () => {
     beforeAll(() => {
-        usernameVar("testuser");
+        vi.mocked(validateUsername).mockReturnValue(true);
+        vi.mocked(validateReview).mockReturnValue(true);
+        vi.mocked(usernameVar).mockReturnValue("testuser");
+        vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
     });
 
     afterAll(() => {
-        usernameVar("Guest");
+        vi.clearAllMocks();
     });
 
     it("matches snapshot", () => {
