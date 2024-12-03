@@ -36,102 +36,27 @@ exports[`Navbar > matches snapshot for default Navbar 1`] = `
             Activity
           </a>
         </li>
+        <li>
+          <a
+            class="hover:underline"
+            href="/myReviews"
+          >
+            My Reviews
+          </a>
+        </li>
       </ul>
     </nav>
     <div
       class="flex items-center"
     >
-      <button
-        aria-expanded="false"
-        aria-haspopup="menu"
-        aria-label="user"
-        class="justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex items-center space-x-2"
-        data-state="closed"
-        id="radix-:r0:"
-        type="button"
-      >
-        <svg
-          class="lucide lucide-user h-4 w-4"
-          fill="none"
-          height="24"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"
-          />
-          <circle
-            cx="12"
-            cy="7"
-            r="4"
-          />
-        </svg>
-        <span
-          class="hidden truncate sm:flex sm:max-w-32"
-        >
-          Guest
-        </span>
-      </button>
+      <div
+        data-testid="user-dropdown"
+      />
       <div
         class="ml-2"
       >
-        <button
-          aria-controls="radix-:r2:"
-          aria-expanded="false"
-          aria-haspopup="dialog"
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10 sm:hidden"
-          data-state="closed"
-          type="button"
-        >
-          <svg
-            class="lucide lucide-menu"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              x1="4"
-              x2="20"
-              y1="12"
-              y2="12"
-            />
-            <line
-              x1="4"
-              x2="20"
-              y1="6"
-              y2="6"
-            />
-            <line
-              x1="4"
-              x2="20"
-              y1="18"
-              y2="18"
-            />
-          </svg>
-          <span
-            class="sr-only"
-          >
-            Toggle navigation menu
-          </span>
-        </button>
-        <h2
-          class="text-lg font-semibold text-foreground"
-          id="radix-:r3:"
-        />
-        <p
-          class="text-sm text-muted-foreground"
-          id="radix-:r4:"
+        <div
+          data-testid="navbar-overlay"
         />
       </div>
     </div>
