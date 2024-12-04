@@ -179,7 +179,7 @@ During development, we've made sure to find sustainable solutions. The previous 
 
 - **Reducing image sizes**: For components with smaller images, like `MovieCard.tsx` or `ReviewCard.tsx`, we realized that the default image sizes were way bigger than needed. Therefore, in order to reduce network traffic, we decided to request images of a smaller, more appropriate, size (`w342`). This makes for a more sustainable solution, consuming less bandwidth and energy during transmission.
 
-- **WebP format**: In order to handle movies that didn't have a poster, we decided to provide a default poster. Here we made sure to use WebP image format, in addition to not making it bigger than necessary.
+- **WebP format**: In order to handle movies that didn't have a poster, we decided to provide a default poster. Here we made sure to use WebP image format, in addition to not making it bigger than necessary. For the other movie posters, we rely on a third-party API and were unfortunately not able to obtain them in the WebP format.
 
 - **Videos and animations**: We chose to avoid videos and animations due their significant environmental impact. Videos and animations are particularly problematic, as they generate high data traffic and require considerable energy on the client device. If the user is interested in watching the trailer, they can instead visit the movie home page, which we link to.
 
