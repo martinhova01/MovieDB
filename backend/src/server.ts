@@ -6,6 +6,15 @@ import connectToDatabase from "./db/database.js";
 import resolvers from "./resolvers/resolvers.js";
 import { typeDefs } from "./schemas/schema.js";
 
+/**
+ * Creates and starts an Apollo Server instance. Will connect to the database before starting the server.
+ *
+ * @param listenOptions - The options for the server to listen on. (e.g. port)
+ * @param databaseUri - The URI of the database to connect to.
+ * @returns An object containing the server instance and the URL it is listening on.
+ *
+ * @throws Will throw an error if the server fails to start or the database connection fails.
+ */
 export async function createApolloServer(
     listenOptions: ListenOptions,
     databaseUri: string

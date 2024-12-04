@@ -12,6 +12,13 @@ export enum SortingType {
 
 export const defaultSortOption = SortingType.MOST_POPULAR;
 
+/**
+ * Returns a sort order object (readable by MongoDB) based on the provided sorting option.
+ *
+ * @param sortOption - The sorting option of type `SortingType`.
+ * @returns An object where the key is the field to sort by and the value is the sort order.
+ *          The sort order is -1 for descending and 1 for ascending.
+ */
 export const getSortOrder = (
     sortOption: SortingType
 ): { [key: string]: SortOrder } => {

@@ -11,13 +11,14 @@ export async function resolveLatestReviews({
     skip = 0,
     limit = 10,
 }: ResolveLatestReviewsInterface) {
+    // Make sure the skip and limit are valid
     const validationError = validateSkipLimit(skip, limit);
     if (validationError != null) {
         return validationError;
     }
 
     return await ReviewModel.find()
-        .sort({ date: -1 })
+        .sort({ date: -1 }) // Return the latest reviews first
         .skip(skip)
         .limit(limit)
         .populate({ path: "movie", model: MovieModel });

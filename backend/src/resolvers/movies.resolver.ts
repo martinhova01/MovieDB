@@ -23,6 +23,7 @@ export async function resolveMovies({
     sortOption,
     search,
 }: ResolveMoviesInterface) {
+    // Make sure the skip and limit are valid
     const validationError = validateSkipLimit(skip, limit);
     if (validationError != null) {
         return validationError;
@@ -30,6 +31,7 @@ export async function resolveMovies({
 
     return await MovieModel.find(createFilterAndSearch(filters, search))
         .sort({
+            // If the sortOption is not provided, use the default sort option
             ...getSortOrder(sortOption ?? defaultSortOption),
             _id: 1,
         })
