@@ -132,7 +132,8 @@ const SortAndFilterPanel: React.FC = () => {
                 <SheetHeader className="mb-5">
                     <SheetTitle>Sort & Filter</SheetTitle>
                     <SheetDescription>
-                        Use the tools below to refine your results
+                        Adding filters or changing sorting order will
+                        automatically update the results.
                     </SheetDescription>
                 </SheetHeader>
 

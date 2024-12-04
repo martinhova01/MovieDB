@@ -48,7 +48,7 @@ const SearchBar: React.FC = () => {
                 id="searchbar"
                 name="searchbar"
                 type="search"
-                placeholder="Search..."
+                placeholder="Search... (Typing updates result)"
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 ref={searchInputRef}
