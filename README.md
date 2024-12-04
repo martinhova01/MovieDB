@@ -127,10 +127,6 @@ Our sorting, filtering and search logic is in the backend so that we can use the
 
 We initially had over 700.000 movies in our database, but we later found that most movies were inappropriate or just joke entries. Therefore, we decided to remove many movies based on some criteria. If certain fields are null for example, it doesn't make sense to have the entries: title, release_date, overview, and runtime all have to have a value. Other criteria get rid of a lot of the inappropriate movies: adult = false, imdb_id != null. Then, we only kept the top 10.000 most popular movies. This ensures that we have as many known movies as possible while avoiding most of the inappropriate/irrelevant movies that haven't been filtered out already.
 
-### Caching
-
-We use caching in order to reduce the number of queries to the backend and improve performance. This way we avoid fetching the same data multiple times. When it comes to the caching of reviews, we had to find a balance between having up-to-date data and minimizing the number of queries. We found that the best solution was to have the user refresh in order to be sure of having the latest updates. This allows us to update the cache manually when adding/deleting a review, reducing the number of queries considerably while still feeling intuitive for the user.
-
 ### Testing
 
 #### Component tests
@@ -162,3 +158,31 @@ To catch any accessibility issues, we've been using `Google Lighthouse`, a built
 ![Lighthouse report](docs/image.png)
 
 *Note: This test was run with the backend on a local server, so the performance results might not be fully accurate.*
+
+### Sustainability
+
+During development, we've made sure to find sustainable solutions. The previous part about accessibility is already an important point, directly relating to the UN's Sustainable Development Goal 10, particularly 10.2, which focuses on inclusion of all, irrespective of for example disability. By focusing on accessible design we ensure greater inclusivity. However, as this topic also covers much more, we discuss some of the other ways we've ensured sustainability below.
+
+#### Optimizing queries
+
+- **Caching**: We use caching in order to reduce the number of queries to the backend and improve performance. This way we avoid fetching the same data multiple times, making the application more sustainable. When it comes to the caching of reviews, we had to find a balance between having up-to-date data and minimizing the number of queries. We found that the best solution was to have the user refresh in order to be sure of having the latest updates. This allows us to update the cache manually when adding/deleting a review, reducing the number of queries considerably while still feeling intuitive for the user.
+
+- **Input validation in frontend**: For example, when changing username, we validate the new username before sending a call to the backend. We've put effort into having a robust API with appropriate error handling, meaning such an invalid username would be handled, but by having extra validation in the frontend we avoid the unnecessary call to the backend for a username we know is invalid.
+
+- **Debounce**: In order to further reduce the query count, while still maintaining a good user experience, we decided to implement debounce on our search field. The delay is set to 510ms, as this gave a good balance between responsiveness and avoiding unnecessary queries. When holding down a key on the keyboard, the browser also waits 500ms to add more of the same character. Therefore, having a longer delay than this helps avoid an extra query when holding down a key.
+
+- **Pagination**: To effectively handle a large dataset and avoid fetching unnecessary data, we implemented pagination. We fetch 20 movies/reviews at a time, as we found this to be an appropriate amount, taking both user experience and sustainability into consideration. By only fetching smaller, more manageable chunks of data we reduce data transfer and carbon cost.
+
+- **GraphQL Usage**: Using GraphQL allows us to only fetch the specific data needed for the application, reducing unnecessary data transfer. This contrasts with traditional REST APIs, where one might end up fetching more data than needed or encounter issues like the N+1 query problem.
+
+#### Media Handling
+
+- **Reducing image sizes**: For components with smaller images, like `MovieCard.tsx` or `ReviewCard.tsx`, we realized that the default image sizes were way bigger than needed. Therefore, in order to reduce network traffic, we decided to request images of a smaller, more appropriate, size (`w342`). This makes for a more sustainable solution, consuming less bandwidth and energy during transmission.
+
+- **WebP format**: In order to handle movies that didn't have a poster, we decided to provide a default poster. Here we made sure to use WebP image format, in addition to not making it bigger than necessary.
+
+- **Videos and animations**: We chose to avoid videos and animations due their significant environmental impact. Videos and animations are particularly problematic, as they generate high data traffic and require considerable energy on the client device. If the user is interested in watching the trailer, they can instead visit the movie home page, which we link to.
+
+#### Code Reusability
+
+- **Minimizing redundancy**: During development we've made sure to make reusable components, while also gathering utility functions in the `utils` folder. This way we avoid code duplication and redundancy, making the code base more maintainable and fit for further development. This also reduces the application's overall size, decreasing the amount of data transferred to users, which in turn lowers energy consumption.
