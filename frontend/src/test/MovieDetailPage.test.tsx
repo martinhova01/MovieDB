@@ -73,6 +73,10 @@ describe("MovieDetailPage", () => {
         );
     };
 
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
     it("matches snapshot when loading", () => {
         const { asFragment } = renderComponent(movieMock);
         expect(asFragment()).toMatchSnapshot();

@@ -15,6 +15,7 @@ describe("UserDropdown", () => {
     });
 
     afterEach(() => {
+        vi.clearAllMocks();
         localStorage.clear();
     });
 

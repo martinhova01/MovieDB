@@ -10,6 +10,7 @@ import { formatDate } from "@/utils/formatUtil";
 import { DELETE_REVIEW } from "@/api/queries";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
+import { useReactiveVar } from "@apollo/client";
 
 const mockReview: Review = all_reviews[0];
 
@@ -39,7 +40,7 @@ vi.mock("@apollo/client", async () => {
     const original = await vi.importActual("@apollo/client");
     return {
         ...original,
-        useReactiveVar: vi.fn().mockImplementation((varFn) => varFn()),
+        useReactiveVar: vi.fn(),
     };
 });
 
@@ -61,8 +62,8 @@ vi.mock("@/utils/imageUrl/imageUrl", () => ({
     },
 }));
 
-vi.mock("@/components/Loader", () => ({
-    default: vi.fn(() => <div data-testid="loader">Loading...</div>),
+vi.mock("../components/Loader", () => ({
+    default: vi.fn(() => <div data-testid="loader" />),
 }));
 
 describe("ReviewCard", () => {
@@ -78,6 +79,11 @@ describe("ReviewCard", () => {
 
     beforeEach(() => {
         vi.mocked(usernameVar).mockReturnValue("test_user");
+        vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
+    });
+
+    afterEach(() => {
+        vi.clearAllMocks();
     });
 
     it("matches snapshot for review card without poster", () => {

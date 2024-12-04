@@ -8,6 +8,7 @@ import { act, render, screen, waitFor } from "@testing-library/react";
 import MyReviewsPage from "@/pages/MyReviewsPage";
 import { vi } from "vitest";
 import { Review } from "@/types/__generated__/types";
+import { useReactiveVar } from "@apollo/client";
 
 const mockUserReviews = [
     {
@@ -78,7 +79,7 @@ vi.mock("@apollo/client", async () => {
     const original = await vi.importActual("@apollo/client");
     return {
         ...original,
-        useReactiveVar: vi.fn().mockImplementation((varFn) => varFn()),
+        useReactiveVar: vi.fn(),
     };
 });
 
@@ -104,6 +105,11 @@ describe("ActivityPage", () => {
 
     beforeEach(() => {
         vi.mocked(usernameVar).mockReturnValue("test_user");
+        vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
+    });
+
+    afterEach(() => {
+        vi.clearAllMocks();
     });
 
     it("matches snapshot when loading", () => {

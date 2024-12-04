@@ -73,6 +73,10 @@ describe("ActivityPage", () => {
         );
     };
 
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
     it("matches snapshot when loading", () => {
         const { asFragment } = renderComponent(mockLatestReviewsEmpty);
         expect(asFragment()).toMatchSnapshot();

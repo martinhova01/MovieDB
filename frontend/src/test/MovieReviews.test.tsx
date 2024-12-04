@@ -5,11 +5,11 @@ import userEvent from "@testing-library/user-event";
 import MovieReviews from "../components/MovieReviews";
 import { ADD_REVIEW } from "@/api/queries";
 import { Review } from "@/types/__generated__/types";
-import { usernameVar } from "@/utils/cache";
 import { all_movies } from "./mock/util";
 import { vi } from "vitest";
-import { useReactiveVar } from "@apollo/client";
 import { validateReview, validateUsername } from "@/utils/userInputValidation";
+import { usernameVar } from "@/utils/cache";
+import { useReactiveVar } from "@apollo/client";
 
 vi.mock("../components/ReviewCard", () => ({
     default: vi.fn(({ review }: { review: Review }) => (
@@ -103,14 +103,14 @@ const mockNullAddReviewMutation = {
 };
 
 describe("MovieReviews", () => {
-    beforeAll(() => {
-        vi.mocked(validateUsername).mockReturnValue(true);
+    beforeEach(() => {
         vi.mocked(validateReview).mockReturnValue(true);
+        vi.mocked(validateUsername).mockReturnValue(true);
         vi.mocked(usernameVar).mockReturnValue("testuser");
         vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
     });
 
-    afterAll(() => {
+    afterEach(() => {
         vi.clearAllMocks();
     });
 

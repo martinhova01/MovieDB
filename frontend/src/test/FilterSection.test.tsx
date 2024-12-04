@@ -43,6 +43,10 @@ describe("FilterSection", () => {
         await userEvent.click(screen.getByRole("button"));
     };
 
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
     it("matches snapshot when collapsed", async () => {
         const { asFragment } = render(
             <Accordion type="single" collapsible className="w-full">

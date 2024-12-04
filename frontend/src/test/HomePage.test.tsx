@@ -16,6 +16,10 @@ vi.mock("../components/MovieList", () => ({
 }));
 
 describe("HomePage", () => {
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
     it("matches snapshot", () => {
         const { asFragment } = render(<HomePage />);
         expect(asFragment()).toMatchSnapshot();

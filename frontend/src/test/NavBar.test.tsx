@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import { vi } from "vitest";
 import { usernameVar } from "@/utils/cache";
+import { useReactiveVar } from "@apollo/client";
 
 vi.mock("../components/UserDropdown", () => ({
     default: vi.fn(() => <div data-testid="user-dropdown" />),
@@ -21,11 +22,19 @@ vi.mock("@apollo/client", async () => {
     const original = await vi.importActual("@apollo/client");
     return {
         ...original,
-        useReactiveVar: vi.fn().mockImplementation((varFn) => varFn()),
+        useReactiveVar: vi.fn(),
     };
 });
 
 describe("Navbar", () => {
+    beforeEach(() => {
+        vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
+    });
+
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
     it("matches snapshot for default Navbar", () => {
         const { asFragment } = render(
             <MemoryRouter>
