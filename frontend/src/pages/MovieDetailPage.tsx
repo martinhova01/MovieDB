@@ -13,6 +13,7 @@ function MovieDetailPage() {
 
     const { data, loading, error } = useQuery(GET_MOVIE, {
         variables: { movieId: movieIdAsInt },
+        // Do not send network-request if movieId is not a number
         skip: isNaN(movieIdAsInt),
     });
 
