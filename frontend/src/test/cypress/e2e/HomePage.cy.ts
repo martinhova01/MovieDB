@@ -32,7 +32,7 @@ describe("Homepage - filtering, sorting and search", () => {
         cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
             expect(request.body.variables).to.deep.equal(emptyVariables);
 
-            const initialMovies = response?.body.data.movies as MoviePoster[];
+            const initialMovies = (response?.body.data.movies ?? []) as MoviePoster[];
             cy.checkMoviePosters(initialMovies);
             cy.wrap(initialMovies).as("initialMovies");
         });
@@ -46,7 +46,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 search: "the",
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 15
             );
         });
@@ -59,7 +59,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 search: "the nun",
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 2
             );
         });
@@ -78,7 +78,7 @@ describe("Homepage - filtering, sorting and search", () => {
         cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
             expect(request.body.variables).to.deep.equal(emptyVariables);
 
-            const initialMovies = response?.body.data.movies as MoviePoster[];
+            const initialMovies = (response?.body.data.movies ?? []) as MoviePoster[];
             cy.checkMoviePosters(initialMovies);
             cy.wrap(initialMovies).as("initialMovies");
         });
@@ -97,7 +97,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 ...emptyVariables,
                 sortOption: SortingType.BEST_RATED,
             });
-            cy.checkMoviePosters(response?.body.data.movies as MoviePoster[]);
+            cy.checkMoviePosters((response?.body.data.movies ?? []) as MoviePoster[]);
         });
 
         cy.get("#NEWEST_FIRST").should("be.enabled").click();
@@ -109,7 +109,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 ...emptyVariables,
                 sortOption: SortingType.NEWEST_FIRST,
             });
-            cy.checkMoviePosters(response?.body.data.movies as MoviePoster[]);
+            cy.checkMoviePosters((response?.body.data.movies ?? []) as MoviePoster[]);
         });
 
         // Check that we get the same initial movies when resetting sortOption (cached result)
@@ -126,7 +126,7 @@ describe("Homepage - filtering, sorting and search", () => {
         cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
             expect(request.body.variables).to.deep.equal(emptyVariables);
 
-            const initialMovies = response?.body.data.movies as MoviePoster[];
+            const initialMovies = (response?.body.data.movies ?? []) as MoviePoster[];
             cy.checkMoviePosters(initialMovies);
             cy.wrap(initialMovies).as("initialMovies");
         });
@@ -145,7 +145,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 },
             });
 
-            const filterMovies = response?.body.data.movies as MoviePoster[];
+            const filterMovies = (response?.body.data.movies ?? []) as MoviePoster[];
             cy.checkMoviePosters(filterMovies);
             cy.wrap(filterMovies).as("filterMovies");
         });
@@ -163,7 +163,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 },
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 1
             );
         });
@@ -197,7 +197,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 ...emptyVariables,
                 sortOption: SortingType.BEST_RATED,
             });
-            cy.checkMoviePosters(response?.body.data.movies as MoviePoster[]);
+            cy.checkMoviePosters((response?.body.data.movies ?? []) as MoviePoster[]);
         });
 
         cy.contains("Genre").click();
@@ -212,7 +212,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 sortOption: SortingType.BEST_RATED,
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 18
             );
         });
@@ -230,7 +230,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 sortOption: SortingType.BEST_RATED,
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 6
             );
         });
@@ -250,7 +250,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 search: "mario",
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 1
             );
         });
@@ -267,7 +267,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 search: "the",
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 15
             );
         });
@@ -285,7 +285,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 search: "the",
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 6
             );
         });
@@ -303,7 +303,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 search: "the",
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 6
             );
         });
@@ -320,7 +320,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 sortOption: SortingType.SHORTEST_RUNTIME,
                 search: "the",
             });
-            const filterMovies = response?.body.data.movies as MoviePoster[];
+            const filterMovies = (response?.body.data.movies ?? []) as MoviePoster[];
             cy.checkMoviePosters(filterMovies, 14);
             cy.wrap(filterMovies).as("filterMovies");
         });
@@ -357,7 +357,7 @@ describe("Homepage - filtering, sorting and search", () => {
         cy.wait("@gqlGetMoviesQuery").then(({ request, response }) => {
             expect(request.body.variables).to.deep.equal(emptyVariables);
 
-            const initialhMovies = response?.body.data.movies as MoviePoster[];
+            const initialhMovies = (response?.body.data.movies ?? []) as MoviePoster[];
             cy.wrap(initialhMovies).as("initialhMovies");
         });
 
@@ -374,7 +374,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 ...emptyVariables,
                 sortOption: SortingType.SHORTEST_RUNTIME,
             });
-            cy.checkMoviePosters(response?.body.data.movies as MoviePoster[]);
+            cy.checkMoviePosters((response?.body.data.movies ?? []) as MoviePoster[]);
         });
 
         cy.contains("Status").click();
@@ -389,7 +389,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 },
                 sortOption: SortingType.SHORTEST_RUNTIME,
             });
-            cy.checkMoviePosters(response?.body.data.movies as MoviePoster[]);
+            cy.checkMoviePosters((response?.body.data.movies ?? []) as MoviePoster[]);
         });
 
         cy.contains("Genre").click();
@@ -405,7 +405,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 },
                 sortOption: SortingType.SHORTEST_RUNTIME,
             });
-            cy.checkMoviePosters(response?.body.data.movies as MoviePoster[]);
+            cy.checkMoviePosters((response?.body.data.movies ?? []) as MoviePoster[]);
         });
 
         // Checks that "Clear All" resets everyting
@@ -437,7 +437,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 ...emptyVariables,
                 search: "the",
             });
-            const searchMovies = response?.body.data.movies as MoviePoster[];
+            const searchMovies = (response?.body.data.movies ?? []) as MoviePoster[];
             cy.checkMoviePosters(searchMovies, 15);
             cy.wrap(searchMovies).as("searchMovies");
         });
@@ -457,7 +457,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 search: "the",
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 15
             );
         });
@@ -476,7 +476,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 search: "the",
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 14
             );
         });
@@ -496,7 +496,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 search: "the",
             });
             cy.checkMoviePosters(
-                response?.body.data.movies as MoviePoster[],
+                (response?.body.data.movies ?? []) as MoviePoster[],
                 6
             );
         });
@@ -535,7 +535,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 skip: 20,
             });
 
-            const responseMovies = response?.body.data.movies as MoviePoster[];
+            const responseMovies = (response?.body.data.movies ?? []) as MoviePoster[];
 
             // Check that new page is placed correctly in the list
             cy.checkMoviePosters(responseMovies, 40, 20);
@@ -548,7 +548,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 skip: 40,
             });
 
-            const responseMovies = response?.body.data.movies as MoviePoster[];
+            const responseMovies = (response?.body.data.movies ?? []) as MoviePoster[];
 
             // Check that new page is placed correctly in the list
             cy.checkMoviePosters(responseMovies, 50, 40);
@@ -566,7 +566,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 ...emptyVariables,
                 skip: 20,
             });
-            const responseMovies = response?.body.data.movies as MoviePoster[];
+            const responseMovies = (response?.body.data.movies ?? []) as MoviePoster[];
 
             // Check that new page is placed correctly in the list
             cy.checkMoviePosters(responseMovies, 40, 20);
@@ -581,7 +581,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 ...emptyVariables,
                 sortOption: SortingType.OLDEST_FIRST,
             });
-            cy.checkMoviePosters(response?.body.data.movies as MoviePoster[]);
+            cy.checkMoviePosters((response?.body.data.movies ?? []) as MoviePoster[]);
         });
 
         cy.contains("Rating").click();
@@ -595,7 +595,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 },
                 sortOption: SortingType.OLDEST_FIRST,
             });
-            cy.checkMoviePosters(response?.body.data.movies as MoviePoster[]);
+            cy.checkMoviePosters((response?.body.data.movies ?? []) as MoviePoster[]);
         });
 
         cy.window().scrollTo("bottom");
@@ -609,7 +609,7 @@ describe("Homepage - filtering, sorting and search", () => {
                 },
                 sortOption: SortingType.OLDEST_FIRST,
             });
-            const responseMovies = response?.body.data.movies as MoviePoster[];
+            const responseMovies = (response?.body.data.movies ?? []) as MoviePoster[];
 
             // Check that new page is placed correctly in the list
             cy.checkMoviePosters(responseMovies, 26, 20);

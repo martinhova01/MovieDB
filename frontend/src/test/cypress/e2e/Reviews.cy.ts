@@ -92,7 +92,7 @@ describe("Reviews", () => {
                 limit: 20,
             });
             cy.checkReviewCards(
-                response?.body.data.latestReviews as Review[],
+                (response?.body.data.latestReviews ?? []) as Review[],
                 20
             );
         });
@@ -105,7 +105,7 @@ describe("Reviews", () => {
                 limit: 20,
                 username: "testuser1",
             });
-            cy.checkReviewCards(response?.body.data.userReviews as Review[], 3);
+            cy.checkReviewCards((response?.body.data.userReviews ?? []) as Review[], 3);
         });
         cy.contains("This is a great movie!").should("not.exist");
 
@@ -278,7 +278,7 @@ describe("Reviews", () => {
                 limit: 20,
             });
             cy.checkReviewCards(
-                response?.body.data.latestReviews as Review[],
+                (response?.body.data.latestReviews ?? []) as Review[],
                 25,
                 20
             );
@@ -298,7 +298,7 @@ describe("Reviews", () => {
                 username: "testuser3",
             });
             cy.checkReviewCards(
-                response?.body.data.userReviews as Review[],
+                (response?.body.data.userReviews ?? []) as Review[],
                 21,
                 20
             );
