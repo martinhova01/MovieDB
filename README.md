@@ -23,7 +23,7 @@ The following commands can be run in the `T26-Project-2/frontend` directory:
 
 ### Restarting the frontend on the VM
 
-Navigate to the `~T26-Project-2/frontend` directory
+Navigate to the `~/T26-Project-2/frontend` directory
 
 - `npm ci` to install dependencies (and stop on mismatches between the `package[-lock].json` files)
 - `npm run build` to build the project
@@ -45,7 +45,7 @@ The following commands can be run in the `T26-Project-2/backend` directory:
 
 ### Running the backend on the VM
 
-Navigate to the `~T26-Project-2/backend` directory
+Navigate to the `~/T26-Project-2/backend` directory
 
 - `npm install pm2 -g` to install pm2 globally
 - `npm ci` to install dependencies (and stop on mismatches between the `package[-lock].json` files)
@@ -58,16 +58,19 @@ Navigate to the `~T26-Project-2/backend` directory
 
 ### Running E2E tests
 
+There is no need to fill a testing database manually, or even download MongoDB. The E2E tests (and the backend tests) use an in memory MongoDB server, which is automatically started, filled, reset and stopped when the tests are run. The following commands are the only commands needed to run the E2E tests.
+
 In `T26-Project-2/backend`:
 
-- `npm run build` to build the project
+- `npm run build` to build the backend
 - `npm run e2e:server` to start the test server
 
 In `T26-Project-2/frontend`:
 
 - `npm run dev` to start the development server
-- `npm run e2e` to run the e2e tests (in another terminal)
-- `npm run cy:open` to use the cypress app (provides visualization (optional))
+- One of the following commands:
+  - `npm run e2e` to run the e2e tests (will run headlessly)
+  - `npm run cy:open` to use the cypress app (provides visualization)
 
 ### Setting up the database / backend for the first time
 
@@ -146,6 +149,9 @@ Our tests cover each resolver and utility function in isolation, ensuring the ba
 #### End-to-end tests
 
 We have made end-to-end tests using `Cypress`, as it's known to work well for e2e testing of web applications. When running the end-to-end tests we use `mongodb-memory-server`, as with the API tests, for the same reasons mentioned earlier. For the tests we have sequences of actions with varying length and complexity that imitate real user behavior. We've tried to be thorough, covering edge cases we know can be sources to issues. As an example, we test that reviews are updated correctly in the cache by submitting/deleting a review, then visiting the Activity page and My Reviews page, before returning to the initial movie. For search, sorting and filtering, we've already tested the API responses in the backend tests. Therefore, we focused mainly on checking that requests had the correct variables and that the response data was rendered correctly. Still, we test that search, sorting, filtering and paging work well together through several different action sequences. Due to variations in loading time as a result of for example network congestion, there is a small possibility that tests can fail. However, as we use wait() to handle this problem, this is a rare occurrence. Still, it's worth a mention.
+
+**Note**: There are some warnings that appear when running the E2E tests. These come from code Cypress itself references, so we are not able to fix these issues ourselves.
+
 
 ### Accessibility
 
