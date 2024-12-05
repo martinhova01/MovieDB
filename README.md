@@ -133,6 +133,10 @@ We initially had over 700.000 movies in our database, but we later found that mo
 
 For our frontend components, we've set up tests using `vitest` to make sure each component works as expected. We've focused on testing the specific functionality of each component, keeping things isolated by using mocking. This includes mocking API responses, functions, and even other components when needed. This way, we can test components without worrying about external dependencies and ensure they handle different scenarios properly.
 
+#### Snapshot tests
+
+We have snapshot tests for many of our frontend components and pages. We also have snapshot tests in the backend, to ensure that the results of large queries stay consistent. For our snapshot tests in the frontend, we have decided to mock as many of the underlying child components as possible. This makes it easier for us to detect where snapshot discrepancies originate, as a mistake in one component won't make all snapshot tests fail, but only the relevant one.
+
 #### API tests
 
 For the backend, we've written tests using `vitest`. To not pollute our production database every time we test, and to simplify integration into our CI pipeline, we use `mongodb-memory-server` as the database for these tests. This allows us to run tests in an isolated and consistent environment. It also allows anyone to run our tests, without downloading MongoDB and filling it with data first.
@@ -157,7 +161,7 @@ To catch any accessibility issues, we've been using `Google Lighthouse`, a built
 
 ![Lighthouse report](docs/image.png)
 
-*Note: This test was run with the backend on a local server, so the performance results might not be fully accurate.*
+_Note: This test was run with the backend on a local server, so the performance results might not be fully accurate._
 
 ### Sustainability
 
