@@ -25,7 +25,7 @@ Cypress.Commands.add("seedDatabase", () => {
             ...movie,
             release_date: new Date(movie.release_date["$date"]),
             reviews: movie.reviews.map(
-                (review) => new ObjectId(review["$oid"] as string)
+                (review) => new ObjectId(review["$oid"])
             ),
         }));
         cy.insertMany(movie_data, { collection: "movies" });
@@ -35,7 +35,7 @@ Cypress.Commands.add("seedDatabase", () => {
         const review_data = seed_reviews.map((review) => ({
             ...review,
             date: new Date(review.date["$date"]),
-            _id: new ObjectId(review._id["$oid"] as string),
+            _id: new ObjectId(review._id["$oid"]),
         }));
         cy.insertMany(review_data, { collection: "reviews" });
     });
