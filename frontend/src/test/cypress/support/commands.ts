@@ -6,19 +6,13 @@ import { ObjectId } from "mongodb";
 import { expect } from "chai";
 
 // Interface to handle MongoDB-specific fixture format
-interface MongoFixtureMovie {
-    _id: number;
-    title: string;
-    release_date: { $date: string };
-    reviews: { $oid: string }[];
+interface MongoFixtureMovie extends Omit<Movie, "release_date" | "reviews"> {
+    release_date: { $date: string }; 
+    reviews: { $oid: string }[]; 
 }
-
-interface MongoFixtureReview {
+interface MongoFixtureReview extends Omit<Review, "_id" | "movie" | "date"> {
     _id: { $oid: string };
-    movie: Movie;
-    username: string;
-    rating: number;
-    comment: string;
+    movie: number;
     date: { $date: string };
 }
 
