@@ -43,6 +43,29 @@ describe("FilterSection", () => {
         await userEvent.click(screen.getByRole("button"));
     };
 
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
+    it("matches snapshot when collapsed", async () => {
+        const { asFragment } = render(
+            <Accordion type="single" collapsible className="w-full">
+                <FilterSection {...defaultProps} />
+            </Accordion>
+        );
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot when open", async () => {
+        const { asFragment } = render(
+            <Accordion type="single" collapsible className="w-full">
+                <FilterSection {...defaultProps} />
+            </Accordion>
+        );
+        await userEvent.click(screen.getByRole("button"));
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("renders the category name correctly", () => {
         renderFilterSection(defaultProps);
         expect(screen.getByText("Genre")).toBeInTheDocument();

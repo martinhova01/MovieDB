@@ -38,6 +38,10 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         update(cache, { data }) {
             if (!data?.deleteReview) return;
             const deletedRef: string = `Review:${data.deleteReview._id}`;
+
+            // Remove the reference to the review from the cache
+            // Remove it from the movie it is related to, and
+            // from the latestReviews and userReviews pages
             cache.modify({
                 id: `Movie:${data.deleteReview.movie._id}`,
                 fields: {
@@ -68,6 +72,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                     },
                 },
             });
+            // Also remove the review itself from the cache
             cache.evict({ id: deletedRef });
         },
     });
@@ -103,13 +108,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                 {review.username !== "Guest" &&
                     username === review.username && (
                         <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                                {loading ? (
-                                    <Loader
-                                        size="sm"
-                                        className="absolute right-4 top-4 m-0 h-8 px-2"
-                                    />
-                                ) : (
+                            {loading ? (
+                                <Loader
+                                    size="sm"
+                                    className="absolute right-4 top-4 m-0 h-8 px-2"
+                                />
+                            ) : (
+                                <AlertDialogTrigger asChild>
                                     <Button
                                         size="sm"
                                         className="absolute right-4 top-4 h-8 px-2"
@@ -122,8 +127,8 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                                             Delete
                                         </span>
                                     </Button>
-                                )}
-                            </AlertDialogTrigger>
+                                </AlertDialogTrigger>
+                            )}
 
                             <AlertDialogContent>
                                 <AlertDialogHeader>

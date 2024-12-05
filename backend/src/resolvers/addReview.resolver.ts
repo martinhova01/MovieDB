@@ -21,12 +21,14 @@ export async function resolveAddReview({
     rating,
     comment,
 }: ResolveAddReviewInterface) {
+    // Ensure that the rating is a number between 1 and 5
     if (rating < 1 || rating > 5) {
         return createBadUserInputError(
             "Rating must be an integer between 1 and 5."
         );
     }
 
+    // Make sure the comment and username are valid, and that the movie exists
     const validationError =
         validateReview(comment) ?? validateUsername(username);
     if (validationError != null) return validationError;
@@ -36,11 +38,13 @@ export async function resolveAddReview({
         return createBadUserInputError("Movie not found.");
     }
 
+    // Create the new review object
+    // Make sure to trim it to remove any unwanted leading/trailing whitespace
     const review = new ReviewModel({
         movie: movie_id,
-        username,
+        username: username.trim(),
         rating,
-        comment,
+        comment: comment.trim(),
         date: new Date(),
     });
 
@@ -50,8 +54,13 @@ export async function resolveAddReview({
     const session = await mongoose.startSession();
     session.startTransaction();
 
+    // When adding a review, we need to save the review, add the review to the movie's reviews array,
+    // and update the movie's vote_average and vote_count fields
     try {
         await review.save();
+
+        // Add the new review to the beginning of the reviews array
+        // and update the vote_average and vote_count fields based on the new review
         await movie.updateOne({
             $push: { reviews: { $each: [review._id], $position: 0 } },
             $set: {

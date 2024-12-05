@@ -1,29 +1,41 @@
 /// <reference types="./commands.d.ts" />
 
-import { Review } from "../../../types/__generated__/types";
+import { Movie, Review } from "../../../types/__generated__/types";
 import { MoviePoster } from "../../../types/movieTypes";
 import { ObjectId } from "mongodb";
+import { expect } from "chai";
+
+// Interface to handle MongoDB-specific fixture format
+interface MongoFixtureMovie extends Omit<Movie, "release_date" | "reviews"> {
+    release_date: { $date: string };
+    reviews: { $oid: string }[];
+}
+interface MongoFixtureReview extends Omit<Review, "_id" | "movie" | "date"> {
+    _id: { $oid: string };
+    movie: number;
+    date: { $date: string };
+}
 
 Cypress.Commands.add("seedDatabase", () => {
     cy.deleteMany({}, { collection: "movies" });
     cy.deleteMany({}, { collection: "reviews" });
 
-    cy.fixture("mock_db_movies").then((seed_movies) => {
+    cy.fixture("mock_db_movies").then((seed_movies: MongoFixtureMovie[]) => {
         const movie_data = seed_movies.map((movie) => ({
             ...movie,
             release_date: new Date(movie.release_date["$date"]),
             reviews: movie.reviews.map(
-                (review) => new ObjectId(review["$oid"] as string)
+                (review) => new ObjectId(review["$oid"])
             ),
         }));
         cy.insertMany(movie_data, { collection: "movies" });
     });
 
-    cy.fixture("mock_db_reviews").then((seed_reviews) => {
+    cy.fixture("mock_db_reviews").then((seed_reviews: MongoFixtureReview[]) => {
         const review_data = seed_reviews.map((review) => ({
             ...review,
             date: new Date(review.date["$date"]),
-            _id: new ObjectId(review._id["$oid"] as string),
+            _id: new ObjectId(review._id["$oid"]),
         }));
         cy.insertMany(review_data, { collection: "reviews" });
     });
@@ -67,7 +79,7 @@ Cypress.Commands.add(
                 rating: rating,
                 comment: comment,
             });
-            cy.wrap(response.body.data.addReview).should("exist");
+            cy.wrap(response?.body.data.addReview).should("exist");
         });
         cy.contains("Review added successfully").should("be.visible");
         cy.get("#review-comment").should("be.empty");
@@ -87,7 +99,7 @@ Cypress.Commands.add(
             expect(request.body.variables).to.deep.equal({
                 id: reviewId,
             });
-            cy.wrap(response.body.data.deleteReview).should("exist");
+            cy.wrap(response?.body.data.deleteReview).should("exist");
         });
         cy.contains("Review has been deleted").should("be.visible");
         cy.contains(comment).should("not.exist");

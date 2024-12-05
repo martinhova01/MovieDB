@@ -20,9 +20,12 @@ const MyReviewsPage = () => {
             skip: 0,
             limit: LIMIT,
         },
+        // Do not send network-request if username is "Guest"
+        // Since guests should not see this page at all
         skip: username === "Guest",
         onCompleted: (data) => {
             if (data.userReviews) {
+                // Let the infinite scroll know if there are more reviews to fetch
                 setIsMoreReviews(
                     data.userReviews.length >= LIMIT &&
                         data.userReviews.length % LIMIT === 0
@@ -38,6 +41,7 @@ const MyReviewsPage = () => {
 
     useEffect(() => {
         if (username === "Guest") {
+            // Guests should not see this page at all
             navigate("/");
         }
     }, [username, navigate]);

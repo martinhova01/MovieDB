@@ -1,0 +1,70 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MovieDetailPage > matches snapshot on error 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-2 w-dvw text-center"
+  >
+    <h1
+      class="text-2xl"
+    >
+      Something went wrong!
+    </h1>
+    <a
+      class="text-primary hover:underline"
+      href="/"
+    >
+      Return to home page
+    </a>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`MovieDetailPage > matches snapshot when data is loaded 1`] = `
+<DocumentFragment>
+  <section
+    class="pb-2"
+  >
+    <div
+      data-testid="movie-card-detailed"
+    >
+      Joker
+    </div>
+    <div
+      data-testid="movie-reviews"
+    />
+  </section>
+</DocumentFragment>
+`;
+
+exports[`MovieDetailPage > matches snapshot when loading 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-2 w-dvw text-center"
+  >
+    <div
+      data-testid="loader"
+    />
+  </section>
+</DocumentFragment>
+`;
+
+exports[`MovieDetailPage > matches snapshot when no movie is found 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-2 w-dvw text-center"
+  >
+    <h1
+      class="text-2xl"
+    >
+      Could not find movie!
+    </h1>
+    <a
+      class="text-primary hover:underline"
+      href="/"
+    >
+      Return to home page
+    </a>
+  </section>
+</DocumentFragment>
+`;

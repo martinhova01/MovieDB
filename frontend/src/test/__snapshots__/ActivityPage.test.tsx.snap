@@ -1,0 +1,175 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ActivityPage > matches snapshot when latest reviews are loaded 1`] = `
+<DocumentFragment>
+  <section
+    class="mx-auto mt-8 max-w-6xl px-4 pb-4"
+  >
+    <h1
+      class="mb-6 text-center text-3xl font-bold"
+    >
+      Latest Activity
+    </h1>
+    <div>
+      <ul
+        class="space-y-6"
+      >
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+        <li>
+          <div
+            data-testid="review-card"
+          />
+        </li>
+      </ul>
+      <div
+        data-testid="loader"
+      />
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`ActivityPage > matches snapshot when loading 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-6 w-dvw text-center"
+  >
+    <div
+      data-testid="loader"
+    />
+  </section>
+</DocumentFragment>
+`;
+
+exports[`ActivityPage > matches snapshot when no reviews are available 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-6 text-center"
+  >
+    <h1
+      class="text-2xl"
+    >
+      No reviews have been added yet
+    </h1>
+    <a
+      class="text-primary hover:underline"
+      href="/"
+    >
+      Return to home page
+    </a>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`ActivityPage > matches snapshot when there is an error 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-6 w-dvw text-center"
+  >
+    <h1
+      class="text-2xl"
+    >
+      Something went wrong!
+    </h1>
+    <p
+      class="text-primary"
+    >
+      Try to refresh
+    </p>
+  </section>
+</DocumentFragment>
+`;

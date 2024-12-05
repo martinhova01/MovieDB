@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchBar > matches snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="flex flex-grow flex-row gap-2"
+  >
+    <input
+      aria-label="Search for movies"
+      class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+      id="searchbar"
+      maxlength="100"
+      name="searchbar"
+      placeholder="Search... (Typing updates result)"
+      type="search"
+    />
+  </section>
+</DocumentFragment>
+`;

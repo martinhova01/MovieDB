@@ -1,0 +1,187 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MovieReviews > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="rounded-lg border bg-card text-card-foreground shadow-sm m-4"
+  >
+    <section
+      class="m-4 mb-6"
+    >
+      <h2
+        class="mb-4 text-2xl font-bold"
+      >
+        Submit review
+      </h2>
+      <form
+        class="space-y-4"
+      >
+        <section
+          class="flex"
+        >
+          <div
+            class="flex items-center gap-2"
+            id="review-rating"
+            role="radiogroup"
+          >
+            <svg
+              aria-checked="false"
+              aria-label="1 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="2 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="3 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="4 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="5 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+          </div>
+          <label
+            class="ml-3 opacity-60"
+            for="review-rating"
+          >
+            Pick a rating (mandatory)
+          </label>
+        </section>
+        <textarea
+          class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="review-comment"
+          maxlength="1500"
+          name="comment"
+          placeholder="Write your review (optional)"
+        />
+        <button
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+          disabled=""
+          type="submit"
+        >
+          Submit Review
+        </button>
+      </form>
+    </section>
+    <section
+      class="m-4 space-y-4"
+    >
+      <h2
+        class="mb-4 text-2xl font-bold"
+      >
+        Reviews
+      </h2>
+      <ul
+        class="space-y-6"
+      >
+        <li>
+          <div
+            data-testid="review-card"
+          >
+            <span
+              data-testid="review-username"
+            >
+              testuser
+            </span>
+            <span
+              data-testid="review-rating"
+            >
+              4
+            </span>
+            <span
+              data-testid="review-comment"
+            >
+              Great movie!
+            </span>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+</DocumentFragment>
+`;

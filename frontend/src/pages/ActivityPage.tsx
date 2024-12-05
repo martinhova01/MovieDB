@@ -18,6 +18,7 @@ const ActivityPage = () => {
         },
         onCompleted: (data) => {
             if (data.latestReviews) {
+                // Let the infinite scroll know if there are more reviews to fetch
                 setIsMoreReviews(
                     data.latestReviews.length >= LIMIT &&
                         data.latestReviews.length % LIMIT === 0
@@ -34,6 +35,7 @@ const ActivityPage = () => {
     const handleLoadMore = () => {
         fetchMore({ variables: { skip: latestReviews?.length } }).then(
             (fetchMoreResult) => {
+                // Let the infinite scroll know if there are more reviews to fetch
                 setIsMoreReviews(
                     fetchMoreResult.data.latestReviews.length === LIMIT
                 );

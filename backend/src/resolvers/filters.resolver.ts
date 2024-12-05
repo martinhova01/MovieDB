@@ -10,9 +10,12 @@ export async function resolveFilters({
     appliedFilters,
     search,
 }: ResolveFiltersInterface) {
+    // "Cache" the number of hits for the current query to avoid running the same query multiple times
     const hitsThisQuery = await MovieModel.countDocuments(
         createFilterAndSearch(appliedFilters, search)
     );
+
+    // Create a promise for each filter type, which we can run in parallel
 
     const genresPromise = MovieModel.distinct("genres").then((genreStrings) =>
         Promise.all(
@@ -20,11 +23,13 @@ export async function resolveFilters({
                 .filter((genre) => genre != null)
                 .map(async (genre) => {
                     if (appliedFilters?.Genre.includes(genre)) {
+                        // If the genre is already applied, the hits are the same as the current query
                         return { name: genre, hits: hitsThisQuery };
                     }
 
                     let filters: FiltersInput;
                     if (appliedFilters) {
+                        // Update the applied filters with the new genre
                         filters = {
                             ...appliedFilters,
                             Genre: [
@@ -32,6 +37,7 @@ export async function resolveFilters({
                             ],
                         };
                     } else {
+                        // If no filters are applied, only apply the genre
                         filters = {
                             Decade: [],
                             Rating: [],
@@ -53,8 +59,10 @@ export async function resolveFilters({
         ["5", "4", "3", "2", "1", "0"].map(async (rating) => {
             let filters: FiltersInput;
             if (appliedFilters) {
+                // Update the applied filters with the new rating
                 filters = { ...appliedFilters, Rating: [rating] };
             } else {
+                // If no filters are applied, only apply the rating
                 filters = {
                     Decade: [],
                     Rating: [rating],
@@ -77,12 +85,15 @@ export async function resolveFilters({
                 .sort((a, b) => b - a)
                 .map(async (decade) => {
                     let filters: FiltersInput;
+                    // Decade is a number (YYYY) in the database, but "YYYYs" is used in the frontend
                     if (appliedFilters) {
+                        // Update the applied filters with the new decade
                         filters = {
                             ...appliedFilters,
                             Decade: [decade.toString() + "s"],
                         };
                     } else {
+                        // If no filters are applied, only apply the decade
                         filters = {
                             Decade: [decade.toString() + "s"],
                             Rating: [],
@@ -105,8 +116,10 @@ export async function resolveFilters({
             async (status) => {
                 let filters: FiltersInput;
                 if (appliedFilters) {
+                    // Update the applied filters with the new status
                     filters = { ...appliedFilters, Status: [status] };
                 } else {
+                    // If no filters are applied, only apply the status
                     filters = {
                         Decade: [],
                         Rating: [],
@@ -133,8 +146,10 @@ export async function resolveFilters({
         ].map(async (runtime) => {
             let filters: FiltersInput;
             if (appliedFilters) {
+                // Update the applied filters with the new runtime
                 filters = { ...appliedFilters, Runtime: [runtime] };
             } else {
+                // If no filters are applied, only apply the runtime
                 filters = {
                     Decade: [],
                     Rating: [],
@@ -151,6 +166,8 @@ export async function resolveFilters({
         })
     );
 
+    // Wait for all promises to resolve
+    // The queries will be run in parallel, if the hardware/database allows it
     const [genres, ratings, decades, statuses, runtimes] = await Promise.all([
         genresPromise,
         ratingsPromise,

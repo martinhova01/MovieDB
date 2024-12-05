@@ -87,7 +87,7 @@ const Ratings = ({ ...props }: RatingsProps) => {
                     role: asInput ? "radio" : undefined,
                     "aria-checked": asInput ? i + 1 === value : undefined,
                     "aria-label": asInput ? `${i + 1} star` : undefined,
-                    tabIndex: asInput ? 0 : -1,
+                    tabIndex: asInput ? 0 : undefined,
                     onClick: () => onValueChange && onValueChange(i + 1),
                     onKeyDown: asInput
                         ? (e: React.KeyboardEvent) => handleKeyDown(e, i)
@@ -109,7 +109,7 @@ const Ratings = ({ ...props }: RatingsProps) => {
                             ? fullStars + i + 1 + (partialStar ? 1 : 0) ===
                               value
                             : undefined,
-                        tabIndex: asInput ? 0 : -1,
+                        tabIndex: asInput ? 0 : undefined,
                         onKeyDown: asInput
                             ? (e: React.KeyboardEvent) =>
                                   handleKeyDown(

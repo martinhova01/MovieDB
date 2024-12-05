@@ -15,6 +15,11 @@ describe("SearchBar", () => {
         vi.clearAllMocks();
     });
 
+    it("matches snapshot", () => {
+        const { asFragment } = render(<SearchBar />);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("renders the search input", () => {
         render(<SearchBar />);
 

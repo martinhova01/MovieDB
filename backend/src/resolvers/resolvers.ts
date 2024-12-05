@@ -20,6 +20,7 @@ import {
 } from "./userReviews.resolver.js";
 
 const resolvers = {
+    // Custom scalar type for DateTime, as it's not built-in to GraphQL
     DateTime: DateTimeResolver,
     Query: {
         movie: (_: unknown, args: ResolveMovieInterface) => {

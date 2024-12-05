@@ -5,8 +5,44 @@ import userEvent from "@testing-library/user-event";
 import MovieReviews from "../components/MovieReviews";
 import { ADD_REVIEW } from "@/api/queries";
 import { Review } from "@/types/__generated__/types";
-import { usernameVar } from "@/utils/cache";
 import { all_movies } from "./mock/util";
+import { vi } from "vitest";
+import { validateReview, validateUsername } from "@/utils/userInputValidation";
+import { usernameVar } from "@/utils/cache";
+import { useReactiveVar } from "@apollo/client";
+
+vi.mock("../components/ReviewCard", () => ({
+    default: vi.fn(({ review }: { review: Review }) => (
+        <div data-testid="review-card">
+            <span data-testid="review-username">{review.username}</span>
+            <span data-testid="review-rating">{review.rating}</span>
+            <span data-testid="review-comment">{review.comment}</span>
+        </div>
+    )),
+}));
+
+vi.mock("../components/Loader", () => ({
+    default: vi.fn(() => <div data-testid="loader" />),
+}));
+
+vi.mock("@/utils/userInputValidation", () => ({
+    validateReview: vi.fn(),
+    validateUsername: vi.fn(),
+}));
+
+vi.mock("@/utils/cache", () => ({
+    usernameVar: vi.fn(),
+}));
+
+vi.mock("@apollo/client", async () => {
+    const original = await vi.importActual("@apollo/client");
+    return {
+        ...original,
+        useReactiveVar: vi.fn(),
+    };
+});
+
+const mockDate = new Date("2024-01-01T12:00:00Z");
 
 const mockMovie = {
     ...all_movies[18],
@@ -16,7 +52,7 @@ const mockMovie = {
             username: "testuser",
             rating: 4,
             comment: "Great movie!",
-            date: new Date(),
+            date: mockDate,
         },
     ] as Review[],
 };
@@ -38,7 +74,7 @@ const mockAddReviewMutation = {
                 username: "testuser",
                 rating: 5,
                 comment: "Excellent movie!",
-                date: new Date(),
+                date: mockDate,
                 movie: {
                     _id: 475557,
                     vote_average: 4.5,
@@ -67,12 +103,24 @@ const mockNullAddReviewMutation = {
 };
 
 describe("MovieReviews", () => {
-    beforeAll(() => {
-        usernameVar("testuser");
+    beforeEach(() => {
+        vi.mocked(validateReview).mockReturnValue(true);
+        vi.mocked(validateUsername).mockReturnValue(true);
+        vi.mocked(usernameVar).mockReturnValue("testuser");
+        vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
     });
 
-    afterAll(() => {
-        usernameVar("Guest");
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
+    it("matches snapshot", () => {
+        const { asFragment } = render(
+            <MockedProvider mocks={[]} addTypename={false}>
+                <MovieReviews movie={mockMovie} />
+            </MockedProvider>
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders existing reviews", async () => {

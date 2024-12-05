@@ -28,6 +28,15 @@ vi.mock("@/utils/imageUrl/imageUrl", () => ({
 const mockMovie = all_movies[18]; // Joker
 
 describe("MovieCardDetailed", () => {
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
+    it("matches snapshot", () => {
+        const { asFragment } = render(<MovieCardDetailed movie={mockMovie} />);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("displays movie title, release year, runtime and genres", () => {
         render(<MovieCardDetailed movie={mockMovie} />);
         expect(screen.getByText("Joker")).toBeInTheDocument();

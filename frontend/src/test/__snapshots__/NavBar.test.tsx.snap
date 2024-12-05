@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navbar > matches snapshot for default Navbar 1`] = `
+<DocumentFragment>
+  <header
+    class="flex w-full items-center justify-between bg-gradient-to-r from-muted-foreground to-primary p-4"
+  >
+    <nav
+      class="flex items-center gap-10 text-background"
+    >
+      <a
+        class="sr-only left-0 top-0 bg-primary font-bold focus:not-sr-only focus:absolute focus:m-2 focus:p-2"
+        href="#main-content"
+      >
+        Skip to main content
+      </a>
+      <a
+        class="flex flex-row gap-3 text-2xl font-bold"
+        href="/"
+      >
+        <img
+          alt="logo"
+          class="h-8"
+          src="/project2/src/assets/logo.png"
+        />
+        MovieDB
+      </a>
+      <ul
+        class="hidden gap-4 text-lg sm:flex"
+      >
+        <li>
+          <a
+            class="hover:underline"
+            href="/activity"
+          >
+            Activity
+          </a>
+        </li>
+        <li>
+          <a
+            class="hover:underline"
+            href="/myReviews"
+          >
+            My Reviews
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="flex items-center"
+    >
+      <div
+        data-testid="user-dropdown"
+      />
+      <div
+        class="ml-2"
+      >
+        <div
+          data-testid="navbar-overlay"
+        />
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;

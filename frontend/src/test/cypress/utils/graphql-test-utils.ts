@@ -1,4 +1,5 @@
-import { CyHttpMessages } from "cypress/types/net-stubbing";
+// See: https://github.com/cypress-io/cypress/issues/27973
+import { CyHttpMessages } from "../../../../node_modules/cypress/types/net-stubbing.js";
 
 interface GraphQLRequestBody {
     operationName: string;

@@ -16,12 +16,14 @@ export async function resolveUserReviews({
     skip = 0,
     limit = 10,
 }: ResolveUserReviewsInterface) {
+    // Make sure the skip, limit, and username are valid
     const validationError =
         validateSkipLimit(skip, limit) ?? validateUsername(username);
     if (validationError != null) {
         return validationError;
     }
 
+    // Return the reviews for the given username with newest reviews first
     return await ReviewModel.find({ username })
         .sort({ date: -1 })
         .skip(skip)

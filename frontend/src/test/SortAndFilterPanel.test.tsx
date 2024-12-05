@@ -30,7 +30,7 @@ vi.mock("@apollo/client", async () => {
 });
 
 vi.mock("@/utils/formatUtil", () => ({
-    formatNumber: vi.fn((num: number) => num.toString()),
+    formatNumber: vi.fn((n: number) => n.toString()),
 }));
 
 vi.mock("../components/SortSection", () => ({
@@ -42,9 +42,7 @@ vi.mock("../components/SortSection", () => ({
 }));
 
 vi.mock("../components/Loader", () => ({
-    default: vi.fn(({ children }) => (
-        <div data-testid="loader">{children}</div>
-    )),
+    default: vi.fn(() => <div data-testid="loader" />),
 }));
 
 const mockGetFiltersQuery = [
@@ -153,6 +151,16 @@ describe("SortAndFilterPanel", () => {
     afterEach(() => {
         vi.clearAllMocks();
         sessionStorage.clear();
+    });
+
+    it("matches snapshot", async () => {
+        const { asFragment } = render(
+            <MockedProvider mocks={mockGetFiltersQuery} addTypename={false}>
+                <SortAndFilterPanel />
+            </MockedProvider>
+        );
+
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders Sort & Filter button", () => {

@@ -9,6 +9,8 @@ import { MemoryRouter } from "react-router-dom";
 import { formatDate } from "@/utils/formatUtil";
 import { DELETE_REVIEW } from "@/api/queries";
 import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
+import { useReactiveVar } from "@apollo/client";
 
 const mockReview: Review = all_reviews[0];
 
@@ -30,6 +32,40 @@ const mockDeleteReview = [
     },
 ];
 
+vi.mock("@/utils/cache", () => ({
+    usernameVar: vi.fn(),
+}));
+
+vi.mock("@apollo/client", async () => {
+    const original = await vi.importActual("@apollo/client");
+    return {
+        ...original,
+        useReactiveVar: vi.fn(),
+    };
+});
+
+vi.mock("@/utils/formatUtil", () => ({
+    formatDate: (date: Date) =>
+        date.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+        }),
+}));
+
+vi.mock("@/utils/imageUrl/imageUrl", () => ({
+    getImageUrl: vi.fn(),
+    ImageType: {
+        POSTER: "poster",
+    },
+}));
+
+vi.mock("../components/Loader", () => ({
+    default: vi.fn(() => <div data-testid="loader" />),
+}));
+
 describe("ReviewCard", () => {
     const renderComponent = (review: Review, showPoster = false) => {
         return render(
@@ -41,8 +77,23 @@ describe("ReviewCard", () => {
         );
     };
 
-    afterAll(() => {
-        usernameVar("Guest");
+    beforeEach(() => {
+        vi.mocked(usernameVar).mockReturnValue("test_user");
+        vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
+    });
+
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
+    it("matches snapshot for review card without poster", () => {
+        const { asFragment } = renderComponent(mockReview);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot for review card with poster", () => {
+        const { asFragment } = renderComponent(mockReview, true);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("displays username, data and comment", async () => {
@@ -69,7 +120,6 @@ describe("ReviewCard", () => {
     });
 
     it("shows delete button for user's own review", () => {
-        usernameVar("test_user");
         renderComponent(mockReview);
         expect(
             screen.getByRole("button", { name: /delete/i })
@@ -77,7 +127,7 @@ describe("ReviewCard", () => {
     });
 
     it("does not show delete button for other users review", () => {
-        usernameVar("other_user");
+        vi.mocked(usernameVar).mockReturnValue("other_user");
         renderComponent(mockReview);
         expect(
             screen.queryByRole("button", { name: /delete/i })
@@ -85,7 +135,6 @@ describe("ReviewCard", () => {
     });
 
     it("shows dialog box when 'delete' is clicked", async () => {
-        usernameVar("test_user");
         renderComponent(mockReview);
 
         const deleteButton = screen.getByRole("button", { name: /delete/i });

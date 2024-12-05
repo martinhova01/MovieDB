@@ -31,6 +31,7 @@ const MovieList = () => {
             search: search,
         },
         onCompleted: (data) => {
+            // Let the infinite scroll know if there are more movies to load or not
             if (data.movies) {
                 setIsMoreMovies(
                     data.movies.length >= LIMIT &&
@@ -94,7 +95,8 @@ const MovieList = () => {
             </p>
             <ul className="flex flex-wrap justify-center">
                 {loading
-                    ? Array.from({ length: LIMIT }, (_, i) => i).map((i) => (
+                    ? // If loading, show pulsating card placeholders
+                      Array.from({ length: LIMIT }, (_, i) => i).map((i) => (
                           <li key={i} className={listClass}>
                               <MovieCardSkeleton />
                           </li>

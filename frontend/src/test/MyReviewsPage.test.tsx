@@ -7,6 +7,8 @@ import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import MyReviewsPage from "@/pages/MyReviewsPage";
 import { vi } from "vitest";
+import { Review } from "@/types/__generated__/types";
+import { useReactiveVar } from "@apollo/client";
 
 const mockUserReviews = [
     {
@@ -55,6 +57,32 @@ const mockUserReviewsError = [
     },
 ];
 
+vi.mock("../components/ReviewCard", () => ({
+    default: vi.fn(({ review }: { review: Review }) => (
+        <div data-testid="review-card">
+            <span data-testid="review-username">{review.username}</span>
+            <span data-testid="review-rating">{review.rating}</span>
+            <span data-testid="review-comment">{review.comment}</span>
+        </div>
+    )),
+}));
+
+vi.mock("../components/Loader", () => ({
+    default: vi.fn(() => <div data-testid="loader" />),
+}));
+
+vi.mock("@/utils/cache", () => ({
+    usernameVar: vi.fn(),
+}));
+
+vi.mock("@apollo/client", async () => {
+    const original = await vi.importActual("@apollo/client");
+    return {
+        ...original,
+        useReactiveVar: vi.fn(),
+    };
+});
+
 const mockNavigate = vi.fn();
 vi.mock("react-router-dom", async () => {
     const actualModule = await vi.importActual("react-router-dom");
@@ -64,7 +92,7 @@ vi.mock("react-router-dom", async () => {
     };
 });
 
-describe("ActivityPage", () => {
+describe("MyReviewsPage", () => {
     const renderComponent = (mocks: MockedResponse[] | undefined) => {
         return render(
             <MockedProvider mocks={mocks} addTypename={false}>
@@ -75,12 +103,41 @@ describe("ActivityPage", () => {
         );
     };
 
-    afterAll(() => {
-        usernameVar("Guest");
+    beforeEach(() => {
+        vi.mocked(usernameVar).mockReturnValue("test_user");
+        vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
+    });
+
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
+    it("matches snapshot when loading", () => {
+        const { asFragment } = renderComponent(mockUserReviews);
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot when user reviews are loaded", async () => {
+        const { asFragment } = renderComponent(mockUserReviews);
+        await screen.findByText("My Reviews");
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot when user has no reviews", async () => {
+        vi.mocked(usernameVar).mockReturnValue("other_user");
+        const { asFragment } = renderComponent(mockUserReviews);
+        await screen.findByText("You have not added any reviews yet");
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("matches snapshot on error", async () => {
+        const { asFragment } = renderComponent(mockUserReviewsError);
+        await screen.findByText("Something went wrong!");
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("displays 'You have not added any reviews yet' on empty reviews", async () => {
-        usernameVar("other_user");
+        vi.mocked(usernameVar).mockReturnValue("other_user");
         renderComponent(mockUserReviews);
         await waitFor(() =>
             expect(
@@ -90,7 +147,6 @@ describe("ActivityPage", () => {
     });
 
     it("displays 'Something went wrong!' on error", async () => {
-        usernameVar("test_user");
         renderComponent(mockUserReviewsError);
         await waitFor(() =>
             expect(
@@ -100,7 +156,6 @@ describe("ActivityPage", () => {
     });
 
     it("renders 20 reviews", async () => {
-        usernameVar("test_user");
         renderComponent(mockUserReviews);
         //All reviews have username 'test_user'
         await waitFor(() =>
@@ -110,17 +165,15 @@ describe("ActivityPage", () => {
 
     it("redirects to homepage on logout", async () => {
         mockNavigate.mockClear();
-        usernameVar("test_user");
         renderComponent(mockUserReviews);
-        act(() => usernameVar("Guest"));
+        act(() => vi.mocked(usernameVar).mockReturnValue("Guest"));
         await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith("/"));
     });
 
     it("does not redirect to homepage on user change", async () => {
         mockNavigate.mockClear();
-        usernameVar("test_user");
         renderComponent(mockUserReviews);
-        act(() => usernameVar("other_user"));
+        act(() => vi.mocked(usernameVar).mockReturnValue("other_user"));
         await waitFor(() => expect(mockNavigate).not.toHaveBeenCalled());
     });
 });

@@ -12,11 +12,17 @@ const SearchBar: React.FC = () => {
         searchVar(searchString);
     };
 
+    // Debounce the search input to avoid making too many requests
+    // 510ms is a nice balance between responsiveness and avoiding too many requests
+    // (500ms is the default timeout when holding a key in most systems,
+    //  so 510ms wound send request while a key is held)
     const debouncedHandleSearch = useDebouncedCallback(handleSearch, 510);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        // (Re)start the countdown for the debounced search
         debouncedHandleSearch(e.target.value);
         if (!e.target.value) {
+            // Immediately execute the search if the input is empty
             debouncedHandleSearch.flush();
         }
     };
@@ -24,6 +30,7 @@ const SearchBar: React.FC = () => {
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
         if (e.key === "Enter" && target.value.trim()) {
+            // Immediately execute the search if the user presses Enter
             debouncedHandleSearch.flush();
         }
     };
@@ -41,7 +48,7 @@ const SearchBar: React.FC = () => {
                 id="searchbar"
                 name="searchbar"
                 type="search"
-                placeholder="Search..."
+                placeholder="Search... (Typing updates result)"
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 ref={searchInputRef}

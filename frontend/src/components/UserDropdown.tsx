@@ -33,10 +33,13 @@ const UserDropdown = () => {
     const handleUsernameChange = (e: React.FormEvent) => {
         e.preventDefault();
 
+        // Ensure the username is not empty and is valid
+        // Displays toast messages if the username is invalid
         const trimmedUsername = newUsername.trim();
         if (!validateUsername(trimmedUsername)) return;
 
         if (trimmedUsername) {
+            // Update the username, reset fields and close dialog/dropdown
             usernameVar(trimmedUsername);
             localStorage.setItem("username", trimmedUsername);
             setNewUsername("");
@@ -54,6 +57,7 @@ const UserDropdown = () => {
 
     const handleDialogOpenChange = (open: boolean) => {
         setIsDialogOpen(open);
+        // Reset the new username field when the dialog is closed
         setNewUsername("");
     };
 
@@ -64,6 +68,7 @@ const UserDropdown = () => {
                     variant="outline"
                     className="flex items-center space-x-2"
                     aria-label="user"
+                    aria-description="Display your username, change your username or sign out"
                 >
                     <User className="h-4 w-4" />
                     <span className="hidden truncate sm:flex sm:max-w-32">

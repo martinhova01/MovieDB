@@ -43,11 +43,14 @@ const SortAndFilterPanel: React.FC = () => {
         },
         onCompleted: (data) => {
             let totalHits: number;
+            // Find the total number of hits
             if (filtersVar().Status.length == 0) {
+                // Since Status is union based, we can sum all its hits when no Status is applied
                 totalHits = data.filters.Status.map(
                     (s: Filter) => s.hits
                 ).reduce((acc, curr) => acc + curr, 0);
             } else {
+                // Otherwise, sum only the hits of the applied Status filters
                 totalHits = data.filters.Status.filter((s: Filter) =>
                     filtersVar().Status.includes(s.name)
                 )
@@ -63,10 +66,13 @@ const SortAndFilterPanel: React.FC = () => {
     const updateFilters = (category: keyof FiltersInput, filter: string) => {
         let newFilters: string[] = [...(filters[category] || [])];
         if (newFilters.includes(filter)) {
+            // If the filter is already applied, remove it
             newFilters = newFilters.filter((e) => e != filter);
         } else {
+            // Otherwise, add it
             newFilters.push(filter);
         }
+        // Update the changed filter category
         const updatedFilters: FiltersInput = {
             ...filters,
             [category]: newFilters,
@@ -126,7 +132,8 @@ const SortAndFilterPanel: React.FC = () => {
                 <SheetHeader className="mb-5">
                     <SheetTitle>Sort & Filter</SheetTitle>
                     <SheetDescription>
-                        Use the tools below to refine your results
+                        Adding filters or changing sorting order will
+                        automatically update the results.
                     </SheetDescription>
                 </SheetHeader>
 

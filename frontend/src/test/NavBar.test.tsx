@@ -1,11 +1,51 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
-import userEvent from "@testing-library/user-event";
 import Navbar from "@/components/Navbar";
+import { vi } from "vitest";
+import { usernameVar } from "@/utils/cache";
+import { useReactiveVar } from "@apollo/client";
+
+vi.mock("../components/UserDropdown", () => ({
+    default: vi.fn(() => <div data-testid="user-dropdown" />),
+}));
+
+vi.mock("../components/NavbarOverlay", () => ({
+    default: vi.fn(() => <div data-testid="navbar-overlay" />),
+}));
+
+vi.mock("@/utils/cache", () => ({
+    usernameVar: vi.fn(),
+}));
+
+vi.mock("@apollo/client", async () => {
+    const original = await vi.importActual("@apollo/client");
+    return {
+        ...original,
+        useReactiveVar: vi.fn(),
+    };
+});
 
 describe("Navbar", () => {
+    beforeEach(() => {
+        vi.mocked(useReactiveVar).mockImplementation((varFn) => varFn());
+    });
+
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
+    it("matches snapshot for default Navbar", () => {
+        const { asFragment } = render(
+            <MemoryRouter>
+                <Navbar />
+            </MemoryRouter>
+        );
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("successfully renders Navbar", async () => {
+        vi.mocked(usernameVar).mockReturnValue("Guest");
         render(
             <MemoryRouter>
                 <Navbar />
@@ -24,36 +64,22 @@ describe("Navbar", () => {
 
         expect(screen.queryByText("My Reviews")).toBeNull();
 
-        expect(screen.getByText("Guest")).toBeInTheDocument();
-        expect(screen.getByText("Toggle navigation menu")).toBeInTheDocument();
+        expect(screen.getByTestId("user-dropdown")).toBeInTheDocument();
+        expect(screen.getByTestId("navbar-overlay")).toBeInTheDocument();
     });
 
-    it("successfully shows 'My Reviews' only for logged in users (not Guests)", async () => {
+    it("shows 'My Reviews' for logged in users", async () => {
+        vi.mocked(usernameVar).mockReturnValue("test_user");
         render(
             <MemoryRouter>
                 <Navbar />
             </MemoryRouter>
         );
 
-        expect(screen.queryByText("My Reviews")).toBeNull();
-
-        await userEvent.click(screen.getByText("Guest"));
-        await userEvent.click(screen.getByText("Change username"));
-
-        const input = screen.getByPlaceholderText("Enter new username");
-        const newUsername = "TestUser";
-        await userEvent.type(input, newUsername);
-        await userEvent.click(
-            screen.getByRole("button", { name: "Change username" })
-        );
         expect(screen.getByText("My Reviews")).toBeInTheDocument();
         expect(screen.getByText("My Reviews")).toHaveAttribute(
             "href",
             "/myReviews"
         );
-
-        await userEvent.click(screen.getByText("TestUser"));
-        await userEvent.click(screen.getByText("Sign out"));
-        expect(screen.queryByText("My Reviews")).toBeNull();
     });
 });

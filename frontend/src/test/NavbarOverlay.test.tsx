@@ -6,6 +6,16 @@ import { NavbarProps } from "@/components/Navbar";
 import NavbarOverlay from "@/components/NavbarOverlay";
 
 describe("NavbarOverlay", () => {
+    it("matches snapshot", async () => {
+        const mockLinks: NavbarProps = [];
+        const { asFragment } = render(
+            <MemoryRouter>
+                <NavbarOverlay links={mockLinks} />
+            </MemoryRouter>
+        );
+        expect(asFragment()).toMatchSnapshot();
+    });
+
     it("successfully renders NavbarOverlay with links", async () => {
         const mockLinks: NavbarProps = [
             { name: "Home", href: "/" },
