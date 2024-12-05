@@ -15,6 +15,10 @@ interface MovieCardDetailedProps {
     movie: Movie;
 }
 
+/**
+ * Generates a list of movie details with labels and values, based on the movie object.
+ * Used to display additional information about the movie.
+ */
 const getMovieDetailsList = (movie: Movie) => [
     {
         label: "Status",
@@ -61,6 +65,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
             }}
             data-testid="detailedMovieCard"
         >
+            {/* Semi-transparent black overlay to the backdrop image */}
             {movie.backdrop_path && (
                 <div className="absolute inset-0 bg-black opacity-85" />
             )}
@@ -126,6 +131,7 @@ const MovieCardDetailed: React.FC<MovieCardDetailedProps> = ({ movie }) => {
                         </ul>
                         {movie.homepage && (
                             <Button asChild>
+                                {/* Open the movie homepage in a new tab */}
                                 <a
                                     href={movie.homepage}
                                     target="_blank"

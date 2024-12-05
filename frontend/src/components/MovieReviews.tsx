@@ -25,6 +25,10 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
         update(cache, { data }) {
             if (!data?.addReview) return;
             const newRef: Reference = { __ref: `Review:${data.addReview._id}` };
+
+            // Update the cache to include the new review, instead of refetching.
+            // This includes updating the cache for this movie, the latest reviews,
+            // and the user's reviews.
             cache.modify({
                 id: `Movie:${data.addReview.movie._id}`,
                 fields: {
@@ -52,6 +56,8 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
     const handleSubmitReview = (e?: React.FormEvent) => {
         e?.preventDefault();
 
+        // Validate the review and username before submitting
+        // If validation fails, a toast will be displayed, and we should not proceed here
         if (!validateReview(comment) || !validateUsername(username)) return;
 
         addReview({
@@ -64,9 +70,10 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
         })
             .then((response) => {
                 if (response.data?.addReview) {
+                    toast.success("Review added successfully");
+                    // Reset the form after successful submission
                     setRating(0);
                     setComment("");
-                    toast.success("Review added successfully");
                 }
             })
             .catch((error) => {

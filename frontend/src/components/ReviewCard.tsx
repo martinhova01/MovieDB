@@ -38,6 +38,10 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         update(cache, { data }) {
             if (!data?.deleteReview) return;
             const deletedRef: string = `Review:${data.deleteReview._id}`;
+
+            // Remove the reference to the review from the cache
+            // Remove it from the movie it is related to, and
+            // from the latestReviews and userReviews pages
             cache.modify({
                 id: `Movie:${data.deleteReview.movie._id}`,
                 fields: {
@@ -68,6 +72,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                     },
                 },
             });
+            // Also remove the review itself from the cache
             cache.evict({ id: deletedRef });
         },
     });

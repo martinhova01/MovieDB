@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import { NavbarProps } from "./Navbar";
 
 const NavbarOverlay = ({ links }: { links: NavbarProps }) => {
+    // This component will show a hamburger menu on small screens
+    // Clicking the menu will show an overlay with the navigation links
     return (
         <Sheet>
             <SheetTrigger asChild>
@@ -27,6 +29,7 @@ const NavbarOverlay = ({ links }: { links: NavbarProps }) => {
                     <ul className="flex flex-col space-y-4">
                         {links.map((link) => (
                             <li key={link.name}>
+                                {/* Clicking a link should close the overlay */}
                                 <SheetClose asChild>
                                     <Link
                                         to={link.href}

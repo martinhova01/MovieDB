@@ -39,6 +39,7 @@ const FilterSection: React.FC<FilterSectionInterface> = ({
                 <ul>
                     {all_filters.map(
                         (filter) =>
+                            // Only show filters with hits
                             filter.hits > 0 && (
                                 <li
                                     key={filter.name}
