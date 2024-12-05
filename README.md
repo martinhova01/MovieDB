@@ -157,17 +157,25 @@ We have made end-to-end tests using `Cypress`, as it's known to work well for e2
 
 We've put a lot of effort into making sure our application is accessible for everyone. Accessibility is a core part of what makes a good user experience, so here are some of the steps we've taken to make our app more inclusive:
 
-- **Semantic HTML**: We use the right HTML tags to ensure that screen readers can easily interpret and present the content to users who rely on them. The few places `<div>`-tags have been used, this has been a deliberate choice, as no other element carried the appropriate semantic meaning.
-- **ARIA Attributes**: We've added `aria-label` to give elements clear, descriptive names and used `aria-role` to specify roles when they're not obvious from the element type.
-- **Image Descriptions**: All images come with `alt` text. This way, if an image doesn't load for any reason, the description still provides the necessary context for what was supposed to be there.
-- **Keyboard Navigation**: The whole app is built to be navigable using only a keyboard, which is how some users prefer or need to interact with websites.
-- **Color Contrast**: We've checked that all text and interactive elements have enough contrast with their backgrounds to be easily readable, especially for users with visual impairments.
+- **Semantic HTML (WCAG 1.3.1)**: We use the right HTML tags to ensure that screen readers can easily interpret and present the content to users who rely on them. The few places `<div>`-tags have been used, this has been a deliberate choice, as no other element carried the appropriate semantic meaning.
+- **ARIA Attributes (WCAG 4.1.2)**: We've added `aria-label` to give elements clear, descriptive names and used `aria-role` to specify roles when they're not obvious from the element type.
+- **Image Descriptions (WCAG 1.1.1)**: All images come with `alt` text. This way, if an image doesn't load for any reason, the description still provides the necessary context for what was supposed to be there.
+- **Keyboard Navigation (WCAG 2.1.1/2.1.2)**: The whole app is built to be navigable using only a keyboard, which is how some users prefer or need to interact with websites.
+- **Color Contrast (WCAG 1.4.3)**: We've checked that all text and interactive elements have enough contrast with their backgrounds to be easily readable, especially for users with visual impairments.
 
 To catch any accessibility issues, we've been using `Google Lighthouse`, a built-in browser tool, to analyze accessibility as well as performance, best practices, and Search Engine Optimization (SEO). Here's an example of a Lighthouse report for the homepage's initial load:
 
 ![Lighthouse report](docs/image.png)
 
 _Note: This test was run with the backend on a local server, so the performance results might not be fully accurate._
+
+#### WCAG
+
+We have also manually tested the accessibility of the application using the WCAG-guidelines. Some of the most noteable changes we made based on WCAG were:
+
+- Added a "Skip to Main Content" button to let users easily bypass the navbar when using a keyboard (WCAG 2.4.1).
+- Give information to the user that adding filters, changing the sorting order or typing in the searchbar will automatically update the page (WCAG 3.2.2).
+- Added a label explaining that picking a rating is mandatory when submitting a review, but adding a comment is optional (WCAG 3.3.2).
 
 ### Sustainability
 
