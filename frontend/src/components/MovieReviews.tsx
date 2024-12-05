@@ -95,14 +95,23 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movie }) => {
             <section className="m-4 mb-6">
                 <h2 className="mb-4 text-2xl font-bold">Submit review</h2>
                 <form onSubmit={handleSubmitReview} className="space-y-4">
-                    <Ratings
-                        value={rating}
-                        onValueChange={setRating}
-                        variant="yellow"
-                        totalstars={5}
-                        size={24}
-                        asInput={true}
-                    />
+                    <section className="flex">
+                        <Ratings
+                            id="review-rating"
+                            value={rating}
+                            onValueChange={setRating}
+                            variant="yellow"
+                            totalstars={5}
+                            size={24}
+                            asInput={true}
+                        />
+                        <label
+                            htmlFor="review-rating"
+                            className="ml-3 opacity-60"
+                        >
+                            Pick a rating (mandatory)
+                        </label>
+                    </section>
                     <Textarea
                         id="review-comment"
                         name="comment"
