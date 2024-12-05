@@ -3,6 +3,7 @@
 exports[`UserDropdown > matches snapshot 1`] = `
 <DocumentFragment>
   <button
+    aria-description="Display your username, change your username or sign out"
     aria-expanded="false"
     aria-haspopup="menu"
     aria-label="user"

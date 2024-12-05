@@ -11,7 +11,7 @@ exports[`SearchBar > matches snapshot 1`] = `
       id="searchbar"
       maxlength="100"
       name="searchbar"
-      placeholder="Search..."
+      placeholder="Search... (Typing updates result)"
       type="search"
     />
   </section>

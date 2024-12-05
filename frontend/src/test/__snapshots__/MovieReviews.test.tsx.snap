@@ -16,111 +16,122 @@ exports[`MovieReviews > matches snapshot 1`] = `
       <form
         class="space-y-4"
       >
-        <div
-          class="flex items-center gap-2"
-          role="radiogroup"
+        <section
+          class="flex"
         >
-          <svg
-            aria-checked="false"
-            aria-label="1 star"
-            class="lucide lucide-star text-yellow-200 cursor-pointer"
-            fill="none"
-            height="24"
-            role="radio"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            tabindex="0"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            class="flex items-center gap-2"
+            id="review-rating"
+            role="radiogroup"
           >
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-            />
-          </svg>
-          <svg
-            aria-checked="false"
-            aria-label="2 star"
-            class="lucide lucide-star text-yellow-200 cursor-pointer"
-            fill="none"
-            height="24"
-            role="radio"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            tabindex="0"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
+            <svg
+              aria-checked="false"
+              aria-label="1 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="2 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="3 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="4 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+            <svg
+              aria-checked="false"
+              aria-label="5 star"
+              class="lucide lucide-star text-yellow-200 cursor-pointer"
+              fill="none"
+              height="24"
+              role="radio"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              tabindex="0"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              />
+            </svg>
+          </div>
+          <label
+            class="ml-3 opacity-60"
+            for="review-rating"
           >
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-            />
-          </svg>
-          <svg
-            aria-checked="false"
-            aria-label="3 star"
-            class="lucide lucide-star text-yellow-200 cursor-pointer"
-            fill="none"
-            height="24"
-            role="radio"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            tabindex="0"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-            />
-          </svg>
-          <svg
-            aria-checked="false"
-            aria-label="4 star"
-            class="lucide lucide-star text-yellow-200 cursor-pointer"
-            fill="none"
-            height="24"
-            role="radio"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            tabindex="0"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-            />
-          </svg>
-          <svg
-            aria-checked="false"
-            aria-label="5 star"
-            class="lucide lucide-star text-yellow-200 cursor-pointer"
-            fill="none"
-            height="24"
-            role="radio"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            tabindex="0"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-            />
-          </svg>
-        </div>
+            Pick a rating (mandatory)
+          </label>
+        </section>
         <textarea
           class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           id="review-comment"
