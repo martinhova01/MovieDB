@@ -7,8 +7,8 @@ import { expect } from "chai";
 
 // Interface to handle MongoDB-specific fixture format
 interface MongoFixtureMovie extends Omit<Movie, "release_date" | "reviews"> {
-    release_date: { $date: string }; 
-    reviews: { $oid: string }[]; 
+    release_date: { $date: string };
+    reviews: { $oid: string }[];
 }
 interface MongoFixtureReview extends Omit<Review, "_id" | "movie" | "date"> {
     _id: { $oid: string };

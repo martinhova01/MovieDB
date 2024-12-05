@@ -105,7 +105,10 @@ describe("Reviews", () => {
                 limit: 20,
                 username: "testuser1",
             });
-            cy.checkReviewCards((response?.body.data.userReviews ?? []) as Review[], 3);
+            cy.checkReviewCards(
+                (response?.body.data.userReviews ?? []) as Review[],
+                3
+            );
         });
         cy.contains("This is a great movie!").should("not.exist");
 
