@@ -103,13 +103,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                 {review.username !== "Guest" &&
                     username === review.username && (
                         <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                                {loading ? (
-                                    <Loader
-                                        size="sm"
-                                        className="absolute right-4 top-4 m-0 h-8 px-2"
-                                    />
-                                ) : (
+                            {loading ? (
+                                <Loader
+                                    size="sm"
+                                    className="absolute right-4 top-4 m-0 h-8 px-2"
+                                />
+                            ) : (
+                                <AlertDialogTrigger asChild>
                                     <Button
                                         size="sm"
                                         className="absolute right-4 top-4 h-8 px-2"
@@ -122,8 +122,8 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                                             Delete
                                         </span>
                                     </Button>
-                                )}
-                            </AlertDialogTrigger>
+                                </AlertDialogTrigger>
+                            )}
 
                             <AlertDialogContent>
                                 <AlertDialogHeader>
