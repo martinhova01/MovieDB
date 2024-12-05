@@ -92,7 +92,7 @@ vi.mock("react-router-dom", async () => {
     };
 });
 
-describe("ActivityPage", () => {
+describe("MyReviewsPage", () => {
     const renderComponent = (mocks: MockedResponse[] | undefined) => {
         return render(
             <MockedProvider mocks={mocks} addTypename={false}>
