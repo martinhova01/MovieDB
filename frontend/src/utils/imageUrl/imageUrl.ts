@@ -21,7 +21,7 @@ export const getImageUrl = (
     imageSize: string = "original"
 ): string => {
     if (!imagePath) {
-        //we only have a default image for poster, can add more later if needed.
+        // We only have a default image for poster, can add more later if needed.
         return type == ImageType.POSTER ? default_poster : "";
     }
 
