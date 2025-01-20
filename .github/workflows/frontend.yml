@@ -9,7 +9,9 @@ on:
 
 jobs:
     build:
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
+        env:
+          TZ: Europe/Oslo
         defaults:
             run:
                 working-directory: ./frontend
